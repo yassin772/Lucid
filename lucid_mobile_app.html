@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucid - Macro Understanding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body, #root { min-height: 100%; }
+  body {
+    background: #0D0F1A;
+    color: #101828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+  button { font: inherit; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  @media (max-width: 520px) {
+    body { display: block; background: #F4F1EC; }
+    .phone { width: 100vw !important; height: 100vh !important; border-radius: 0 !important; box-shadow: none !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const LUCID_API_URL = null;
+const DISCLAIMER = "For informational and educational purposes only. Not financial advice.";
+
+const theme = {
+  accent: "#5347E8",
+  bg: "#F4F1EC",
+  card: "#FEFEFE",
+  ink: "#0E1825",
+  muted: "#8C909A",
+  border: "#ECE7DD",
+  soft: "#F0EDE5",
+};
+
+const sampleData = {
+  generated_at: "Today",
+  market_story: {
+    title: "The market is focused on rates and growth",
+    body: "The dollar still has support from high rates, while Europe and Japan need stronger economic strength.",
+  },
+  lucid_summaries: {
+    USD: {
+      currency: "USD",
+      label: "Supported",
+      headline: "The Fed is keeping rates high",
+      reasons: [
+        "US rates still attract capital",
+        "Recent US data is holding up",
+      ],
+      insight: "The dollar still has economic support behind it",
+      key_event: "Fed comments this week",
+    },
+    EUR: {
+      currency: "EUR",
+      label: "Weak",
+      headline: "Growth is weighing on the euro",
+      reasons: [
+        "Europe's economy lacks strength",
+        "The ECB is becoming more careful",
+      ],
+      insight: "The euro needs stronger growth to regain support",
+      key_event: "Euro area inflation this week",
+    },
+    GBP: {
+      currency: "GBP",
+      label: "Neutral",
+      headline: "The pound is waiting for clarity",
+      reasons: [
+        "UK growth is uneven",
+        "Inflation still matters for the BOE",
+      ],
+      insight: "The pound is caught between growth worries and inflation",
+      key_event: "BOE comments this week",
+    },
+    JPY: {
+      currency: "JPY",
+      label: "Weak",
+      headline: "Calm markets reduce yen demand",
+      reasons: [
+        "Low rates make the yen less attractive",
+        "Investors are not seeking safety aggressively",
+      ],
+      insight: "The yen needs either policy change or market stress",
+      key_event: "BOJ communication this week",
+    },
+    CHF: {
+      currency: "CHF",
+      label: "Neutral",
+      headline: "Franc steady with no strong catalyst",
+      reasons: [
+        "Swiss stability remains supportive",
+        "Calm markets limit defensive demand",
+      ],
+      insight: "The franc is mostly waiting for a change in market mood",
+      key_event: null,
+    },
+    CAD: {
+      currency: "CAD",
+      label: "Neutral",
+      headline: "Canada is waiting on oil and growth",
+      reasons: [
+        "Oil prices remain important",
+        "US demand is the main external driver",
+      ],
+      insight: "The Canadian dollar needs a clearer global growth story",
+      key_event: "Canada GDP this week",
+    },
+    AUD: {
+      currency: "AUD",
+      label: "Neutral",
+      headline: "Global demand is the key driver",
+      reasons: [
+        "China and commodities matter most",
+        "The RBA is watching inflation carefully",
+      ],
+      insight: "The Australian dollar moves with global confidence",
+      key_event: "Australia CPI this week",
+    },
+    NZD: {
+      currency: "NZD",
+      label: "Neutral",
+      headline: "The kiwi needs a clearer catalyst",
+      reasons: [
+        "Local growth is not strong enough",
+        "Global sentiment remains important",
+      ],
+      insight: "The New Zealand dollar is waiting for stronger evidence",
+      key_event: null,
+    },
+  },
+  lucid_events: [
+    {
+      title: "US inflation",
+      timing_label: "Today",
+      currency: "USD",
+      why_it_matters: "Inflation tells the Fed how much pressure remains",
+      market_focus: "Whether prices are cooling or staying sticky",
+      insight: "Slower inflation can reduce support for a currency",
+    },
+    {
+      title: "ECB comments",
+      timing_label: "This week",
+      currency: "EUR",
+      why_it_matters: "The ECB explains how it sees growth and inflation",
+      market_focus: "Whether weak growth makes the bank more careful",
+      insight: "The tone helps explain the euro backdrop",
+    },
+    {
+      title: "Canada GDP",
+      timing_label: "This week",
+      currency: "CAD",
+      why_it_matters: "GDP shows whether the economy is growing or slowing",
+      market_focus: "Whether growth is strong enough to support the currency",
+      insight: "Weak growth can make a currency feel less attractive",
+    },
+  ],
+};
+
+const currencyNames = {
+  USD: "US Dollar",
+  EUR: "Euro",
+  GBP: "British Pound",
+  JPY: "Japanese Yen",
+  CHF: "Swiss Franc",
+  CAD: "Canadian Dollar",
+  AUD: "Australian Dollar",
+  NZD: "New Zealand Dollar",
+};
+
+const labelOrder = { Supported: 0, Neutral: 1, Weak: 2 };
+
+function normalizePayload(payload) {
+  const summariesSource = payload?.lucid_summaries || payload?.summaries || sampleData.lucid_summaries;
+  const summaries = Object.values(summariesSource).sort((a, b) => {
+    const labelDiff = (labelOrder[a.label] ?? 9) - (labelOrder[b.label] ?? 9);
+    return labelDiff || a.currency.localeCompare(b.currency);
+  });
+  return {
+    generated_at: payload?.generated_at || sampleData.generated_at,
+    market_story: payload?.market_story || sampleData.market_story,
+    lucid_summaries: summaries,
+    lucid_events: payload?.lucid_events || sampleData.lucid_events,
+  };
+}
+
+function useLucidData() {
+  const [state, setState] = React.useState({
+    data: normalizePayload(sampleData),
+    loading: Boolean(LUCID_API_URL),
+    error: null,
+  });
+
+  React.useEffect(() => {
+    if (!LUCID_API_URL) return;
+    let active = true;
+    fetch(LUCID_API_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((payload) => {
+        if (active) setState({ data: normalizePayload(payload), loading: false, error: null });
+      })
+      .catch((error) => {
+        if (active) setState({ data: normalizePayload(sampleData), loading: false, error: error.message });
+      });
+    return () => { active = false; };
+  }, []);
+
+  return state;
+}
+
+function labelStyle(label) {
+  if (label === "Supported") return { color: theme.accent, bg: `${theme.accent}16`, text: "Supported" };
+  if (label === "Weak") return { color: "#B94A37", bg: "#F7E5DF", text: "Weak" };
+  return { color: "#697386", bg: "#EEF0F3", text: "Neutral" };
+}
+
+function PhoneFrame({ children }) {
+  return (
+    <div className="phone" style={{
+      width: 402,
+      height: 874,
+      borderRadius: 42,
+      overflow: "hidden",
+      background: theme.bg,
+      boxShadow: "0 34px 90px rgba(0,0,0,0.32), 0 0 0 1px rgba(255,255,255,0.08)",
+      position: "relative",
+    }}>
+      <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+        {children}
+      </div>
+      <div style={{ position: "absolute", bottom: 8, left: "50%", transform: "translateX(-50%)", width: 132, height: 5, borderRadius: 999, background: "rgba(14,24,37,0.22)" }}/>
+    </div>
+  );
+}
+
+function Header({ title, eyebrow, dataMeta }) {
+  return (
+    <header style={{ padding: "22px 18px 14px" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+        <div>
+          <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: theme.muted, fontWeight: 600, marginBottom: 5 }}>{eyebrow}</p>
+          <h1 style={{ fontFamily: "'Instrument Serif', serif", fontSize: 28, lineHeight: 1.12, fontWeight: 400, color: theme.ink }}>{title}</h1>
+        </div>
+        <div style={{ minWidth: 42, height: 42, borderRadius: 14, background: `${theme.accent}16`, display: "grid", placeItems: "center", color: theme.accent, fontWeight: 800 }}>L</div>
+      </div>
+      {dataMeta && (
+        <p style={{ marginTop: 8, fontSize: 11, color: theme.muted }}>{dataMeta}</p>
+      )}
+    </header>
+  );
+}
+
+function MarketStoryCard({ story }) {
+  return (
+    <section style={{
+      background: "linear-gradient(135deg,#312A86 0%,#5347E8 58%,#7565F2 100%)",
+      borderRadius: 18,
+      padding: "20px 18px",
+      color: "#fff",
+      boxShadow: "0 10px 32px rgba(83,71,232,0.34)",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      <div style={{ position: "absolute", top: -42, right: -34, width: 126, height: 126, borderRadius: "50%", background: "rgba(255,255,255,0.08)" }}/>
+      <p style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.65)", fontWeight: 700, marginBottom: 10 }}>Dominant story</p>
+      <h2 style={{ fontFamily: "'Instrument Serif', serif", fontSize: 24, lineHeight: 1.2, fontWeight: 400, marginBottom: 10 }}>{story.title}</h2>
+      <p style={{ fontSize: 13, lineHeight: 1.55, color: "rgba(255,255,255,0.82)" }}>{story.body}</p>
+    </section>
+  );
+}
+
+function CurrencyRow({ summary, onOpen }) {
+  const s = labelStyle(summary.label);
+  return (
+    <button onClick={() => onOpen(summary)} style={{
+      width: "100%",
+      border: "none",
+      background: theme.card,
+      borderRadius: 12,
+      padding: "12px 13px",
+      display: "flex",
+      alignItems: "center",
+      gap: 11,
+      textAlign: "left",
+      cursor: "pointer",
+      boxShadow: "0 1px 4px rgba(14,24,37,0.06)",
+    }}>
+      <div style={{ width: 42, height: 42, borderRadius: 13, background: theme.soft, display: "grid", placeItems: "center", color: theme.ink, fontWeight: 800, fontSize: 13 }}>
+        {summary.currency}
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 3 }}>
+          <span style={{ fontSize: 14, fontWeight: 700, color: theme.ink }}>{currencyNames[summary.currency] || summary.currency}</span>
+        </div>
+        <p style={{ fontSize: 12, lineHeight: 1.35, color: "#687083", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{summary.headline}</p>
+      </div>
+      <span style={{ flexShrink: 0, borderRadius: 999, background: s.bg, color: s.color, padding: "5px 9px", fontSize: 11, fontWeight: 700 }}>{s.text}</span>
+    </button>
+  );
+}
+
+function EventCard({ event }) {
+  return (
+    <article style={{ background: theme.card, borderRadius: 14, padding: 15, boxShadow: "0 1px 4px rgba(14,24,37,0.06)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
+        <h3 style={{ fontSize: 14, color: theme.ink }}>{event.title}</h3>
+        <span style={{ fontSize: 11, color: theme.accent, fontWeight: 700, whiteSpace: "nowrap" }}>{event.timing_label}</span>
+      </div>
+      <p style={{ fontSize: 12, color: "#596173", lineHeight: 1.5, marginBottom: 8 }}>{event.why_it_matters}</p>
+      <p style={{ fontSize: 12, color: "#596173", lineHeight: 1.5 }}><strong style={{ color: theme.ink }}>Focus:</strong> {event.market_focus}</p>
+    </article>
+  );
+}
+
+function OverviewScreen({ data, onCurrencyOpen }) {
+  return (
+    <main style={{ flex: 1, minHeight: 0, overflowY: "auto", padding: "0 18px 100px" }}>
+      <MarketStoryCard story={data.market_story}/>
+      <section style={{ marginTop: 18 }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: theme.muted, fontWeight: 700, marginBottom: 10 }}>8 currencies</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {data.lucid_summaries.map((summary) => (
+            <CurrencyRow key={summary.currency} summary={summary} onOpen={onCurrencyOpen}/>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function MovementsScreen({ data, onCurrencyOpen }) {
+  const focused = data.lucid_summaries.filter((summary) => summary.label !== "Neutral");
+  const list = focused.length ? focused : data.lucid_summaries.slice(0, 4);
+  return (
+    <main style={{ flex: 1, minHeight: 0, overflowY: "auto", padding: "0 18px 100px" }}>
+      <section style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {list.map((summary) => {
+          const s = labelStyle(summary.label);
+          return (
+            <button key={summary.currency} onClick={() => onCurrencyOpen(summary)} style={{
+              width: "100%",
+              border: "none",
+              background: theme.card,
+              borderRadius: 16,
+              padding: 17,
+              textAlign: "left",
+              cursor: "pointer",
+              boxShadow: "0 1px 6px rgba(14,24,37,0.07)",
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 9 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ fontSize: 20, fontWeight: 800, color: theme.ink }}>{summary.currency}</span>
+                  <span style={{ fontSize: 12, color: theme.muted }}>{currencyNames[summary.currency]}</span>
+                </div>
+                <span style={{ borderRadius: 999, background: s.bg, color: s.color, padding: "5px 9px", fontSize: 11, fontWeight: 700 }}>{s.text}</span>
+              </div>
+              <h3 style={{ fontSize: 15, color: theme.ink, lineHeight: 1.35, marginBottom: 10 }}>{summary.headline}</h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                {summary.reasons.slice(0, 2).map((reason, index) => (
+                  <p key={index} style={{ fontSize: 12, color: "#596173", lineHeight: 1.45 }}>{reason}</p>
+                ))}
+              </div>
+            </button>
+          );
+        })}
+      </section>
+      <section style={{ marginTop: 20 }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: theme.muted, fontWeight: 700, marginBottom: 10 }}>Events to understand</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {data.lucid_events.map((event, index) => <EventCard key={`${event.title}-${index}`} event={event}/>)}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function DetailScreen({ summary, onBack }) {
+  const s = labelStyle(summary.label);
+  return (
+    <main style={{ flex: 1, minHeight: 0, overflowY: "auto", padding: "18px 18px 100px" }}>
+      <button onClick={onBack} style={{ border: "none", background: "transparent", color: theme.accent, fontWeight: 700, marginBottom: 15, cursor: "pointer" }}>Back</button>
+      <section style={{ background: theme.card, borderRadius: 18, padding: 18, boxShadow: "0 1px 6px rgba(14,24,37,0.07)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start", marginBottom: 12 }}>
+          <div>
+            <p style={{ fontSize: 12, color: theme.muted, marginBottom: 4 }}>{currencyNames[summary.currency]}</p>
+            <h2 style={{ fontFamily: "'Instrument Serif', serif", fontSize: 34, fontWeight: 400, color: theme.ink }}>{summary.currency}</h2>
+          </div>
+          <span style={{ borderRadius: 999, background: s.bg, color: s.color, padding: "6px 10px", fontSize: 12, fontWeight: 800 }}>{s.text}</span>
+        </div>
+        <h3 style={{ fontSize: 17, color: theme.ink, lineHeight: 1.35, marginBottom: 14 }}>{summary.headline}</h3>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
+          {summary.reasons.map((reason, index) => (
+            <div key={index} style={{ display: "flex", gap: 10 }}>
+              <span style={{ width: 22, height: 22, borderRadius: 999, background: `${theme.accent}16`, color: theme.accent, display: "grid", placeItems: "center", fontSize: 12, fontWeight: 800, flexShrink: 0 }}>{index + 1}</span>
+              <p style={{ fontSize: 14, color: "#3F4758", lineHeight: 1.5 }}>{reason}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ borderTop: `1px solid ${theme.border}`, paddingTop: 14 }}>
+          <p style={{ fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: theme.muted, fontWeight: 700, marginBottom: 8 }}>Takeaway</p>
+          <p style={{ fontSize: 14, color: "#3F4758", lineHeight: 1.55 }}>{summary.insight}</p>
+          {summary.key_event && <p style={{ marginTop: 12, fontSize: 13, color: theme.accent, fontWeight: 700 }}>{summary.key_event}</p>}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function LearnScreen() {
+  const concepts = [
+    { title: "Interest rates", body: "Higher rates can make a currency more attractive because investors may receive better returns." },
+    { title: "Growth", body: "A stronger economy gives a currency more support. Weak growth can make investors more cautious." },
+    { title: "Inflation", body: "Inflation shapes central bank decisions. Cooling inflation can make rate cuts easier." },
+    { title: "Market mood", body: "When markets are nervous, defensive currencies can attract more demand." },
+  ];
+  return (
+    <main style={{ flex: 1, minHeight: 0, overflowY: "auto", padding: "0 18px 100px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        {concepts.map((concept) => (
+          <article key={concept.title} style={{ background: theme.card, borderRadius: 16, padding: 17, boxShadow: "0 1px 5px rgba(14,24,37,0.07)" }}>
+            <h3 style={{ fontSize: 15, color: theme.ink, marginBottom: 7 }}>{concept.title}</h3>
+            <p style={{ fontSize: 13, color: "#596173", lineHeight: 1.6 }}>{concept.body}</p>
+          </article>
+        ))}
+      </div>
+    </main>
+  );
+}
+
+function BottomNav({ tab, setTab, clearDetail }) {
+  const tabs = [
+    ["overview", "Overview"],
+    ["movements", "Movements"],
+    ["learn", "Learn"],
+  ];
+  return (
+    <nav style={{
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 5,
+      background: "rgba(248,246,242,0.94)",
+      backdropFilter: "blur(14px)",
+      borderTop: "1px solid rgba(14,24,37,0.08)",
+      padding: "10px 14px 24px",
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: 8,
+    }}>
+      {tabs.map(([id, label]) => {
+        const active = tab === id;
+        return (
+          <button key={id} onClick={() => { clearDetail(); setTab(id); }} style={{
+            border: "none",
+            borderRadius: 12,
+            padding: "10px 6px",
+            background: active ? `${theme.accent}14` : "transparent",
+            color: active ? theme.accent : theme.muted,
+            fontSize: 12,
+            fontWeight: 800,
+            cursor: "pointer",
+          }}>{label}</button>
+        );
+      })}
+    </nav>
+  );
+}
+
+function App() {
+  const { data, loading, error } = useLucidData();
+  const [tab, setTab] = React.useState("overview");
+  const [detail, setDetail] = React.useState(null);
+  const headerByTab = {
+    overview: ["Today", "Market overview"],
+    movements: ["Macro focus", "What matters now"],
+    learn: ["Foundations", "How forex works"],
+  };
+  const [eyebrow, title] = detail ? ["Currency view", "One clear idea"] : headerByTab[tab];
+
+  return (
+    <PhoneFrame>
+      <Header title={title} eyebrow={eyebrow} dataMeta={loading ? "Loading live data..." : error ? "Using fallback Lucid sample data" : data.generated_at}/>
+      <div style={{ flex: 1, minHeight: 0, position: "relative", overflow: "hidden" }}>
+        {detail ? (
+          <DetailScreen summary={detail} onBack={() => setDetail(null)}/>
+        ) : tab === "overview" ? (
+          <OverviewScreen data={data} onCurrencyOpen={setDetail}/>
+        ) : tab === "movements" ? (
+          <MovementsScreen data={data} onCurrencyOpen={setDetail}/>
+        ) : (
+          <LearnScreen/>
+        )}
+      </div>
+      <p style={{ position: "absolute", left: 18, right: 18, bottom: 82, zIndex: 4, textAlign: "center", fontSize: 9.5, lineHeight: 1.35, color: "rgba(105,112,134,0.82)" }}>{DISCLAIMER}</p>
+      <BottomNav tab={detail ? "" : tab} setTab={setTab} clearDetail={() => setDetail(null)}/>
+    </PhoneFrame>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

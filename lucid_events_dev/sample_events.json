@@ -1,0 +1,178 @@
+[
+  {
+    "date": "2026-05-02",
+    "currency": "USD",
+    "event_type": "CPI",
+    "title": "Consumer Price Index (CPI) m/m",
+    "importance": "High",
+    "expected": "0.2%",
+    "previous": "0.3%",
+    "actual": null,
+    "note": "Most watched inflation release of the week"
+  },
+  {
+    "date": "2026-05-02",
+    "currency": "USD",
+    "event_type": "OTHER",
+    "title": "Powell Speaks — Semi-Annual Testimony",
+    "importance": "High",
+    "expected": null,
+    "previous": null,
+    "actual": null,
+    "note": "Fed Chair testimony before Congress"
+  },
+  {
+    "date": "2026-05-02",
+    "currency": "EUR",
+    "event_type": "PMI_COMPOSITE",
+    "title": "Eurozone Composite PMI (Final)",
+    "importance": "medium",
+    "expected": "51.2",
+    "previous": "50.9",
+    "actual": null,
+    "note": "Final reading — confirmation of flash estimate"
+  },
+  {
+    "date": "2026-05-02",
+    "currency": "USD",
+    "event_type": "ISM",
+    "title": "ISM Manufacturing PMI",
+    "importance": "HIGH",
+    "expected": "49.5",
+    "previous": "49.0",
+    "actual": null,
+    "note": "Key US business activity indicator"
+  },
+  {
+    "date": "2026-05-02",
+    "currency": "GBP",
+    "event_type": "PMI_MFG",
+    "title": "UK Manufacturing PMI",
+    "importance": "Low",
+    "expected": "44.5",
+    "previous": "44.2",
+    "actual": null,
+    "note": "Low impact — already captured in flash estimate"
+  },
+  {
+    "date": "2026-05-05",
+    "currency": "AUD",
+    "event_type": "RBA",
+    "title": "RBA Rate Decision",
+    "importance": "haute",
+    "expected": "Hold at 4.10%",
+    "previous": "4.35%",
+    "actual": null,
+    "note": "First hold after recent cut cycle"
+  },
+  {
+    "date": "2026-05-05",
+    "currency": "EUR",
+    "event_type": "GDP",
+    "title": "Eurozone GDP Growth Rate (Preliminary) Q1 2026",
+    "importance": "High",
+    "expected": "0.3%",
+    "previous": "0.1%",
+    "actual": null,
+    "note": "Preliminary Q1 GDP — growth vs stagnation"
+  },
+  {
+    "date": "2026-05-06",
+    "currency": "USD",
+    "event_type": "OTHER",
+    "title": "Waller Speaks — Economic Outlook",
+    "importance": "medium",
+    "expected": null,
+    "previous": null,
+    "actual": null,
+    "note": "Fed Governor speech on rate path"
+  },
+  {
+    "date": "2026-05-07",
+    "currency": "GBP",
+    "event_type": "BOE",
+    "title": "BOE Monetary Policy Decision & MPC Vote",
+    "importance": "haute",
+    "expected": "Hold at 4.25%",
+    "previous": "4.50%",
+    "actual": null,
+    "note": "Watch vote split — signals next move direction"
+  },
+  {
+    "date": "2026-05-07",
+    "currency": "EUR",
+    "event_type": "OTHER",
+    "title": "Lagarde Speech — ECB Forum",
+    "importance": "High",
+    "expected": null,
+    "previous": null,
+    "actual": null,
+    "note": "ECB President at Frankfurt forum"
+  },
+  {
+    "date": "2026-05-07",
+    "currency": "USD",
+    "event_type": "UNEMPLOYMENT",
+    "title": "Initial Jobless Claims",
+    "importance": "moyenne",
+    "expected": "215K",
+    "previous": "222K",
+    "actual": null,
+    "note": "Weekly labor market pulse"
+  },
+  {
+    "date": "2026-05-08",
+    "currency": "JPY",
+    "event_type": "OTHER",
+    "title": "Ueda Press Conference — BOJ Outlook",
+    "importance": "High",
+    "expected": null,
+    "previous": null,
+    "actual": null,
+    "note": "BOJ Governor post-meeting press conference"
+  },
+  {
+    "date": "2026-05-09",
+    "currency": "USD",
+    "event_type": "NFP",
+    "title": "Non-Farm Employment Change",
+    "importance": "High",
+    "expected": "185K",
+    "previous": "228K",
+    "actual": null,
+    "note": "Most market-moving event of the week"
+  },
+  {
+    "date": "2026-05-09",
+    "currency": "USD",
+    "event_type": "UNEMPLOYMENT",
+    "title": "Unemployment Rate",
+    "importance": "High",
+    "expected": "4.1%",
+    "previous": "4.0%",
+    "actual": null,
+    "note": "Released simultaneously with NFP"
+  },
+  {
+    "date": "2026-05-09",
+    "currency": "CAD",
+    "event_type": "NFP",
+    "title": "Canada Employment Change",
+    "importance": "haute",
+    "expected": "20K",
+    "previous": "35K",
+    "actual": null,
+    "note": "Canadian jobs data — released at same time as US NFP"
+  },
+  {
+    "date": "2026-05-09",
+    "currency": "EUR",
+    "event_type": "PMI_SERVICES",
+    "title": "German Retail Sales m/m",
+    "importance": "Low",
+    "expected": "0.3%",
+    "previous": "-0.5%",
+    "actual": null,
+    "note": "Minor release — low market impact expected"
+  }
+]

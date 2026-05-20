@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucid — Market Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(83,71,232,0.2); border-radius: 4px; }
+[data-dark="true"] { color-scheme: dark; }
+
+/* Responsive */
+.show-mobile { display: none !important; }
+.show-desktop { display: flex !important; }
+@media (max-width: 768px) {
+  .show-mobile { display: flex !important; }
+  .show-desktop { display: none !important; }
+  .sidebar { display: none !important; }
+  .app-layout { grid-template-columns: 1fr !important; }
+  .main-header { padding: 12px 16px !important; }
+  .content-area { padding: 20px 16px 100px !important; }
+  .page-title { font-size: 23px !important; }
+  .reading-sentence { font-size: 21px !important; line-height: 1.35 !important; }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up   { animation: fadeUp 0.38s ease forwards; }
+.fade-up-1 { animation: fadeUp 0.38s ease 0.04s both; }
+.fade-up-2 { animation: fadeUp 0.38s ease 0.08s both; }
+.fade-up-3 { animation: fadeUp 0.38s ease 0.12s both; }
+.fade-up-4 { animation: fadeUp 0.38s ease 0.16s both; }
+.fade-up-5 { animation: fadeUp 0.38s ease 0.20s both; }
+.fade-up-6 { animation: fadeUp 0.38s ease 0.24s both; }
+.fade-up-7 { animation: fadeUp 0.38s ease 0.28s both; }
+.fade-up-8 { animation: fadeUp 0.38s ease 0.32s both; }
+.fade-up-9 { animation: fadeUp 0.38s ease 0.36s both; }
+.fade-up-10{ animation: fadeUp 0.38s ease 0.40s both; }
+.fade-up-11{ animation: fadeUp 0.38s ease 0.44s both; }
+.fade-up-12{ animation: fadeUp 0.38s ease 0.48s both; }
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+  50%       { transform: translateY(-9px) rotate(-1.5deg); }
+}
+.float-card { animation: floatCard 4s ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
+}
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(83,71,232,0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(83,71,232,0); }
+}
+
+/* Currency row hover */
+.currency-row:hover { background: var(--row-hover) !important; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+/* ═══════════════════════════════════════════════════════════
+   DATA — LucidSummary format
+═══════════════════════════════════════════════════════════ */
+
+const todayReading = {
+  date:     "Saturday, May 2",
+  sentence: "The dollar is the dominant story. The euro and yen continue to lose ground.",
+};
+
+// label: "Supported" | "Neutral" | "Under pressure"
+const currencies = [
+  {
+    code: "USD", name: "US Dollar", flag: "🇺🇸",
+    label:    "Supported",
+    headline: "Rates stay high, dollar leads",
+    reasons:  [
+      "US interest rates are among the highest in the world right now",
+      "Foreign money keeps flowing into US markets",
+      "No rate cuts are expected in the near term",
+    ],
+    insight:  "The dollar is the dominant force in the market right now.",
+    key_event: "Fed meeting — May 7",
+  },
+  {
+    code: "CHF", name: "Swiss Franc", flag: "🇨🇭",
+    label:    "Supported",
+    headline: "Uncertainty keeps franc in demand",
+    reasons:  [
+      "Investors seek safety in the franc during uncertain times",
+      "Swiss economy remains stable and well-managed",
+      "Global tensions continue to support safe-haven flows",
+    ],
+    insight:  "The franc benefits whenever markets feel nervous.",
+    key_event: null,
+  },
+  {
+    code: "GBP", name: "British Pound", flag: "🇬🇧",
+    label:    "Neutral",
+    headline: "No clear edge, market is waiting",
+    reasons:  [
+      "UK and US rate paths are converging",
+      "No major catalyst is pushing the pound in either direction",
+      "Market is waiting for fresh economic data",
+    ],
+    insight:  "Neither buyers nor sellers have the upper hand right now.",
+    key_event: "UK CPI — May 21",
+  },
+  {
+    code: "AUD", name: "Australian Dollar", flag: "🇦🇺",
+    label:    "Neutral",
+    headline: "Commodity prices mixed, no signal",
+    reasons:  [
+      "Iron ore and commodity prices are moving sideways",
+      "China's demand outlook remains uncertain",
+      "Australia's central bank is in a wait-and-see mode",
+    ],
+    insight:  "The aussie is treading water until commodities find direction.",
+    key_event: "RBA decision — May 20",
+  },
+  {
+    code: "NZD", name: "New Zealand Dollar", flag: "🇳🇿",
+    label:    "Neutral",
+    headline: "Economy slowing, market is calm",
+    reasons:  [
+      "New Zealand growth is softening gradually",
+      "No strong force is pushing the currency either way",
+      "Market is not pricing in any urgency",
+    ],
+    insight:  "The kiwi needs a fresh catalyst to find a clear direction.",
+    key_event: null,
+  },
+  {
+    code: "CAD", name: "Canadian Dollar", flag: "🇨🇦",
+    label:    "Neutral",
+    headline: "Oil stabilizing, loonie holds steady",
+    reasons:  [
+      "Oil prices are stabilizing after recent volatility",
+      "Canada's central bank appears done cutting rates for now",
+      "Mixed domestic data keeps the market patient",
+    ],
+    insight:  "The loonie follows oil closely — watch crude prices for signals.",
+    key_event: "BoC statement — May 28",
+  },
+  {
+    code: "EUR", name: "Euro", flag: "🇪🇺",
+    label:    "Under pressure",
+    headline: "Weak growth is weighing on the euro",
+    reasons:  [
+      "Euro-zone economic growth continues to disappoint",
+      "The ECB is expected to cut rates further this year",
+      "Capital is flowing toward stronger, higher-yielding currencies",
+    ],
+    insight:  "The euro is losing ground as money moves toward the US dollar.",
+    key_event: "ECB decision — May 7",
+  },
+  {
+    code: "JPY", name: "Japanese Yen", flag: "🇯🇵",
+    label:    "Under pressure",
+    headline: "Near-zero rates keep yen weak",
+    reasons:  [
+      "Japan's central bank keeps rates near zero",
+      "The gap with US rates remains very wide",
+      "No policy change is expected soon",
+    ],
+    insight:  "The yen is the weakest major currency right now. Only a surprise from Japan's central bank could change that.",
+    key_event: "BoJ decision — May 1",
+  },
+];
+
+// Sorted: Supported → Neutral → Under pressure
+const LABEL_ORDER = { "Supported": 0, "Neutral": 1, "Under pressure": 2 };
+const sortedCurrencies = [...currencies].sort(
+  (a, b) => LABEL_ORDER[a.label] - LABEL_ORDER[b.label]
+);
+
+const pairs = [
+  {
+    id: "eurusd", from: "EUR", to: "USD", flags: "🇪🇺🇺🇸",
+    tone: "weak",
+    headline: "Euro losing ground to the dollar",
+    summary:  "The dollar remains broadly favored over the euro as rates and capital flows diverge.",
+    reasons:  [
+      "US interest rates are significantly higher",
+      "Money is flowing toward the dollar",
+      "Euro-zone growth outlook remains weak",
+    ],
+    insight:  "The market expects the euro to stay under pressure.",
+    key_event: "ECB decision — May 7",
+  },
+  {
+    id: "usdjpy", from: "USD", to: "JPY", flags: "🇺🇸🇯🇵",
+    tone: "strong",
+    headline: "Rate gap keeps yen under pressure",
+    summary:  "A wide interest rate gap keeps the yen structurally weak against the dollar.",
+    reasons:  [
+      "Japan's central bank keeps rates near zero",
+      "US rates remain high and restrictive",
+      "Yen has few catalysts to recover",
+    ],
+    insight:  "The yen needs a surprise from Japan's central bank to recover.",
+    key_event: "BoJ meeting — May 1",
+  },
+  {
+    id: "gbpusd", from: "GBP", to: "USD", flags: "🇬🇧🇺🇸",
+    tone: "neutral",
+    headline: "Neither side has the upper hand",
+    summary:  "Mixed signals leave the pair in a holding pattern with no clear direction.",
+    reasons:  [
+      "UK and US rate paths are converging",
+      "No major catalyst on either side",
+      "Market is waiting for fresh data",
+    ],
+    insight:  "Patience is the play here — no dominant force is at work.",
+    key_event: "UK CPI — May 21",
+  },
+  {
+    id: "eurgbp", from: "EUR", to: "GBP", flags: "🇪🇺🇬🇧",
+    tone: "weak",
+    headline: "Sterling holds firmer than the euro",
+    summary:  "The pound holds its ground as UK fundamentals stay relatively resilient.",
+    reasons:  [
+      "UK inflation is declining more slowly",
+      "Sterling supported by rate resilience",
+      "Euro area data continues to disappoint",
+    ],
+    insight:  "The pound is the less-bad option in this pair right now.",
+    key_event: "ECB press conference — May 7",
+  },
+  {
+    id: "usdchf", from: "USD", to: "CHF", flags: "🇺🇸🇨🇭",
+    tone: "strong",
+    headline: "Dollar leads when markets stay calm",
+    summary:  "The dollar holds an edge, though franc safe-haven demand provides a floor.",
+    reasons:  [
+      "US growth is outpacing Switzerland",
+      "Calm markets reduce demand for the franc",
+      "US interest rates remain restrictive",
+    ],
+    insight:  "Calm markets favor the dollar here; fear would favor the franc.",
+    key_event: "SNB review — Jun 19",
+  },
+];
+
+const notifications = [
+  { id: 1, pair: "EUR/USD", text: "Dollar strength confirmed — euro stays under pressure.", time: "9 min ago", unread: true },
+  { id: 2, pair: "USD/JPY", text: "Yen near multi-month low — no response from Japan's central bank yet.", time: "1h ago", unread: true },
+  { id: 3, pair: "GBP/USD", text: "Neutral zone — no clear direction this session.", time: "3h ago", unread: false },
+];
+
+const concepts = [
+  { icon: "📈", title: "Interest rates",  body: "When a central bank raises rates, its currency usually strengthens. Higher rates attract foreign capital seeking better returns." },
+  { icon: "⚖️", title: "Trade balance",   body: "A country that exports more than it imports tends to have a stronger currency, as buyers need it to pay for goods." },
+  { icon: "🌍", title: "Risk appetite",   body: "In uncertain times, investors move money to safe currencies like the USD, JPY, and CHF." },
+  { icon: "📊", title: "Inflation",       body: "High inflation can weaken a currency if the central bank is slow to respond, reducing its purchasing power." },
+  { icon: "🏦", title: "Central banks",   body: "Central bank decisions — rate changes, forward guidance — are the single biggest driver of long-term currency trends." },
+];
+
+
+/* ═══════════════════════════════════════════════════════════
+   THEME
+═══════════════════════════════════════════════════════════ */
+
+const lightTheme = {
+  bg:           "#F4F1EC",
+  card:         "#FEFEFE",
+  ink:          "#0E1825",
+  muted:        "#8C909A",
+  border:       "#EDEAD4",
+  accent:       "#5347E8",
+  accentDim:    "#5347E814",
+  inputBg:      "#F0EDE5",
+  inputBorder:  "#E4E0D5",
+  rowHover:     "rgba(83,71,232,0.045)",
+};
+const darkTheme = {
+  bg:           "#0D0F1A",
+  card:         "#161830",
+  ink:          "#EEF0F8",
+  muted:        "#6B7280",
+  border:       "#252840",
+  accent:       "#7B6CF6",
+  accentDim:    "#7B6CF618",
+  inputBg:      "#1C1F35",
+  inputBorder:  "#2C3050",
+  rowHover:     "rgba(123,108,246,0.08)",
+};
+
+// Semantic label styles
+const labelStyle = (label, t) => {
+  if (label === "Supported")       return { color: t.accent,    bg: t.accentDim };
+  if (label === "Under pressure")  return { color: "#DC5030",   bg: "rgba(220,80,48,0.10)" };
+  return                                   { color: t.muted,    bg: t.inputBg };
+};
+
+// Pair tone styles
+const toneStyle = (tone, t) => {
+  if (tone === "strong")  return { color: t.accent,    bg: t.accentDim };
+  if (tone === "weak")    return { color: "#DC5030",   bg: "rgba(220,80,48,0.10)" };
+  return                         { color: t.muted,     bg: t.inputBg };
+};
+
+
+/* ═══════════════════════════════════════════════════════════
+   LANDING
+═══════════════════════════════════════════════════════════ */
+function Landing({ onEnter }) {
+  return (
+    <div style={{ minHeight:"100vh", background:"#0B0D1A", display:"flex", flexDirection:"column" }}>
+      {/* Nav */}
+      <nav style={{ padding:"20px 40px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+          <div style={{ width:28, height:28, borderRadius:8, background:"linear-gradient(135deg,#5347E8,#7B5CF6)", display:"flex", alignItems:"center", justifyContent:"center" }}>
+            <span style={{ fontSize:13, color:"#fff", fontWeight:700 }}>L</span>
+          </div>
+          <span style={{ fontFamily:"'Instrument Serif',serif", fontSize:20, color:"#fff" }}>Lucid</span>
+        </div>
+        <button onClick={onEnter} style={{
+          background:"linear-gradient(135deg,#5347E8,#7B5CF6)", border:"none", borderRadius:10,
+          padding:"9px 22px", fontSize:13, fontWeight:600, color:"#fff", cursor:"pointer",
+          fontFamily:"'DM Sans',sans-serif", boxShadow:"0 4px 16px rgba(83,71,232,0.4)",
+        }}>Get started →</button>
+      </nav>
+
+      {/* Hero */}
+      <div style={{ flex:1, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"40px 24px", textAlign:"center" }}>
+        <span style={{ fontSize:11, letterSpacing:"0.18em", textTransform:"uppercase", color:"rgba(123,92,246,0.9)", fontWeight:600, background:"rgba(83,71,232,0.12)", padding:"5px 14px", borderRadius:20, border:"1px solid rgba(123,92,246,0.25)" }}>
+          Macro intelligence, simplified
+        </span>
+
+        <div style={{ marginTop:28, maxWidth:680 }}>
+          <div style={{ fontFamily:"'Instrument Serif',serif", fontSize:"clamp(30px,4.5vw,56px)", color:"#fff", lineHeight:1.2 }}>The market,</div>
+          <div style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"clamp(30px,4.5vw,56px)", fontWeight:700, lineHeight:1.2, letterSpacing:"-0.02em", background:"linear-gradient(90deg,#A593FF,#7B6CF6)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>finally clear.</div>
+        </div>
+
+        <p style={{ marginTop:28, fontSize:"clamp(14px,2vw,17px)", color:"rgba(255,255,255,0.5)", maxWidth:460, lineHeight:1.7 }}>
+          Understand what's moving currencies — without charts, without jargon, without spending an hour reading reports.
+        </p>
+
+        <div style={{ display:"flex", gap:12, flexWrap:"wrap", justifyContent:"center", marginTop:36 }}>
+          <button onClick={onEnter} style={{
+            background:"linear-gradient(135deg,#5347E8,#7B5CF6)", border:"none", borderRadius:12,
+            padding:"14px 32px", fontSize:15, fontWeight:600, color:"#fff", cursor:"pointer",
+            fontFamily:"'DM Sans',sans-serif", boxShadow:"0 6px 24px rgba(83,71,232,0.45)",
+          }}>See today's market →</button>
+        </div>
+
+        {/* Live preview card */}
+        <div style={{ marginTop:56, maxWidth:400, width:"100%", position:"relative" }}>
+          <p style={{ fontSize:10, letterSpacing:"0.12em", textTransform:"uppercase", color:"rgba(255,255,255,0.3)", marginBottom:14 }}>Live example — today's reading</p>
+          <div className="float-card" style={{
+            background:"linear-gradient(135deg,#3D2FA0,#5347E8 55%,#7B5CF6)",
+            borderRadius:20, padding:"24px 22px",
+            boxShadow:"0 20px 60px rgba(83,71,232,0.5), 0 4px 12px rgba(0,0,0,0.3)",
+            textAlign:"left", position:"relative", overflow:"hidden",
+          }}>
+            <div style={{ position:"absolute", top:-30, right:-30, width:120, height:120, borderRadius:"50%", background:"rgba(255,255,255,0.06)" }}/>
+            <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:14 }}>
+              <div style={{ width:7, height:7, borderRadius:"50%", background:"#7EF0A8", animation:"pulse 2s ease-in-out infinite" }}/>
+              <span style={{ fontSize:10, letterSpacing:"0.14em", textTransform:"uppercase", color:"rgba(255,255,255,0.55)" }}>Today's reading</span>
+            </div>
+            <p style={{ fontFamily:"'Instrument Serif',serif", fontSize:18, color:"#fff", lineHeight:1.4, marginBottom:18 }}>
+              The dollar is the dominant story. The euro and yen continue to lose ground.
+            </p>
+            <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+              {[
+                { flag:"🇺🇸", code:"USD", label:"Supported",      headline:"Rates stay high, dollar leads",           lc:"#7EF0A8" },
+                { flag:"🇪🇺", code:"EUR", label:"Under pressure",  headline:"Weak growth is weighing on the euro",     lc:"#FF8A72" },
+                { flag:"🇯🇵", code:"JPY", label:"Under pressure",  headline:"Near-zero rates keep yen weak",           lc:"#FF8A72" },
+              ].map(item => (
+                <div key={item.code} style={{ display:"flex", alignItems:"center", gap:10, background:"rgba(255,255,255,0.08)", borderRadius:10, padding:"9px 12px" }}>
+                  <span style={{ fontSize:16 }}>{item.flag}</span>
+                  <span style={{ fontSize:13, fontWeight:700, color:"#fff", width:32 }}>{item.code}</span>
+                  <span style={{ fontSize:12, color:"rgba(255,255,255,0.6)", flex:1, lineHeight:1.3 }}>{item.headline}</span>
+                  <span style={{ fontSize:10, color:item.lc, fontWeight:600, whiteSpace:"nowrap" }}>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ position:"absolute", inset:0, borderRadius:20, background:"linear-gradient(135deg,#5347E8,#7B5CF6)", filter:"blur(50px)", opacity:0.2, zIndex:-1, pointerEvents:"none" }}/>
+        </div>
+
+        {/* Feature pills */}
+        <div style={{ marginTop:56, display:"flex", gap:28, flexWrap:"wrap", justifyContent:"center" }}>
+          {[["⚡","Under 5 seconds","Understand the market instantly"],
+            ["🧠","No jargon","Human language, not finance-speak"],
+            ["🎯","One signal","What matters. Nothing else."]
+          ].map(([icon,title,desc]) => (
+            <div key={title} style={{ textAlign:"center", maxWidth:150 }}>
+              <div style={{ fontSize:20, marginBottom:8 }}>{icon}</div>
+              <div style={{ fontSize:13, fontWeight:600, color:"rgba(255,255,255,0.85)", marginBottom:4 }}>{title}</div>
+              <div style={{ fontSize:12, color:"rgba(255,255,255,0.38)", lineHeight:1.5 }}>{desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p style={{ textAlign:"center", padding:"20px", fontSize:11, color:"rgba(255,255,255,0.18)" }}>
+        For educational purposes only · Not financial advice
+      </p>
+    </div>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════════════════ */
+function Sidebar({ tab, setTab, dark, toggleDark, t }) {
+  const [hovered, setHovered] = React.useState(null);
+  const navItems = [
+    { id:"overview",  label:"Overview",  sub:"Today",   icon:"⬡" },
+    { id:"movements", label:"Pairs",     sub:"Markets", icon:"↗" },
+    { id:"learn",     label:"Learn",     sub:"Basics",  icon:"◎" },
+  ];
+
+  return (
+    <aside className="sidebar show-desktop" style={{
+      width:220, flexShrink:0,
+      background: dark ? "rgba(17,20,38,0.98)" : "rgba(254,254,254,0.98)",
+      borderRight:`1px solid ${t.border}`,
+      display:"flex", flexDirection:"column", padding:"20px 0", height:"100vh",
+      position:"sticky", top:0,
+      boxShadow: dark ? "4px 0 24px rgba(0,0,0,0.25)" : "4px 0 16px rgba(14,24,37,0.05)",
+    }}>
+      {/* Logo */}
+      <div style={{ padding:"0 20px 28px", display:"flex", alignItems:"center", gap:8 }}>
+        <div style={{ width:30, height:30, borderRadius:8, background:"linear-gradient(135deg,#5347E8,#7B5CF6)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 3px 10px rgba(83,71,232,0.35)" }}>
+          <span style={{ fontSize:14, color:"#fff", fontWeight:700 }}>L</span>
+        </div>
+        <span style={{ fontFamily:"'Instrument Serif',serif", fontSize:18, color:t.ink }}>Lucid</span>
+      </div>
+
+      {/* Nav */}
+      <nav style={{ flex:1, padding:"0 12px", display:"flex", flexDirection:"column", gap:3 }}>
+        {navItems.map(item => {
+          const active  = tab === item.id;
+          const isHover = hovered === item.id && !active;
+          return (
+            <button key={item.id}
+              onClick={() => setTab(item.id)}
+              onMouseEnter={() => setHovered(item.id)}
+              onMouseLeave={() => setHovered(null)}
+              style={{
+                background: active ? `linear-gradient(90deg,${t.accent}18,${t.accent}08)` : isHover ? t.rowHover : "transparent",
+                border:"none", borderRadius:10, padding:"10px 12px",
+                display:"flex", alignItems:"center", gap:10, cursor:"pointer",
+                fontFamily:"'DM Sans',sans-serif", textAlign:"left", width:"100%",
+                transition:"all 0.15s ease", position:"relative", overflow:"hidden",
+              }}>
+              {active && (
+                <div style={{
+                  position:"absolute", left:0, top:"20%", bottom:"20%",
+                  width:3, borderRadius:"0 3px 3px 0",
+                  background:`linear-gradient(180deg,${t.accent},#7B5CF6)`,
+                  boxShadow:`0 0 8px ${t.accent}80`,
+                }}/>
+              )}
+              <span style={{ fontSize:15, width:22, textAlign:"center", color: active ? t.accent : t.muted, filter: active ? `drop-shadow(0 0 4px ${t.accent}60)` : "none", transition:"all 0.15s" }}>{item.icon}</span>
+              <div style={{ flex:1 }}>
+                <div style={{ fontSize:13.5, fontWeight: active ? 600 : 400, color: active ? t.ink : t.muted, transition:"all 0.15s" }}>{item.label}</div>
+                <div style={{ fontSize:10, color: active ? t.accent : t.muted, opacity: active ? 0.8 : 0.5, letterSpacing:"0.05em", marginTop:1 }}>{item.sub}</div>
+              </div>
+              {item.id === "overview" && (
+                <div style={{ width:6, height:6, borderRadius:"50%", background: active ? t.accent : t.muted, boxShadow: active ? `0 0 6px ${t.accent}` : "none", opacity: active ? 1 : 0.35, animation: active ? "pulse 2s ease-in-out infinite" : "none" }}/>
+              )}
+            </button>
+          );
+        })}
+      </nav>
+
+      {/* Pro badge */}
+      <div style={{ margin:"0 12px 12px", background:t.accentDim, borderRadius:12, padding:"12px 14px", border:`1px solid ${t.accent}22` }}>
+        <div style={{ fontSize:10, fontWeight:700, color:t.accent, letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:4 }}>Pro insights</div>
+        <div style={{ fontSize:12, color:t.muted, lineHeight:1.4, marginBottom:10 }}>Deeper macro analysis, updated daily.</div>
+        <button style={{ background:t.accent, border:"none", borderRadius:8, padding:"6px 12px", fontSize:12, fontWeight:600, color:"#fff", cursor:"pointer", fontFamily:"'DM Sans',sans-serif", boxShadow:`0 3px 10px ${t.accent}40` }}>
+          Unlock →
+        </button>
+      </div>
+
+      {/* Dark mode */}
+      <div style={{ padding:"0 12px" }}>
+        <button onClick={toggleDark} style={{
+          background:"transparent", border:`1px solid ${t.border}`, borderRadius:10,
+          padding:"9px 14px", display:"flex", alignItems:"center", gap:8, cursor:"pointer",
+          fontFamily:"'DM Sans',sans-serif", color:t.muted, fontSize:13, width:"100%",
+        }}>
+          <span>{dark ? "☀️" : "🌙"}</span>
+          {dark ? "Light mode" : "Dark mode"}
+        </button>
+      </div>
+    </aside>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════════ */
+function Header({ t, dark, toggleDark, notifs }) {
+  const [notifOpen, setNotifOpen] = React.useState(false);
+  const unread = notifs.filter(n => n.unread).length;
+
+  return (
+    <header className="main-header" style={{
+      padding:"13px 28px", display:"flex", alignItems:"center", justifyContent:"flex-end", gap:10,
+      background:t.card, borderBottom:`1px solid ${t.border}`,
+      position:"sticky", top:0, zIndex:100,
+    }}>
+      {/* Notifications */}
+      <div style={{ position:"relative" }}>
+        <button onClick={() => setNotifOpen(o => !o)} style={{
+          width:38, height:38, borderRadius:10, border:`1px solid ${t.border}`,
+          background:t.card, display:"flex", alignItems:"center", justifyContent:"center",
+          cursor:"pointer", position:"relative", fontSize:15,
+        }}>
+          🔔
+          {unread > 0 && (
+            <span style={{ position:"absolute", top:2, right:2, width:8, height:8, borderRadius:"50%", background:t.accent, animation:"livePulse 2s ease-in-out infinite" }}/>
+          )}
+        </button>
+
+        {notifOpen && (
+          <div style={{
+            position:"absolute", right:0, top:46, width:310, background:t.card,
+            border:`1px solid ${t.border}`, borderRadius:14,
+            boxShadow:`0 10px 40px rgba(0,0,0,${dark?0.45:0.12})`, zIndex:200, overflow:"hidden",
+          }}>
+            <div style={{ padding:"12px 16px", borderBottom:`1px solid ${t.border}`, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <span style={{ fontSize:13, fontWeight:600, color:t.ink }}>Updates</span>
+              <span style={{ fontSize:11, color:t.accent, cursor:"pointer" }}>Mark all read</span>
+            </div>
+            {notifs.map(n => (
+              <div key={n.id} style={{ padding:"12px 16px", borderBottom:`1px solid ${t.border}`, display:"flex", gap:10, alignItems:"flex-start", background: n.unread ? t.accentDim : "transparent" }}>
+                <div style={{ width:7, height:7, borderRadius:"50%", marginTop:5, flexShrink:0, background: n.unread ? t.accent : "transparent", border:`1px solid ${n.unread ? t.accent : t.border}` }}/>
+                <div>
+                  <div style={{ fontSize:12, fontWeight:600, color:t.ink, marginBottom:2 }}>{n.pair}</div>
+                  <div style={{ fontSize:12, color:t.muted, lineHeight:1.4 }}>{n.text}</div>
+                  <div style={{ fontSize:11, color:t.muted, marginTop:3, opacity:0.65 }}>{n.time}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Dark toggle (mobile) */}
+      <button className="show-mobile" onClick={toggleDark} style={{
+        width:38, height:38, borderRadius:10, border:`1px solid ${t.border}`,
+        background:t.card, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer", fontSize:15,
+      }}>
+        {dark ? "☀️" : "🌙"}
+      </button>
+    </header>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   OVERVIEW SCREEN
+═══════════════════════════════════════════════════════════ */
+function CurrencyRow({ currency: c, t, onTap, animClass }) {
+  const ls = labelStyle(c.label, t);
+  return (
+    <button
+      className={`currency-row ${animClass}`}
+      onClick={() => onTap(c)}
+      style={{
+        width:"100%", background:"transparent",
+        border:"none", borderRadius:12, padding:"11px 14px",
+        display:"flex", alignItems:"center", gap:12, cursor:"pointer",
+        fontFamily:"'DM Sans',sans-serif", textAlign:"left",
+        transition:"background 0.15s ease",
+        "--row-hover": t.rowHover,
+      }}
+    >
+      <span style={{ fontSize:22, flexShrink:0, lineHeight:1 }}>{c.flag}</span>
+      <div style={{ width:38, flexShrink:0 }}>
+        <span style={{ fontSize:14, fontWeight:700, color:t.ink, letterSpacing:"-0.01em" }}>{c.code}</span>
+      </div>
+      <div style={{ flex:1, minWidth:0 }}>
+        <span style={{ fontSize:13, color:t.muted, lineHeight:1.4, display:"block", whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>
+          {c.headline}
+        </span>
+      </div>
+      <div style={{ background:ls.bg, borderRadius:20, padding:"3px 10px", flexShrink:0 }}>
+        <span style={{ fontSize:11, fontWeight:600, color:ls.color, whiteSpace:"nowrap" }}>{c.label}</span>
+      </div>
+      <span style={{ fontSize:13, color:t.muted, opacity:0.5, flexShrink:0 }}>›</span>
+    </button>
+  );
+}
+
+function OverviewScreen({ onCurrencyTap, t }) {
+  const supported      = sortedCurrencies.filter(c => c.label === "Supported");
+  const neutral        = sortedCurrencies.filter(c => c.label === "Neutral");
+  const underPressure  = sortedCurrencies.filter(c => c.label === "Under pressure");
+
+  let idx = 0;
+  const nextAnim = () => `fade-up-${Math.min(++idx + 1, 12)}`;
+
+  return (
+    <div className="content-area" style={{ padding:"28px 28px 60px", maxWidth:720 }}>
+
+      {/* Date + editorial reading */}
+      <div className="fade-up" style={{ marginBottom:32 }}>
+        <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:10 }}>
+          <p style={{ fontSize:11, letterSpacing:"0.13em", textTransform:"uppercase", color:t.muted, fontWeight:500 }}>
+            {todayReading.date}
+          </p>
+          <div style={{ display:"flex", alignItems:"center", gap:5, background:t.accentDim, borderRadius:20, padding:"2px 10px" }}>
+            <div style={{ width:5, height:5, borderRadius:"50%", background:t.accent, animation:"pulse 2s ease-in-out infinite" }}/>
+            <span style={{ fontSize:10, fontWeight:600, color:t.accent, letterSpacing:"0.08em" }}>LIVE</span>
+          </div>
+        </div>
+        <h1 className="reading-sentence page-title" style={{ fontFamily:"'Instrument Serif',serif", fontSize:26, color:t.ink, lineHeight:1.38, fontWeight:400, maxWidth:560 }}>
+          {todayReading.sentence}
+        </h1>
+      </div>
+
+      {/* Section label */}
+      <p className="fade-up-1" style={{ fontSize:10, letterSpacing:"0.12em", textTransform:"uppercase", color:t.muted, fontWeight:600, marginBottom:6, paddingLeft:14 }}>
+        Currency signals — 8 majors
+      </p>
+
+      {/* Board */}
+      <div className="fade-up-2" style={{
+        background:t.card, borderRadius:16, border:`1px solid ${t.border}`,
+        boxShadow:`0 2px 10px rgba(0,0,0,${t === lightTheme ? 0.04 : 0.2})`,
+        overflow:"hidden",
+      }}>
+        {/* Supported */}
+        {supported.map(c => (
+          <CurrencyRow key={c.code} currency={c} t={t} onTap={onCurrencyTap} animClass={nextAnim()}/>
+        ))}
+
+        {/* Divider */}
+        <div style={{ height:1, background:t.border, margin:"0 14px" }}/>
+
+        {/* Neutral */}
+        {neutral.map(c => (
+          <CurrencyRow key={c.code} currency={c} t={t} onTap={onCurrencyTap} animClass={nextAnim()}/>
+        ))}
+
+        {/* Divider */}
+        <div style={{ height:1, background:t.border, margin:"0 14px" }}/>
+
+        {/* Under pressure */}
+        {underPressure.map(c => (
+          <CurrencyRow key={c.code} currency={c} t={t} onTap={onCurrencyTap} animClass={nextAnim()}/>
+        ))}
+      </div>
+
+      {/* Footer hint */}
+      <p style={{ fontSize:11, color:t.muted, marginTop:14, paddingLeft:4, opacity:0.7 }}>
+        Tap any currency for the full picture.
+      </p>
+    </div>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CURRENCY DETAIL SCREEN
+═══════════════════════════════════════════════════════════ */
+function CurrencyDetailScreen({ currency: c, onBack, t }) {
+  const ls = labelStyle(c.label, t);
+  return (
+    <div style={{ padding:"24px 28px 60px", maxWidth:680 }}>
+      {/* Back */}
+      <button onClick={onBack} className="fade-up" style={{
+        background:"none", border:"none", padding:"0 0 20px", cursor:"pointer",
+        fontSize:13, color:t.accent, fontWeight:600, fontFamily:"'DM Sans',sans-serif",
+        display:"flex", alignItems:"center", gap:4,
+      }}>‹ Back to overview</button>
+
+      {/* Header */}
+      <div className="fade-up-1" style={{ marginBottom:28 }}>
+        <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:12 }}>
+          <span style={{ fontSize:32 }}>{c.flag}</span>
+          <div>
+            <h1 style={{ fontFamily:"'Instrument Serif',serif", fontSize:30, color:t.ink, fontWeight:400, lineHeight:1 }}>{c.name}</h1>
+            <span style={{ fontSize:12, color:t.muted }}>{c.code}</span>
+          </div>
+        </div>
+        <div style={{ display:"inline-block", background:ls.bg, borderRadius:20, padding:"5px 14px" }}>
+          <span style={{ fontSize:12, color:ls.color, fontWeight:600 }}>{c.label}</span>
+        </div>
+      </div>
+
+      {/* Headline */}
+      <div className="fade-up-2" style={{
+        background:"linear-gradient(135deg,#3D2FA0 0%,#5347E8 55%,#7B5CF6 100%)",
+        borderRadius:16, padding:"20px 22px", marginBottom:14, position:"relative", overflow:"hidden",
+      }}>
+        <div style={{ position:"absolute", top:-20, right:-20, width:100, height:100, borderRadius:"50%", background:"rgba(255,255,255,0.07)" }}/>
+        <p style={{ fontSize:10, letterSpacing:"0.12em", textTransform:"uppercase", color:"rgba(255,255,255,0.5)", marginBottom:8 }}>What's happening</p>
+        <p style={{ fontFamily:"'Instrument Serif',serif", fontSize:20, color:"#fff", lineHeight:1.4 }}>{c.headline}</p>
+      </div>
+
+      {/* Reasons */}
+      <div className="fade-up-3" style={{
+        background:t.card, borderRadius:16, padding:"18px 20px",
+        border:`1px solid ${t.border}`, marginBottom:14,
+        boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+      }}>
+        <p style={{ fontSize:10, letterSpacing:"0.1em", textTransform:"uppercase", color:t.muted, fontWeight:600, marginBottom:14 }}>Why</p>
+        <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
+          {c.reasons.map((r, i) => (
+            <div key={i} style={{ display:"flex", gap:14, alignItems:"flex-start" }}>
+              <span style={{ fontSize:12, fontWeight:700, color:t.accent, flexShrink:0, marginTop:2, width:16, textAlign:"center" }}>{i + 1}</span>
+              <span style={{ fontSize:14, color:t.ink, lineHeight:1.55 }}>{r}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Insight */}
+      <div className="fade-up-4" style={{
+        background:t.accentDim, borderRadius:16, padding:"18px 20px",
+        border:`1px solid ${t.accent}22`, marginBottom:14,
+      }}>
+        <div style={{ display:"flex", gap:8, alignItems:"center", marginBottom:10 }}>
+          <span style={{ fontSize:16 }}>💡</span>
+          <span style={{ fontSize:10, letterSpacing:"0.1em", textTransform:"uppercase", color:t.accent, fontWeight:700 }}>What this means</span>
+        </div>
+        <p style={{ fontSize:14, color:t.ink, lineHeight:1.6 }}>{c.insight}</p>
+      </div>
+
+      {/* Key event */}
+      {c.key_event && (
+        <div className="fade-up-5" style={{
+          background:t.card, borderRadius:16, padding:"14px 20px",
+          border:`1px solid ${t.border}`, marginBottom:14,
+          display:"flex", alignItems:"center", gap:14,
+          boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+        }}>
+          <span style={{ fontSize:20 }}>📅</span>
+          <div>
+            <div style={{ fontSize:10, letterSpacing:"0.08em", textTransform:"uppercase", color:t.muted, marginBottom:3 }}>Next key event</div>
+            <div style={{ fontSize:14, color:t.ink, fontWeight:500 }}>{c.key_event}</div>
+          </div>
+        </div>
+      )}
+
+      {/* Pro */}
+      <div className="fade-up-6" style={{
+        background:t.card, borderRadius:16, padding:"16px 20px",
+        border:`1px solid ${t.border}`, display:"flex", alignItems:"center", justifyContent:"space-between",
+        boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+      }}>
+        <div>
+          <div style={{ fontSize:10, letterSpacing:"0.08em", textTransform:"uppercase", color:t.muted, marginBottom:3 }}>Pro insights</div>
+          <div style={{ fontSize:13, color:t.muted }}>Deeper macro analysis available</div>
+        </div>
+        <button style={{ background:t.accent, border:"none", borderRadius:9, padding:"8px 16px", fontSize:12, color:"#fff", fontWeight:600, cursor:"pointer", fontFamily:"'DM Sans',sans-serif", boxShadow:`0 3px 10px ${t.accent}40` }}>
+          Unlock
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   MOVEMENTS SCREEN
+═══════════════════════════════════════════════════════════ */
+function MovementsScreen({ onPairTap, t, searchQuery, setSearchQuery }) {
+  const filtered = pairs.filter(p =>
+    !searchQuery ||
+    `${p.from}/${p.to}`.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    p.from.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    p.to.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <div className="content-area" style={{ padding:"28px 28px 60px", maxWidth:800 }}>
+      <div className="fade-up" style={{ marginBottom:24 }}>
+        <p style={{ fontSize:11, letterSpacing:"0.12em", textTransform:"uppercase", color:t.muted, fontWeight:500, marginBottom:6 }}>Today</p>
+        <h1 className="page-title" style={{ fontFamily:"'Instrument Serif',serif", fontSize:26, color:t.ink, lineHeight:1.2, fontWeight:400 }}>Key pairs</h1>
+        <p style={{ fontSize:14, color:t.muted, marginTop:6, lineHeight:1.5 }}>The pairs most influenced by what's happening right now.</p>
+      </div>
+
+      {/* Search */}
+      <div className="fade-up-1" style={{ marginBottom:20, position:"relative" }}>
+        <span style={{ position:"absolute", left:13, top:"50%", transform:"translateY(-50%)", fontSize:13, color:t.muted, pointerEvents:"none" }}>🔍</span>
+        <input
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          placeholder="EUR/USD, JPY…"
+          style={{
+            width:"100%", maxWidth:320, height:38, borderRadius:10, border:`1px solid ${t.inputBorder}`,
+            background:t.inputBg, color:t.ink, fontSize:13, fontFamily:"'DM Sans',sans-serif",
+            padding:"0 14px 0 36px", outline:"none", transition:"border-color 0.15s",
+          }}
+        />
+      </div>
+
+      <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
+        {filtered.map((pair, i) => {
+          const ts = toneStyle(pair.tone, t);
+          return (
+            <button key={pair.id} onClick={() => onPairTap(pair)} className={`fade-up-${Math.min(i+2,10)}`} style={{
+              background:t.card, borderRadius:16, padding:"18px 20px",
+              border:`1px solid ${t.border}`, textAlign:"left", cursor:"pointer",
+              fontFamily:"'DM Sans',sans-serif", display:"block", width:"100%",
+              boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+              transition:"transform 0.15s, box-shadow 0.15s",
+            }}>
+              <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:10 }}>
+                <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+                  <span style={{ fontSize:18 }}>{pair.flags}</span>
+                  <span style={{ fontSize:16, fontWeight:700, color:t.ink, letterSpacing:"-0.02em" }}>{pair.from}/{pair.to}</span>
+                </div>
+              </div>
+              {/* Headline */}
+              <p style={{ fontFamily:"'Instrument Serif',serif", fontSize:17, color:t.ink, lineHeight:1.35, marginBottom:12 }}>
+                {pair.headline}
+              </p>
+              {/* Reasons */}
+              <div style={{ display:"flex", flexDirection:"column", gap:4, marginBottom:12 }}>
+                {pair.reasons.slice(0, 2).map((r, ri) => (
+                  <div key={ri} style={{ display:"flex", gap:8 }}>
+                    <span style={{ fontSize:11, color:t.accent, fontWeight:700, flexShrink:0, marginTop:2 }}>—</span>
+                    <span style={{ fontSize:12, color:t.muted, lineHeight:1.45 }}>{r}</span>
+                  </div>
+                ))}
+              </div>
+              {/* Footer */}
+              <div style={{ borderTop:`1px solid ${t.border}`, paddingTop:10, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                  {pair.key_event && (
+                    <span style={{ fontSize:11, color:t.muted, opacity:0.7 }}>📅 {pair.key_event}</span>
+                  )}
+                </div>
+                <span style={{ fontSize:12, color:t.accent, fontWeight:600 }}>Full picture ›</span>
+              </div>
+            </button>
+          );
+        })}
+        {filtered.length === 0 && (
+          <div style={{ textAlign:"center", padding:"48px 0", color:t.muted, fontSize:14 }}>
+            No pairs found
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   PAIR DETAIL SCREEN
+═══════════════════════════════════════════════════════════ */
+function PairDetailScreen({ pair, onBack, t }) {
+  const ts = toneStyle(pair.tone, t);
+  return (
+    <div style={{ padding:"24px 28px 60px", maxWidth:680 }}>
+      <button onClick={onBack} className="fade-up" style={{
+        background:"none", border:"none", padding:"0 0 20px", cursor:"pointer",
+        fontSize:13, color:t.accent, fontWeight:600, fontFamily:"'DM Sans',sans-serif",
+        display:"flex", alignItems:"center", gap:4,
+      }}>‹ Back to pairs</button>
+
+      {/* Header */}
+      <div className="fade-up-1" style={{ marginBottom:28 }}>
+        <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:12 }}>
+          <span style={{ fontSize:26 }}>{pair.flags}</span>
+          <h1 style={{ fontFamily:"'Instrument Serif',serif", fontSize:30, color:t.ink, fontWeight:400 }}>{pair.from}/{pair.to}</h1>
+        </div>
+      </div>
+
+      {/* Headline card */}
+      <div className="fade-up-2" style={{
+        background:"linear-gradient(135deg,#3D2FA0 0%,#5347E8 55%,#7B5CF6 100%)",
+        borderRadius:16, padding:"20px 22px", marginBottom:14, position:"relative", overflow:"hidden",
+      }}>
+        <div style={{ position:"absolute", top:-20, right:-20, width:100, height:100, borderRadius:"50%", background:"rgba(255,255,255,0.07)" }}/>
+        <p style={{ fontSize:10, letterSpacing:"0.12em", textTransform:"uppercase", color:"rgba(255,255,255,0.5)", marginBottom:8 }}>What's happening</p>
+        <p style={{ fontFamily:"'Instrument Serif',serif", fontSize:20, color:"#fff", lineHeight:1.4 }}>{pair.headline}</p>
+      </div>
+
+      {/* Summary */}
+      <div className="fade-up-3" style={{
+        background:t.card, borderRadius:16, padding:"18px 20px",
+        border:`1px solid ${t.border}`, marginBottom:14,
+        boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+      }}>
+        <p style={{ fontSize:10, letterSpacing:"0.1em", textTransform:"uppercase", color:t.muted, fontWeight:600, marginBottom:12 }}>Why</p>
+        <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
+          {pair.reasons.map((r, i) => (
+            <div key={i} style={{ display:"flex", gap:14, alignItems:"flex-start" }}>
+              <span style={{ fontSize:12, fontWeight:700, color:t.accent, flexShrink:0, marginTop:2, width:16, textAlign:"center" }}>{i + 1}</span>
+              <span style={{ fontSize:14, color:t.ink, lineHeight:1.55 }}>{r}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Insight */}
+      <div className="fade-up-4" style={{
+        background:t.accentDim, borderRadius:16, padding:"18px 20px",
+        border:`1px solid ${t.accent}22`, marginBottom:14,
+      }}>
+        <div style={{ display:"flex", gap:8, alignItems:"center", marginBottom:10 }}>
+          <span style={{ fontSize:16 }}>💡</span>
+          <span style={{ fontSize:10, letterSpacing:"0.1em", textTransform:"uppercase", color:t.accent, fontWeight:700 }}>What this means</span>
+        </div>
+        <p style={{ fontSize:14, color:t.ink, lineHeight:1.6 }}>{pair.insight}</p>
+      </div>
+
+      {/* Key event */}
+      {pair.key_event && (
+        <div className="fade-up-5" style={{
+          background:t.card, borderRadius:16, padding:"14px 20px",
+          border:`1px solid ${t.border}`, marginBottom:14,
+          display:"flex", alignItems:"center", gap:14,
+          boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+        }}>
+          <span style={{ fontSize:20 }}>📅</span>
+          <div>
+            <div style={{ fontSize:10, letterSpacing:"0.08em", textTransform:"uppercase", color:t.muted, marginBottom:3 }}>Next key event</div>
+            <div style={{ fontSize:14, color:t.ink, fontWeight:500 }}>{pair.key_event}</div>
+          </div>
+        </div>
+      )}
+
+      {/* Pro */}
+      <div className="fade-up-6" style={{
+        background:t.card, borderRadius:16, padding:"16px 20px",
+        border:`1px solid ${t.border}`, display:"flex", alignItems:"center", justifyContent:"space-between",
+        boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+      }}>
+        <div>
+          <div style={{ fontSize:10, letterSpacing:"0.08em", textTransform:"uppercase", color:t.muted, marginBottom:3 }}>Pro insights</div>
+          <div style={{ fontSize:13, color:t.muted }}>Deeper macro analysis available</div>
+        </div>
+        <button style={{ background:t.accent, border:"none", borderRadius:9, padding:"8px 16px", fontSize:12, color:"#fff", fontWeight:600, cursor:"pointer", fontFamily:"'DM Sans',sans-serif", boxShadow:`0 3px 10px ${t.accent}40` }}>
+          Unlock
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   LEARN SCREEN
+═══════════════════════════════════════════════════════════ */
+function LearnScreen({ t }) {
+  return (
+    <div className="content-area" style={{ padding:"28px 28px 60px", maxWidth:760 }}>
+      <div className="fade-up" style={{ marginBottom:24 }}>
+        <p style={{ fontSize:11, letterSpacing:"0.12em", textTransform:"uppercase", color:t.muted, fontWeight:500, marginBottom:6 }}>Foundations</p>
+        <h1 className="page-title" style={{ fontFamily:"'Instrument Serif',serif", fontSize:26, color:t.ink, lineHeight:1.2, fontWeight:400 }}>How it all works</h1>
+        <p style={{ fontSize:14, color:t.muted, marginTop:6 }}>Plain language. No jargon.</p>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))", gap:12 }}>
+        {concepts.map((c, i) => (
+          <div key={i} className={`fade-up-${Math.min(i+1,6)}`} style={{
+            background:t.card, borderRadius:16, padding:"18px 20px",
+            border:`1px solid ${t.border}`,
+            boxShadow:`0 1px 4px rgba(0,0,0,${t===lightTheme?0.05:0.2})`,
+          }}>
+            <div style={{ display:"flex", gap:10, alignItems:"center", marginBottom:10 }}>
+              <span style={{ fontSize:20 }}>{c.icon}</span>
+              <span style={{ fontSize:15, fontWeight:600, color:t.ink }}>{c.title}</span>
+            </div>
+            <p style={{ fontSize:13, color:t.muted, lineHeight:1.65 }}>{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BOTTOM NAV (mobile)
+═══════════════════════════════════════════════════════════ */
+function BottomNav({ tab, setTab, t }) {
+  const items = [
+    { id:"overview",  icon:"⬡", label:"Overview" },
+    { id:"movements", icon:"↗", label:"Pairs" },
+    { id:"learn",     icon:"◎", label:"Learn" },
+  ];
+  return (
+    <div className="show-mobile" style={{
+      position:"fixed", bottom:0, left:0, right:0, zIndex:200,
+      background:`${t.card}F0`, backdropFilter:"blur(16px)",
+      borderTop:`1px solid ${t.border}`, padding:"10px 0 22px",
+      display:"flex", justifyContent:"space-around",
+    }}>
+      {items.map(item => {
+        const active = tab === item.id;
+        return (
+          <button key={item.id} onClick={() => setTab(item.id)} style={{
+            background:"none", border:"none", cursor:"pointer",
+            display:"flex", flexDirection:"column", alignItems:"center", gap:3, padding:"4px 22px",
+            fontFamily:"'DM Sans',sans-serif",
+          }}>
+            <span style={{ fontSize:18, color: active ? t.accent : t.ink, opacity: active ? 1 : 0.38 }}>{item.icon}</span>
+            <span style={{ fontSize:10, fontWeight: active ? 600 : 400, color: active ? t.accent : t.muted }}>{item.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   ROOT APP
+═══════════════════════════════════════════════════════════ */
+function App() {
+  const [page,   setPage]   = React.useState("landing");
+  const [tab,    setTab]    = React.useState("overview");
+  const [dark,   setDark]   = React.useState(false);
+  const [detail, setDetail] = React.useState(null); // { type: 'currency'|'pair', data }
+  const [searchQuery, setSearchQuery] = React.useState("");
+
+  const t = dark ? darkTheme : lightTheme;
+
+  const handleTabChange = (newTab) => {
+    setTab(newTab);
+    setDetail(null);
+    setSearchQuery("");
+  };
+
+  const handleCurrencyTap = (currency) => setDetail({ type: "currency", data: currency });
+  const handlePairTap     = (pair)     => setDetail({ type: "pair",     data: pair });
+  const handleBack        = ()         => setDetail(null);
+
+  if (page === "landing") {
+    return <Landing onEnter={() => setPage("app")} />;
+  }
+
+  return (
+    <div data-dark={dark} style={{ background:t.bg, minHeight:"100vh", display:"flex", flexDirection:"column" }}
+         onClick={() => {/* close any open dropdowns on bg click */}}>
+      <div className="app-layout" style={{ display:"grid", gridTemplateColumns:"220px 1fr", minHeight:"100vh" }}>
+        <Sidebar tab={tab} setTab={handleTabChange} dark={dark} toggleDark={() => setDark(d => !d)} t={t}/>
+
+        <div style={{ display:"flex", flexDirection:"column", minHeight:"100vh", overflow:"hidden" }}>
+          <Header t={t} dark={dark} toggleDark={() => setDark(d => !d)} notifs={notifications}/>
+          <main style={{ flex:1, overflowY:"auto" }}>
+            {detail?.type === "currency" ? (
+              <CurrencyDetailScreen currency={detail.data} onBack={handleBack} t={t}/>
+            ) : detail?.type === "pair" ? (
+              <PairDetailScreen pair={detail.data} onBack={handleBack} t={t}/>
+            ) : tab === "overview" ? (
+              <OverviewScreen onCurrencyTap={handleCurrencyTap} t={t}/>
+            ) : tab === "movements" ? (
+              <MovementsScreen onPairTap={handlePairTap} t={t} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+            ) : (
+              <LearnScreen t={t}/>
+            )}
+          </main>
+        </div>
+      </div>
+
+      <BottomNav tab={tab} setTab={handleTabChange} t={t}/>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "risk_environment": {
+    "label": "neutral"
+  },
+  "narratives": {
+    "USD": {
+      "currency_bias": "soutenu",
+      "dominant_tone": "hawkish",
+      "coherence": "forte"
+    },
+    "EUR": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish_modere",
+      "coherence": "forte"
+    },
+    "GBP": {
+      "currency_bias": "neutre",
+      "dominant_tone": "neutre",
+      "coherence": "moderee"
+    },
+    "JPY": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish",
+      "coherence": "moderee"
+    },
+    "CHF": {
+      "currency_bias": "neutre",
+      "dominant_tone": "neutre",
+      "coherence": "moderee"
+    },
+    "CAD": {
+      "currency_bias": "soutenu",
+      "dominant_tone": "hawkish_modere",
+      "coherence": "moderee"
+    },
+    "AUD": {
+      "currency_bias": "neutre",
+      "dominant_tone": "neutre",
+      "coherence": "faible"
+    },
+    "NZD": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish_modere",
+      "coherence": "moderee"
+    }
+  }
+}

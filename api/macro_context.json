@@ -1,0 +1,48 @@
+{
+  "source": "/Users/yassine/Documents/BOT Analyse fonda/macro-scenarios-bot storage/narratives",
+  "risk_environment": {
+    "label": "neutral"
+  },
+  "narratives": {
+    "USD": {
+      "currency_bias": "soutenu",
+      "dominant_tone": "hawkish",
+      "coherence": "forte"
+    },
+    "EUR": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish",
+      "coherence": "forte"
+    },
+    "GBP": {
+      "currency_bias": "soutenu",
+      "dominant_tone": "hawkish",
+      "coherence": "forte"
+    },
+    "JPY": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish",
+      "coherence": "forte"
+    },
+    "CHF": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish",
+      "coherence": "forte"
+    },
+    "CAD": {
+      "currency_bias": "neutre",
+      "dominant_tone": "neutre",
+      "coherence": "faible"
+    },
+    "AUD": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish",
+      "coherence": "forte"
+    },
+    "NZD": {
+      "currency_bias": "fragile",
+      "dominant_tone": "dovish",
+      "coherence": "forte"
+    }
+  }
+}

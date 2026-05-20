@@ -1,0 +1,65 @@
+{
+  "description": "Local development fixtures for Lucid macro shock detection. Not loaded by default.",
+  "scenarios": {
+    "single_headline_ignored": [
+      {
+        "title": "Oil prices rise after geopolitical escalation",
+        "source": "dev-source-a"
+      }
+    ],
+    "geopolitical_risk_confirmed": [
+      {
+        "title": "Iran escalation raises geopolitical risk near oil routes",
+        "source": "dev-source-a"
+      },
+      {
+        "title": "Military conflict lifts defensive market mood",
+        "source": "dev-source-b"
+      }
+    ],
+    "oil_supply_shock_confirmed": [
+      {
+        "title": "Crude oil jumps as supply disruption hits energy routes",
+        "source": "dev-source-a"
+      },
+      {
+        "title": "Brent rises as oil supply concern grows",
+        "source": "dev-source-b"
+      }
+    ],
+    "trade_tension_confirmed": [
+      {
+        "title": "New tariffs revive trade tension between major economies",
+        "source": "dev-source-a"
+      },
+      {
+        "title": "Export controls raise concern about global trade",
+        "source": "dev-source-b"
+      }
+    ],
+    "banking_stress_confirmed": [
+      {
+        "title": "Banking stress rises as deposit outflow pressure grows",
+        "source": "dev-source-a"
+      },
+      {
+        "title": "Liquidity stress returns to regional bank shares",
+        "source": "dev-source-b"
+      }
+    ],
+    "unrelated_headlines_ignored": [
+      {
+        "title": "Technology shares edge higher after product launch",
+        "source": "dev-source-a"
+      },
+      {
+        "title": "Sports event draws record audience",
+        "source": "dev-source-b"
+      },
+      {
+        "title": "Retail chain announces new store openings",
+        "source": "dev-source-c"
+      }
+    ]
+  }
+}

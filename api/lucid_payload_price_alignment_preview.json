@@ -1,0 +1,856 @@
+{
+  "generated_at": "2026-05-18T01:45:25.053360+02:00",
+  "source": "Macro context and ForexFactory calendar via Lucid payload export",
+  "summary_mode": "Narrative-derived",
+  "disclaimer": "For informational and educational purposes only. Not financial advice.",
+  "market_story": {
+    "title": "Fed policy remains restrictive",
+    "body": "USD and GBP remain supported, while EUR, JPY, and CHF stay under pressure.",
+    "drivers": [
+      "USD: Fed policy remains restrictive",
+      "EUR: Growth remains the euro's main challenge",
+      "GBP: Labor data is the next test for GBP"
+    ]
+  },
+  "macro_shock": null,
+  "narrative_focus": {
+    "theme": "china_global_demand",
+    "focus_currency": "AUD",
+    "headline": "China and global demand are shaping cyclical currencies",
+    "supporting_themes": [
+      "safe_haven",
+      "risk_mood",
+      "europe_growth"
+    ],
+    "rationale": "AUD and NZD are being shaped by China and global demand sensitivity."
+  },
+  "lucid_summaries": {
+    "USD": {
+      "currency": "USD",
+      "label": "Supported",
+      "confidence": "High",
+      "timeframe": "Short-term",
+      "headline": "Fed policy remains restrictive",
+      "reasons": [
+        "The Fed is keeping rates high and has no plans to cut",
+        "The economy is performing well",
+        "The dollar remains the world's most-used currency"
+      ],
+      "invalidation": "This view weakens if inflation slows or The Fed sounds more careful",
+      "insight": "Higher rates keep money flowing into the dollar",
+      "key_event": "Pending Home Sales m/m tomorrow · Medium impact"
+    },
+    "EUR": {
+      "currency": "EUR",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Growth remains the euro's main challenge",
+      "reasons": [
+        "Europe's economy lacks enough momentum",
+        "The ECB is actively cutting rates",
+        "The economic data has been consistently weak"
+      ],
+      "invalidation": "This view changes if growth data improves clearly",
+      "insight": "The euro needs stronger growth to regain support",
+      "key_event": null
+    },
+    "GBP": {
+      "currency": "GBP",
+      "label": "Supported",
+      "confidence": "High",
+      "timeframe": "Short-term",
+      "headline": "Labor data is the next test for GBP",
+      "reasons": [
+        "Inflation is keeping the BOE cautious about cutting rates",
+        "The BOE is keeping rates high and has no plans to cut",
+        "The economy is performing well"
+      ],
+      "invalidation": "This view changes if inflation cools faster than expected",
+      "insight": "The pound still has support while inflation stays sticky",
+      "key_event": "Claimant Count Change tomorrow · High impact"
+    },
+    "JPY": {
+      "currency": "JPY",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Risk mood remains the main yen driver",
+      "reasons": [
+        "JPY can react quickly when global risk sentiment changes",
+        "The yen is highly sensitive to sudden mood changes",
+        "The BOJ is actively cutting rates"
+      ],
+      "invalidation": "This view changes if global market mood shifts clearly",
+      "insight": "Market mood is the key driver for the yen right now",
+      "key_event": null
+    },
+    "CHF": {
+      "currency": "CHF",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Calmer markets are changing risk mood",
+      "reasons": [
+        "Swiss stability matters most when markets become nervous",
+        "Swiss stability is steady in the background",
+        "The SNB is actively cutting rates"
+      ],
+      "invalidation": "This view changes if global market mood shifts clearly",
+      "insight": "The franc needs a clearer shift in market mood",
+      "key_event": null
+    },
+    "CAD": {
+      "currency": "CAD",
+      "label": "Neutral",
+      "confidence": "Low",
+      "timeframe": "Mixed",
+      "headline": "Inflation data is in focus for CAD",
+      "reasons": [
+        "Canada is sensitive to oil prices and US demand",
+        "Oil prices and US economic health are the key drivers"
+      ],
+      "invalidation": "This view changes if oil prices or US demand improve clearly",
+      "insight": "CAD needs a clearer lift from oil or US demand",
+      "key_event": "CPI m/m tomorrow · High impact"
+    },
+    "AUD": {
+      "currency": "AUD",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "China demand is pressuring AUD",
+      "reasons": [
+        "Australia is sensitive to China and global commodity demand",
+        "Commodity prices and China remain the key factors",
+        "The RBA is actively cutting rates"
+      ],
+      "invalidation": "This view changes if China or global demand improves clearly",
+      "insight": "AUD needs a stronger global demand story",
+      "key_event": null
+    },
+    "NZD": {
+      "currency": "NZD",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Global demand is weighing on NZD",
+      "reasons": [
+        "New Zealand is sensitive to global trade conditions",
+        "Global trade conditions matter more than local data",
+        "The RBNZ is actively cutting rates"
+      ],
+      "invalidation": "This view changes if China or global demand improves clearly",
+      "insight": "NZD needs clearer support from global demand",
+      "key_event": null
+    }
+  },
+  "lucid_pairs": [
+    {
+      "pair": "EUR/USD",
+      "base": "EUR",
+      "quote": "USD",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than EUR",
+      "narrative": {
+        "pair": "EUR/USD",
+        "theme": "policy_growth",
+        "interaction_type": "policy_vs_growth",
+        "headline": "Europe's softer growth picture is set against US rate support.",
+        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
+        "what_changes_this": "The imbalance would narrow if EUR growth improves or USD loses support.",
+        "dominant_currency": "USD",
+        "tension_summary": "Europe's softer growth picture is set against US rate support.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
+      },
+      "tension_summary": "Europe's softer growth picture is set against US rate support.",
+      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
+      "what_changes_this": "The imbalance would narrow if EUR growth improves or USD loses support."
+    },
+    {
+      "pair": "GBP/USD",
+      "base": "GBP",
+      "quote": "USD",
+      "state": "Mixed macro picture",
+      "base_label": "Supported",
+      "quote_label": "Supported",
+      "drivers": [
+        "GBP: Labor data is the next test for GBP",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "GBP/USD",
+        "theme": "macro_backdrop",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "GBP and USD do not show one clean relational theme yet.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
+        "dominant_currency": null,
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "GBP is supported by resilient labor data",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
+      },
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "USD/JPY",
+      "base": "USD",
+      "quote": "JPY",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "USD: Fed policy remains restrictive",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than JPY",
+      "narrative": {
+        "pair": "USD/JPY",
+        "theme": "risk_mood",
+        "interaction_type": "policy_vs_safe_haven",
+        "headline": "US rate support sits against the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links rate expectations with defensive market mood.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY.",
+        "dominant_currency": "USD",
+        "tension_summary": "US rate support sits against the yen's sensitivity to defensive market mood.",
+        "left_reason": "USD still has firmer policy support",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The pair links rate expectations with defensive market mood."
+      },
+      "tension_summary": "US rate support sits against the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY."
+    },
+    {
+      "pair": "USD/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "USD: Fed policy remains restrictive",
+        "CHF: Calmer markets are changing risk mood"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than CHF",
+      "narrative": {
+        "pair": "USD/CHF",
+        "theme": "risk_mood",
+        "interaction_type": "policy_vs_safe_haven",
+        "headline": "US rate support sits against the franc's sensitivity to defensive market mood.",
+        "rationale": "The pair links rate expectations with defensive market mood.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF.",
+        "dominant_currency": "USD",
+        "tension_summary": "US rate support sits against the franc's sensitivity to defensive market mood.",
+        "left_reason": "USD still has firmer policy support",
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "The pair links rate expectations with defensive market mood."
+      },
+      "tension_summary": "US rate support sits against the franc's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
+    },
+    {
+      "pair": "AUD/USD",
+      "base": "AUD",
+      "quote": "USD",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "AUD: China demand is pressuring AUD",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than AUD",
+      "narrative": {
+        "pair": "AUD/USD",
+        "theme": "global_demand",
+        "interaction_type": "global_demand_vs_policy",
+        "headline": "Global demand sensitivity in AUD meets US rate support.",
+        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support.",
+        "dominant_currency": "USD",
+        "tension_summary": "Global demand sensitivity in AUD meets US rate support.",
+        "left_reason": "AUD is pressured by softer global demand",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+      },
+      "tension_summary": "Global demand sensitivity in AUD meets US rate support.",
+      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support."
+    },
+    {
+      "pair": "USD/CAD",
+      "base": "USD",
+      "quote": "CAD",
+      "state": "Mixed macro picture",
+      "base_label": "Supported",
+      "quote_label": "Neutral",
+      "drivers": [
+        "USD: Fed policy remains restrictive",
+        "CAD: Inflation data is in focus for CAD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "USD/CAD",
+        "theme": "macro_backdrop",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "USD and CAD do not show one clean relational theme yet.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
+        "dominant_currency": null,
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "USD still has firmer policy support",
+        "right_reason": "CAD is pressured as inflation slows",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
+      },
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "NZD/USD",
+      "base": "NZD",
+      "quote": "USD",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "NZD: Global demand is weighing on NZD",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than NZD",
+      "narrative": {
+        "pair": "NZD/USD",
+        "theme": "global_demand",
+        "interaction_type": "global_demand_vs_policy",
+        "headline": "Global demand sensitivity in NZD meets US rate support.",
+        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support.",
+        "dominant_currency": "USD",
+        "tension_summary": "Global demand sensitivity in NZD meets US rate support.",
+        "left_reason": "NZD is pressured by softer global demand",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+      },
+      "tension_summary": "Global demand sensitivity in NZD meets US rate support.",
+      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support."
+    },
+    {
+      "pair": "EUR/GBP",
+      "base": "EUR",
+      "quote": "GBP",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "GBP: Labor data is the next test for GBP"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than EUR",
+      "narrative": {
+        "pair": "EUR/GBP",
+        "theme": "policy_growth",
+        "interaction_type": "policy_vs_growth",
+        "headline": "Europe's softer growth picture is set against resilient the UK labor data.",
+        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
+        "what_changes_this": "The imbalance would narrow if EUR growth improves or GBP loses support.",
+        "dominant_currency": "GBP",
+        "tension_summary": "Europe's softer growth picture is set against resilient the UK labor data.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "GBP is supported by resilient labor data",
+        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
+      },
+      "tension_summary": "Europe's softer growth picture is set against resilient the UK labor data.",
+      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
+      "what_changes_this": "The imbalance would narrow if EUR growth improves or GBP loses support."
+    },
+    {
+      "pair": "EUR/JPY",
+      "base": "EUR",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/JPY",
+        "theme": "macro_backdrop",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "EUR and JPY do not show one clean relational theme yet.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
+        "dominant_currency": null,
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
+      },
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "GBP/JPY",
+      "base": "GBP",
+      "quote": "JPY",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Labor data is the next test for GBP",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than JPY",
+      "narrative": {
+        "pair": "GBP/JPY",
+        "theme": "risk_mood",
+        "interaction_type": "risk_mood_vs_rates",
+        "headline": "Resilient the UK labor data is set against the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links market mood sensitivity with rate expectations.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY.",
+        "dominant_currency": "GBP",
+        "tension_summary": "Resilient the UK labor data is set against the yen's sensitivity to defensive market mood.",
+        "left_reason": "GBP is supported by resilient labor data",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The pair links market mood sensitivity with rate expectations."
+      },
+      "tension_summary": "Resilient the UK labor data is set against the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links market mood sensitivity with rate expectations.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY."
+    },
+    {
+      "pair": "EUR/AUD",
+      "base": "EUR",
+      "quote": "AUD",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "AUD: China demand is pressuring AUD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/AUD",
+        "theme": "global_demand",
+        "interaction_type": "growth_vs_global_demand",
+        "headline": "Europe's softer growth picture differs from global demand sensitivity in AUD.",
+        "rationale": "The pair links local growth pressure with global demand sensitivity.",
+        "what_changes_this": "The imbalance would narrow if EUR growth improves or AUD loses support.",
+        "dominant_currency": "AUD",
+        "tension_summary": "Europe's softer growth picture differs from global demand sensitivity in AUD.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "AUD is pressured by softer global demand",
+        "interaction_reason": "The pair links local growth pressure with global demand sensitivity."
+      },
+      "tension_summary": "Europe's softer growth picture differs from global demand sensitivity in AUD.",
+      "interaction_reason": "The pair links local growth pressure with global demand sensitivity.",
+      "what_changes_this": "The imbalance would narrow if EUR growth improves or AUD loses support."
+    },
+    {
+      "pair": "EUR/CAD",
+      "base": "EUR",
+      "quote": "CAD",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Neutral",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "CAD: Inflation data is in focus for CAD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/CAD",
+        "theme": "inflation",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "Europe's softer growth picture differs from cooler CAD inflation pressure.",
+        "rationale": "The pair links inflation pressure with the growth backdrop.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
+        "dominant_currency": null,
+        "tension_summary": "Europe's softer growth picture differs from cooler CAD inflation pressure.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "CAD is pressured as inflation slows",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
+      },
+      "tension_summary": "Europe's softer growth picture differs from cooler CAD inflation pressure.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "GBP/AUD",
+      "base": "GBP",
+      "quote": "AUD",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Labor data is the next test for GBP",
+        "AUD: China demand is pressuring AUD"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than AUD",
+      "narrative": {
+        "pair": "GBP/AUD",
+        "theme": "macro_backdrop",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "GBP and AUD do not show one clean relational theme yet.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support.",
+        "dominant_currency": "GBP",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "GBP is supported by resilient labor data",
+        "right_reason": "AUD is pressured by softer global demand",
+        "interaction_reason": "GBP and AUD do not show one clean relational theme yet."
+      },
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "GBP and AUD do not show one clean relational theme yet.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support."
+    },
+    {
+      "pair": "AUD/JPY",
+      "base": "AUD",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "AUD: China demand is pressuring AUD",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "AUD/JPY",
+        "theme": "global_demand",
+        "interaction_type": "cyclical_vs_defensive",
+        "headline": "Global demand sensitivity in AUD meets the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links cyclical demand sensitivity with defensive positioning.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or JPY loses support.",
+        "dominant_currency": "JPY",
+        "tension_summary": "Global demand sensitivity in AUD meets the yen's sensitivity to defensive market mood.",
+        "left_reason": "AUD is pressured by softer global demand",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning."
+      },
+      "tension_summary": "Global demand sensitivity in AUD meets the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or JPY loses support."
+    },
+    {
+      "pair": "NZD/JPY",
+      "base": "NZD",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "NZD: Global demand is weighing on NZD",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "NZD/JPY",
+        "theme": "global_demand",
+        "interaction_type": "cyclical_vs_defensive",
+        "headline": "Global demand sensitivity in NZD meets the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links cyclical demand sensitivity with defensive positioning.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or JPY loses support.",
+        "dominant_currency": "JPY",
+        "tension_summary": "Global demand sensitivity in NZD meets the yen's sensitivity to defensive market mood.",
+        "left_reason": "NZD is pressured by softer global demand",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning."
+      },
+      "tension_summary": "Global demand sensitivity in NZD meets the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or JPY loses support."
+    },
+    {
+      "pair": "GBP/CHF",
+      "base": "GBP",
+      "quote": "CHF",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Labor data is the next test for GBP",
+        "CHF: Calmer markets are changing risk mood"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than CHF",
+      "narrative": {
+        "pair": "GBP/CHF",
+        "theme": "risk_mood",
+        "interaction_type": "risk_mood_vs_rates",
+        "headline": "Resilient the UK labor data is set against the franc's sensitivity to defensive market mood.",
+        "rationale": "The pair links market mood sensitivity with rate expectations.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF.",
+        "dominant_currency": "GBP",
+        "tension_summary": "Resilient the UK labor data is set against the franc's sensitivity to defensive market mood.",
+        "left_reason": "GBP is supported by resilient labor data",
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "The pair links market mood sensitivity with rate expectations."
+      },
+      "tension_summary": "Resilient the UK labor data is set against the franc's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links market mood sensitivity with rate expectations.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
+    },
+    {
+      "pair": "EUR/CHF",
+      "base": "EUR",
+      "quote": "CHF",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "CHF: Calmer markets are changing risk mood"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/CHF",
+        "theme": "macro_backdrop",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "EUR and CHF do not show one clean relational theme yet.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
+        "dominant_currency": null,
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
+      },
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "AUD/NZD",
+      "base": "AUD",
+      "quote": "NZD",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "AUD: China demand is pressuring AUD",
+        "NZD: Global demand is weighing on NZD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "AUD/NZD",
+        "theme": "global_demand",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "AUD and NZD are being shaped by a similar macro driver.",
+        "rationale": "AUD and NZD do not show one clean relational theme yet.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
+        "dominant_currency": null,
+        "tension_summary": "AUD and NZD are being shaped by a similar macro driver.",
+        "left_reason": "AUD is pressured by softer global demand",
+        "right_reason": "NZD is pressured by softer global demand",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
+      },
+      "tension_summary": "AUD and NZD are being shaped by a similar macro driver.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "CAD/JPY",
+      "base": "CAD",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Neutral",
+      "quote_label": "Weak",
+      "drivers": [
+        "CAD: Inflation data is in focus for CAD",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "CAD/JPY",
+        "theme": "macro_backdrop",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "CAD and JPY do not show one clean relational theme yet.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
+        "dominant_currency": null,
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "CAD is pressured as inflation slows",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
+      },
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "GBP/NZD",
+      "base": "GBP",
+      "quote": "NZD",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Labor data is the next test for GBP",
+        "NZD: Global demand is weighing on NZD"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than NZD",
+      "narrative": {
+        "pair": "GBP/NZD",
+        "theme": "macro_backdrop",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "GBP and NZD do not show one clean relational theme yet.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support.",
+        "dominant_currency": "GBP",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "GBP is supported by resilient labor data",
+        "right_reason": "NZD is pressured by softer global demand",
+        "interaction_reason": "GBP and NZD do not show one clean relational theme yet."
+      },
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "GBP and NZD do not show one clean relational theme yet.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support."
+    }
+  ],
+  "lucid_events": [
+    {
+      "date": "2026-05-19",
+      "currency": "CAD",
+      "title": "CPI m/m",
+      "event_type": "CPI",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-05-19",
+      "currency": "CAD",
+      "title": "Common CPI y/y",
+      "event_type": "CPI",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-05-19",
+      "currency": "CAD",
+      "title": "Median CPI y/y",
+      "event_type": "CPI",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-05-19",
+      "currency": "CAD",
+      "title": "Trimmed CPI y/y",
+      "event_type": "CPI",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-05-19",
+      "currency": "GBP",
+      "title": "Claimant Count Change",
+      "event_type": "UNEMPLOYMENT",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Unemployment shows whether the economy is losing strength",
+      "market_focus": "Whether joblessness is rising or falling",
+      "insight": "A weaker labor market can weigh on the currency"
+    },
+    {
+      "date": "2026-05-19",
+      "currency": "GBP",
+      "title": "Average Earnings Index 3m/y",
+      "event_type": "OTHER",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "This event may help explain this week's market mood",
+      "market_focus": "Whether the result changes the current economic story",
+      "insight": "The key is whether it makes the picture clearer"
+    },
+    {
+      "date": "2026-05-19",
+      "currency": "USD",
+      "title": "Pending Home Sales m/m",
+      "event_type": "OTHER",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "This event may help explain this week's market mood",
+      "market_focus": "Whether the result changes the current economic story",
+      "insight": "The key is whether it makes the picture clearer"
+    }
+  ],
+  "price_alignment": {
+    "EUR/USD": {
+      "pair": "EUR/USD",
+      "state": "Mixed",
+      "summary": "Price behavior remains mixed relative to the macro backdrop.",
+      "observed_behavior": "Recent EUR/USD price behavior remains mixed versus the macro backdrop.",
+      "caveat": "Price behavior can differ from macro context in the short term.",
+      "price_updated_at": "2026-05-18T00:00:00Z"
+    },
+    "GBP/USD": {
+      "pair": "GBP/USD",
+      "state": "Mixed",
+      "summary": "Price behavior remains mixed relative to the macro backdrop.",
+      "observed_behavior": "Recent GBP/USD price behavior remains mixed versus the macro backdrop.",
+      "caveat": "Price behavior can differ from macro context in the short term.",
+      "price_updated_at": "2026-05-18T00:00:00Z"
+    },
+    "USD/JPY": {
+      "pair": "USD/JPY",
+      "state": "Mixed",
+      "summary": "Price behavior remains mixed relative to the macro backdrop.",
+      "observed_behavior": "Recent USD/JPY price behavior remains mixed versus the macro backdrop.",
+      "caveat": "Price behavior can differ from macro context in the short term.",
+      "price_updated_at": "2026-05-18T00:00:00Z"
+    }
+  }
+}

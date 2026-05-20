@@ -1,0 +1,29 @@
+{
+  "description": "Local development sample for Lucid PriceAlignmentEngine. Not used in production by default.",
+  "pairs": [
+    {
+      "pair": "EUR/USD",
+      "recent_change_pct": -0.42,
+      "previous_change_pct": -0.18,
+      "price_updated_at": "2026-05-17T17:00:00+00:00"
+    },
+    {
+      "pair": "GBP/USD",
+      "recent_change_pct": 0.03,
+      "previous_change_pct": -0.04,
+      "price_updated_at": "2026-05-17T17:00:00+00:00"
+    },
+    {
+      "pair": "USD/JPY",
+      "recent_change_pct": -0.34,
+      "previous_change_pct": 0.27,
+      "price_updated_at": "2026-05-17T17:00:00+00:00"
+    },
+    {
+      "pair": "AUD/USD",
+      "recent_change_pct": 0.31,
+      "previous_change_pct": -0.22,
+      "price_updated_at": "2026-05-17T17:00:00+00:00"
+    }
+  ]
+}

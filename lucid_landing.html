@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucid - Macro Context for Forex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #070b12;
+  --bg-soft: #0c111b;
+  --panel: rgba(255, 255, 255, 0.065);
+  --panel-strong: rgba(255, 255, 255, 0.095);
+  --ink: #f7f3ea;
+  --muted: rgba(247, 243, 234, 0.64);
+  --faint: rgba(247, 243, 234, 0.42);
+  --line: rgba(247, 243, 234, 0.12);
+  --violet: #7b6cff;
+  --violet-soft: rgba(123, 108, 255, 0.20);
+  --warm: rgba(211, 142, 112, 0.18);
+  --shadow: 0 34px 110px rgba(0, 0, 0, 0.38);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 72% 8%, rgba(123, 108, 255, 0.22), transparent 34%),
+    radial-gradient(circle at 8% 36%, rgba(211, 142, 112, 0.10), transparent 32%),
+    linear-gradient(180deg, #080c13 0%, #070b12 46%, #090d14 100%);
+  color: var(--ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 100% 9px;
+  opacity: 0.18;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto -12% -22% -12%;
+  height: 44vh;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(123,108,255,0.12), transparent 62%);
+  filter: blur(24px);
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+
+.page {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 22px 0;
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--violet), #5b3df0);
+  box-shadow: 0 14px 34px rgba(123, 108, 255, 0.34);
+}
+
+.mark::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.link-muted {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 17px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.button:hover { transform: translateY(-1px); }
+.button-primary {
+  background: #f4efe7;
+  color: #0b0f17;
+  box-shadow: 0 18px 48px rgba(244, 239, 231, 0.14);
+}
+.button-secondary {
+  border-color: var(--line);
+  color: var(--ink);
+  background: rgba(255,255,255,0.055);
+}
+
+.hero {
+  min-height: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(420px, 1.06fr);
+  align-items: center;
+  gap: 54px;
+  padding: 92px 0 112px;
+}
+
+.eyebrow {
+  color: #b8afff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+h1, h2, h3 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 760px;
+  font-size: clamp(58px, 8vw, 116px);
+  line-height: 0.88;
+  margin-bottom: 26px;
+}
+
+h1 em {
+  color: #d8d1ff;
+  font-style: italic;
+  text-shadow: 0 18px 70px rgba(123,108,255,0.32);
+}
+
+.hero-copy {
+  max-width: 590px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.68;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.trust-note {
+  margin-top: 18px;
+  color: var(--faint);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+  max-width: 620px;
+}
+
+.proof-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.052);
+  border: 1px solid rgba(255,255,255,0.095);
+  color: rgba(247,243,234,0.68);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.proof-item::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(184,175,255,0.76);
+  box-shadow: 0 0 18px rgba(123,108,255,0.30);
+}
+
+.preview-shell {
+  position: relative;
+  min-height: 560px;
+  border-radius: 36px;
+  padding: 1px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03)),
+    radial-gradient(circle at 34% 0%, rgba(123,108,255,0.36), transparent 34%);
+  box-shadow: var(--shadow);
+}
+
+.preview-shell::before {
+  content: "";
+  position: absolute;
+  inset: -12% -8%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(123,108,255,0.26), transparent 28%),
+    radial-gradient(circle at 76% 58%, rgba(211,142,112,0.14), transparent 30%);
+  filter: blur(28px);
+}
+
+.product-preview {
+  position: relative;
+  height: 100%;
+  min-height: 560px;
+  border-radius: 35px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(123,108,255,0.26), transparent 32%),
+    linear-gradient(160deg, rgba(255,255,255,0.105), rgba(255,255,255,0.035) 38%, rgba(255,255,255,0.06));
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 28px;
+}
+
+.product-preview::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 35px;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.13), transparent 28%, transparent 76%, rgba(255,255,255,0.06)),
+    radial-gradient(circle at 22% 80%, rgba(123,108,255,0.16), transparent 34%);
+  opacity: 0.82;
+}
+
+.product-preview > * {
+  position: relative;
+  z-index: 1;
+}
+
+.preview-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 42px;
+}
+
+.preview-title {
+  font-size: 12px;
+  color: var(--faint);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 11px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #38d28b;
+  box-shadow: 0 0 18px rgba(56,210,139,0.44);
+}
+
+.macro-card {
+  border-radius: 30px;
+  padding: 34px;
+  background:
+    radial-gradient(circle at 80% 4%, rgba(178,149,255,0.34), transparent 34%),
+    linear-gradient(135deg, rgba(73,42,197,0.92), rgba(117,76,246,0.72));
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 34px 88px rgba(63, 39, 166, 0.34);
+}
+
+.macro-card h2 {
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 0.94;
+  max-width: 620px;
+}
+
+.mood-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 750;
+  background: rgba(255,255,255,0.11);
+  color: rgba(255,255,255,0.82);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.relationship-strip {
+  display: grid;
+  grid-template-columns: 1fr minmax(74px, 0.45fr) 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(0,0,0,0.16);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.currency-node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(247,243,234,0.84);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.currency-node:last-child { justify-content: flex-end; }
+
+.currency-node small {
+  display: block;
+  margin-top: 2px;
+  color: var(--faint);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.node-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.10);
+}
+
+.node-dot.supported {
+  background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.48), rgba(123,108,255,0.32) 42%, rgba(123,108,255,0.10));
+}
+
+.node-dot.weak {
+  background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.34), rgba(211,142,112,0.25) 44%, rgba(211,142,112,0.08));
+}
+
+.tension-line {
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(211,142,112,0.36), rgba(247,243,234,0.20), rgba(123,108,255,0.48));
+  box-shadow: 0 0 22px rgba(123,108,255,0.12);
+}
+
+.mini-card {
+  border-radius: 22px;
+  padding: 18px;
+  min-height: 132px;
+  background: rgba(255,255,255,0.075);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.mini-kicker {
+  color: var(--faint);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.mini-card strong {
+  display: block;
+  color: var(--ink);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.mini-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.52;
+}
+
+section {
+  padding: 96px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-head {
+  max-width: 720px;
+  margin-bottom: 34px;
+}
+
+.section-head h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.94;
+  margin-bottom: 16px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.step {
+  min-height: 260px;
+  border-radius: 28px;
+  padding: 26px;
+  background: rgba(255,255,255,0.055);
+  border: 1px solid var(--line);
+}
+
+.step-number {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--violet-soft);
+  color: #d7d1ff;
+  font-weight: 800;
+  margin-bottom: 58px;
+}
+
+.step h3 {
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.editorial-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.68fr);
+  align-items: center;
+  gap: 40px;
+  padding: 52px;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 88% 18%, rgba(123,108,255,0.24), transparent 32%),
+    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.045));
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 84px rgba(0,0,0,0.22);
+}
+
+.editorial-band h2 {
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 0.9;
+  margin-bottom: 22px;
+}
+
+.editorial-band p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.68;
+  max-width: 680px;
+}
+
+.alignment-note {
+  border-radius: 24px;
+  padding: 24px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.alignment-note span {
+  display: block;
+  color: var(--faint);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.alignment-note strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.reason-card {
+  min-height: 220px;
+  border-radius: 28px;
+  padding: 26px;
+  background: rgba(255,255,255,0.052);
+  border: 1px solid var(--line);
+}
+
+.reason-card h3 {
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.reason-card p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.trial {
+  text-align: center;
+  padding-bottom: 58px;
+}
+
+.trial-panel {
+  max-width: 880px;
+  margin: 0 auto;
+  border-radius: 40px;
+  padding: 62px 38px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(123,108,255,0.28), transparent 38%),
+    linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.048));
+  border: 1px solid var(--line);
+}
+
+.trial h2 {
+  font-size: clamp(52px, 7vw, 92px);
+  line-height: 0.9;
+  margin-bottom: 20px;
+}
+
+.trial p {
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 auto 28px;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  align-items: center;
+  padding: 28px 0 58px;
+  color: rgba(247,243,234,0.52);
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+.footer-brand {
+  color: rgba(247,243,234,0.72);
+  font-weight: 800;
+}
+
+.footer-copy {
+  max-width: 620px;
+  text-align: center;
+  line-height: 1.65;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 2px;
+  color: rgba(247,243,234,0.66);
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 920px) {
+  .page { width: min(100% - 28px, 680px); }
+  .nav-links { display: none; }
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding: 54px 0 78px;
+  }
+  .preview-shell,
+  .product-preview { min-height: auto; }
+  .steps,
+  .cards,
+  .editorial-band {
+    grid-template-columns: 1fr;
+  }
+  .step { min-height: auto; }
+  .step-number { margin-bottom: 34px; }
+}
+
+@media (max-width: 560px) {
+  .page { width: min(100% - 24px, 520px); }
+  .nav { padding: 16px 0; }
+  .nav-actions .link-muted { display: none; }
+  .button { min-height: 40px; padding: 0 14px; font-size: 13px; }
+  h1 { font-size: 58px; }
+  .hero-copy { font-size: 17px; line-height: 1.62; }
+  .product-preview { padding: 18px; border-radius: 26px; }
+  .preview-shell { border-radius: 27px; }
+  .macro-card { border-radius: 24px; padding: 24px; }
+  .macro-card h2 { font-size: 42px; }
+  .preview-grid { grid-template-columns: 1fr; }
+  .relationship-strip { grid-template-columns: 1fr; }
+  .tension-line { height: 4px; }
+  .currency-node:last-child { justify-content: flex-start; }
+  section { padding: 72px 0; }
+  .editorial-band { padding: 30px 22px; border-radius: 28px; }
+  .trial-panel { padding: 42px 22px; border-radius: 30px; }
+  .footer { gap: 11px; padding: 24px 0 42px; }
+  .footer-copy { max-width: 340px; line-height: 1.6; }
+  .footer-links { margin-top: 3px; }
+}
+</style>
+</head>
+<body>
+  <nav class="page nav" aria-label="Primary navigation">
+    <a class="brand" href="#">
+      <span class="mark" aria-hidden="true"></span>
+      <span>Lucid</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#preview">Preview</a>
+      <a href="#different">Why Lucid</a>
+    </div>
+    <div class="nav-actions">
+      <a class="link-muted" href="auth.html?mode=login">Sign in</a>
+      <a class="button button-primary" href="auth.html?mode=signup">Start free trial</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page hero">
+      <div>
+        <p class="eyebrow">Macro understanding for currency traders</p>
+        <h1>Lucid explains <em>macro context</em>, not price prediction.</h1>
+        <p class="hero-copy">
+          Lucid helps you read the macro backdrop behind currencies, calmly,
+          clearly, and without market noise.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="auth.html?mode=signup">Start free for 30 days</a>
+          <a class="button button-secondary" href="#how">See how it works</a>
+        </div>
+        <p class="trust-note">
+          Built for daily macro reading. No market instructions, no price calls, no noisy dashboards.
+        </p>
+        <div class="hero-proof" aria-label="Lucid product principles">
+          <span class="proof-item">Macro backdrop</span>
+          <span class="proof-item">Pair relationships</span>
+          <span class="proof-item">Macro vs price</span>
+        </div>
+      </div>
+
+      <div id="preview" class="preview-shell" aria-label="Lucid product preview">
+        <div class="product-preview">
+          <div class="preview-top">
+            <p class="preview-title">Today’s macro backdrop</p>
+            <span class="live-pill"><span class="live-dot"></span> Live context</span>
+          </div>
+          <div class="macro-card">
+            <div>
+              <p class="eyebrow" style="color:rgba(255,255,255,0.62);margin-bottom:14px;">Current reading</p>
+              <h2>US data is the next test for dollar support</h2>
+            </div>
+            <div class="mood-row">
+              <span class="pill">USD - Supported</span>
+              <span class="pill">Market mood - Balanced</span>
+            </div>
+          </div>
+          <div class="relationship-strip" aria-label="Pair relationship preview">
+            <div class="currency-node">
+              <span class="node-dot weak" aria-hidden="true"></span>
+              <span>EUR<small>Weak backdrop</small></span>
+            </div>
+            <div class="tension-line" aria-hidden="true"></div>
+            <div class="currency-node">
+              <span>USD<small>Firmer backdrop</small></span>
+              <span class="node-dot supported" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="preview-grid">
+            <article class="mini-card">
+              <p class="mini-kicker">Currency backdrop</p>
+              <strong>EUR under pressure</strong>
+              <p>Weak growth data keeps the euro’s macro backdrop fragile.</p>
+            </article>
+            <article class="mini-card">
+              <p class="mini-kicker">Pair relationship</p>
+              <strong>EUR/USD</strong>
+              <p>Europe’s softer growth picture is set against US policy expectations.</p>
+            </article>
+            <article class="mini-card">
+              <p class="mini-kicker">Macro pressure</p>
+              <strong>Context, not alarm</strong>
+              <p>Important market pressure is summarized only when it changes the backdrop.</p>
+            </article>
+            <article class="mini-card">
+              <p class="mini-kicker">Macro vs price</p>
+              <strong>Keep them separate</strong>
+              <p>Price behavior can remain mixed even when macro context is clearer.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="how" class="page">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Read the market without turning it into a recommendation.</h2>
+        <p>
+          Lucid gives you a simple framework for reading currencies: start with the macro backdrop,
+          compare relationships, then keep price behavior separate.
+        </p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-number">1</div>
+          <h3>Read the backdrop</h3>
+          <p>Lucid identifies the macro forces shaping currencies right now.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">2</div>
+          <h3>Compare relationships</h3>
+          <p>Lucid explains where currency backdrops differ, without turning that into a recommendation.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">3</div>
+          <h3>Keep price separate</h3>
+          <p>Price can lag, resist, or move differently in the near term. Lucid focuses on context, not prediction.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="editorial-band">
+        <div>
+          <p class="eyebrow">Macro vs price</p>
+          <h2>Macro can be right while price stays mixed.</h2>
+          <p>
+            Lucid explains the backdrop. Price can lag, resist, or move differently in
+            the near term. That separation is what keeps the product contextual, not predictive.
+          </p>
+        </div>
+        <aside class="alignment-note">
+          <span>Safe reading</span>
+          <strong>Context first. Price second.</strong>
+          <p>Lucid helps you understand what the market is reacting to, not what you should do next.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="different" class="page">
+      <div class="section-head">
+        <p class="eyebrow">Why Lucid feels different</p>
+        <h2>Built for clarity, not market noise.</h2>
+      </div>
+      <div class="cards">
+        <article class="reason-card">
+          <h3>Not a recommendation platform</h3>
+          <p>Lucid does not tell you how to act in the market. It explains the macro context around currencies.</p>
+        </article>
+        <article class="reason-card">
+          <h3>Built for clarity</h3>
+          <p>Every view is filtered down to the ideas that matter, with simple language and no dense analytics grid.</p>
+        </article>
+        <article class="reason-card">
+          <h3>Designed for daily reading</h3>
+          <p>The experience is calm enough to open every day, even when the macro regime is largely unchanged.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="trial" class="page trial">
+      <div class="trial-panel">
+        <p class="eyebrow">Free trial</p>
+        <h2>Read Lucid free for 30 days.</h2>
+        <p>
+          Lucid is designed for daily reading, not instant instructions. Take time to understand
+          how it reads the macro backdrop.
+        </p>
+        <a class="button button-primary" href="auth.html?mode=signup">Start free for 30 days</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page footer">
+    <p class="footer-brand">Lucid</p>
+    <p class="footer-copy">
+      Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.
+    </p>
+    <p class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="terms.html">Terms</a>
+    </p>
+  </footer>
+</body>
+</html>

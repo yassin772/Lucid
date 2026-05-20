@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+api/raw/fx_prices_twelvedata.json
+js/supabase_config.js
+js/supabase_config.local.js
+__pycache__/
+*.pyc

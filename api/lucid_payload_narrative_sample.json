@@ -1,0 +1,180 @@
+{
+  "generated_at": "2026-05-05T03:02:09.949450+02:00",
+  "source": "Macro context and ForexFactory live calendar via Lucid refresh",
+  "summary_mode": "Narrative-derived",
+  "disclaimer": "For informational and educational purposes only. Not financial advice.",
+  "market_story": {
+    "title": "The Fed is keeping rates high",
+    "body": "USD and CAD remain supported, while EUR, JPY, and NZD stay under pressure.",
+    "drivers": [
+      "USD: The Fed is keeping rates high",
+      "EUR: The ECB is moving toward rate cuts",
+      "JPY: Yen waiting for a market trigger"
+    ]
+  },
+  "lucid_summaries": {
+    "USD": {
+      "currency": "USD",
+      "label": "Supported",
+      "headline": "The Fed is keeping rates high",
+      "reasons": [
+        "The Fed is keeping rates high and has no plans to cut",
+        "The economy is performing well",
+        "The dollar remains the world's most-used currency"
+      ],
+      "insight": "Higher rates keep money flowing into the dollar",
+      "key_event": null
+    },
+    "EUR": {
+      "currency": "EUR",
+      "label": "Weak",
+      "headline": "The ECB is moving toward rate cuts",
+      "reasons": [
+        "The ECB is becoming more open to rate cuts",
+        "The economic data has been consistently weak",
+        "Slow growth in Germany is a persistent drag"
+      ],
+      "insight": "Rate cuts ahead are taking the shine off the euro",
+      "key_event": "ECB rate decision today"
+    },
+    "GBP": {
+      "currency": "GBP",
+      "label": "Neutral",
+      "headline": "The BOE is watching and waiting",
+      "reasons": [
+        "The BOE is waiting for clearer economic data",
+        "The economic picture is mixed",
+        "High inflation is limiting the BOE's room to act"
+      ],
+      "insight": "The pound is caught between growth worries and inflation",
+      "key_event": null
+    },
+    "JPY": {
+      "currency": "JPY",
+      "label": "Weak",
+      "headline": "Yen waiting for a market trigger",
+      "reasons": [
+        "The yen is highly sensitive to sudden mood changes",
+        "The BOJ is actively cutting rates"
+      ],
+      "insight": "A sudden shift in mood could move the yen fast",
+      "key_event": null
+    },
+    "CHF": {
+      "currency": "CHF",
+      "label": "Neutral",
+      "headline": "Franc steady with no strong catalyst",
+      "reasons": [
+        "Swiss stability is steady in the background",
+        "No single driver stands out right now"
+      ],
+      "insight": "Calm markets keep the franc in a holding pattern",
+      "key_event": null
+    },
+    "CAD": {
+      "currency": "CAD",
+      "label": "Supported",
+      "headline": "The BOC isn't ready to cut yet",
+      "reasons": [
+        "Oil prices and US economic health are the key drivers",
+        "The BOC wants to see more progress before cutting rates"
+      ],
+      "insight": "Oil prices often move before CAD does",
+      "key_event": "BOC rate decision mon may 4"
+    },
+    "AUD": {
+      "currency": "AUD",
+      "label": "Neutral",
+      "headline": "The RBA is watching and waiting",
+      "reasons": [
+        "Commodity prices and China remain the key factors",
+        "No single driver stands out right now"
+      ],
+      "insight": "The next big move will likely come from outside Australia",
+      "key_event": "RBA rate decision today"
+    },
+    "NZD": {
+      "currency": "NZD",
+      "label": "Weak",
+      "headline": "The RBNZ is moving toward rate cuts",
+      "reasons": [
+        "Global trade conditions matter more than local data",
+        "The RBNZ is becoming more open to rate cuts"
+      ],
+      "insight": "Global sentiment is the dominant driver here",
+      "key_event": "RBNZ rate decision today"
+    }
+  },
+  "lucid_events": [
+    {
+      "date": "2026-05-04",
+      "currency": "CAD",
+      "title": "BOC Rate Decision",
+      "event_type": "BOC",
+      "importance": "medium",
+      "timing_label": "Mon May 4",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "The BOC reads an economy tied closely to the US and oil",
+      "market_focus": "Growth, inflation, and how cautious the bank sounds",
+      "insight": "The Canadian dollar often follows oil and US demand"
+    },
+    {
+      "date": "2026-05-05",
+      "currency": "AUD",
+      "title": "RBA Rate Decision",
+      "event_type": "RBA",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "The RBA affects a currency linked to global growth",
+      "market_focus": "Inflation and signs of pressure on households",
+      "insight": "The Australian dollar needs confidence in growth to stay supported"
+    },
+    {
+      "date": "2026-05-05",
+      "currency": "EUR",
+      "title": "ECB Rate Decision",
+      "event_type": "ECB",
+      "importance": "medium",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "The ECB sets the rate backdrop for the euro area",
+      "market_focus": "Whether slow growth makes the ECB more careful",
+      "insight": "The euro needs stronger economic support to improve"
+    },
+    {
+      "date": "2026-05-05",
+      "currency": "NZD",
+      "title": "RBNZ Rate Decision",
+      "event_type": "RBNZ",
+      "importance": "medium",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "The RBNZ can move expectations for the New Zealand dollar",
+      "market_focus": "Inflation and whether the economy is slowing",
+      "insight": "The kiwi is sensitive when global confidence changes"
+    },
+    {
+      "date": "2026-05-06",
+      "currency": "CAD",
+      "title": "BOC Rate Decision",
+      "event_type": "BOC",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "The BOC reads an economy tied closely to the US and oil",
+      "market_focus": "Growth, inflation, and how cautious the bank sounds",
+      "insight": "The Canadian dollar often follows oil and US demand"
+    }
+  ]
+}

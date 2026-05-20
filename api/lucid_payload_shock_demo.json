@@ -1,0 +1,666 @@
+{
+  "generated_at": "2026-05-08T06:15:11.338375+02:00",
+  "source": "Macro context and ForexFactory calendar via Lucid payload export",
+  "summary_mode": "Narrative-derived",
+  "disclaimer": "For informational and educational purposes only. Not financial advice.",
+  "market_story": {
+    "title": "Fed policy remains restrictive",
+    "body": "USD and GBP remain supported, while EUR, JPY, and CHF stay under pressure.",
+    "drivers": [
+      "USD: Fed policy remains restrictive",
+      "EUR: Growth remains the euro's main challenge",
+      "GBP: Sticky inflation keeps GBP supported"
+    ]
+  },
+  "macro_shock": {
+    "shock_type": "oil_supply_shock",
+    "severity": "High",
+    "confidence": "Medium",
+    "title": "Oil supply risk is affecting the macro backdrop",
+    "transmission_chain": [
+      "Oil supply risk",
+      "Energy price pressure",
+      "Inflation concern"
+    ],
+    "supports": [
+      "CAD",
+      "USD"
+    ],
+    "pressures": [
+      "EUR",
+      "JPY",
+      "AUD",
+      "NZD"
+    ],
+    "explanation": "Energy supply stress can lift inflation concern and affect oil-sensitive currencies.",
+    "source_count": 2,
+    "evidence_titles": [
+      "Crude oil jumps as supply disruption hits energy routes",
+      "Brent rises as oil supply concern grows"
+    ]
+  },
+  "lucid_summaries": {
+    "USD": {
+      "currency": "USD",
+      "label": "Supported",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Fed policy remains restrictive",
+      "reasons": [
+        "The Fed is keeping rates high and has no plans to cut",
+        "The economy is performing well",
+        "The dollar remains the world's most-used currency"
+      ],
+      "invalidation": "This view weakens if inflation slows or The Fed sounds more careful",
+      "insight": "Higher rates keep money flowing into the dollar",
+      "key_event": null
+    },
+    "EUR": {
+      "currency": "EUR",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Growth remains the euro's main challenge",
+      "reasons": [
+        "Europe's economy lacks enough momentum",
+        "The ECB is actively cutting rates",
+        "The economic data has been consistently weak"
+      ],
+      "invalidation": "This view changes if growth data improves clearly",
+      "insight": "The euro needs stronger growth to regain support",
+      "key_event": null
+    },
+    "GBP": {
+      "currency": "GBP",
+      "label": "Supported",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Sticky inflation keeps GBP supported",
+      "reasons": [
+        "Inflation is keeping the BOE cautious about cutting rates",
+        "The BOE is keeping rates high and has no plans to cut",
+        "The economy is performing well"
+      ],
+      "invalidation": "This view changes if inflation cools faster than expected",
+      "insight": "The pound still has support while inflation stays sticky",
+      "key_event": null
+    },
+    "JPY": {
+      "currency": "JPY",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Risk mood remains the main yen driver",
+      "reasons": [
+        "JPY can react quickly when global risk sentiment changes",
+        "The yen is highly sensitive to sudden mood changes",
+        "The BOJ is actively cutting rates"
+      ],
+      "invalidation": "This view changes if global market mood shifts clearly",
+      "insight": "Market mood is the key driver for the yen right now",
+      "key_event": null
+    },
+    "CHF": {
+      "currency": "CHF",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Calmer markets are changing risk mood",
+      "reasons": [
+        "Swiss stability matters most when markets become nervous",
+        "Swiss stability is steady in the background",
+        "The SNB is actively cutting rates"
+      ],
+      "invalidation": "This view changes if global market mood shifts clearly",
+      "insight": "The franc needs a clearer shift in market mood",
+      "key_event": null
+    },
+    "CAD": {
+      "currency": "CAD",
+      "label": "Neutral",
+      "confidence": "Low",
+      "timeframe": "Mixed",
+      "headline": "Oil and US demand are driving CAD",
+      "reasons": [
+        "Canada is sensitive to oil prices and US demand",
+        "Oil prices and US economic health are the key drivers"
+      ],
+      "invalidation": "This view changes if oil prices or US demand improve clearly",
+      "insight": "CAD needs a clearer lift from oil or US demand",
+      "key_event": null
+    },
+    "AUD": {
+      "currency": "AUD",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "China demand is pressuring AUD",
+      "reasons": [
+        "Australia is sensitive to China and global commodity demand",
+        "Commodity prices and China remain the key factors",
+        "The RBA is actively cutting rates"
+      ],
+      "invalidation": "This view changes if China or global demand improves clearly",
+      "insight": "AUD needs a stronger global demand story",
+      "key_event": null
+    },
+    "NZD": {
+      "currency": "NZD",
+      "label": "Weak",
+      "confidence": "High",
+      "timeframe": "Medium-term",
+      "headline": "Global demand is weighing on NZD",
+      "reasons": [
+        "New Zealand is sensitive to global trade conditions",
+        "Global trade conditions matter more than local data",
+        "The RBNZ is actively cutting rates"
+      ],
+      "invalidation": "This view changes if China or global demand improves clearly",
+      "insight": "NZD needs clearer support from global demand",
+      "key_event": null
+    }
+  },
+  "lucid_pairs": [
+    {
+      "pair": "EUR/USD",
+      "base": "EUR",
+      "quote": "USD",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than EUR",
+      "narrative": {
+        "pair": "EUR/USD",
+        "dominant_currency": "USD",
+        "tension_summary": "The macro backdrop is firmer for USD while weaker growth pressures EUR.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "That gap gives USD the firmer backdrop in EUR/USD.",
+        "what_changes_this": "The imbalance would narrow if EUR growth improves or USD loses support."
+      },
+      "tension_summary": "The macro backdrop is firmer for USD while weaker growth pressures EUR.",
+      "interaction_reason": "That gap gives USD the firmer backdrop in EUR/USD.",
+      "what_changes_this": "The imbalance would narrow if EUR growth improves or USD loses support."
+    },
+    {
+      "pair": "GBP/USD",
+      "base": "GBP",
+      "quote": "USD",
+      "state": "Mixed macro picture",
+      "base_label": "Supported",
+      "quote_label": "Supported",
+      "drivers": [
+        "GBP: Sticky inflation keeps GBP supported",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "GBP/USD",
+        "dominant_currency": null,
+        "tension_summary": "GBP and USD do not show one clean macro imbalance right now.",
+        "left_reason": "GBP is shaped by inflation pressure",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "GBP and USD do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "USD/JPY",
+      "base": "USD",
+      "quote": "JPY",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "USD: Fed policy remains restrictive",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than JPY",
+      "narrative": {
+        "pair": "USD/JPY",
+        "dominant_currency": "USD",
+        "tension_summary": "The macro backdrop is firmer for USD as policy support outweighs defensive demand for JPY.",
+        "left_reason": "USD still has firmer policy support",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "That gap gives USD the firmer backdrop in USD/JPY.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY."
+      },
+      "tension_summary": "The macro backdrop is firmer for USD as policy support outweighs defensive demand for JPY.",
+      "interaction_reason": "That gap gives USD the firmer backdrop in USD/JPY.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY."
+    },
+    {
+      "pair": "USD/CHF",
+      "base": "USD",
+      "quote": "CHF",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "USD: Fed policy remains restrictive",
+        "CHF: Calmer markets are changing risk mood"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than CHF",
+      "narrative": {
+        "pair": "USD/CHF",
+        "dominant_currency": "USD",
+        "tension_summary": "The macro backdrop is firmer for USD as policy support outweighs defensive demand for CHF.",
+        "left_reason": "USD still has firmer policy support",
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "That gap gives USD the firmer backdrop in USD/CHF.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
+      },
+      "tension_summary": "The macro backdrop is firmer for USD as policy support outweighs defensive demand for CHF.",
+      "interaction_reason": "That gap gives USD the firmer backdrop in USD/CHF.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
+    },
+    {
+      "pair": "AUD/USD",
+      "base": "AUD",
+      "quote": "USD",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "AUD: China demand is pressuring AUD",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than AUD",
+      "narrative": {
+        "pair": "AUD/USD",
+        "dominant_currency": "USD",
+        "tension_summary": "The macro backdrop is firmer for USD as softer global demand pressures AUD.",
+        "left_reason": "AUD is pressured by softer global demand",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "That gap gives USD the firmer backdrop in AUD/USD.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support."
+      },
+      "tension_summary": "The macro backdrop is firmer for USD as softer global demand pressures AUD.",
+      "interaction_reason": "That gap gives USD the firmer backdrop in AUD/USD.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support."
+    },
+    {
+      "pair": "USD/CAD",
+      "base": "USD",
+      "quote": "CAD",
+      "state": "Mixed macro picture",
+      "base_label": "Supported",
+      "quote_label": "Neutral",
+      "drivers": [
+        "USD: Fed policy remains restrictive",
+        "CAD: Oil and US demand are driving CAD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "USD/CAD",
+        "dominant_currency": null,
+        "tension_summary": "USD and CAD do not show one clean macro imbalance right now.",
+        "left_reason": "USD still has firmer policy support",
+        "right_reason": "CAD is pressured by softer oil and demand",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "USD and CAD do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "NZD/USD",
+      "base": "NZD",
+      "quote": "USD",
+      "state": "USD has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "NZD: Global demand is weighing on NZD",
+        "USD: Fed policy remains restrictive"
+      ],
+      "takeaway": "The macro backdrop is firmer for USD than NZD",
+      "narrative": {
+        "pair": "NZD/USD",
+        "dominant_currency": "USD",
+        "tension_summary": "The macro backdrop is firmer for USD as softer global demand pressures NZD.",
+        "left_reason": "NZD is pressured by softer global demand",
+        "right_reason": "USD still has firmer policy support",
+        "interaction_reason": "That gap gives USD the firmer backdrop in NZD/USD.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support."
+      },
+      "tension_summary": "The macro backdrop is firmer for USD as softer global demand pressures NZD.",
+      "interaction_reason": "That gap gives USD the firmer backdrop in NZD/USD.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or USD loses support."
+    },
+    {
+      "pair": "EUR/GBP",
+      "base": "EUR",
+      "quote": "GBP",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Weak",
+      "quote_label": "Supported",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "GBP: Sticky inflation keeps GBP supported"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than EUR",
+      "narrative": {
+        "pair": "EUR/GBP",
+        "dominant_currency": "GBP",
+        "tension_summary": "The macro backdrop is firmer for GBP while growth pressures EUR.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "GBP is shaped by inflation pressure",
+        "interaction_reason": "That gap gives GBP the firmer backdrop in EUR/GBP.",
+        "what_changes_this": "The imbalance would narrow if EUR growth improves or GBP loses support."
+      },
+      "tension_summary": "The macro backdrop is firmer for GBP while growth pressures EUR.",
+      "interaction_reason": "That gap gives GBP the firmer backdrop in EUR/GBP.",
+      "what_changes_this": "The imbalance would narrow if EUR growth improves or GBP loses support."
+    },
+    {
+      "pair": "EUR/JPY",
+      "base": "EUR",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/JPY",
+        "dominant_currency": null,
+        "tension_summary": "EUR and JPY do not show one clean macro imbalance right now.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "EUR and JPY do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "GBP/JPY",
+      "base": "GBP",
+      "quote": "JPY",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Sticky inflation keeps GBP supported",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than JPY",
+      "narrative": {
+        "pair": "GBP/JPY",
+        "dominant_currency": "GBP",
+        "tension_summary": "The macro backdrop is firmer for GBP than JPY.",
+        "left_reason": "GBP is shaped by inflation pressure",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/JPY.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY."
+      },
+      "tension_summary": "The macro backdrop is firmer for GBP than JPY.",
+      "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/JPY.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward JPY."
+    },
+    {
+      "pair": "EUR/AUD",
+      "base": "EUR",
+      "quote": "AUD",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "AUD: China demand is pressuring AUD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/AUD",
+        "dominant_currency": null,
+        "tension_summary": "EUR and AUD do not show one clean macro imbalance right now.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "AUD is pressured by softer global demand",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "EUR and AUD do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "EUR/CAD",
+      "base": "EUR",
+      "quote": "CAD",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Neutral",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "CAD: Oil and US demand are driving CAD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/CAD",
+        "dominant_currency": null,
+        "tension_summary": "EUR and CAD do not show one clean macro imbalance right now.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "CAD is pressured by softer oil and demand",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "EUR and CAD do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "GBP/AUD",
+      "base": "GBP",
+      "quote": "AUD",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Sticky inflation keeps GBP supported",
+        "AUD: China demand is pressuring AUD"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than AUD",
+      "narrative": {
+        "pair": "GBP/AUD",
+        "dominant_currency": "GBP",
+        "tension_summary": "The macro backdrop is firmer for GBP as softer global demand weighs on AUD.",
+        "left_reason": "GBP is shaped by inflation pressure",
+        "right_reason": "AUD is pressured by softer global demand",
+        "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/AUD.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support."
+      },
+      "tension_summary": "The macro backdrop is firmer for GBP as softer global demand weighs on AUD.",
+      "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/AUD.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support."
+    },
+    {
+      "pair": "AUD/JPY",
+      "base": "AUD",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "AUD: China demand is pressuring AUD",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "AUD/JPY",
+        "dominant_currency": null,
+        "tension_summary": "AUD and JPY do not show one clean macro imbalance right now.",
+        "left_reason": "AUD is pressured by softer global demand",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "AUD and JPY do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "NZD/JPY",
+      "base": "NZD",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "NZD: Global demand is weighing on NZD",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "NZD/JPY",
+        "dominant_currency": null,
+        "tension_summary": "NZD and JPY do not show one clean macro imbalance right now.",
+        "left_reason": "NZD is pressured by softer global demand",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "NZD and JPY do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "GBP/CHF",
+      "base": "GBP",
+      "quote": "CHF",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Sticky inflation keeps GBP supported",
+        "CHF: Calmer markets are changing risk mood"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than CHF",
+      "narrative": {
+        "pair": "GBP/CHF",
+        "dominant_currency": "GBP",
+        "tension_summary": "The macro backdrop is firmer for GBP than CHF.",
+        "left_reason": "GBP is shaped by inflation pressure",
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/CHF.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
+      },
+      "tension_summary": "The macro backdrop is firmer for GBP than CHF.",
+      "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/CHF.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
+    },
+    {
+      "pair": "EUR/CHF",
+      "base": "EUR",
+      "quote": "CHF",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "EUR: Growth remains the euro's main challenge",
+        "CHF: Calmer markets are changing risk mood"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "EUR/CHF",
+        "dominant_currency": null,
+        "tension_summary": "EUR and CHF do not show one clean macro imbalance right now.",
+        "left_reason": "EUR is held back by weaker growth",
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "EUR and CHF do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "AUD/NZD",
+      "base": "AUD",
+      "quote": "NZD",
+      "state": "Mixed macro picture",
+      "base_label": "Weak",
+      "quote_label": "Weak",
+      "drivers": [
+        "AUD: China demand is pressuring AUD",
+        "NZD: Global demand is weighing on NZD"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "AUD/NZD",
+        "dominant_currency": null,
+        "tension_summary": "AUD and NZD are being shaped by a similar macro driver.",
+        "left_reason": "AUD is pressured by softer global demand",
+        "right_reason": "NZD is pressured by softer global demand",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "AUD and NZD are being shaped by a similar macro driver.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "CAD/JPY",
+      "base": "CAD",
+      "quote": "JPY",
+      "state": "Mixed macro picture",
+      "base_label": "Neutral",
+      "quote_label": "Weak",
+      "drivers": [
+        "CAD: Oil and US demand are driving CAD",
+        "JPY: Risk mood remains the main yen driver"
+      ],
+      "takeaway": "The two currencies do not show a clean macro contrast right now",
+      "narrative": {
+        "pair": "CAD/JPY",
+        "dominant_currency": null,
+        "tension_summary": "CAD and JPY do not show one clean macro imbalance right now.",
+        "left_reason": "CAD is pressured by softer oil and demand",
+        "right_reason": "JPY has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided.",
+        "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+      },
+      "tension_summary": "CAD and JPY do not show one clean macro imbalance right now.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "what_changes_this": "A clearer shift in one side would make the pair easier to read."
+    },
+    {
+      "pair": "GBP/NZD",
+      "base": "GBP",
+      "quote": "NZD",
+      "state": "GBP has the firmer macro backdrop",
+      "base_label": "Supported",
+      "quote_label": "Weak",
+      "drivers": [
+        "GBP: Sticky inflation keeps GBP supported",
+        "NZD: Global demand is weighing on NZD"
+      ],
+      "takeaway": "The macro backdrop is firmer for GBP than NZD",
+      "narrative": {
+        "pair": "GBP/NZD",
+        "dominant_currency": "GBP",
+        "tension_summary": "The macro backdrop is firmer for GBP as softer global demand weighs on NZD.",
+        "left_reason": "GBP is shaped by inflation pressure",
+        "right_reason": "NZD is pressured by softer global demand",
+        "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/NZD.",
+        "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support."
+      },
+      "tension_summary": "The macro backdrop is firmer for GBP as softer global demand weighs on NZD.",
+      "interaction_reason": "That gap gives GBP the firmer backdrop in GBP/NZD.",
+      "what_changes_this": "The imbalance would narrow if global demand improves or GBP loses support."
+    }
+  ],
+  "lucid_events": []
+}

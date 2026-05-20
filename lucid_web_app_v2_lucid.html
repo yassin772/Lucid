@@ -1,0 +1,2550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="supabase-url" content=""/>
+<meta name="supabase-anon-key" content=""/>
+<title>Lucid - Macro Understanding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/supabase_config.js"></script>
+<script src="./js/supabase_config.local.js"></script>
+<script src="./js/supabase_client.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+body { font-family: "DM Sans", system-ui, sans-serif; overflow-x: hidden; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(83,71,232,0.22); border-radius: 4px; }
+[data-dark="true"] { color-scheme: dark; }
+.show-mobile { display: none !important; }
+.show-desktop { display: flex !important; }
+@media (max-width: 768px) {
+  .show-mobile { display: flex !important; }
+  .show-desktop { display: none !important; }
+  .sidebar { display: none !important; }
+  .app-layout { grid-template-columns: 1fr !important; }
+  .main-header { padding: 14px 16px !important; }
+  .content-area { padding: 18px 16px 112px !important; }
+  .page-title { font-size: 40px !important; }
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .status-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .macro-hero { padding: 38px 24px !important; border-radius: 24px !important; min-height: 420px !important; }
+  .macro-hero { clip-path: inset(0 round 24px); -webkit-clip-path: inset(0 round 24px); }
+  .detail-hero { padding: 28px 22px !important; border-radius: 20px !important; }
+  .detail-headline { font-size: 38px !important; }
+  .mood-note { flex-basis: 100%; }
+  .currency-card { min-height: auto !important; padding: 20px !important; border-radius: 20px !important; }
+  .currency-headline { font-size: 17px !important; line-height: 1.38 !important; margin-bottom: 10px !important; }
+  .currency-meta-row { gap: 5px !important; margin-bottom: 10px !important; }
+  .meta-pill { padding: 5px 8px !important; font-size: 10px !important; }
+  .currency-driver { padding: 11px 12px !important; margin-bottom: 0 !important; }
+  .currency-driver-label,
+  .currency-also-label,
+  .currency-support-list { display: none !important; }
+  .pair-card { min-height: auto !important; padding: 18px !important; }
+  .pair-card h3 { font-size: 22px !important; }
+  .pair-visual { margin: 14px 0 12px !important; }
+  .section-block { margin-top: 76px !important; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes expandStory {
+  from { opacity: 0; transform: translateY(-8px); max-height: 0; }
+  to { opacity: 1; transform: translateY(0); max-height: 420px; }
+}
+.fade-up,
+.page-enter { animation: pageIn 0.38s ease both; }
+.hero-enter { animation: heroIn 0.52s cubic-bezier(.2,.7,.2,1) both; }
+.reveal { animation: revealUp 0.42s ease both; }
+.reveal-1 { animation-delay: 0.05s; }
+.reveal-2 { animation-delay: 0.12s; }
+.reveal-3 { animation-delay: 0.19s; }
+.reveal-4 { animation-delay: 0.26s; }
+.reveal-5 { animation-delay: 0.33s; }
+.interactive-card {
+  transition: transform 0.32s cubic-bezier(.2,.7,.2,1), box-shadow 0.32s ease, border-color 0.32s ease, background 0.32s ease;
+}
+.interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(123,108,246,0.028);
+}
+.interactive-card:focus-visible,
+.nav-button:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid rgba(123, 108, 246, 0.72);
+  outline-offset: 3px;
+}
+.nav-button {
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.nav-button:hover { transform: translateY(-1px); }
+.timeline-inline { animation: expandStory 0.28s ease both; overflow: hidden; }
+.macro-hero {
+  isolation: isolate;
+  contain: paint;
+  transform: translateZ(0);
+  clip-path: inset(0 round 32px);
+  -webkit-clip-path: inset(0 round 32px);
+}
+.macro-hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -14%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(183, 139, 255, 0.40), transparent 30%),
+    radial-gradient(circle at 18% 86%, rgba(45, 21, 122, 0.46), transparent 38%),
+    radial-gradient(circle at 52% 54%, rgba(123, 108, 246, 0.30), transparent 48%);
+  filter: blur(10px);
+}
+.macro-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.14), transparent 22%, transparent 72%, rgba(255,255,255,0.08)),
+    radial-gradient(circle at 50% 115%, rgba(255,255,255,0.18), transparent 34%);
+  opacity: 0.68;
+}
+.macro-hero > * {
+  position: relative;
+  z-index: 1;
+}
+.cinematic-panel {
+  position: relative;
+}
+.cinematic-panel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.10));
+  opacity: 0.38;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  padding: 1px;
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+  .interactive-card:hover,
+  .nav-button:hover { transform: none !important; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const payloadParam = new URLSearchParams(window.location.search).get("payload");
+const LUCID_API_URL = payloadParam || "./api/lucid_payload.json";
+const DISCLAIMER = "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.";
+
+function uncachedUrl(url) {
+  try {
+    const nextUrl = new URL(url, window.location.href);
+    nextUrl.searchParams.set("_lucid_ts", String(Date.now()));
+    return nextUrl.toString();
+  } catch {
+    const separator = url.includes("?") ? "&" : "?";
+    return `${url}${separator}_lucid_ts=${Date.now()}`;
+  }
+}
+const CURRENCY_ORDER = ["USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "NZD"];
+
+const samplePayload = {
+  generated_at: "Today",
+  source: "Sample Lucid payload",
+  summary_mode: "Sample",
+  disclaimer: DISCLAIMER,
+  market_story: {
+    title: "The market is focused on rates and growth",
+    body: "The dollar still has support from high rates, while Europe and Japan need stronger economic strength.",
+    drivers: [
+      "US rates remain high",
+      "European growth is still soft",
+      "Japan remains sensitive to policy language",
+    ],
+  },
+  macro_shock: null,
+  narrative_focus: null,
+  lucid_summaries: {
+    USD: {
+      currency: "USD",
+      label: "Supported",
+      confidence: "High",
+      timeframe: "Medium-term",
+      headline: "The Fed is keeping rates high",
+      reasons: [
+        "US rates still attract capital",
+        "Recent US data is holding up",
+      ],
+      invalidation: "This view weakens if US inflation slows or the Fed sounds more careful",
+      insight: "The dollar still has economic support behind it",
+      key_event: "Fed comments this week",
+    },
+    EUR: {
+      currency: "EUR",
+      label: "Weak",
+      confidence: "High",
+      timeframe: "Medium-term",
+      headline: "Growth is weighing on the euro",
+      reasons: [
+        "Europe's economy lacks strength",
+        "The ECB is becoming more careful",
+      ],
+      invalidation: "This view weakens if European growth improves or the ECB sounds less cautious",
+      insight: "The euro needs stronger growth to regain support",
+      key_event: "Euro area inflation this week",
+    },
+    GBP: {
+      currency: "GBP",
+      label: "Neutral",
+      confidence: "Medium",
+      timeframe: "Mixed",
+      headline: "The pound is waiting for clarity",
+      reasons: [
+        "UK growth is uneven",
+        "Inflation still matters for the BOE",
+      ],
+      invalidation: "This view changes when UK data gives a clearer picture",
+      insight: "The pound is caught between growth worries and inflation",
+      key_event: "BOE comments this week",
+    },
+    JPY: {
+      currency: "JPY",
+      label: "Weak",
+      confidence: "Medium",
+      timeframe: "Mixed",
+      headline: "Calm markets reduce yen demand",
+      reasons: [
+        "Low rates make the yen less attractive",
+        "Investors are not seeking safety aggressively",
+      ],
+      invalidation: "This view changes if market stress rises or the BOJ sounds less cautious",
+      insight: "The yen needs either policy change or market stress",
+      key_event: "BOJ communication this week",
+    },
+    CHF: {
+      currency: "CHF",
+      label: "Neutral",
+      confidence: "Low",
+      timeframe: "Mixed",
+      headline: "Franc steady with no strong catalyst",
+      reasons: [
+        "Swiss stability remains supportive",
+        "Calm markets limit defensive demand",
+      ],
+      invalidation: "This view changes if market stress rises clearly",
+      insight: "The franc is mostly waiting for a change in market mood",
+      key_event: null,
+    },
+    CAD: {
+      currency: "CAD",
+      label: "Neutral",
+      confidence: "Low",
+      timeframe: "Mixed",
+      headline: "Canada is waiting on oil and growth",
+      reasons: [
+        "Oil prices remain important",
+        "US demand is the main external driver",
+      ],
+      invalidation: "This view changes if oil or Canadian data gives a clearer picture",
+      insight: "The Canadian dollar needs a clearer global growth story",
+      key_event: "Canada GDP this week",
+    },
+    AUD: {
+      currency: "AUD",
+      label: "Neutral",
+      confidence: "Low",
+      timeframe: "Mixed",
+      headline: "Global demand is the key driver",
+      reasons: [
+        "China and commodities matter most",
+        "The RBA is watching inflation carefully",
+      ],
+      invalidation: "This view changes if China data or RBA language becomes clearer",
+      insight: "The Australian dollar moves with global confidence",
+      key_event: "Australia CPI this week",
+    },
+    NZD: {
+      currency: "NZD",
+      label: "Neutral",
+      confidence: "Low",
+      timeframe: "Mixed",
+      headline: "The kiwi needs a clearer catalyst",
+      reasons: [
+        "Local growth is not strong enough",
+        "Global sentiment remains important",
+      ],
+      invalidation: "This view changes if local data or global sentiment becomes clearer",
+      insight: "The New Zealand dollar is waiting for stronger evidence",
+      key_event: null,
+    },
+  },
+  lucid_events: [
+    {
+      title: "US inflation",
+      timing_label: "Today",
+      currency: "USD",
+      why_it_matters: "Inflation tells the Fed how much pressure remains",
+      market_focus: "Whether prices are cooling or staying sticky",
+      insight: "Slower inflation can reduce support for a currency",
+    },
+    {
+      title: "ECB comments",
+      timing_label: "This week",
+      currency: "EUR",
+      why_it_matters: "The ECB explains how it sees growth and inflation",
+      market_focus: "Whether weak growth makes the bank more careful",
+      insight: "The tone helps explain the euro backdrop",
+    },
+    {
+      title: "Canada GDP",
+      timing_label: "This week",
+      currency: "CAD",
+      why_it_matters: "GDP shows whether the economy is growing or slowing",
+      market_focus: "Whether growth is strong enough to support the currency",
+      insight: "Weak growth can make a currency feel less attractive",
+    },
+  ],
+  lucid_pairs: [
+    {
+      pair: "EUR/USD",
+      base: "EUR",
+      quote: "USD",
+      state: "USD has the firmer macro backdrop",
+      base_label: "Weak",
+      quote_label: "Supported",
+      drivers: [
+        "EUR: Growth is weighing on the euro",
+        "USD: The Fed is keeping rates high",
+      ],
+      takeaway: "The macro backdrop is firmer for USD than EUR",
+    },
+    {
+      pair: "GBP/USD",
+      base: "GBP",
+      quote: "USD",
+      state: "Mixed macro picture",
+      base_label: "Neutral",
+      quote_label: "Supported",
+      drivers: [
+        "GBP: The pound is waiting for clarity",
+        "USD: The Fed is keeping rates high",
+      ],
+      takeaway: "The two currencies do not show a clean macro contrast right now",
+    },
+  ],
+};
+
+const names = {
+  USD: "US Dollar",
+  EUR: "Euro",
+  GBP: "British Pound",
+  JPY: "Japanese Yen",
+  CHF: "Swiss Franc",
+  CAD: "Canadian Dollar",
+  AUD: "Australian Dollar",
+  NZD: "New Zealand Dollar",
+};
+
+const lightTheme = {
+  isDark: false,
+  bg: "#F4F1EC",
+  card: "#FEFEFE",
+  ink: "#0E1825",
+  muted: "#8C909A",
+  border: "#EDEAD4",
+  accent: "#5347E8",
+  accentDim: "#5347E814",
+  sidebar: "#FEFEFE",
+  sidebarBorder: "#EDEAD4",
+  inputBg: "#F0EDE5",
+};
+
+const darkTheme = {
+  isDark: true,
+  bg: "#070B11",
+  card: "#0D121A",
+  ink: "#F0F3F8",
+  muted: "#89919F",
+  border: "#1A202A",
+  accent: "#7B6CF6",
+  accentDim: "#7B6CF612",
+  sidebar: "#080D14",
+  sidebarBorder: "#1B2330",
+  inputBg: "#10161F",
+};
+
+function normalizePayload(payload) {
+  const rawSummaries = payload?.lucid_summaries || payload?.summaries || samplePayload.lucid_summaries;
+  const summaryMap = Array.isArray(rawSummaries)
+    ? Object.fromEntries(rawSummaries.map((item) => [item.currency, item]))
+    : rawSummaries;
+  const summaries = CURRENCY_ORDER
+    .map((code) => summaryMap?.[code])
+    .filter(Boolean);
+  return {
+    generated_at: payload?.generated_at || samplePayload.generated_at,
+    source: payload?.source || samplePayload.source,
+    summary_mode: payload?.summary_mode || samplePayload.summary_mode,
+    disclaimer: payload?.disclaimer || samplePayload.disclaimer,
+    market_story: payload?.market_story || samplePayload.market_story,
+    macro_shock: payload?.macro_shock || null,
+    narrative_focus: payload?.narrative_focus || null,
+    price_alignment: payload?.price_alignment || null,
+    summaries,
+    events: payload?.lucid_events || samplePayload.lucid_events,
+    pairs: payload?.lucid_pairs || samplePayload.lucid_pairs,
+  };
+}
+
+function formatNarrativeTheme(theme) {
+  const labels = {
+    us_policy: "US policy",
+    us_inflation: "US inflation",
+    europe_growth: "European growth",
+    uk_inflation: "UK inflation",
+    china_global_demand: "China & global demand",
+    oil_cad: "Oil & CAD",
+    risk_mood: "Market mood",
+    safe_haven: "Defensive currencies",
+    macro_pressure: "Macro pressure",
+    central_bank_guidance: "Central bank guidance",
+    commodities: "Commodities",
+    global_macro_backdrop: "Global macro backdrop",
+  };
+  return labels[theme] || "";
+}
+
+function narrativeFocusMatchesStory(focus, story) {
+  if (!focus?.theme) return false;
+  const text = `${story?.title || ""} ${story?.body || ""}`.toLowerCase();
+  const tokens = {
+    us_policy: ["usd", "dollar", "fed", "us ", "rate", "policy"],
+    us_inflation: ["usd", "dollar", "fed", "us ", "inflation", "cpi"],
+    europe_growth: ["eur", "euro", "europe", "growth"],
+    uk_inflation: ["gbp", "pound", "uk", "boe", "inflation"],
+    china_global_demand: ["aud", "nzd", "china", "global demand", "commodity", "cyclical"],
+    oil_cad: ["cad", "canadian", "oil"],
+    risk_mood: ["risk", "mood", "defensive", "safe", "jpy", "chf", "yen", "franc"],
+    safe_haven: ["safe", "defensive", "jpy", "chf", "yen", "franc"],
+    macro_pressure: ["pressure", "oil", "risk", "geopolitical"],
+    central_bank_guidance: ["guidance", "central bank", "fed", "ecb", "boe", "boj", "policy"],
+    commodities: ["commodity", "oil", "cad", "aud", "nzd"],
+    global_macro_backdrop: ["global", "macro", "market"],
+  };
+  return (tokens[focus.theme] || []).some((token) => text.includes(token));
+}
+
+function formatGeneratedAt(value) {
+  if (!value || value === "Today") return formatDisplayDate(value);
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+}
+
+function formatDisplayDate(value) {
+  const date = value && value !== "Today" ? new Date(value) : new Date();
+  if (Number.isNaN(date.getTime())) return "Today";
+  return date.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+}
+
+function dataSourceLabel(data) {
+  if (data.summary_mode === "Narrative-derived") return "Macro context";
+  if (data.summary_mode === "Calendar-derived") return "Economic calendar";
+  return "Sample data";
+}
+
+function dataModeNote(data) {
+  if (data.summary_mode === "Narrative-derived") return "Full macro view";
+  if (data.summary_mode === "Calendar-derived") return "Calendar view";
+  return "Preview mode";
+}
+
+function useLucidData() {
+  const [state, setState] = React.useState({
+    data: normalizePayload(samplePayload),
+    loading: Boolean(LUCID_API_URL),
+    error: null,
+  });
+
+  React.useEffect(() => {
+    if (!LUCID_API_URL) return;
+    let active = true;
+    fetch(uncachedUrl(LUCID_API_URL), { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then((payload) => {
+        if (active) setState({ data: normalizePayload(payload), loading: false, error: null });
+      })
+      .catch((error) => {
+        if (active) setState({ data: normalizePayload(samplePayload), loading: false, error: error.message });
+      });
+    return () => { active = false; };
+  }, []);
+
+  return state;
+}
+
+function useLucidAuth() {
+  const configured = Boolean(window.LucidSupabase?.isConfigured());
+  const [state, setState] = React.useState({
+    loading: configured,
+    configured,
+    session: null,
+    profile: null,
+    error: null,
+  });
+
+  React.useEffect(() => {
+    let active = true;
+    if (!configured) {
+      setState((current) => ({ ...current, loading: false }));
+      return () => { active = false; };
+    }
+
+    async function loadAuth() {
+      try {
+        const { data, error } = await window.LucidSupabase.getSession();
+        if (error) throw error;
+
+        const session = data.session;
+        if (!session?.user) {
+          window.location.href = "auth.html?mode=login";
+          return;
+        }
+
+        const profileResult = await window.LucidSupabase.getProfile(session.user);
+        if (profileResult.error) {
+          console.error("[Lucid auth] profile query failed", profileResult.error);
+          console.error("[Lucid auth] profile diagnostics", profileResult.diagnostics);
+          const message = "We could not verify your access. Please sign in again. If this continues, contact support.";
+          throw new Error(message);
+        }
+        const profile = profileResult.profile;
+
+        if (profile && !window.LucidSupabase.hasAccess(profile)) {
+          await window.LucidSupabase.markExpired(profile);
+        }
+
+        if (active) {
+          setState({ loading: false, configured: true, session, profile, error: null });
+        }
+      } catch (error) {
+        if (active) {
+          setState({ loading: false, configured: true, session: null, profile: null, error: error.message });
+        }
+      }
+    }
+
+    loadAuth();
+    return () => { active = false; };
+  }, [configured]);
+
+  return state;
+}
+
+function AuthShell({ t, title, body, children }) {
+  return (
+    <div className="page-enter" style={{ background: t.bg, minHeight: "100vh", display: "grid", placeItems: "center", padding: 24 }}>
+      <section className="hero-enter" style={{
+        width: "min(620px, 100%)",
+        background: t.card,
+        border: `1px solid ${t.border}`,
+        borderRadius: 24,
+        padding: "34px 32px",
+        boxShadow: "0 30px 86px rgba(10,15,35,0.14)",
+      }}>
+        <p style={{ color: t.accent, fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 900, marginBottom: 12 }}>Lucid access</p>
+        <h1 style={{ color: t.ink, fontFamily: "'Instrument Serif',serif", fontSize: 54, lineHeight: 0.98, fontWeight: 400, marginBottom: 16 }}>{title}</h1>
+        <p style={{ color: t.muted, fontSize: 15, lineHeight: 1.7, marginBottom: 22 }}>{body}</p>
+        {children}
+        <p style={{ color: t.muted, fontSize: 11, lineHeight: 1.55, marginTop: 24 }}>{DISCLAIMER}</p>
+      </section>
+    </div>
+  );
+}
+
+function AuthSetupScreen({ t }) {
+  return (
+    <AuthShell
+      t={t}
+      title="Supabase is not configured yet."
+      body="Add your Supabase URL and anon key before enabling app access. The frontend only uses the public anon key with RLS policies."
+    >
+      <a href="auth.html?mode=login" style={{ color: t.accent, fontSize: 14, fontWeight: 850 }}>Open auth page</a>
+    </AuthShell>
+  );
+}
+
+function AuthLoadingScreen({ t }) {
+  return (
+    <AuthShell
+      t={t}
+      title="Checking access."
+      body="Lucid is verifying your session and trial state."
+    />
+  );
+}
+
+function TrialEndedScreen({ t, onLogout }) {
+  return (
+    <AuthShell
+      t={t}
+      title="Your trial has ended."
+      body="Your free reading period is over. Lucid is currently in early access, so continued access can be handled manually for now."
+    >
+      <button onClick={onLogout} style={{
+        border: `1px solid ${t.border}`,
+        background: t.inputBg,
+        color: t.ink,
+        borderRadius: 999,
+        padding: "11px 15px",
+        fontWeight: 850,
+      }}>
+        Logout
+      </button>
+    </AuthShell>
+  );
+}
+
+function labelStyle(label, t) {
+  if (label === "Supported") return { color: t.accent, bg: t.accentDim, text: "Supported" };
+  if (label === "Weak") return { color: t.isDark ? "#C9836F" : "#C05A42", bg: t.isDark ? "rgba(201,131,111,0.105)" : "rgba(192,90,66,0.12)", text: "Weak" };
+  return { color: t.muted, bg: t.inputBg, text: "Neutral" };
+}
+
+function calendarAttentionLabel(summary) {
+  return summary?.key_event ? "In focus" : "Quiet";
+}
+
+function currencyDisplayLabel(summary, summaryMode) {
+  if (summaryMode === "Calendar-derived") return calendarAttentionLabel(summary);
+  return summary?.label || "Neutral";
+}
+
+function currencyBadgeStyle(summary, summaryMode, t) {
+  const label = currencyDisplayLabel(summary, summaryMode);
+  if (label === "In focus") {
+    return {
+      color: t.accent,
+      bg: t.isDark ? "rgba(123,108,246,0.105)" : "rgba(83,71,232,0.12)",
+      text: "In focus",
+    };
+  }
+  if (label === "Quiet") {
+    return {
+      color: t.muted,
+      bg: t.inputBg,
+      text: "Quiet",
+    };
+  }
+  return labelStyle(label, t);
+}
+
+function labelSurface(label, t) {
+  const supportedTint = t.isDark ? "rgba(123,108,246,0.052)" : "rgba(83,71,232,0.105)";
+  const supportedWash = t.isDark ? "rgba(123,108,246,0.034)" : "rgba(83,71,232,0.070)";
+  const supportedBorder = t.isDark ? "rgba(123,108,246,0.135)" : "rgba(83,71,232,0.18)";
+  const supportedGlow = t.isDark ? "0 18px 46px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.035)" : "0 20px 54px rgba(83,71,232,0.080), inset 0 1px 0 rgba(255,255,255,0.50)";
+  const weakTint = t.isDark ? "rgba(201,131,111,0.045)" : "rgba(192,90,66,0.095)";
+  const weakWash = t.isDark ? "rgba(201,131,111,0.030)" : "rgba(192,90,66,0.065)";
+  const weakBorder = t.isDark ? "rgba(201,131,111,0.130)" : "rgba(192,90,66,0.18)";
+  const weakGlow = t.isDark ? "0 18px 44px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.032)" : "0 20px 54px rgba(192,90,66,0.060), inset 0 1px 0 rgba(255,255,255,0.48)";
+  const neutralTint = t.isDark ? "rgba(137,145,159,0.040)" : "rgba(140,144,154,0.075)";
+  const neutralGlow = t.isDark ? "0 18px 44px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.030)" : "0 18px 48px rgba(10, 15, 35, 0.050), inset 0 1px 0 rgba(255,255,255,0.45)";
+  if (label === "Supported") {
+    return {
+      bg: `radial-gradient(circle at 92% 8%, ${supportedTint}, transparent 34%), linear-gradient(145deg, ${t.card} 0%, ${supportedWash} 100%)`,
+      border: supportedBorder,
+      glow: supportedGlow,
+      accent: t.accent,
+    };
+  }
+  if (label === "Weak") {
+    return {
+      bg: `radial-gradient(circle at 92% 8%, ${weakTint}, transparent 34%), linear-gradient(145deg, ${t.card} 0%, ${weakWash} 100%)`,
+      border: weakBorder,
+      glow: weakGlow,
+      accent: t.isDark ? "#C9836F" : "#C05A42",
+    };
+  }
+  return {
+    bg: `radial-gradient(circle at 92% 8%, ${neutralTint}, transparent 34%), linear-gradient(145deg, ${t.card} 0%, ${t.inputBg} 100%)`,
+    border: t.border,
+    glow: neutralGlow,
+    accent: t.muted,
+  };
+}
+
+function driverTone(t, surface) {
+  return {
+    bg: "rgba(140,144,154,0.070)",
+    border: t.border,
+    color: surface?.accent || t.muted,
+    bullet: surface?.accent || t.muted,
+  };
+}
+
+function pairSurface(item, t, muted) {
+  const base = labelSurface(item.base_label, t);
+  const quote = labelSurface(item.quote_label, t);
+  const interactionType = item?.narrative?.interaction_type || item?.interaction_type || "";
+  const relational = interactionType && interactionType !== "mixed_macro_forces";
+  const relevant = relational && (item?.has_key_event || item?.base_key_event || item?.quote_key_event || item?.narrative_focus_match);
+  const clear = !muted && !pairIsMixed(item);
+  const lively = clear || relational;
+  const tintFor = (label, side = "base") => {
+    if (label === "Supported") return t.isDark ? "rgba(123,108,246,0.075)" : "rgba(83,71,232,0.115)";
+    if (label === "Weak") return t.isDark ? "rgba(201,131,111,0.060)" : "rgba(192,90,66,0.100)";
+    if (relational) {
+      if (side === "base") return t.isDark ? "rgba(123,108,246,0.062)" : "rgba(83,71,232,0.090)";
+      return t.isDark ? "rgba(177,169,255,0.050)" : "rgba(123,108,246,0.070)";
+    }
+    return t.isDark ? "rgba(137,145,159,0.040)" : "rgba(140,144,154,0.060)";
+  };
+  const pressureFor = (label, side = "base") => {
+    if (label === "Supported") return t.isDark ? "rgba(123,108,246,0.155)" : "rgba(83,71,232,0.175)";
+    if (label === "Weak") return t.isDark ? "rgba(201,131,111,0.115)" : "rgba(192,90,66,0.145)";
+    if (relational) {
+      if (side === "base") return t.isDark ? "rgba(123,108,246,0.145)" : "rgba(83,71,232,0.145)";
+      return t.isDark ? "rgba(201,196,255,0.085)" : "rgba(123,108,246,0.105)";
+    }
+    return t.isDark ? "rgba(137,145,159,0.060)" : "rgba(140,144,154,0.085)";
+  };
+  return {
+    bg: lively
+      ? `radial-gradient(circle at 10% 12%, ${pressureFor(item.base_label, "base")}, transparent 36%), radial-gradient(circle at 90% 16%, ${pressureFor(item.quote_label, "quote")}, transparent 36%), linear-gradient(112deg, ${tintFor(item.base_label, "base")} 0%, ${t.card} 42%, ${t.card} 56%, ${tintFor(item.quote_label, "quote")} 100%)`
+      : `radial-gradient(circle at 88% 12%, rgba(140,144,154,0.075), transparent 34%), linear-gradient(145deg, ${t.card} 0%, ${t.inputBg} 100%)`,
+    border: lively
+      ? (t.isDark ? (relevant ? "rgba(123,108,246,0.22)" : "rgba(123,108,246,0.17)") : (relevant ? "rgba(83,71,232,0.25)" : "rgba(83,71,232,0.20)"))
+      : (t.isDark ? "rgba(137,145,159,0.12)" : "rgba(140,144,154,0.16)"),
+    glow: lively
+      ? (t.isDark ? `0 24px 62px rgba(0,0,0,0.30), 0 10px 30px rgba(83,71,232,${relevant ? 0.10 : 0.07}), inset 0 1px 0 rgba(255,255,255,0.042)` : `0 26px 72px rgba(83,71,232,${relevant ? 0.13 : 0.095}), 0 12px 34px rgba(10,15,35,0.055), inset 0 1px 0 rgba(255,255,255,0.56)`)
+      : (t.isDark ? "0 14px 38px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.026)" : "0 14px 38px rgba(10, 15, 35, 0.040), inset 0 1px 0 rgba(255,255,255,0.40)"),
+    leftAccent: base.accent,
+    rightAccent: quote.accent,
+    clear,
+    relational,
+    relevant,
+  };
+}
+
+function displayTimeframe(value) {
+  if (value === "Short-term") return "Near-term (next few weeks)";
+  if (value === "Medium-term") return "Medium-term (next few months)";
+  if (value === "Mixed") return "Mixed";
+  return value || "Mixed";
+}
+
+function biasText(summary, summaryMode) {
+  return `${summary.currency} - ${currencyDisplayLabel(summary, summaryMode)}`;
+}
+
+function mainDriver(summary) {
+  return (summary.reasons || [])[0] || summary.insight || "The macro picture is still developing";
+}
+
+function supportingReasons(summary) {
+  const reasons = (summary.reasons || []).slice(1, 3);
+  if (reasons.length) return reasons;
+  if (summary.insight && summary.insight !== mainDriver(summary)) return [summary.insight];
+  return [];
+}
+
+function shortEventTitle(event) {
+  const title = cleanDisplaySentence(event?.title || "");
+  if (!title) return "new macro data";
+  return title.replace(/\bDecision\b/g, "decision").replace(/\bRate\b/g, "rate");
+}
+
+function reframeNowTitle(title) {
+  const text = cleanDisplaySentence(title);
+  const lower = text.toLowerCase();
+  if (lower.includes("fed") && lower.includes("rates")) return "Policy remains restrictive";
+  if (lower.includes("weak growth")) return "Growth remains the pressure point";
+  if (lower.includes("inflation")) return "Inflation is still shaping policy";
+  if (lower.includes("risk mood")) return "Market mood is driving the story";
+  if (lower.includes("global demand")) return "Global demand remains the driver";
+  return text || "Macro direction is still forming";
+}
+
+function detectMacroThread(lead) {
+  const currency = lead?.currency || "";
+  const text = [
+    lead?.headline,
+    lead?.insight,
+    ...(lead?.reasons || []),
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  if (currency === "USD" || text.includes("fed") || text.includes("usd") || text.includes("jobs data") || text.includes("rate expectations")) {
+    return { key: "us_policy", currency: "USD" };
+  }
+  if (currency === "EUR" || text.includes("europe") || text.includes("euro") || text.includes("growth")) {
+    return { key: "europe_growth", currency: "EUR" };
+  }
+  if (currency === "GBP" || text.includes("inflation") || text.includes("boe")) {
+    return { key: "inflation_policy", currency: currency || "GBP" };
+  }
+  if (currency === "JPY" || currency === "CHF" || text.includes("risk mood") || text.includes("safety") || text.includes("franc") || text.includes("yen")) {
+    return { key: "market_mood", currency: currency || "JPY" };
+  }
+  if (currency === "CAD" || text.includes("oil")) {
+    return { key: "oil_demand", currency: "CAD" };
+  }
+  if (currency === "AUD" || currency === "NZD" || text.includes("global demand") || text.includes("commodity") || text.includes("china")) {
+    return { key: "global_demand", currency: currency || "AUD" };
+  }
+  return { key: "fallback", currency };
+}
+
+function eventMatchesThread(event, thread) {
+  if (!event || !thread) return false;
+  const currency = event.currency || "";
+  const title = `${event.title || ""} ${event.market_focus || ""} ${event.why_it_matters || ""}`.toLowerCase();
+  if (currency && currency === thread.currency) return true;
+  if (thread.key === "us_policy") {
+    return currency === "USD" || title.includes("fed") || title.includes("us ") || title.includes("employment") || title.includes("unemployment") || title.includes("inflation");
+  }
+  if (thread.key === "europe_growth") {
+    return currency === "EUR" || title.includes("ecb") || title.includes("europe") || title.includes("gdp") || title.includes("pmi");
+  }
+  if (thread.key === "inflation_policy") {
+    return currency === thread.currency || title.includes("inflation") || title.includes("central bank") || title.includes("boe");
+  }
+  if (thread.key === "market_mood") {
+    return currency === "JPY" || currency === "CHF" || title.includes("risk") || title.includes("safe") || title.includes("central bank");
+  }
+  if (thread.key === "oil_demand") {
+    return currency === "CAD" || title.includes("oil") || title.includes("canada");
+  }
+  if (thread.key === "global_demand") {
+    return currency === "AUD" || currency === "NZD" || title.includes("china") || title.includes("commodity") || title.includes("global demand") || title.includes("trade");
+  }
+  return currency && currency === thread.currency;
+}
+
+function coherentThreadEvent(events, thread) {
+  const matches = (events || []).filter((event) => eventMatchesThread(event, thread));
+  return matches.find((event) => event.importance === "high") || matches[0] || null;
+}
+
+function macroShockLine(shock) {
+  if (!shock) return null;
+  const chain = (shock.transmission_chain || []).slice(0, 3).join(" → ");
+  return chain || shock.explanation || shock.title;
+}
+
+function buildMacroTimeline(data) {
+  const summaries = sortedSummaries(data.summaries || []);
+  const lead = summaries[0] || {};
+  const events = data.events || [];
+  const thread = detectMacroThread(lead);
+  const event = coherentThreadEvent(events, thread);
+  const eventName = event ? shortEventTitle(event) : "";
+
+  const threads = {
+    us_policy: {
+      changed: event ? `Recent US data kept policy expectations in focus.` : "Recent US data has kept policy expectations in focus.",
+      now: lead.headline || "Rate expectations continue shaping USD.",
+      next: event ? `Upcoming US data could shift policy expectations.` : "The next US data release could shift policy expectations.",
+    },
+    europe_growth: {
+      changed: event ? `Recent European updates kept growth in focus.` : "Recent European data kept growth concerns in focus.",
+      now: lead.headline || "Growth remains the euro's main pressure point.",
+      next: event ? `Upcoming European data could change the growth picture.` : "The next European data update could change the growth picture.",
+    },
+    inflation_policy: {
+      changed: event ? `Recent policy guidance kept inflation in focus.` : "Recent data kept inflation and policy in focus.",
+      now: lead.headline || "Inflation is still shaping policy expectations.",
+      next: event ? `${eventName} could refine policy expectations.` : "The next inflation or central bank update could refine expectations.",
+    },
+    market_mood: {
+      changed: "Recent market moves kept defensive positioning in focus.",
+      now: lead.headline || "Market mood is driving safer currencies.",
+      next: event ? `${eventName} could shift market mood.` : "The next major macro update could shift market mood.",
+    },
+    oil_demand: {
+      changed: event ? `Recent Canadian updates kept demand in focus.` : "Recent market moves kept oil and demand in focus.",
+      now: lead.headline || "Oil and demand remain the main CAD drivers.",
+      next: event ? `${eventName} could refine the CAD story.` : "Oil and US demand will remain the key things to watch.",
+    },
+    global_demand: {
+      changed: "Recent data kept global demand in focus.",
+      now: lead.headline || "Global demand remains the main driver.",
+      next: event ? `${eventName} could refine the demand picture.` : "The next global demand update could change the picture.",
+    },
+    fallback: {
+      changed: "Recent updates have not created one clear macro shift.",
+      now: lead.headline || reframeNowTitle(data.market_story?.title || ""),
+      next: event ? `${eventName} could add more clarity.` : "The next major release could add more clarity.",
+    },
+  };
+  const story = threads[thread.key] || threads.fallback;
+
+  return [
+    {
+      label: "Past",
+      title: "What changed",
+      body: story.changed,
+    },
+    {
+      label: "Now",
+      title: "What matters now",
+      body: story.now,
+    },
+    {
+      label: "Next",
+      title: "What comes next",
+      body: story.next,
+    },
+  ];
+}
+
+function countByLabel(summaries, label) {
+  return summaries.filter((item) => item.label === label).length;
+}
+
+function confidenceScore(value) {
+  if (value === "High") return 3;
+  if (value === "Medium") return 2;
+  return 1;
+}
+
+function labelScore(value) {
+  if (value === "Supported") return 1;
+  if (value === "Weak") return -1;
+  return 0;
+}
+
+function summaryPriority(summary) {
+  const direction = summary.label === "Neutral" ? 0 : 8;
+  const eventBoost = summary.key_event ? 2 : 0;
+  return direction + confidenceScore(summary.confidence) + eventBoost;
+}
+
+function pairPriority(item) {
+  const contrast = Math.abs(labelScore(item.base_label) - labelScore(item.quote_label));
+  const clearState = item.state === "Mixed macro picture" ? 0 : 4;
+  const interactionType = item?.narrative?.interaction_type || item?.interaction_type || "";
+  const relational = interactionType && interactionType !== "mixed_macro_forces" ? 7 : 0;
+  const eventBoost = item?.has_key_event || item?.base_key_event || item?.quote_key_event ? 3 : 0;
+  const focusBoost = item?.narrative_focus_match ? 2 : 0;
+  return contrast * 10 + clearState + relational + eventBoost + focusBoost;
+}
+
+function sortedSummaries(summaries) {
+  return [...summaries].sort((a, b) => summaryPriority(b) - summaryPriority(a));
+}
+
+function sortedPairs(pairs) {
+  return [...(pairs || [])].sort((a, b) => pairPriority(b) - pairPriority(a));
+}
+
+function safePairText(item) {
+  return [item?.pair, item?.base, item?.quote].filter(Boolean).join(" ").toLowerCase();
+}
+
+function summaryByCurrency(summaries) {
+  return Object.fromEntries((summaries || []).map((summary) => [summary.currency, summary]));
+}
+
+function marketMood(summaries) {
+  const byCurrency = summaryByCurrency(summaries);
+  const labelFor = (currency) => byCurrency[currency]?.label || "Neutral";
+  const defensiveScore =
+    (labelFor("JPY") === "Supported" ? 2 : 0) +
+    (labelFor("CHF") === "Supported" ? 2 : 0) +
+    (labelFor("USD") === "Supported" ? 1 : 0) +
+    (labelFor("AUD") === "Weak" ? 1 : 0) +
+    (labelFor("NZD") === "Weak" ? 1 : 0);
+  const appetiteScore =
+    (labelFor("AUD") === "Supported" ? 2 : 0) +
+    (labelFor("NZD") === "Supported" ? 2 : 0) +
+    (labelFor("JPY") === "Weak" ? 1 : 0) +
+    (labelFor("CHF") === "Weak" ? 1 : 0);
+
+  if (defensiveScore >= 4 && defensiveScore > appetiteScore) {
+    const currency = labelFor("JPY") === "Supported" ? "JPY" : labelFor("CHF") === "Supported" ? "CHF" : "USD";
+    return {
+      tone: "Defensive",
+      body: "Investors are moving toward safer assets.",
+      note: `${currency} is benefiting from defensive positioning.`,
+    };
+  }
+  if (appetiteScore >= 3 && appetiteScore > defensiveScore) {
+    const currency = labelFor("AUD") === "Supported" ? "AUD" : "NZD";
+    return {
+      tone: "Risk appetite improving",
+      body: "Investors are more comfortable holding growth-sensitive currencies.",
+      note: `${currency} is benefiting as market confidence improves.`,
+    };
+  }
+  return {
+    tone: "Balanced",
+    body: "Investors are waiting for a clearer macro direction.",
+    note: "No single market mood is dominating currencies right now.",
+  };
+}
+
+function dominantRegionSignature(story, summaries) {
+  const title = `${story?.title || ""} ${story?.body || ""}`.toUpperCase();
+  const lead = sortedSummaries(summaries || [])[0]?.currency || "";
+  const code = CURRENCY_ORDER.find((currency) => title.includes(currency)) || lead || "USD";
+
+  if (code === "USD" || code === "CAD") {
+    return {
+      region: "North America",
+      glow: "rgba(108, 171, 255, 0.24)",
+      accent: "rgba(238, 244, 255, 0.18)",
+      shapes: [
+        "polygon(18% 20%, 68% 12%, 86% 35%, 72% 60%, 46% 54%, 26% 78%, 8% 54%)",
+        "polygon(48% 58%, 76% 66%, 62% 92%, 38% 82%)",
+      ],
+    };
+  }
+  if (code === "EUR" || code === "GBP" || code === "CHF") {
+    return {
+      region: "Europe",
+      glow: "rgba(206, 189, 255, 0.24)",
+      accent: "rgba(255, 255, 255, 0.17)",
+      shapes: [
+        "polygon(38% 18%, 62% 20%, 72% 38%, 60% 58%, 36% 54%, 26% 36%)",
+        "polygon(58% 54%, 76% 62%, 68% 78%, 48% 70%)",
+      ],
+    };
+  }
+  if (code === "JPY") {
+    return {
+      region: "East Asia",
+      glow: "rgba(255, 181, 202, 0.22)",
+      accent: "rgba(255, 238, 242, 0.18)",
+      shapes: [
+        "ellipse(28% 44% at 58% 34%)",
+        "ellipse(18% 34% at 42% 66%)",
+      ],
+    };
+  }
+  if (code === "AUD" || code === "NZD") {
+    return {
+      region: "Asia-Pacific",
+      glow: "rgba(112, 221, 211, 0.18)",
+      accent: "rgba(224, 255, 249, 0.14)",
+      shapes: [
+        "polygon(36% 48%, 68% 42%, 82% 66%, 58% 82%, 30% 70%)",
+        "ellipse(14% 26% at 78% 74%)",
+      ],
+    };
+  }
+  return {
+    region: "Global",
+    glow: "rgba(255, 255, 255, 0.16)",
+    accent: "rgba(255, 255, 255, 0.12)",
+    shapes: [
+      "ellipse(42% 58% at 52% 48%)",
+    ],
+  };
+}
+
+function RegionSignature({ story, summaries }) {
+  const signature = dominantRegionSignature(story, summaries);
+  return (
+    <div aria-hidden="true" className="reveal reveal-2" style={{
+      position: "absolute",
+      top: 38,
+      right: 38,
+      width: 164,
+      height: 126,
+      opacity: 0.72,
+      pointerEvents: "none",
+      mixBlendMode: "screen",
+    }}>
+      <div style={{
+        position: "absolute",
+        inset: "-18%",
+        borderRadius: "50%",
+        background: `radial-gradient(circle at 50% 45%, ${signature.glow}, transparent 58%)`,
+        filter: "blur(8px)",
+      }}></div>
+      {signature.shapes.map((shape, index) => (
+        <span key={index} style={{
+          position: "absolute",
+          inset: index === 0 ? "18px 16px 16px 14px" : "42px 18px 8px 52px",
+          background: index === 0 ? signature.accent : "rgba(255,255,255,0.10)",
+          clipPath: shape,
+          filter: "blur(0.2px)",
+          transform: index === 0 ? "rotate(-8deg)" : "rotate(10deg)",
+        }}></span>
+      ))}
+      <span style={{
+        position: "absolute",
+        right: 8,
+        top: 4,
+        color: "rgba(255,255,255,0.30)",
+        fontSize: 9,
+        fontWeight: 900,
+        letterSpacing: "0.16em",
+        textTransform: "uppercase",
+      }}>{signature.region}</span>
+    </div>
+  );
+}
+
+function pairIsMixed(item) {
+  const interactionType = item?.narrative?.interaction_type || item?.interaction_type || "";
+  const hasRelationalTheme = interactionType && interactionType !== "mixed_macro_forces";
+  return (item.state === "Mixed macro picture" && !hasRelationalTheme) || pairPriority(item) < 6;
+}
+
+function pairMatchesFilter(item, filter) {
+  if (filter === "clear") return !pairIsMixed(item);
+  if (filter === "mixed") return pairIsMixed(item);
+  return true;
+}
+
+function simplifyPairDriver(driver) {
+  if (!driver) return "";
+  const [code, text] = String(driver).split(":").map((part) => part.trim());
+  if (!text) return cleanDisplaySentence(driver);
+
+  const lower = text.toLowerCase();
+  if (lower.includes("fed") || lower.includes("rate")) return `${code} supported by rates`;
+  if (lower.includes("growth")) return `${code} pressured by weak growth`;
+  if (lower.includes("inflation")) return `${code} shaped by inflation`;
+  if (lower.includes("risk mood") || lower.includes("safety") || lower.includes("franc") || lower.includes("yen")) return `${code} driven by risk mood`;
+  if (lower.includes("china") || lower.includes("commodity")) return `${code} driven by China and commodities`;
+  if (lower.includes("oil")) return `${code} driven by oil and US demand`;
+  if (lower.includes("global demand")) return `${code} driven by global demand`;
+  return `${code} ${text.charAt(0).toLowerCase()}${text.slice(1)}`;
+}
+
+function pairNarrative(item) {
+  return item?.narrative || {};
+}
+
+function pairReasonLines(item) {
+  const narrative = pairNarrative(item);
+  const relational = [
+    narrative.interaction_reason,
+    narrative.left_reason,
+    narrative.right_reason,
+  ].filter(Boolean).map(cleanDisplaySentence);
+  if (relational.length) return relational;
+  return (item.drivers || []).map(simplifyPairDriver).filter(Boolean);
+}
+
+function pairReasonBlocks(item) {
+  const narrative = pairNarrative(item);
+  const blocks = [];
+  if (narrative.interaction_reason) {
+    blocks.push({ label: "Relationship", body: cleanDisplaySentence(narrative.interaction_reason) });
+  }
+  if (narrative.left_reason) {
+    blocks.push({ label: `${item.base} backdrop`, body: cleanDisplaySentence(narrative.left_reason) });
+  }
+  if (narrative.right_reason) {
+    blocks.push({ label: `${item.quote} backdrop`, body: cleanDisplaySentence(narrative.right_reason) });
+  }
+  if (blocks.length) return blocks;
+  return pairReasonLines(item).slice(0, 2).map((body, index) => ({
+    label: index === 0 ? "Relationship" : "Context",
+    body,
+  }));
+}
+
+function pairDirection(item) {
+  const baseScore = labelScore(item.base_label);
+  const quoteScore = labelScore(item.quote_label);
+  const baseWins = baseScore >= quoteScore;
+  if (baseScore === quoteScore) {
+    return {
+      strong: item.base,
+      weak: item.quote,
+      strongLabel: item.base_label,
+      weakLabel: item.quote_label,
+      mixed: true,
+    };
+  }
+  return {
+    strong: baseWins ? item.base : item.quote,
+    weak: baseWins ? item.quote : item.base,
+    strongLabel: baseWins ? item.base_label : item.quote_label,
+    weakLabel: baseWins ? item.quote_label : item.base_label,
+    mixed: false,
+  };
+}
+
+function pairSceneSentence(item) {
+  const summary = pairNarrative(item).tension_summary || item.tension_summary;
+  if (summary) return cleanDisplaySentence(summary);
+  const direction = pairDirection(item);
+  if (direction.mixed || pairIsMixed(item)) {
+    return `${item.pair} does not have one clear macro backdrop right now.`;
+  }
+  return `${direction.strong} has the firmer macro backdrop than ${direction.weak}.`;
+}
+
+function pairContrastLine(item) {
+  const summary = pairNarrative(item).tension_summary || item.tension_summary;
+  if (summary) return cleanDisplaySentence(summary);
+  const direction = pairDirection(item);
+  if (direction.mixed || pairIsMixed(item)) return "No clean macro backdrop stands out right now";
+  return `${direction.strong} has the firmer macro backdrop than ${direction.weak}`;
+}
+
+function pairInvalidation(item, summaries) {
+  const narrativeChange = pairNarrative(item).what_changes_this || item.what_changes_this;
+  if (narrativeChange) return cleanDisplaySentence(narrativeChange);
+  const direction = pairDirection(item);
+  const byCurrency = summaryByCurrency(summaries || []);
+  const weakSummary = byCurrency[direction.weak];
+  const strongSummary = byCurrency[direction.strong];
+  if (direction.mixed || pairIsMixed(item)) {
+    return "A clearer shift in one currency would make the pair easier to read.";
+  }
+  if (weakSummary?.invalidation) return weakSummary.invalidation;
+  if (strongSummary?.invalidation) return strongSummary.invalidation;
+  return `This could rebalance if ${direction.weak} gains a firmer macro backdrop or ${direction.strong} loses support.`;
+}
+
+function cleanDisplaySentence(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function formatImpact(value) {
+  if (value === "high") return "High impact";
+  if (value === "medium") return "Medium impact";
+  if (value === "low") return "Low impact";
+  return "";
+}
+
+function impactTone(value, t) {
+  if (value === "high") {
+    return {
+      label: "High impact",
+      message: "Market-moving event",
+      bg: t.isDark ? "rgba(123,108,246,0.090)" : "rgba(123,108,246,0.16)",
+      badgeBg: t.isDark ? "rgba(123,108,246,0.130)" : "rgba(123,108,246,0.22)",
+      color: t.accent,
+      border: t.isDark ? "rgba(123,108,246,0.260)" : "rgba(123,108,246,0.46)",
+      shadow: t.isDark ? "0 14px 32px rgba(0,0,0,0.18)" : "0 16px 36px rgba(123,108,246,0.16)",
+    };
+  }
+  if (value === "medium") {
+    return {
+      label: "Medium impact",
+      message: "Can shift expectations",
+      bg: t.accentDim,
+      badgeBg: t.accentDim,
+      color: t.accent,
+      border: t.isDark ? "rgba(123,108,246,0.170)" : "rgba(123,108,246,0.28)",
+      shadow: "none",
+    };
+  }
+  if (value === "low") {
+    return {
+      label: "Low impact",
+      message: "Limited impact expected",
+      bg: t.inputBg,
+      badgeBg: t.inputBg,
+      color: t.muted,
+      border: t.border,
+      shadow: "none",
+    };
+  }
+  return {
+    label: "",
+    message: "",
+    bg: t.inputBg,
+    badgeBg: t.inputBg,
+    color: t.muted,
+    border: t.border,
+    shadow: "none",
+  };
+}
+
+function parseUpcomingEvent(value) {
+  const text = cleanDisplaySentence(value);
+  const [main, rawImpact = ""] = text.split(" · ");
+  const impactMatch = rawImpact.match(/^(High|Medium|Low) impact$/i);
+  const impact = impactMatch ? impactMatch[1].toLowerCase() : "";
+  const timingPatterns = [
+    { regex: /\s(today)$/i, label: "Today" },
+    { regex: /\s(tomorrow)$/i, label: "Tomorrow" },
+    { regex: /\s(in \d+ days)$/i, label: null },
+    { regex: /\s([A-Z][a-z]+ \d{1,2})$/, label: null },
+  ];
+  for (const item of timingPatterns) {
+    const match = main.match(item.regex);
+    if (match) {
+      return {
+        title: main.slice(0, match.index).trim(),
+        timing: item.label || match[1].replace(/^in /i, "In "),
+        impact,
+      };
+    }
+  }
+  return { title: main, timing: "", impact };
+}
+
+function MetaPill({ label, value, t }) {
+  if (!value) return null;
+  return (
+    <span className="meta-pill" style={{
+      borderRadius: 999,
+      background: t.inputBg,
+      border: `1px solid ${t.border}`,
+      color: t.ink,
+      padding: "6px 10px",
+      fontSize: 11,
+      fontWeight: 800,
+      lineHeight: 1.15,
+      display: "inline-flex",
+      gap: 5,
+      alignItems: "center",
+    }}>
+      <span style={{ color: t.muted }}>{label}</span>
+      <span>{value}</span>
+    </span>
+  );
+}
+
+function trialDaysRemaining(profile) {
+  if (!profile?.trial_end || profile.subscription_status !== "trial") return null;
+  const ms = new Date(profile.trial_end).getTime() - Date.now();
+  if (!Number.isFinite(ms) || ms <= 0) return 0;
+  return Math.ceil(ms / 86400000);
+}
+
+function Sidebar({ tab, setTab, dark, toggleDark, t, userEmail, profile, onLogout }) {
+  const navItems = [
+    { id: "overview", label: "Today", sub: "Macro", icon: "T" },
+    { id: "movements", label: "Pairs", sub: "Contrast", icon: "P" },
+    { id: "learn", label: "Learn", sub: "Basics", icon: "L" },
+  ];
+
+  return (
+    <aside className="sidebar show-desktop" style={{
+      width: 220,
+      flexShrink: 0,
+      background: t.sidebar,
+      borderRight: `1px solid ${t.sidebarBorder}`,
+      display: "flex",
+      flexDirection: "column",
+      padding: "22px 12px",
+      height: "100vh",
+      position: "sticky",
+      top: 0,
+    }}>
+      <div style={{ padding: "0 8px 28px", display: "flex", alignItems: "center", gap: 9 }}>
+        <div style={{ width: 30, height: 30, borderRadius: 9, background: `linear-gradient(135deg,${t.accent},#7B5CF6)`, display: "grid", placeItems: "center", color: "#fff", fontWeight: 800 }}>L</div>
+        <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: 20, color: t.ink }}>Lucid</span>
+      </div>
+
+      <nav style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1 }}>
+        {navItems.map((item) => {
+          const active = tab === item.id;
+          return (
+            <button key={item.id} className="nav-button" onClick={() => setTab(item.id)} style={{
+              border: "none",
+              borderRadius: 11,
+              background: active ? t.accentDim : "transparent",
+              color: active ? t.ink : t.muted,
+              padding: "11px 12px",
+              display: "flex",
+              alignItems: "center",
+              gap: 11,
+              textAlign: "left",
+            }}>
+              <span style={{ width: 24, height: 24, borderRadius: 8, background: active ? t.accent : t.inputBg, color: active ? "#fff" : t.muted, display: "grid", placeItems: "center", fontSize: 11, fontWeight: 800 }}>{item.icon}</span>
+              <span style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                <span style={{ fontSize: 13, fontWeight: active ? 700 : 500 }}>{item.label}</span>
+                <span style={{ fontSize: 10, color: active ? t.accent : t.muted }}>{item.sub}</span>
+              </span>
+            </button>
+          );
+        })}
+      </nav>
+
+      <div style={{ display: "grid", gap: 8 }}>
+        {userEmail && (
+          <div style={{ padding: "0 4px" }}>
+            <p style={{ color: t.muted, fontSize: 11, lineHeight: 1.4, wordBreak: "break-word" }}>{userEmail}</p>
+            {trialDaysRemaining(profile) !== null && (
+              <p style={{ color: t.muted, opacity: 0.86, fontSize: 10, lineHeight: 1.4, marginTop: 4 }}>
+                Trial: {trialDaysRemaining(profile)} days remaining
+              </p>
+            )}
+            <a href="privacy.html" style={{ display: "inline-block", color: t.muted, opacity: 0.78, fontSize: 10, lineHeight: 1.4, marginTop: 5 }}>
+              Account deletion via privacy contact
+            </a>
+          </div>
+        )}
+        <button onClick={toggleDark} style={{
+          border: `1px solid ${t.border}`,
+          background: "transparent",
+          borderRadius: 11,
+          padding: "10px 12px",
+          color: t.muted,
+          fontSize: 13,
+        }}>
+          {dark ? "Light mode" : "Dark mode"}
+        </button>
+        <button onClick={onLogout} style={{
+          border: `1px solid ${t.border}`,
+          background: "transparent",
+          borderRadius: 11,
+          padding: "10px 12px",
+          color: t.muted,
+          fontSize: 13,
+        }}>
+          Logout
+        </button>
+      </div>
+    </aside>
+  );
+}
+
+function Header({ t, dark, toggleDark, dataMeta, searchQuery, setSearchQuery }) {
+  return (
+    <header className="main-header" style={{
+      padding: "18px 28px",
+      borderBottom: `1px solid ${t.border}`,
+      background: `${t.bg}F2`,
+      backdropFilter: "blur(12px)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 16,
+      position: "sticky",
+      top: 0,
+      zIndex: 40,
+    }}>
+      <div>
+        <div className="show-mobile" style={{ alignItems: "center", gap: 8 }}>
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: t.accent, color: "#fff", display: "grid", placeItems: "center", fontWeight: 800 }}>L</div>
+          <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: 19, color: t.ink }}>Lucid</span>
+        </div>
+        <p className="show-desktop" style={{ fontSize: 11, color: t.muted, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 700 }}>{dataMeta}</p>
+      </div>
+
+      <div style={{ flex: 1, maxWidth: 360 }}>
+        <input value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search a currency" style={{
+          width: "100%",
+          border: `1px solid ${t.border}`,
+          borderRadius: 12,
+          padding: "10px 12px",
+          background: t.card,
+          color: t.ink,
+          outline: "none",
+          fontSize: 13,
+        }}/>
+      </div>
+
+      <button onClick={toggleDark} style={{
+        width: 38,
+        height: 38,
+        borderRadius: 11,
+        border: `1px solid ${t.border}`,
+        background: t.card,
+        color: t.ink,
+      }}>
+        {dark ? "L" : "D"}
+      </button>
+    </header>
+  );
+}
+
+function DataStatus({ loading, error, data, t }) {
+  const status = loading ? "Loading" : error ? "Fallback" : dataSourceLabel(data);
+  const generated = formatGeneratedAt(data.generated_at);
+  const items = [
+    { label: "Built from", value: status },
+    { label: "Mode", value: loading ? "Refreshing" : dataModeNote(data) },
+    { label: "Updated", value: generated },
+    { label: "Coverage", value: `${data.summaries.length} currencies` },
+  ];
+  return (
+    <div style={{
+      width: "100%",
+      borderBottom: `1px solid ${t.border}`,
+      background: t.card,
+      padding: "10px 28px",
+    }}>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+        gap: 10,
+        width: "100%",
+        maxWidth: 980,
+        margin: "0 auto",
+      }} className="status-grid">
+        {items.map((item) => (
+          <div key={item.label} style={{ minWidth: 0 }}>
+            <p style={{ color: t.muted, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 800, marginBottom: 3 }}>{item.label}</p>
+            <p style={{ color: item.label === "Built from" ? (error ? "#C05A42" : t.accent) : t.ink, fontSize: 12, fontWeight: 800, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MarketStory({ story, summaries, data, t, timelineOpen, onToggleTimeline }) {
+  const mood = marketMood(summaries);
+  const shock = data.macro_shock;
+  const narrativeFocus = data.narrative_focus;
+  const focusLabel = narrativeFocusMatchesStory(narrativeFocus, story) ? formatNarrativeTheme(narrativeFocus.theme) : "";
+  return (
+    <section className="macro-hero hero-enter" style={{
+      background: `
+        radial-gradient(circle at 82% 36%, rgba(173,124,255,0.58) 0%, rgba(123,80,245,0.22) 22%, transparent 46%),
+        linear-gradient(132deg,#25115F 0%, #4A22B4 42%, #7B3FF2 100%)
+      `,
+      borderRadius: 32,
+      padding: "66px 58px",
+      color: "#fff",
+      boxShadow: "0 44px 110px rgba(64,36,172,0.34), 0 14px 46px rgba(22,10,72,0.22), inset 0 1px 0 rgba(255,255,255,0.20)",
+      position: "relative",
+      overflow: "hidden",
+      minHeight: 430,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    }}>
+      <RegionSignature story={story} summaries={summaries}/>
+      <div className="reveal reveal-1" style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginBottom: 18 }}>
+        <p style={{ fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)", fontWeight: 800 }}>Today’s macro idea</p>
+        <span style={{ width: 4, height: 4, borderRadius: 999, background: "rgba(255,255,255,0.36)" }}></span>
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.76)", fontWeight: 700 }}>{formatDisplayDate(data.generated_at)}</p>
+      </div>
+      <h1 className="page-title reveal reveal-2" style={{ fontFamily: "'Instrument Serif',serif", fontSize: 72, lineHeight: 0.98, fontWeight: 400, maxWidth: 790, marginBottom: 22, letterSpacing: "0" }}>{story.title}</h1>
+      {focusLabel && (
+        <p className="reveal reveal-2" style={{ color: "rgba(255,255,255,0.70)", fontSize: 13, lineHeight: 1.45, fontWeight: 800, marginTop: -10, marginBottom: 18 }}>
+          Today’s focus: {focusLabel}
+        </p>
+      )}
+      <div className="reveal reveal-3" style={{
+        alignSelf: "flex-start",
+        display: "flex",
+        gap: 10,
+        alignItems: "center",
+        flexWrap: "wrap",
+        border: "1px solid rgba(255,255,255,0.16)",
+        background: "rgba(255,255,255,0.075)",
+        backdropFilter: "blur(18px)",
+        borderRadius: 999,
+        padding: "8px 12px",
+        marginBottom: 18,
+      }}>
+        <span style={{ color: "rgba(255,255,255,0.62)", fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", textTransform: "uppercase" }}>Market mood</span>
+        <span style={{ width: 4, height: 4, borderRadius: 999, background: "rgba(255,255,255,0.34)", flexShrink: 0 }}></span>
+        <span style={{ color: "#fff", fontSize: 13, fontWeight: 900 }}>{mood.tone}</span>
+        <span className="mood-note" style={{ color: "rgba(255,255,255,0.72)", fontSize: 13, fontWeight: 700 }}>{mood.body}</span>
+      </div>
+      {shock && (
+        <div className="reveal reveal-3" style={{
+          alignSelf: "flex-start",
+          border: "1px solid rgba(255,255,255,0.14)",
+          background: "rgba(255,255,255,0.065)",
+          borderRadius: 18,
+          padding: "11px 13px",
+          marginBottom: 18,
+          maxWidth: 680,
+        }}>
+          <p style={{ color: "rgba(255,255,255,0.62)", fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 900, marginBottom: 6 }}>Macro pressure</p>
+          <p style={{ color: "#fff", fontSize: 14, fontWeight: 900, lineHeight: 1.35 }}>{shock.title}</p>
+          <p style={{ color: "rgba(255,255,255,0.72)", fontSize: 13, fontWeight: 700, lineHeight: 1.45, marginTop: 4 }}>{macroShockLine(shock)}</p>
+        </div>
+      )}
+      <p className="reveal reveal-4" style={{ fontSize: 17, lineHeight: 1.65, color: "rgba(255,255,255,0.82)", maxWidth: 690 }}>{story.body}</p>
+      <button className="nav-button reveal reveal-4" onClick={onToggleTimeline} style={{
+        marginTop: 18,
+        alignSelf: "flex-start",
+        border: "0",
+        background: "transparent",
+        color: "rgba(255,255,255,0.88)",
+        borderRadius: 999,
+        padding: "0",
+        fontSize: 13,
+        fontWeight: 800,
+      }}>
+        {timelineOpen ? "Hide macro story" : "See what changed →"}
+      </button>
+    </section>
+  );
+}
+
+function DateLine({ data, t }) {
+  return (
+    <p style={{
+      color: t.muted,
+      fontSize: 13,
+      fontWeight: 700,
+      marginBottom: 18,
+    }}>
+      {formatDisplayDate(data.generated_at)}
+    </p>
+  );
+}
+
+function MacroTimelineInline({ data, t, open }) {
+  if (!open) return null;
+
+  const items = buildMacroTimeline(data);
+  return (
+    <section className="timeline-inline" style={{ marginTop: 16 }}>
+      <div className="cinematic-panel" style={{
+        background: t.card,
+        border: `1px solid ${t.border}`,
+        borderRadius: 22,
+        padding: 20,
+        boxShadow: "0 22px 54px rgba(10, 15, 35, 0.08)",
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 14, alignItems: "baseline", marginBottom: 14 }}>
+          <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 30, lineHeight: 1, fontWeight: 400, color: t.ink }}>Macro story</h2>
+          <p style={{ color: t.muted, fontSize: 12, fontWeight: 800 }}>{formatDisplayDate(data.generated_at)}</p>
+        </div>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 10 }}>
+        {items.map((item, index) => (
+          <article key={item.label} className={`reveal reveal-${Math.min(index + 1, 5)}`} style={{
+            background: item.label === "Now" ? t.accentDim : t.inputBg,
+            border: `1px solid ${t.border}`,
+            borderRadius: 18,
+            padding: item.label === "Now" ? "17px 16px" : "15px 16px",
+            boxShadow: item.label === "Now" ? "0 14px 34px rgba(83,71,232,0.10)" : "none",
+          }}>
+            <p style={{ color: item.label === "Now" ? t.accent : t.muted, fontSize: 11, fontWeight: 900, letterSpacing: "0.13em", textTransform: "uppercase", marginBottom: 7 }}>{item.title}</p>
+            <p style={{
+              color: item.label === "Now" ? t.ink : t.muted,
+              fontSize: item.label === "Now" ? 15 : 14,
+              lineHeight: 1.35,
+              fontWeight: item.label === "Now" ? 800 : 700,
+            }} className="line-clamp-2">{item.body}</p>
+          </article>
+        ))}
+      </div>
+      </div>
+    </section>
+  );
+}
+
+function CurrencyCard({ summary, summaryMode, t, onOpen, reveal = false, revealDelay = 0 }) {
+  const style = currencyBadgeStyle(summary, summaryMode, t);
+  const surface = labelSurface(summary.label, t);
+  const driver = mainDriver(summary);
+  const tone = driverTone(t, surface);
+  const support = supportingReasons(summary);
+  return (
+    <button className={`interactive-card currency-card${reveal ? " reveal" : ""}`} onClick={() => onOpen(summary)} aria-label={`Open ${summary.currency} context`} style={{
+      border: `1px solid ${surface.border}`,
+      background: surface.bg,
+      boxShadow: surface.glow,
+      borderRadius: 22,
+      padding: 24,
+      textAlign: "left",
+      minHeight: 250,
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      animationDelay: reveal ? `${revealDelay}ms` : undefined,
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      <span style={{ position: "absolute", inset: "0 auto 0 0", width: 3, background: surface.accent, opacity: 0.45 }}></span>
+      <div>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 14, alignItems: "flex-start", marginBottom: 12 }}>
+          <div style={{ minWidth: 0 }}>
+            <h3 style={{ fontSize: 28, lineHeight: 0.95, color: t.ink, letterSpacing: "0", marginBottom: 5 }}>{summary.currency}</h3>
+            <p style={{ fontSize: 12, color: t.muted, opacity: 0.92, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{names[summary.currency]}</p>
+          </div>
+          <span style={{ borderRadius: 999, background: style.bg, color: style.color, padding: "6px 10px", fontSize: 11, fontWeight: 800, whiteSpace: "nowrap" }}>{style.text}</span>
+        </div>
+        <h4 className="currency-headline" style={{ fontSize: 18, lineHeight: 1.28, color: t.ink, marginBottom: 12 }}>{summary.headline}</h4>
+        <div className="currency-meta-row" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
+          <MetaPill label="Confidence" value={summary.confidence} t={t}/>
+          <MetaPill label="Timeframe" value={displayTimeframe(summary.timeframe)} t={t}/>
+        </div>
+        <div className="currency-driver" style={{ borderRadius: 16, background: tone.bg, border: `1px solid ${tone.border}`, padding: "12px 13px", marginBottom: 13 }}>
+          <p style={{ fontSize: 13, lineHeight: 1.48, color: t.ink, fontWeight: 650 }}>{driver}</p>
+        </div>
+        <div className="currency-support-list" style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+          {support.slice(0, 2).map((reason, index) => (
+            <div key={index} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+              <span style={{ width: 6, height: 6, borderRadius: 999, background: surface.accent, opacity: 0.58, marginTop: 7, flexShrink: 0 }}></span>
+              <p style={{ fontSize: 13, lineHeight: 1.48, color: t.muted, opacity: 0.94 }}>{reason}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function EventCard({ event, t }) {
+  const tone = impactTone(event.importance, t);
+  return (
+    <article style={{ background: tone.bg, border: `1px solid ${tone.border}`, borderRadius: 14, padding: 16, boxShadow: tone.shadow }}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 14, marginBottom: 8 }}>
+        <h3 style={{ fontSize: 14, color: t.ink }}>{event.title}</h3>
+        <span style={{ fontSize: 11, color: t.accent, fontWeight: 800, whiteSpace: "nowrap" }}>{event.timing_label}</span>
+      </div>
+      {tone.label && <span style={{ display: "inline-flex", borderRadius: 999, background: tone.badgeBg, border: `1px solid ${tone.border}`, color: tone.color, padding: "5px 8px", fontSize: 11, fontWeight: 900, marginBottom: 9 }}>{tone.label}</span>}
+      {tone.message && <p style={{ color: tone.color, fontSize: 12, fontWeight: 900, marginBottom: 8 }}>{tone.message}</p>}
+      <p style={{ fontSize: 13, color: t.muted, lineHeight: 1.5, marginBottom: 8 }}>{event.why_it_matters}</p>
+      <p style={{ fontSize: 13, color: t.muted, lineHeight: 1.5 }}><strong style={{ color: t.ink }}>Focus:</strong> {event.market_focus}</p>
+    </article>
+  );
+}
+
+function PairTensionVisual({ item, t, large = false }) {
+  const direction = pairDirection(item);
+  const interactionType = item?.narrative?.interaction_type || item?.interaction_type || "";
+  const relational = interactionType && interactionType !== "mixed_macro_forces";
+  const baseWins = !direction.mixed && direction.strong === item.base;
+  const quoteWins = !direction.mixed && direction.strong === item.quote;
+  const baseStyle = labelStyle(item.base_label, t);
+  const quoteStyle = labelStyle(item.quote_label, t);
+  const baseSize = large ? (baseWins ? 78 : 44) : (baseWins ? 48 : 30);
+  const quoteSize = large ? (quoteWins ? 78 : 44) : (quoteWins ? 48 : 30);
+  const tensionLine = direction.mixed
+    ? `linear-gradient(90deg, transparent, ${t.isDark ? "rgba(137,145,159,0.34)" : "rgba(140,144,154,0.42)"}, transparent)`
+    : `linear-gradient(90deg, ${baseStyle.color}, rgba(140,144,154,0.28), ${quoteStyle.color})`;
+  const relationalLine = t.isDark
+    ? "linear-gradient(90deg, rgba(123,108,246,0.24), rgba(201,196,255,0.34), rgba(123,108,246,0.20))"
+    : "linear-gradient(90deg, rgba(83,71,232,0.22), rgba(123,108,246,0.28), rgba(83,71,232,0.18))";
+  const winningGlow = (style) => t.isDark
+    ? `0 0 ${large ? 48 : 34}px ${style.bg}, 0 0 ${large ? 78 : 48}px rgba(123,108,246,0.08)`
+    : `0 0 ${large ? 46 : 32}px ${style.bg}, 0 12px ${large ? 42 : 28}px rgba(10,15,35,0.06)`;
+  return (
+    <div className="pair-visual" style={{ display: "grid", gridTemplateColumns: "1fr minmax(54px, 0.55fr) 1fr", alignItems: "center", gap: large ? 18 : 10, margin: large ? "26px 0 24px" : "18px 0 16px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <span style={{ width: baseSize, height: baseSize, borderRadius: 999, background: baseStyle.bg, border: `1px solid ${baseStyle.color}`, boxShadow: baseWins ? winningGlow(baseStyle) : "none", opacity: baseWins ? 1 : 0.70, flexShrink: 0 }}></span>
+        <span style={{ color: baseStyle.color, fontSize: large ? 18 : 13, fontWeight: 900 }}>{item.base}</span>
+      </div>
+      <div style={{ height: large ? 10 : 6, borderRadius: 999, background: direction.mixed && relational ? relationalLine : tensionLine, opacity: direction.mixed ? (relational ? 0.70 : 0.42) : 0.74, filter: large ? "blur(0.2px)" : "blur(0.1px)", boxShadow: relational ? `0 0 ${large ? 28 : 18}px rgba(83,71,232,0.08)` : direction.mixed ? "none" : `0 0 ${large ? 30 : 20}px rgba(83,71,232,0.10)` }}></div>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 10 }}>
+        <span style={{ color: quoteStyle.color, fontSize: large ? 18 : 13, fontWeight: 900 }}>{item.quote}</span>
+        <span style={{ width: quoteSize, height: quoteSize, borderRadius: 999, background: quoteStyle.bg, border: `1px solid ${quoteStyle.color}`, boxShadow: quoteWins ? winningGlow(quoteStyle) : "none", opacity: quoteWins ? 1 : 0.70, flexShrink: 0 }}></span>
+      </div>
+    </div>
+  );
+}
+
+function FeaturedPairCard({ item, t, onOpen }) {
+  const drivers = pairReasonLines(item).slice(0, 1);
+  const surface = pairSurface(item, t, false);
+  const heroLabel = item.state === "Mixed macro picture" ? "Macro relationship in focus" : "Strongest tension";
+  return (
+    <button className="interactive-card" onClick={() => onOpen?.(item)} style={{
+      background: surface.bg,
+      border: `1px solid ${surface.border}`,
+      borderRadius: 28,
+      padding: "34px 36px",
+      boxShadow: surface.glow,
+      textAlign: "left",
+      width: "100%",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(circle at 16% 20%, rgba(255,255,255,0.18), transparent 32%), radial-gradient(circle at 84% 18%, rgba(255,255,255,0.12), transparent 34%), linear-gradient(128deg, rgba(255,255,255,0.13), transparent 36%, rgba(255,255,255,0.055))", opacity: 0.54 }}></div>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 4, background: `linear-gradient(90deg, ${surface.leftAccent}, transparent 44%, ${surface.rightAccent})`, opacity: 0.62 }}></div>
+      <div style={{ position: "relative" }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: t.muted, fontWeight: 850, marginBottom: 12 }}>{heroLabel}</p>
+        <h2 style={{ color: t.ink, fontFamily: "'Instrument Serif',serif", fontSize: 58, lineHeight: 0.95, fontWeight: 400, marginBottom: 10 }}>{item.pair}</h2>
+        <p style={{ color: t.isDark ? "rgba(226,225,255,0.94)" : t.accent, fontSize: 17, lineHeight: 1.35, fontWeight: 850, maxWidth: 560 }}>{pairContrastLine(item)}</p>
+        <PairTensionVisual item={item} t={t} large />
+        {!!drivers.length && (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 12 }} className="hero-grid">
+            {drivers.map((driver, index) => (
+              <p key={index} style={{ color: t.muted, fontSize: 14, lineHeight: 1.5, fontWeight: 700 }}>{driver}</p>
+            ))}
+          </div>
+        )}
+      </div>
+    </button>
+  );
+}
+
+function PairCard({ item, t, muted = false, onOpen, variant = "default" }) {
+  const drivers = pairReasonLines(item).slice(0, 1);
+  const surface = pairSurface(item, t, muted);
+  const isMedium = variant === "medium";
+  const isCompact = variant === "compact";
+  return (
+    <button className="interactive-card pair-card" onClick={() => onOpen?.(item)} aria-label={`Open ${item.pair} macro tension`} style={{
+      background: surface.bg,
+      border: `1px solid ${surface.border}`,
+      borderRadius: isMedium ? 24 : 20,
+      padding: isMedium ? 26 : isCompact ? 18 : 20,
+      opacity: muted ? 0.72 : 1,
+      boxShadow: surface.glow,
+      textAlign: "left",
+      width: "100%",
+      position: "relative",
+      overflow: "hidden",
+      minHeight: isMedium ? 268 : isCompact ? 156 : 190,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    }}>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: muted ? 2 : 3, background: `linear-gradient(90deg, ${surface.leftAccent}, transparent 48%, ${surface.rightAccent})`, opacity: surface.relational ? 0.56 : muted ? 0.20 : 0.58 }}></div>
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(circle at 18% 16%, rgba(255,255,255,0.12), transparent 30%), radial-gradient(circle at 84% 18%, rgba(255,255,255,0.09), transparent 32%), linear-gradient(135deg, rgba(255,255,255,0.13), transparent 28%, transparent 72%, rgba(255,255,255,0.06))", opacity: surface.relational ? 0.46 : muted ? 0.20 : 0.48 }}></div>
+      <div style={{ position: "relative" }}>
+        <h3 style={{ color: t.ink, fontSize: isMedium ? 34 : isCompact ? 22 : 26, lineHeight: 1, marginBottom: isMedium ? 10 : 8 }}>{item.pair}</h3>
+        <p style={{ color: surface.relational ? (t.isDark ? "rgba(226,225,255,0.92)" : t.accent) : muted ? t.muted : (t.isDark ? "rgba(226,225,255,0.92)" : t.accent), fontSize: isMedium ? 15 : 14, fontWeight: surface.relational ? 880 : 850, lineHeight: 1.35, maxWidth: isMedium ? 420 : undefined }}>{pairContrastLine(item)}</p>
+        <PairTensionVisual item={item} t={t} large={isMedium} />
+        {!!drivers.length && <p style={{ color: t.muted, opacity: surface.relational ? 0.98 : 0.82, fontSize: isCompact ? 12 : 13, lineHeight: 1.48 }}>{drivers[0]}</p>}
+      </div>
+    </button>
+  );
+}
+
+function OverviewScreen({ data, t, onOpenCurrency, onOpenPair, searchQuery }) {
+  const [showAllCurrencies, setShowAllCurrencies] = React.useState(false);
+  const [timelineOpen, setTimelineOpen] = React.useState(false);
+  const query = searchQuery.trim().toLowerCase();
+  React.useEffect(() => {
+    setShowAllCurrencies(false);
+  }, [query]);
+  const filtered = sortedSummaries(data.summaries).filter((item) => {
+    if (!query) return true;
+    return item.currency.toLowerCase().includes(query) || names[item.currency].toLowerCase().includes(query);
+  });
+  const visibleCurrencies = showAllCurrencies ? filtered : filtered.slice(0, 4);
+  const hiddenCurrencyCount = Math.max(filtered.length - 4, 0);
+  const topPairs = sortedPairs(data.pairs)
+    .filter((item) => pairPriority(item) > 0)
+    .filter((item) => !query || item.pair.toLowerCase().includes(query) || item.base.toLowerCase().includes(query) || item.quote.toLowerCase().includes(query))
+    .slice(0, query ? 8 : 4);
+
+  return (
+    <div className="content-area page-enter" style={{ padding: "46px 48px 84px", width: "100%", maxWidth: 1210 }}>
+      <MarketStory
+        story={data.market_story}
+        summaries={data.summaries}
+        data={data}
+        t={t}
+        timelineOpen={timelineOpen}
+        onToggleTimeline={() => setTimelineOpen((value) => !value)}
+      />
+      <MacroTimelineInline data={data} t={t} open={timelineOpen}/>
+
+      <section className="section-block" style={{ marginTop: 76 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "end", marginBottom: 16 }}>
+          <div>
+            <p style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: t.muted, fontWeight: 800, marginBottom: 8 }}>Top currencies</p>
+            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 32, fontWeight: 400, color: t.ink }}>Start with the clearest stories</h2>
+          </div>
+        </div>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }}>
+          {visibleCurrencies.map((summary, index) => (
+            <CurrencyCard
+              key={summary.currency}
+              summary={summary}
+              summaryMode={data.summary_mode}
+              t={t}
+              onOpen={onOpenCurrency}
+              reveal={showAllCurrencies && index >= 4}
+              revealDelay={(index - 4) * 55}
+            />
+          ))}
+        </div>
+        {!visibleCurrencies.length && <EmptyState t={t} title="No currency found" body="Try another currency code or clear the search." />}
+        {hiddenCurrencyCount > 0 && (
+          <div style={{ display: "flex", justifyContent: "center", marginTop: 18 }}>
+            <button
+              className="nav-button"
+              onClick={() => setShowAllCurrencies((value) => !value)}
+              style={{
+                border: `1px solid ${t.border}`,
+                background: showAllCurrencies ? t.inputBg : t.card,
+                color: t.accent,
+                borderRadius: 999,
+                padding: "10px 14px",
+                fontSize: 12,
+                fontWeight: 800,
+              }}
+            >
+              {showAllCurrencies ? "Show fewer" : `Show all currencies`}
+            </button>
+          </div>
+        )}
+      </section>
+
+      <section className="section-block" style={{ marginTop: 82 }}>
+        <div style={{ marginBottom: 16 }}>
+          <p style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: t.muted, fontWeight: 800, marginBottom: 8 }}>Pair tensions</p>
+          <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 32, fontWeight: 400, color: t.ink }}>A quick read of the clearest macro backdrops</h2>
+        </div>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 16 }}>
+          {topPairs.map((item) => <PairCard key={item.pair} item={item} t={t} onOpen={onOpenPair}/>)}
+        </div>
+        {!topPairs.length && <EmptyState t={t} title="No clear pair contrast" body="Try another currency or come back when the macro picture is clearer." />}
+      </section>
+    </div>
+  );
+}
+
+function PairFilterButton({ active, label, onClick, t }) {
+  return (
+    <button
+      className="nav-button"
+      onClick={onClick}
+      style={{
+        border: `1px solid ${active ? t.accent : t.border}`,
+        background: active ? t.accentDim : t.card,
+        color: active ? t.accent : t.muted,
+        borderRadius: 999,
+        padding: "8px 11px",
+        fontSize: 12,
+        fontWeight: 800,
+        whiteSpace: "nowrap",
+      }}
+    >
+      {label}
+    </button>
+  );
+}
+
+function PairSection({ title, subtitle, pairs, t, muted = false, emptyTitle = "No pairs found", featured = false, revealFrom = 999, onOpenPair }) {
+  return (
+    <section style={{ marginTop: 30 }}>
+      <div style={{ marginBottom: 14 }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: t.muted, fontWeight: 800, marginBottom: 7 }}>{title}</p>
+        {subtitle && <p style={{ color: t.muted, fontSize: 14, lineHeight: 1.55, maxWidth: 560 }}>{subtitle}</p>}
+      </div>
+      <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: featured ? "1fr" : "repeat(2, minmax(0, 1fr))", gap: 12 }}>
+        {pairs.map((item, index) => (
+          <div key={item.pair || `${item.base || "base"}-${item.quote || "quote"}-${index}`} className={index >= revealFrom ? "reveal" : ""} style={{ animationDelay: index >= revealFrom ? `${(index - revealFrom) * 45}ms` : undefined }}>
+            <PairCard item={item} t={t} muted={muted || pairIsMixed(item)} onOpen={onOpenPair}/>
+          </div>
+        ))}
+      </div>
+      {!pairs.length && <EmptyState t={t} title={emptyTitle} body="Try another filter or clear the search." />}
+    </section>
+  );
+}
+
+function MovementsScreen({ data, t, onOpenPair, searchQuery }) {
+  const [showAllPairs, setShowAllPairs] = React.useState(false);
+  const query = searchQuery.trim().toLowerCase();
+  React.useEffect(() => {
+    setShowAllPairs(false);
+  }, [query]);
+  const queryPairs = sortedPairs(data.pairs)
+    .filter((item) => item?.pair && item?.base && item?.quote)
+    .filter((item) => !query || safePairText(item).includes(query));
+  const clearPairs = queryPairs.filter((item) => !pairIsMixed(item));
+  const bestPair = clearPairs[0] || queryPairs[0];
+  const visibleBase = (clearPairs.length ? clearPairs : queryPairs)
+    .filter((item) => item !== bestPair);
+  const mediumPair = visibleBase[0] || null;
+  const smallerPairs = visibleBase.slice(1, 3);
+  const visiblePairs = [bestPair, mediumPair, ...smallerPairs].filter(Boolean);
+  const expandedPairs = queryPairs.filter((item) => !visiblePairs.includes(item));
+
+  return (
+    <div className="content-area page-enter" style={{ padding: "38px 40px 72px", width: "100%", maxWidth: 1040 }}>
+      <DateLine data={data} t={t}/>
+      <div style={{ marginBottom: 26 }}>
+        <h1 className="page-title" style={{ fontFamily: "'Instrument Serif',serif", fontSize: 48, lineHeight: 1.02, fontWeight: 400, color: t.ink }}>Macro imbalances</h1>
+        <p style={{ color: t.muted, fontSize: 15, lineHeight: 1.6, maxWidth: 560, marginTop: 10 }}>A quieter view of where currency pressure is most asymmetric.</p>
+      </div>
+
+      {bestPair ? (
+        <FeaturedPairCard item={bestPair} t={t} onOpen={onOpenPair}/>
+      ) : (
+        <EmptyState t={t} title="No pair contrast found" body="Try another currency or come back when the macro picture is clearer." />
+      )}
+
+      {!!(mediumPair || smallerPairs.length) && (
+        <section style={{ marginTop: 32 }}>
+          <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.08fr) minmax(0, 0.92fr)", gap: 14, alignItems: "stretch" }}>
+            {mediumPair && <PairCard item={mediumPair} t={t} variant="medium" onOpen={onOpenPair}/>}
+            {!!smallerPairs.length && (
+              <div style={{ display: "grid", gap: 14 }}>
+                {smallerPairs.map((item) => (
+                  <PairCard key={item.pair} item={item} t={t} variant="compact" onOpen={onOpenPair}/>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {!!expandedPairs.length && (
+        <section style={{ marginTop: 24 }}>
+          <button
+            className="nav-button"
+            onClick={() => setShowAllPairs((value) => !value)}
+            style={{
+              border: "none",
+              background: "transparent",
+              color: t.accent,
+              padding: "8px 0",
+              fontSize: 13,
+              fontWeight: 850,
+              letterSpacing: "0.01em",
+            }}
+          >
+            {showAllPairs ? "Show fewer tensions" : "Explore all macro tensions"} →
+          </button>
+          {showAllPairs && (
+            <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 12, marginTop: 14 }}>
+              {expandedPairs.map((item, index) => (
+                <div key={item.pair} className="reveal" style={{ animationDelay: `${index * 38}ms` }}>
+                  <PairCard item={item} t={t} muted={pairIsMixed(item)} variant="compact" onOpen={onOpenPair}/>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+
+      {!mediumPair && !smallerPairs.length && bestPair && (
+        <div style={{ marginTop: 24 }}>
+          <EmptyState t={t} title="No secondary tensions" body="The current payload has one clear pair contrast." />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function EmptyState({ title, body, t }) {
+  return (
+    <div style={{
+      border: `1px solid ${t.border}`,
+      background: t.card,
+      borderRadius: 16,
+      padding: "24px 20px",
+      marginTop: 12,
+      textAlign: "center",
+    }}>
+      <p style={{ color: t.ink, fontSize: 15, fontWeight: 800, marginBottom: 6 }}>{title}</p>
+      <p style={{ color: t.muted, fontSize: 13, lineHeight: 1.5 }}>{body}</p>
+    </div>
+  );
+}
+
+function PriceAlignmentBlock({ alignment, t }) {
+  if (!alignment) return null;
+  return (
+    <div style={{
+      background: t.inputBg,
+      border: `1px solid ${t.border}`,
+      borderRadius: 16,
+      padding: "16px 17px",
+      maxWidth: 640,
+      marginTop: 14,
+    }}>
+      <p style={{ color: t.muted, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 900, marginBottom: 9 }}>
+        Price alignment
+      </p>
+      <p style={{ color: t.ink, fontSize: 16, lineHeight: 1.3, fontWeight: 800, marginBottom: 8 }}>
+        {alignment.state}
+      </p>
+      <p style={{ color: t.ink, fontSize: 14, lineHeight: 1.58, marginBottom: 9 }}>
+        {alignment.summary}
+      </p>
+      <p style={{ color: t.muted, fontSize: 12, lineHeight: 1.55 }}>
+        {alignment.caveat}
+      </p>
+    </div>
+  );
+}
+
+function PairTensionScene({ pair, data, onBack, t }) {
+  const direction = pairDirection(pair);
+  const reasonBlocks = pairReasonBlocks(pair).slice(0, 3);
+  const sentence = pairSceneSentence(pair);
+  const invalidation = pairInvalidation(pair, data.summaries);
+  const priceAlignment = data.price_alignment?.[pair.pair] || null;
+  const baseWins = !direction.mixed && direction.strong === pair.base;
+  const quoteWins = !direction.mixed && direction.strong === pair.quote;
+  const baseScale = direction.mixed ? 0.94 : baseWins ? 1.16 : 0.76;
+  const quoteScale = direction.mixed ? 0.94 : quoteWins ? 1.16 : 0.76;
+  const baseIsWeak = !direction.mixed && direction.weak === pair.base;
+  const quoteIsWeak = !direction.mixed && direction.weak === pair.quote;
+  const massStyle = (strong, weak, scale) => ({
+    width: 148,
+    height: 148,
+    borderRadius: "50%",
+    transform: `scale(${scale})`,
+    background: strong
+      ? "radial-gradient(circle at 38% 28%, rgba(255,255,255,0.42), rgba(123,108,246,0.40) 24%, rgba(83,71,232,0.72) 58%, rgba(44,30,132,0.80) 100%)"
+      : weak
+        ? "radial-gradient(circle at 38% 28%, rgba(255,255,255,0.38), rgba(192,90,66,0.30) 26%, rgba(192,90,66,0.58) 60%, rgba(113,43,54,0.60) 100%)"
+        : `radial-gradient(circle at 38% 28%, rgba(255,255,255,0.34), ${t.accentDim} 30%, rgba(140,144,154,0.22) 68%, rgba(140,144,154,0.16) 100%)`,
+    boxShadow: strong
+      ? "0 30px 76px rgba(83,71,232,0.22), 0 0 80px rgba(123,108,246,0.14)"
+      : weak
+        ? "0 24px 58px rgba(192,90,66,0.12), 0 0 58px rgba(192,90,66,0.08)"
+        : "0 22px 54px rgba(10,15,35,0.08)",
+    filter: strong ? "saturate(0.88) blur(0.1px)" : weak ? "saturate(0.68) blur(0.4px)" : "saturate(0.62) blur(0.25px)",
+    opacity: strong ? 0.92 : weak ? 0.68 : 0.70,
+  });
+  const sideCaption = (code) => {
+    if (direction.mixed) return "Balanced";
+    return code === direction.strong ? "Firmer backdrop" : "Softer backdrop";
+  };
+  const sideColor = (code) => {
+    if (direction.mixed) return t.muted;
+    return code === direction.strong ? t.accent : "#C05A42";
+  };
+
+  return (
+    <div className="content-area page-enter" style={{ padding: "38px 40px 72px", width: "100%", maxWidth: 1040 }}>
+      <button onClick={onBack} style={{ background: "transparent", border: "none", color: t.accent, fontWeight: 800, marginBottom: 18 }}>Back</button>
+      <section className="detail-hero hero-enter" style={{
+        background: `linear-gradient(135deg, ${t.card} 0%, ${t.inputBg} 68%, ${t.card} 100%)`,
+        border: `1px solid ${t.border}`,
+        borderRadius: 28,
+        padding: "48px 50px",
+        boxShadow: "0 30px 86px rgba(10, 15, 35, 0.14)",
+        overflow: "hidden",
+        position: "relative",
+      }}>
+        <p className="reveal reveal-1" style={{ fontSize: 11, letterSpacing: "0.17em", textTransform: "uppercase", color: t.muted, fontWeight: 900, marginBottom: 12 }}>Macro tension scene</p>
+        <h1 className="page-title reveal reveal-2" style={{ fontFamily: "'Instrument Serif',serif", color: t.ink, fontSize: 74, lineHeight: 0.95, fontWeight: 400, marginBottom: 36 }}>{pair.pair}</h1>
+
+        <div className="hero-grid reveal reveal-3" style={{
+          position: "relative",
+          minHeight: 340,
+          display: "grid",
+          gridTemplateColumns: "1fr minmax(170px, 0.72fr) 1fr",
+          alignItems: "center",
+          gap: 18,
+          marginBottom: 34,
+        }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+            <div style={massStyle(baseWins, baseIsWeak, baseScale)}></div>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ color: sideColor(pair.base), fontSize: 27, fontWeight: 900, lineHeight: 1 }}>{pair.base}</p>
+              <p style={{ color: t.muted, fontSize: 12, fontWeight: 800, marginTop: 6 }}>{sideCaption(pair.base)}</p>
+            </div>
+          </div>
+
+          <div style={{
+            height: 5,
+            borderRadius: 999,
+            background: direction.mixed
+              ? `linear-gradient(90deg, transparent, ${t.border}, transparent)`
+              : baseWins
+                ? "linear-gradient(90deg, rgba(83,71,232,0) 0%, rgba(83,71,232,0.42) 22%, rgba(142,104,238,0.22) 52%, rgba(192,90,66,0.22) 80%, rgba(192,90,66,0) 100%)"
+                : "linear-gradient(90deg, rgba(192,90,66,0) 0%, rgba(192,90,66,0.22) 22%, rgba(142,104,238,0.22) 52%, rgba(83,71,232,0.42) 80%, rgba(83,71,232,0) 100%)",
+            filter: "blur(0.2px)",
+            boxShadow: "0 0 28px rgba(83,71,232,0.10)",
+          }}></div>
+
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+            <div style={massStyle(quoteWins, quoteIsWeak, quoteScale)}></div>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ color: sideColor(pair.quote), fontSize: 27, fontWeight: 900, lineHeight: 1 }}>{pair.quote}</p>
+              <p style={{ color: t.muted, fontSize: 12, fontWeight: 800, marginTop: 6 }}>{sideCaption(pair.quote)}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="reveal reveal-4" style={{ borderTop: `1px solid ${t.border}`, paddingTop: 24 }}>
+          <p style={{ color: t.ink, fontFamily: "'Instrument Serif',serif", fontSize: 34, lineHeight: 1.15, fontWeight: 400, maxWidth: 720, marginBottom: 18 }}>{sentence}</p>
+          {!!reasonBlocks.length && (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12, marginBottom: 22 }} className="hero-grid">
+              {reasonBlocks.map((block, index) => (
+                <div key={index} style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 16, padding: "14px 15px" }}>
+                  <p style={{ color: t.muted, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 900, marginBottom: 7 }}>{block.label}</p>
+                  <p style={{ color: t.ink, fontSize: 14, lineHeight: 1.55, fontWeight: 700 }}>{block.body}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          <div style={{ background: t.inputBg, border: `1px solid ${t.border}`, borderRadius: 16, padding: "15px 16px", maxWidth: 640 }}>
+            <p style={{ color: t.muted, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 900, marginBottom: 8 }}>What would change this</p>
+            <p style={{ color: t.ink, fontSize: 14, lineHeight: 1.6 }}>{invalidation}</p>
+          </div>
+          <PriceAlignmentBlock alignment={priceAlignment} t={t}/>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function DetailScreen({ summary, summaryMode, onBack, t }) {
+  const style = currencyBadgeStyle(summary, summaryMode, t);
+  const support = supportingReasons(summary);
+  const upcoming = summary.key_event ? parseUpcomingEvent(summary.key_event) : null;
+  const upcomingTone = upcoming ? impactTone(upcoming.impact, t) : null;
+  return (
+    <div className="content-area page-enter" style={{ padding: "34px 40px 64px", width: "100%", maxWidth: 1020 }}>
+      <button onClick={onBack} style={{ background: "transparent", border: "none", color: t.accent, fontWeight: 800, marginBottom: 18 }}>Back</button>
+      <section className="detail-hero hero-enter" style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 24, padding: "46px 48px", boxShadow: "0 22px 52px rgba(10, 15, 35, 0.12)" }}>
+        <div className="reveal reveal-1" style={{ display: "flex", justifyContent: "space-between", gap: 18, alignItems: "flex-start", marginBottom: 20 }}>
+          <div>
+            <p style={{ color: t.muted, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 800, marginBottom: 8 }}>{names[summary.currency]}</p>
+            <h1 style={{ color: t.ink, fontSize: 44, lineHeight: 0.95, fontWeight: 800, letterSpacing: "0" }}>{summary.currency}</h1>
+          </div>
+          <span style={{ borderRadius: 999, background: style.bg, color: style.color, padding: "8px 13px", fontSize: 12, fontWeight: 800, whiteSpace: "nowrap" }}>{style.text}</span>
+        </div>
+
+        <h2 className="detail-headline reveal reveal-2" style={{ fontFamily: "'Instrument Serif',serif", fontSize: 56, lineHeight: 1.04, fontWeight: 400, color: t.ink, maxWidth: 760, marginBottom: 18 }}>{summary.headline}</h2>
+
+        <div className="reveal reveal-3" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28, alignItems: "center" }}>
+          <p style={{ color: t.ink, fontSize: 14, fontWeight: 800, marginRight: 2 }}>{biasText(summary, summaryMode)}</p>
+          <MetaPill label="Confidence" value={summary.confidence} t={t}/>
+          <MetaPill label="Timeframe" value={displayTimeframe(summary.timeframe)} t={t}/>
+        </div>
+
+        <div className="reveal reveal-4" style={{ borderRadius: 18, background: t.accentDim, padding: "18px 20px", marginBottom: 22 }}>
+          <p style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: t.accent, fontWeight: 800, marginBottom: 8 }}>Main driver</p>
+          <p style={{ color: t.ink, fontSize: 18, lineHeight: 1.45, fontWeight: 700 }}>{mainDriver(summary)}</p>
+        </div>
+
+        <div className="hero-grid reveal reveal-5" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.35fr) minmax(240px, 0.65fr)", gap: 18 }}>
+          <div style={{ borderTop: `1px solid ${t.border}`, paddingTop: 18 }}>
+            <p style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: t.muted, fontWeight: 800, marginBottom: 10 }}>Also</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {support.slice(0, 2).map((reason, index) => (
+                <div key={index} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                  <span style={{ width: 6, height: 6, borderRadius: 999, background: t.accent, marginTop: 8, flexShrink: 0 }}></span>
+                  <p style={{ color: t.ink, fontSize: 15, lineHeight: 1.55 }}>{reason}</p>
+                </div>
+              ))}
+              {!support.length && <p style={{ color: t.ink, fontSize: 15, lineHeight: 1.55 }}>{summary.insight}</p>}
+            </div>
+          </div>
+          {(summary.invalidation || summary.key_event) && (
+            <div style={{ borderTop: `1px solid ${t.border}`, paddingTop: 18 }}>
+              {summary.invalidation && (
+                <>
+              <p style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: t.muted, fontWeight: 800, marginBottom: 10 }}>What would change this</p>
+              <div style={{ borderRadius: 14, background: t.inputBg, border: `1px solid ${t.border}`, padding: "13px 14px" }}>
+                <p style={{ color: t.ink, fontSize: 14, lineHeight: 1.6 }}>{summary.invalidation}</p>
+              </div>
+                </>
+              )}
+              {upcoming && (
+                <div style={{
+                  marginTop: 18,
+                  borderRadius: 16,
+                  background: upcomingTone.bg,
+                  border: `1px solid ${upcomingTone.border}`,
+                  padding: "14px 15px",
+                  boxShadow: upcomingTone.shadow,
+                }}>
+                  <p style={{ fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: t.muted, fontWeight: 800, marginBottom: 6 }}>Upcoming event</p>
+                  <p style={{ color: t.ink, fontSize: 15, fontWeight: 900, lineHeight: 1.35, marginBottom: 10 }}>{upcoming.title}</p>
+                  <div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginBottom: upcomingTone.message ? 10 : 0 }}>
+                    {upcoming.timing && <span style={{ borderRadius: 999, background: t.card, border: `1px solid ${t.border}`, color: t.ink, padding: "5px 8px", fontSize: 11, fontWeight: 900 }}>{upcoming.timing}</span>}
+                    {upcomingTone.label && <span style={{ borderRadius: 999, background: upcomingTone.badgeBg, border: `1px solid ${upcomingTone.border}`, color: upcomingTone.color, padding: "5px 8px", fontSize: 11, fontWeight: 900 }}>{upcomingTone.label}</span>}
+                  </div>
+                  {upcomingTone.message && <p style={{ color: upcomingTone.color, fontSize: 12, fontWeight: 900 }}>{upcomingTone.message}</p>}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function LearnScreen({ t }) {
+  const concepts = [
+    { title: "Macro backdrop", body: "The economic context behind a currency. It explains support or pressure, not the next move." },
+    { title: "Pair tension", body: "A simple way to read why two currencies may feel structurally different." },
+    { title: "Macro pressure", body: "A broader force, like oil or geopolitical stress, that can shape market mood calmly." },
+    { title: "Price alignment", body: "A secondary check showing whether recent price behavior broadly fits the macro backdrop." },
+  ];
+  const steps = [
+    { title: "Start with the backdrop", body: "Read the main macro idea before looking at pairs." },
+    { title: "Read the tension", body: "Use pair views to understand the contrast between two currencies." },
+    { title: "Keep price separate", body: "Price can lag, resist, or move differently in the near term." },
+  ];
+  return (
+    <div className="content-area page-enter" style={{ padding: "42px 40px 72px", width: "100%", maxWidth: 1040 }}>
+      <section style={{
+        padding: "34px 0 30px",
+        borderBottom: `1px solid ${t.border}`,
+        marginBottom: 34,
+      }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: t.accent, fontWeight: 900, marginBottom: 12 }}>How to read Lucid</p>
+        <h1 className="page-title" style={{
+          fontFamily: "'Instrument Serif',serif",
+          fontSize: "clamp(42px, 7vw, 78px)",
+          lineHeight: 0.98,
+          fontWeight: 400,
+          color: t.ink,
+          letterSpacing: 0,
+          maxWidth: 760,
+          marginBottom: 20,
+        }}>
+          Lucid explains macro context, not price prediction.
+        </h1>
+        <p style={{ color: t.muted, fontSize: 17, lineHeight: 1.7, maxWidth: 650 }}>
+          Use Lucid to understand what is shaping currencies, not to receive trading instructions.
+        </p>
+      </section>
+
+      <section style={{ marginBottom: 42 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 20, alignItems: "flex-end", marginBottom: 16, flexWrap: "wrap" }}>
+          <div>
+            <p style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: t.muted, fontWeight: 900, marginBottom: 8 }}>Read the product</p>
+            <h2 style={{ color: t.ink, fontFamily: "'Instrument Serif',serif", fontSize: 34, lineHeight: 1.05, fontWeight: 400 }}>Three simple moves</h2>
+          </div>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 12 }}>
+          {steps.map((step, index) => (
+            <article key={step.title} style={{
+              background: t.card,
+              border: `1px solid ${t.border}`,
+              borderRadius: 18,
+              padding: "18px 18px 20px",
+              boxShadow: t.shadow,
+            }}>
+              <p style={{ color: t.accent, fontSize: 12, fontWeight: 900, marginBottom: 14 }}>{String(index + 1).padStart(2, "0")}</p>
+              <h3 style={{ color: t.ink, fontSize: 17, marginBottom: 9, lineHeight: 1.25 }}>{step.title}</h3>
+              <p style={{ color: t.muted, fontSize: 14, lineHeight: 1.65 }}>{step.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <aside style={{
+        marginBottom: 42,
+        background: `linear-gradient(135deg, ${t.inputBg}, ${t.card})`,
+        border: `1px solid ${t.border}`,
+        borderRadius: 24,
+        padding: "28px 30px",
+        maxWidth: 820,
+        boxShadow: t.shadow,
+      }}>
+        <p style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: t.accent, fontWeight: 900, marginBottom: 12 }}>Macro vs price</p>
+        <h2 style={{ color: t.ink, fontFamily: "'Instrument Serif',serif", fontSize: "clamp(32px, 5vw, 54px)", lineHeight: 1, fontWeight: 400, marginBottom: 16 }}>
+          Macro can be right while price stays mixed.
+        </h2>
+        <p style={{ color: t.muted, fontSize: 16, lineHeight: 1.75, maxWidth: 620 }}>
+          Lucid explains the backdrop. Price can lag, resist, or move differently in the near term.
+        </p>
+      </aside>
+
+      <section>
+        <p style={{ fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: t.muted, fontWeight: 900, marginBottom: 14 }}>Core notes</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", gap: 12 }}>
+          {concepts.map((concept) => (
+            <article key={concept.title} style={{
+              background: t.card,
+              border: `1px solid ${t.border}`,
+              borderRadius: 16,
+              padding: "17px 18px",
+            }}>
+              <h3 style={{ color: t.ink, fontSize: 15, marginBottom: 8, lineHeight: 1.25 }}>{concept.title}</h3>
+              <p style={{ color: t.muted, fontSize: 13, lineHeight: 1.65 }}>{concept.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function BottomNav({ tab, setTab, t }) {
+  const items = [
+    { id: "overview", label: "Today" },
+    { id: "movements", label: "Pairs" },
+    { id: "learn", label: "Learn" },
+  ];
+  return (
+    <div className="show-mobile" style={{
+      position: "fixed",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 100,
+      background: `${t.card}EE`,
+      backdropFilter: "blur(12px)",
+      borderTop: `1px solid ${t.border}`,
+      padding: "10px 8px 18px",
+      justifyContent: "space-around",
+    }}>
+      {items.map((item) => {
+        const active = tab === item.id;
+        return (
+          <button key={item.id} className="nav-button" onClick={() => setTab(item.id)} style={{
+            border: "none",
+            background: active ? t.accentDim : "transparent",
+            color: active ? t.accent : t.muted,
+            borderRadius: 12,
+            padding: "10px 16px",
+            fontSize: 12,
+            fontWeight: 800,
+          }}>{item.label}</button>
+        );
+      })}
+    </div>
+  );
+}
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error) {
+    console.error("Lucid view error", error);
+  }
+
+  render() {
+    if (!this.state.hasError) return this.props.children;
+    return (
+      <div className="content-area page-enter" style={{ padding: "38px 40px 72px", width: "100%", maxWidth: 760 }}>
+        <EmptyState
+          t={this.props.t}
+          title="This view could not load"
+          body="Lucid kept the app open. Go back to Today or refresh the page."
+        />
+      </div>
+    );
+  }
+}
+
+function App() {
+  const { data, loading, error } = useLucidData();
+  const [tab, setTab] = React.useState("overview");
+  const [dark, setDark] = React.useState(false);
+  const [detail, setDetail] = React.useState(null);
+  const [pairDetail, setPairDetail] = React.useState(null);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const mainRef = React.useRef(null);
+  const t = dark ? darkTheme : lightTheme;
+  const auth = useLucidAuth();
+  const meta = loading ? "Loading live data" : error ? "Fallback data" : `${data.summary_mode} · ${formatGeneratedAt(data.generated_at)}`;
+
+  const logout = async () => {
+    await window.LucidSupabase?.signOut();
+    window.location.href = "auth.html?mode=login";
+  };
+
+  React.useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0, behavior: "auto" });
+  }, [tab, detail?.currency, pairDetail?.pair]);
+
+  const changeTab = (next) => {
+    setTab(next);
+    setDetail(null);
+    setPairDetail(null);
+    setSearchQuery("");
+  };
+
+  if (!auth.configured) {
+    return <AuthSetupScreen t={t}/>;
+  }
+
+  if (auth.loading) {
+    return <AuthLoadingScreen t={t}/>;
+  }
+
+  if (auth.error) {
+    return (
+      <AuthShell t={t} title="Access could not be verified." body={auth.error}>
+        <button onClick={logout} style={{ border: `1px solid ${t.border}`, background: t.inputBg, color: t.ink, borderRadius: 999, padding: "11px 15px", fontWeight: 850 }}>Return to sign in</button>
+      </AuthShell>
+    );
+  }
+
+  if (!window.LucidSupabase?.hasAccess(auth.profile)) {
+    return <TrialEndedScreen t={t} onLogout={logout}/>;
+  }
+
+  return (
+    <div data-dark={dark} style={{ background: t.bg, minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <div className="app-layout" style={{ display: "grid", gridTemplateColumns: "220px 1fr", minHeight: "100vh" }}>
+        <Sidebar
+          tab={tab}
+          setTab={changeTab}
+          dark={dark}
+          toggleDark={() => setDark((value) => !value)}
+          t={t}
+          userEmail={auth.session?.user?.email}
+          profile={auth.profile}
+          onLogout={logout}
+        />
+        <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", overflow: "hidden" }}>
+          <Header t={t} dark={dark} toggleDark={() => setDark((value) => !value)} dataMeta={meta} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+          <main ref={mainRef} style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <ErrorBoundary key={`${tab}-${dark ? "dark" : "light"}-${pairDetail?.pair || detail?.currency || "list"}`} t={t}>
+              {pairDetail ? (
+                <PairTensionScene pair={pairDetail} data={data} onBack={() => setPairDetail(null)} t={t}/>
+              ) : detail ? (
+                <DetailScreen summary={detail} summaryMode={data.summary_mode} onBack={() => setDetail(null)} t={t}/>
+              ) : tab === "overview" ? (
+                <OverviewScreen data={data} t={t} onOpenCurrency={setDetail} onOpenPair={setPairDetail} searchQuery={searchQuery}/>
+              ) : tab === "movements" ? (
+                <MovementsScreen data={data} t={t} onOpenPair={setPairDetail} searchQuery={searchQuery}/>
+              ) : (
+                <LearnScreen t={t}/>
+              )}
+            </ErrorBoundary>
+          </main>
+          <p style={{ padding: "0 28px 18px", color: t.muted, fontSize: 11, textAlign: "center" }}>{data.disclaimer}</p>
+        </div>
+      </div>
+      <BottomNav tab={tab} setTab={changeTab} t={t}/>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

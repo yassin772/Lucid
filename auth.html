@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="supabase-url" content=""/>
+<meta name="supabase-anon-key" content=""/>
+<title>Lucid - Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/supabase_config.js"></script>
+<script src="./js/supabase_config.local.js"></script>
+<script src="./js/supabase_client.js"></script>
+<style>
+:root {
+  --bg: #070b12;
+  --panel: rgba(255,255,255,0.07);
+  --panel-strong: rgba(255,255,255,0.105);
+  --ink: #f7f3ea;
+  --muted: rgba(247,243,234,0.64);
+  --faint: rgba(247,243,234,0.42);
+  --line: rgba(247,243,234,0.13);
+  --violet: #7b6cff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 72% 14%, rgba(123,108,255,0.24), transparent 34%),
+    linear-gradient(180deg, #080c13, #070b12 58%, #090d14);
+  animation: authPageIn 220ms cubic-bezier(.2,.7,.2,1) both;
+}
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+.page { width: min(1040px, calc(100% - 32px)); margin: 0 auto; }
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+.brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 800; }
+.mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--violet), #5b3df0);
+  box-shadow: 0 14px 34px rgba(123,108,255,0.34);
+}
+.mark::after { content: ""; width: 10px; height: 10px; border: 2px solid white; border-radius: 50%; }
+.layout {
+  min-height: calc(100vh - 82px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
+  align-items: center;
+  gap: 52px;
+  padding: 64px 0 88px;
+}
+.copy, .panel { animation: authCardIn 240ms cubic-bezier(.2,.7,.2,1) both; }
+.panel { animation-delay: 45ms; }
+.copy h1 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(54px, 8vw, 104px);
+  line-height: 0.9;
+  letter-spacing: 0;
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+.copy p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.72;
+  max-width: 570px;
+}
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  padding: 32px;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(123,108,255,0.22), transparent 32%),
+    linear-gradient(135deg, var(--panel-strong), var(--panel));
+  box-shadow: 0 34px 110px rgba(0,0,0,0.34);
+}
+.eyebrow {
+  color: #b8afff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.panel h2 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.panel-copy { color: var(--muted); font-size: 14px; line-height: 1.62; margin-bottom: 22px; }
+.tabs { display: none; }
+.tab {
+  min-height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  cursor: pointer;
+}
+.tab.active {
+  background: rgba(123,108,255,0.18);
+  color: var(--ink);
+  border-color: rgba(123,108,255,0.42);
+}
+label { display: block; color: var(--faint); font-size: 11px; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; margin: 14px 0 8px; }
+.field.hidden { display: none; }
+input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 14px;
+  background: rgba(0,0,0,0.18);
+  color: var(--ink);
+  outline: none;
+}
+input:focus { border-color: rgba(123,108,255,0.72); }
+.button {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  background: #f4efe7;
+  color: #0b0f17;
+  font-weight: 850;
+  cursor: pointer;
+  margin-top: 20px;
+  position: relative;
+  transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+}
+.button:hover { transform: translateY(-1px); }
+.button:disabled { cursor: wait; opacity: 0.74; transform: none; }
+.button.loading { color: transparent; }
+.button.loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(11,15,23,0.24);
+  border-top-color: #0b0f17;
+  animation: authSpin 750ms linear infinite;
+}
+.secondary {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+}
+.mode-switch {
+  width: 100%;
+  margin-top: 14px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.auth-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+}
+.text-link {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.text-link:hover, .mode-switch:hover, .secondary:hover { color: var(--ink); }
+.message {
+  display: none;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.14);
+  border-radius: 14px;
+  padding: 12px 13px;
+}
+.message.visible { display: block; }
+#authForm { transition: opacity 180ms ease, transform 180ms ease; }
+.field { transition: opacity 160ms ease, transform 160ms ease; }
+.account {
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(0,0,0,0.16);
+}
+.account.visible { display: block; }
+.account p { color: var(--muted); font-size: 14px; line-height: 1.55; }
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+  color: var(--faint);
+  font-size: 12px;
+}
+@keyframes authPageIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes authCardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes authSpin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (max-width: 820px) {
+  .layout { grid-template-columns: 1fr; padding: 42px 0 72px; }
+  .panel { border-radius: 26px; padding: 24px; }
+}
+</style>
+</head>
+<body>
+  <nav class="page nav">
+    <a class="brand" href="lucid_landing.html">
+      <span class="mark" aria-hidden="true"></span>
+      <span>Lucid</span>
+    </a>
+    <a class="secondary" style="width:auto;margin-top:0;" href="lucid_landing.html">Back to landing</a>
+  </nav>
+
+  <main class="page layout">
+    <section class="copy">
+      <p class="eyebrow">30-day free reading period</p>
+      <h1>Start reading the macro backdrop calmly.</h1>
+      <p>
+        Create a Lucid account to access the app during your free trial.
+        Lucid is built for macro understanding, not price prediction.
+      </p>
+    </section>
+
+    <section class="panel" aria-label="Lucid authentication">
+      <div id="authForm">
+        <p class="eyebrow">Lucid account</p>
+        <h2 id="authTitle">Create account</h2>
+        <p class="panel-copy" id="authCopy">Your 30-day trial starts when your account is created.</p>
+
+        <div class="tabs" role="tablist" aria-label="Authentication mode">
+          <button class="tab" id="signupTab" type="button">Start free</button>
+          <button class="tab" id="loginTab" type="button">Sign in</button>
+        </div>
+
+        <form id="form">
+          <div class="field" id="emailField">
+            <label for="email">Email</label>
+            <input id="email" type="email" autocomplete="email" required/>
+          </div>
+          <div class="field" id="passwordField">
+            <label for="password" id="passwordLabel">Password</label>
+            <input id="password" type="password" autocomplete="current-password" minlength="8" required/>
+          </div>
+          <div class="field hidden" id="confirmPasswordField">
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" type="password" autocomplete="new-password" minlength="8"/>
+          </div>
+          <button class="button" id="submitButton" type="submit">Start free for 30 days</button>
+        </form>
+
+        <p class="message" id="message" role="status"></p>
+        <div class="auth-links">
+          <button class="mode-switch" id="modeSwitch" type="button">Already have an account? Sign in</button>
+          <button class="text-link" id="forgotButton" type="button">Forgot password?</button>
+        </div>
+        <a class="secondary" href="lucid_landing.html">Return to Lucid</a>
+      </div>
+
+      <div class="account" id="account">
+        <p class="eyebrow">Signed in</p>
+        <h2>Welcome back.</h2>
+        <p id="accountText">You are already signed in.</p>
+        <a class="button" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;" href="lucid_web_app_v2_lucid.html">Open Lucid</a>
+        <button class="tab" id="logoutButton" style="width:100%;margin-top:12px;" type="button">Logout</button>
+      </div>
+
+      <div class="link-row">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </section>
+  </main>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+let mode = params.get("mode") || "signup";
+if (hashParams.get("type") === "recovery") mode = "reset";
+if (hashParams.get("type") === "signup") mode = "callback";
+
+const authForm = document.getElementById("authForm");
+const account = document.getElementById("account");
+const accountText = document.getElementById("accountText");
+const form = document.getElementById("form");
+const emailField = document.getElementById("emailField");
+const passwordField = document.getElementById("passwordField");
+const confirmPasswordField = document.getElementById("confirmPasswordField");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
+const passwordLabel = document.getElementById("passwordLabel");
+const signupTab = document.getElementById("signupTab");
+const loginTab = document.getElementById("loginTab");
+const authTitle = document.getElementById("authTitle");
+const authCopy = document.getElementById("authCopy");
+const submitButton = document.getElementById("submitButton");
+const message = document.getElementById("message");
+const logoutButton = document.getElementById("logoutButton");
+const modeSwitch = document.getElementById("modeSwitch");
+const forgotButton = document.getElementById("forgotButton");
+const publicModes = new Set(["signup", "login", "forgot", "reset", "check", "callback"]);
+
+if (!publicModes.has(mode)) mode = "signup";
+
+function setUrlMode(nextMode) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("mode", nextMode);
+  window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+}
+
+function setMessage(text) {
+  message.textContent = text || "";
+  message.classList.toggle("visible", Boolean(text));
+}
+
+function setSubmitting(isSubmitting, text) {
+  submitButton.disabled = isSubmitting;
+  submitButton.classList.toggle("loading", isSubmitting);
+  if (text) submitButton.textContent = text;
+}
+
+function friendlyAuthError(error) {
+  const raw = `${error?.message || ""}`.toLowerCase();
+  console.error("[Lucid auth] auth error", error);
+  if (raw.includes("invalid login") || raw.includes("invalid credentials")) {
+    return "We could not sign you in. Check your email and password, then try again.";
+  }
+  if (raw.includes("email not confirmed")) {
+    return "Please confirm your email before signing in.";
+  }
+  if (raw.includes("already registered") || raw.includes("already been registered")) {
+    return "An account already exists for this email. Sign in instead.";
+  }
+  if (raw.includes("password")) {
+    return "Please use a valid password with at least 8 characters.";
+  }
+  if (raw.includes("rate limit")) {
+    return "Please wait a moment before trying again.";
+  }
+  return "We could not complete this request. Please try again.";
+}
+
+function validatePasswordFields() {
+  if (["signup", "reset"].includes(mode) && password.value.length < 8) {
+    setMessage("Please use a password with at least 8 characters.");
+    return false;
+  }
+  if (["signup", "reset"].includes(mode) && password.value !== confirmPassword.value) {
+    setMessage("The two passwords do not match.");
+    return false;
+  }
+  return true;
+}
+
+function setMode(nextMode) {
+  mode = nextMode;
+  signupTab.classList.toggle("active", mode === "signup");
+  loginTab.classList.toggle("active", mode === "login");
+  form.style.display = ["check", "callback"].includes(mode) ? "none" : "block";
+  emailField.classList.toggle("hidden", ["reset"].includes(mode));
+  passwordField.classList.toggle("hidden", ["forgot"].includes(mode));
+  confirmPasswordField.classList.toggle("hidden", !["signup", "reset"].includes(mode));
+  email.required = !["reset"].includes(mode);
+  password.required = !["forgot", "check", "callback"].includes(mode);
+  confirmPassword.required = ["signup", "reset"].includes(mode);
+  forgotButton.style.display = mode === "login" ? "inline-flex" : "none";
+
+  if (mode === "signup") {
+    authTitle.textContent = "Create your Lucid account";
+    authCopy.textContent = "Start with a 30-day free reading period. Lucid explains macro context, not price prediction.";
+    submitButton.textContent = "Start free for 30 days";
+    modeSwitch.textContent = "Already have an account? Sign in";
+    passwordLabel.textContent = "Password";
+    password.autocomplete = "new-password";
+  } else if (mode === "login") {
+    authTitle.textContent = "Sign in to Lucid";
+    authCopy.textContent = "Access your account and continue reading the macro backdrop.";
+    submitButton.textContent = "Sign in";
+    modeSwitch.textContent = "Need an account? Start free for 30 days";
+    passwordLabel.textContent = "Password";
+    password.autocomplete = "current-password";
+  } else if (mode === "forgot") {
+    authTitle.textContent = "Reset your password";
+    authCopy.textContent = "Enter your email and Lucid will send a secure reset link.";
+    submitButton.textContent = "Send reset link";
+    modeSwitch.textContent = "Back to sign in";
+  } else if (mode === "reset") {
+    authTitle.textContent = "Choose a new password";
+    authCopy.textContent = "Enter a new password for your Lucid account.";
+    submitButton.textContent = "Update password";
+    modeSwitch.textContent = "Back to sign in";
+    passwordLabel.textContent = "New password";
+    password.autocomplete = "new-password";
+  } else if (mode === "check") {
+    authTitle.textContent = "Check your email";
+    authCopy.textContent = "Open the link from Supabase to continue. If confirmation is enabled, Lucid will not open until your email is confirmed.";
+    modeSwitch.textContent = "Back to sign in";
+  } else if (mode === "callback") {
+    authTitle.textContent = "Continuing to Lucid";
+    authCopy.textContent = "Lucid is checking your confirmed session.";
+    modeSwitch.textContent = "Back to sign in";
+  }
+
+  setUrlMode(mode);
+  confirmPassword.value = "";
+  setMessage("");
+}
+
+function switchMode() {
+  if (mode === "signup") {
+    setMode("login");
+  } else if (mode === "login") {
+    setMode("signup");
+  } else {
+    setMode("login");
+  }
+}
+
+async function init() {
+  setMode(mode);
+  if (!window.LucidSupabase?.isConfigured()) {
+    setMessage("Supabase is not configured yet. Add your Supabase URL and anon key before enabling signup.");
+    submitButton.disabled = true;
+    return;
+  }
+
+  const { data } = await window.LucidSupabase.getSession();
+  if (mode === "callback") {
+    if (data.session?.user) window.location.href = "lucid_web_app_v2_lucid.html";
+    else setMessage("No active session was found. Sign in once your email is confirmed.");
+    return;
+  }
+
+  if (mode === "reset") {
+    if (!data.session?.user) {
+      setMessage("Open this page from the password reset email so Lucid can verify the reset session.");
+    }
+    return;
+  }
+
+  if (data.session?.user) {
+    authForm.style.display = "none";
+    account.classList.add("visible");
+    accountText.textContent = `Signed in as ${data.session.user.email}.`;
+  }
+}
+
+signupTab.addEventListener("click", () => setMode("signup"));
+loginTab.addEventListener("click", () => setMode("login"));
+modeSwitch.addEventListener("click", switchMode);
+forgotButton.addEventListener("click", () => setMode("forgot"));
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  setMessage("");
+  if (!validatePasswordFields()) return;
+  setSubmitting(true, mode === "signup"
+    ? "Creating account..."
+    : mode === "forgot"
+      ? "Sending..."
+      : mode === "reset"
+        ? "Updating..."
+        : "Signing in...");
+
+  try {
+    let result;
+    if (mode === "signup") {
+      result = await window.LucidSupabase.signUp(email.value, password.value);
+    } else if (mode === "forgot") {
+      result = await window.LucidSupabase.sendPasswordReset(email.value);
+    } else if (mode === "reset") {
+      result = await window.LucidSupabase.updatePassword(password.value);
+    } else {
+      result = await window.LucidSupabase.signIn(email.value, password.value);
+    }
+
+    if (result.error) throw result.error;
+
+    if (mode === "signup" && !result.data?.session) {
+      setMode("check");
+      setMessage("Account created. Check your email if confirmation is enabled, then sign in.");
+    } else if (mode === "forgot") {
+      setMode("check");
+      setMessage("Check your email for the password reset link.");
+    } else if (mode === "reset") {
+      setMessage("Password updated. Opening Lucid.");
+      window.location.href = "lucid_web_app_v2_lucid.html";
+    } else {
+      window.location.href = "lucid_web_app_v2_lucid.html";
+    }
+  } catch (error) {
+    setMessage(friendlyAuthError(error));
+  } finally {
+    setSubmitting(false);
+    if (mode === "signup") submitButton.textContent = "Start free for 30 days";
+    if (mode === "login") submitButton.textContent = "Sign in";
+    if (mode === "forgot") submitButton.textContent = "Send reset link";
+    if (mode === "reset") submitButton.textContent = "Update password";
+  }
+});
+
+logoutButton.addEventListener("click", async () => {
+  await window.LucidSupabase.signOut();
+  window.location.href = "auth.html?mode=login";
+});
+
+init();
+</script>
+</body>
+</html>
