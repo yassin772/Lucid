@@ -10,6 +10,7 @@ Lucid V1 is a static frontend. Vercel can deploy it without a framework migratio
 - `/privacy.html`
 - `/terms.html`
 - `/api/lucid_payload.json`
+- `/marketing.html` for internal marketing draft review only
 
 ## Required Vercel Environment Variables
 
@@ -101,6 +102,52 @@ http://localhost:8017/lucid_web_app_v2_lucid.html
 - Expired trial shows the calm expired state.
 - `/api/lucid_payload.json` loads.
 - `/privacy.html` and `/terms.html` load.
+- `/marketing.html` requires a signed-in session and only shows manual-review drafts.
+
+## Daily Payload Refresh
+
+Lucid uses a calm daily macro reading, not a live dashboard. The GitHub Actions
+workflow at `.github/workflows/refresh-lucid-payload.yml` refreshes
+`api/lucid_payload.json` on weekdays.
+
+Current schedule:
+
+```text
+05:00 UTC, Monday-Friday
+07:00 Europe/Paris during daylight saving time
+```
+
+The workflow:
+
+1. Downloads this-week and next-week ForexFactory calendar data.
+2. Uses `api/macro_context.json` automatically when present and valid.
+3. Optionally fetches Twelve Data daily FX prices if `TWELVE_DATA_API_KEY` is set
+   as a GitHub Actions secret.
+4. Generates a temporary payload candidate.
+5. Validates the candidate.
+6. Commits `api/lucid_payload.json` only if validation passes and the file changed.
+7. Lets Vercel redeploy from the pushed commit.
+
+If refresh fails, the workflow does not commit a new payload. Vercel keeps serving
+the last valid deployed payload.
+
+Manual refresh:
+
+```bash
+python3 scripts/safe_refresh_lucid_payload.py
+python3 scripts/validate_lucid_payload.py api/lucid_payload.json
+git add api/lucid_payload.json
+git commit -m "Refresh Lucid payload"
+git push
+```
+
+Optional GitHub secret:
+
+```text
+TWELVE_DATA_API_KEY
+```
+
+Do not add API keys to the repository.
 
 ## Mobile QA
 

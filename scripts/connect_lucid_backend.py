@@ -3,8 +3,9 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -50,6 +51,7 @@ def _macro_context_from_weekly_backend(backend_root: Path) -> Optional[dict]:
             if label:
                 risk_environment["label"] = label
         return {
+            "generated_at": datetime.now(timezone.utc).astimezone().isoformat(),
             "source": f"{backend_root} WeeklyMacroAnalysis",
             "risk_environment": risk_environment,
             "narratives": narratives,
@@ -69,12 +71,26 @@ def _load_json(path: Path) -> Optional[dict]:
     return data if isinstance(data, dict) else None
 
 
+def _storage_updated_at(data: dict) -> Optional[datetime]:
+    raw = data.get("updated_at")
+    if not raw:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
 def _macro_context_from_storage(backend_root: Path) -> Optional[dict]:
     storage_dir = backend_root / "storage" / "narratives"
     if not storage_dir.exists():
         return None
 
     narratives: Dict[str, dict] = {}
+    timestamps: list[datetime] = []
     for currency in CURRENCIES:
         candidates = [
             storage_dir / f"{currency}_narrative.json",
@@ -90,12 +106,17 @@ def _macro_context_from_storage(backend_root: Path) -> Optional[dict]:
             minimal = _minimal_narrative(narrative)
             if minimal:
                 narratives[currency] = minimal
+                updated_at = _storage_updated_at(data)
+                if updated_at:
+                    timestamps.append(updated_at)
                 break
 
     if not narratives:
         return None
 
+    generated_at = max(timestamps).isoformat() if timestamps else datetime.now(timezone.utc).astimezone().isoformat()
     return {
+        "generated_at": generated_at,
         "source": f"{backend_root} storage/narratives",
         "risk_environment": {"label": "neutral"},
         "narratives": narratives,

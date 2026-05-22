@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 import json
 import io
+import tempfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from types import SimpleNamespace
@@ -46,6 +47,8 @@ from scripts.fetch_fx_prices import (
 )
 from scripts.build_lucid_app_payload import build_app_payload
 from scripts.export_lucid_payload import build_payload
+from scripts.generate_marketing_content import build_content
+from scripts.safe_refresh_lucid_payload import _fresh_macro_context_path
 from scripts.validate_lucid_payload import validate_payload
 
 
@@ -1619,6 +1622,24 @@ class LucidEventEngineTests(unittest.TestCase):
         self.assertIn("const relational = interactionType && interactionType !== \"mixed_macro_forces\";", html)
         self.assertIn("surface.relational", html)
 
+    def test_marketing_page_is_internal_draft_only(self):
+        with open("marketing.html", encoding="utf-8") as handle:
+            html = handle.read()
+
+        self.assertIn("Marketing drafts for manual review.", html)
+        self.assertIn("Manual review required", html)
+        self.assertIn("const PAYLOAD_URL = \"./api/lucid_payload.json\";", html)
+        self.assertIn("auth.html?mode=login", html)
+        self.assertIn("navigator.clipboard.writeText", html)
+        self.assertIn("Download image", html)
+        self.assertIn("createSocialCanvas", html)
+        self.assertIn("canvas.toDataURL(\"image/png\")", html)
+        self.assertIn("BANNED_TERMS", html)
+        self.assertIn("Payload may be stale", html)
+        self.assertIn("Nothing is posted automatically", html)
+        self.assertNotIn("api.twitter.com", html)
+        self.assertNotIn("buffer.com", html)
+
     def test_weekly_limit_is_enforced(self):
         today = datetime.now(timezone.utc)
         raw_events = [
@@ -1634,6 +1655,89 @@ class LucidEventEngineTests(unittest.TestCase):
         events = LucidEventEngine().build_lucid_events(raw_events)
 
         self.assertEqual(len(events), MAX_WEEKLY_EVENTS)
+
+    def test_marketing_content_generator_writes_manual_review_drafts(self):
+        now = datetime.now(timezone.utc)
+        payload = {
+            "generated_at": now.isoformat(),
+            "market_story": {
+                "title": "US data is the next test for dollar support",
+                "body": "USD remains supported, while EUR stays under pressure.",
+            },
+            "narrative_focus": {
+                "theme": "uk_inflation",
+                "focus_currency": "GBP",
+                "headline": "UK inflation keeps GBP in focus",
+            },
+            "macro_evolution": {
+                "state": "event_test_ahead",
+                "summary": "UK inflation is the next macro test.",
+            },
+            "lucid_summaries": {
+                "USD": {"label": "Supported"},
+                "EUR": {"label": "Weak"},
+                "GBP": {"label": "Supported"},
+            },
+            "lucid_pairs": [
+                {
+                    "pair": "EUR/USD",
+                    "directional_state": "Clear backdrop contrast",
+                    "narrative_focus_match": False,
+                    "tension_summary": "Europe's softer growth picture is set against US rate support.",
+                    "narrative": {"interaction_type": "policy_vs_growth"},
+                }
+            ],
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            payload_path = Path(tmp) / "payload.json"
+            output_dir = Path(tmp) / "marketing"
+            payload_path.write_text(json.dumps(payload), encoding="utf-8")
+
+            md_path, json_path, result = build_content(payload_path, output_dir, "2026-05-21")
+
+            self.assertTrue(md_path.exists())
+            self.assertTrue(json_path.exists())
+            self.assertTrue(result["manual_review_required"])
+            self.assertEqual(len(result["drafts"]), 6)
+            self.assertEqual(result["compliance"]["banned_terms_found"], [])
+            self.assertTrue(all(draft["status"] == "draft" for draft in result["drafts"]))
+            self.assertIn("Manual review required", md_path.read_text(encoding="utf-8"))
+
+    def test_marketing_content_generator_rejects_stale_payload(self):
+        payload = {
+            "generated_at": "2026-01-01T00:00:00+00:00",
+            "market_story": {"title": "Old macro backdrop"},
+            "lucid_summaries": {"USD": {"label": "Neutral"}},
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            payload_path = Path(tmp) / "payload.json"
+            payload_path.write_text(json.dumps(payload), encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "stale"):
+                build_content(payload_path, Path(tmp) / "marketing", "2026-05-21")
+
+    def test_safe_refresh_ignores_undated_or_stale_macro_context(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            missing_date = tmp_path / "missing_date.json"
+            stale = tmp_path / "stale.json"
+            fresh = tmp_path / "fresh.json"
+
+            missing_date.write_text(json.dumps({"narratives": {}}), encoding="utf-8")
+            stale.write_text(
+                json.dumps({"generated_at": "2026-01-01T00:00:00+00:00", "narratives": {}}),
+                encoding="utf-8",
+            )
+            fresh.write_text(
+                json.dumps({"generated_at": datetime.now(timezone.utc).isoformat(), "narratives": {}}),
+                encoding="utf-8",
+            )
+
+            self.assertIsNone(_fresh_macro_context_path(str(missing_date)))
+            self.assertIsNone(_fresh_macro_context_path(str(stale)))
+            self.assertEqual(_fresh_macro_context_path(str(fresh)), str(fresh))
 
 
 if __name__ == "__main__":

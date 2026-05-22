@@ -1,0 +1,50 @@
+name: Refresh Lucid Payload
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 07:00 Europe/Paris during daylight saving time. GitHub cron runs in UTC.
+    - cron: "0 5 * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-lucid-payload
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Generate and validate daily Lucid payload
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Refresh payload candidate
+        env:
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+        run: python3 scripts/safe_refresh_lucid_payload.py
+
+      - name: Validate payload
+        run: python3 scripts/validate_lucid_payload.py api/lucid_payload.json
+
+      - name: Commit refreshed payload
+        run: |
+          if git diff --quiet -- api/lucid_payload.json; then
+            echo "No payload changes to commit."
+            exit 0
+          fi
+          git config user.name "lucid-refresh-bot"
+          git config user.email "actions@github.com"
+          git add api/lucid_payload.json
+          git commit -m "Refresh Lucid payload"
+          git push
