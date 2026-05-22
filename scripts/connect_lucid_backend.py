@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -34,33 +36,67 @@ def _minimal_narrative(obj) -> dict:
 
 
 def _macro_context_from_weekly_backend(backend_root: Path) -> Optional[dict]:
-    original_path = list(sys.path)
-    sys.path.insert(0, str(backend_root))
-    try:
-        from core.weekly_macro_analysis import WeeklyMacroAnalysis
+    exporter = r"""
+import json
+from datetime import datetime, timezone
 
-        weekly = WeeklyMacroAnalysis().build_weekly_summary()
-        narratives = {
-            currency: _minimal_narrative(weekly.narratives[currency])
-            for currency in CURRENCIES
-            if currency in weekly.narratives and weekly.narratives[currency] is not None
-        }
-        risk_environment = {}
-        if weekly.risk_environment is not None:
-            label = _read_field(weekly.risk_environment, "label")
-            if label:
-                risk_environment["label"] = label
-        return {
-            "generated_at": datetime.now(timezone.utc).astimezone().isoformat(),
-            "source": f"{backend_root} WeeklyMacroAnalysis",
-            "risk_environment": risk_environment,
-            "narratives": narratives,
-        }
+from config import SUPPORTED_CURRENCIES
+from core.weekly_macro_analysis import WeeklyMacroAnalysis
+
+NARRATIVE_FIELDS = ("currency_bias", "dominant_tone", "coherence")
+
+def read_field(obj, name, fallback=None):
+    if isinstance(obj, dict):
+        return obj.get(name, fallback)
+    return getattr(obj, name, fallback)
+
+def minimal_narrative(obj):
+    result = {}
+    for field in NARRATIVE_FIELDS:
+        value = read_field(obj, field)
+        if value is not None:
+            result[field] = value
+    return result
+
+weekly = WeeklyMacroAnalysis().build_weekly_summary()
+narratives = {
+    currency: minimal_narrative(weekly.narratives[currency])
+    for currency in SUPPORTED_CURRENCIES
+    if currency in weekly.narratives and weekly.narratives[currency] is not None
+}
+risk_environment = {}
+if weekly.risk_environment is not None:
+    label = read_field(weekly.risk_environment, "label")
+    if label:
+        risk_environment["label"] = label
+
+payload = {
+    "generated_at": datetime.now(timezone.utc).astimezone().isoformat(),
+    "source": "macro-scenarios-bot WeeklyMacroAnalysis",
+    "risk_environment": risk_environment,
+    "narratives": narratives,
+}
+print(json.dumps(payload, ensure_ascii=False))
+"""
+    try:
+        env = os.environ.copy()
+        local_deps = ROOT / ".lucid_backend_deps"
+        if local_deps.exists():
+            existing = env.get("PYTHONPATH")
+            env["PYTHONPATH"] = str(local_deps) if not existing else f"{local_deps}{os.pathsep}{existing}"
+        result = subprocess.run(
+            [sys.executable, "-c", exporter],
+            cwd=str(backend_root),
+            check=True,
+            capture_output=True,
+            text=True,
+            env=env,
+            timeout=120,
+        )
+        return json.loads(result.stdout)
     except Exception as exc:
-        print(f"Weekly backend import failed, trying storage fallback: {exc}")
+        print(f"Weekly backend export failed, trying storage fallback: {exc}")
         return None
-    finally:
-        sys.path = original_path
 
 
 def _load_json(path: Path) -> Optional[dict]:
@@ -129,10 +165,10 @@ def build_macro_context_from_backend(backend_root: str, method: str = "storage")
         raise FileNotFoundError(f"Backend root does not exist: {root}")
 
     context = None
-    if method in ("storage", "auto"):
-        context = _macro_context_from_storage(root)
-    if context is None and method in ("weekly", "auto"):
+    if method in ("weekly", "auto"):
         context = _macro_context_from_weekly_backend(root)
+    if context is None and method in ("storage", "auto"):
+        context = _macro_context_from_storage(root)
     if context is None:
         raise RuntimeError(
             "Could not read macro context from backend. Expected either a working "

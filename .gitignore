@@ -4,5 +4,11 @@
 api/raw/fx_prices_twelvedata.json
 js/supabase_config.js
 js/supabase_config.local.js
+outputs/marketing/*.json
+outputs/marketing/*.md
+!outputs/marketing/.gitkeep
+lucid_editorial/outputs/editorial/*.json
+!lucid_editorial/outputs/editorial/.gitkeep
 __pycache__/
 *.pyc
+.lucid_backend_deps/
