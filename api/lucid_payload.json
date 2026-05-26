@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-25T08:58:03.789612+00:00",
+  "generated_at": "2026-05-26T08:32:41.557611+00:00",
   "source": "Macro context and ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Narrative-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "Rate expectations continue supporting USD",
+    "title": "Fed policy remains restrictive",
     "body": "USD and GBP remain supported, while EUR, JPY, and CHF stay under pressure.",
     "drivers": [
-      "USD: Rate expectations continue supporting USD",
-      "EUR: Weak growth data is pressuring the euro",
-      "GBP: Inflation is supporting the pound"
+      "USD: Fed policy remains restrictive",
+      "EUR: Growth remains the euro's main challenge",
+      "GBP: Sticky inflation keeps GBP supported"
     ]
   },
   "macro_shock": null,
@@ -37,7 +37,7 @@
       "label": "Supported",
       "confidence": "High",
       "timeframe": "Medium-term",
-      "headline": "Rate expectations continue supporting USD",
+      "headline": "Fed policy remains restrictive",
       "reasons": [
         "The Fed is keeping rates high and has no plans to cut",
         "The economy is performing well",
@@ -51,8 +51,8 @@
       "currency": "EUR",
       "label": "Weak",
       "confidence": "High",
-      "timeframe": "Medium-term",
-      "headline": "Weak growth data is pressuring the euro",
+      "timeframe": "Short-term",
+      "headline": "Growth remains the euro's main challenge",
       "reasons": [
         "Europe's economy lacks enough momentum",
         "The ECB is actively cutting rates",
@@ -60,14 +60,14 @@
       ],
       "invalidation": "This view changes if growth data improves clearly",
       "insight": "The euro needs stronger growth to regain support",
-      "key_event": null
+      "key_event": "ECB Financial Stability Review tomorrow · Medium impact"
     },
     "GBP": {
       "currency": "GBP",
       "label": "Supported",
       "confidence": "High",
       "timeframe": "Medium-term",
-      "headline": "Inflation is supporting the pound",
+      "headline": "Sticky inflation keeps GBP supported",
       "reasons": [
         "Inflation is keeping the BOE cautious about cutting rates",
         "The BOE is keeping rates high and has no plans to cut",
@@ -90,14 +90,14 @@
       ],
       "invalidation": "This view changes if global market mood shifts clearly",
       "insight": "Market mood is the key driver for the yen right now",
-      "key_event": "BOJ Gov Ueda Speaks tomorrow · Medium impact"
+      "key_event": "BOJ Gov Ueda Speaks today · Medium impact"
     },
     "CHF": {
       "currency": "CHF",
       "label": "Weak",
       "confidence": "High",
       "timeframe": "Medium-term",
-      "headline": "The franc is driven by risk mood",
+      "headline": "Calmer markets are changing risk mood",
       "reasons": [
         "Swiss stability matters most when markets become nervous",
         "Swiss stability is steady in the background",
@@ -112,7 +112,7 @@
       "label": "Neutral",
       "confidence": "Low",
       "timeframe": "Mixed",
-      "headline": "CAD is waiting for a clearer oil story",
+      "headline": "Oil and US demand are driving CAD",
       "reasons": [
         "Canada is sensitive to oil prices and US demand",
         "Oil prices and US economic health are the key drivers"
@@ -134,14 +134,14 @@
       ],
       "invalidation": "This view changes if China or global demand improves clearly",
       "insight": "AUD needs a stronger global demand story",
-      "key_event": "CPI m/m tomorrow · High impact"
+      "key_event": "CPI m/m today · High impact"
     },
     "NZD": {
       "currency": "NZD",
       "label": "Weak",
       "confidence": "High",
       "timeframe": "Short-term",
-      "headline": "NZD needs stronger global demand",
+      "headline": "Global demand is weighing on NZD",
       "reasons": [
         "New Zealand is sensitive to global trade conditions",
         "Global trade conditions matter more than local data",
@@ -149,7 +149,7 @@
       ],
       "invalidation": "This view changes if China or global demand improves clearly",
       "insight": "NZD needs clearer support from global demand",
-      "key_event": "RBNZ Monetary Policy Statement tomorrow · High impact"
+      "key_event": "RBNZ Monetary Policy Statement today · High impact"
     }
   },
   "lucid_pairs": [
@@ -161,13 +161,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Weak",
       "quote_label": "Supported",
-      "base_key_event": null,
+      "base_key_event": "ECB Financial Stability Review tomorrow · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth data is pressuring the euro",
-        "USD: Rate expectations continue supporting USD"
+        "EUR: Growth remains the euro's main challenge",
+        "USD: Fed policy remains restrictive"
       ],
       "takeaway": "The macro backdrop is firmer for USD than EUR",
       "narrative": {
@@ -201,8 +201,8 @@
       "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: Inflation is supporting the pound",
-        "USD: Rate expectations continue supporting USD"
+        "GBP: Sticky inflation keeps GBP supported",
+        "USD: Fed policy remains restrictive"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -232,11 +232,11 @@
       "base_label": "Supported",
       "quote_label": "Weak",
       "base_key_event": null,
-      "quote_key_event": "BOJ Gov Ueda Speaks tomorrow · Medium impact",
+      "quote_key_event": "BOJ Gov Ueda Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: Rate expectations continue supporting USD",
+        "USD: Fed policy remains restrictive",
         "JPY: BOJ guidance is in focus for JPY"
       ],
       "takeaway": "The macro backdrop is firmer for USD than JPY",
@@ -271,8 +271,8 @@
       "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: Rate expectations continue supporting USD",
-        "CHF: The franc is driven by risk mood"
+        "USD: Fed policy remains restrictive",
+        "CHF: Calmer markets are changing risk mood"
       ],
       "takeaway": "The macro backdrop is firmer for USD than CHF",
       "narrative": {
@@ -301,13 +301,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Weak",
       "quote_label": "Supported",
-      "base_key_event": "CPI m/m tomorrow · High impact",
+      "base_key_event": "CPI m/m today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "AUD: Inflation data is in focus for AUD",
-        "USD: Rate expectations continue supporting USD"
+        "USD: Fed policy remains restrictive"
       ],
       "takeaway": "The macro backdrop is firmer for USD than AUD",
       "narrative": {
@@ -341,8 +341,8 @@
       "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: Rate expectations continue supporting USD",
-        "CAD: CAD is waiting for a clearer oil story"
+        "USD: Fed policy remains restrictive",
+        "CAD: Oil and US demand are driving CAD"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -371,13 +371,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Weak",
       "quote_label": "Supported",
-      "base_key_event": "RBNZ Monetary Policy Statement tomorrow · High impact",
+      "base_key_event": "RBNZ Monetary Policy Statement today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "NZD: NZD needs stronger global demand",
-        "USD: Rate expectations continue supporting USD"
+        "NZD: Global demand is weighing on NZD",
+        "USD: Fed policy remains restrictive"
       ],
       "takeaway": "The macro backdrop is firmer for USD than NZD",
       "narrative": {
@@ -406,13 +406,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Weak",
       "quote_label": "Supported",
-      "base_key_event": null,
+      "base_key_event": "ECB Financial Stability Review tomorrow · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth data is pressuring the euro",
-        "GBP: Inflation is supporting the pound"
+        "EUR: Growth remains the euro's main challenge",
+        "GBP: Sticky inflation keeps GBP supported"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than EUR",
       "narrative": {
@@ -441,12 +441,12 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": null,
-      "quote_key_event": "BOJ Gov Ueda Speaks tomorrow · Medium impact",
+      "base_key_event": "ECB Financial Stability Review tomorrow · Medium impact",
+      "quote_key_event": "BOJ Gov Ueda Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth data is pressuring the euro",
+        "EUR: Growth remains the euro's main challenge",
         "JPY: BOJ guidance is in focus for JPY"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -477,11 +477,11 @@
       "base_label": "Supported",
       "quote_label": "Weak",
       "base_key_event": null,
-      "quote_key_event": "BOJ Gov Ueda Speaks tomorrow · Medium impact",
+      "quote_key_event": "BOJ Gov Ueda Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: Inflation is supporting the pound",
+        "GBP: Sticky inflation keeps GBP supported",
         "JPY: BOJ guidance is in focus for JPY"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than JPY",
@@ -511,12 +511,12 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": null,
-      "quote_key_event": "CPI m/m tomorrow · High impact",
+      "base_key_event": "ECB Financial Stability Review tomorrow · Medium impact",
+      "quote_key_event": "CPI m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth data is pressuring the euro",
+        "EUR: Growth remains the euro's main challenge",
         "AUD: Inflation data is in focus for AUD"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -546,13 +546,13 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "ECB Financial Stability Review tomorrow · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth data is pressuring the euro",
-        "CAD: CAD is waiting for a clearer oil story"
+        "EUR: Growth remains the euro's main challenge",
+        "CAD: Oil and US demand are driving CAD"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -582,11 +582,11 @@
       "base_label": "Supported",
       "quote_label": "Weak",
       "base_key_event": null,
-      "quote_key_event": "CPI m/m tomorrow · High impact",
+      "quote_key_event": "CPI m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: Inflation is supporting the pound",
+        "GBP: Sticky inflation keeps GBP supported",
         "AUD: Inflation data is in focus for AUD"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than AUD",
@@ -616,8 +616,8 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": "CPI m/m tomorrow · High impact",
-      "quote_key_event": "BOJ Gov Ueda Speaks tomorrow · Medium impact",
+      "base_key_event": "CPI m/m today · High impact",
+      "quote_key_event": "BOJ Gov Ueda Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -651,12 +651,12 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": "RBNZ Monetary Policy Statement tomorrow · High impact",
-      "quote_key_event": "BOJ Gov Ueda Speaks tomorrow · Medium impact",
+      "base_key_event": "RBNZ Monetary Policy Statement today · High impact",
+      "quote_key_event": "BOJ Gov Ueda Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "NZD: NZD needs stronger global demand",
+        "NZD: Global demand is weighing on NZD",
         "JPY: BOJ guidance is in focus for JPY"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -691,8 +691,8 @@
       "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: Inflation is supporting the pound",
-        "CHF: The franc is driven by risk mood"
+        "GBP: Sticky inflation keeps GBP supported",
+        "CHF: Calmer markets are changing risk mood"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than CHF",
       "narrative": {
@@ -721,13 +721,13 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": null,
+      "base_key_event": "ECB Financial Stability Review tomorrow · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth data is pressuring the euro",
-        "CHF: The franc is driven by risk mood"
+        "EUR: Growth remains the euro's main challenge",
+        "CHF: Calmer markets are changing risk mood"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -756,13 +756,13 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": "CPI m/m tomorrow · High impact",
-      "quote_key_event": "RBNZ Monetary Policy Statement tomorrow · High impact",
+      "base_key_event": "CPI m/m today · High impact",
+      "quote_key_event": "RBNZ Monetary Policy Statement today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "AUD: Inflation data is in focus for AUD",
-        "NZD: NZD needs stronger global demand"
+        "NZD: Global demand is weighing on NZD"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -792,11 +792,11 @@
       "base_label": "Neutral",
       "quote_label": "Weak",
       "base_key_event": null,
-      "quote_key_event": "BOJ Gov Ueda Speaks tomorrow · Medium impact",
+      "quote_key_event": "BOJ Gov Ueda Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "CAD: CAD is waiting for a clearer oil story",
+        "CAD: Oil and US demand are driving CAD",
         "JPY: BOJ guidance is in focus for JPY"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -827,12 +827,12 @@
       "base_label": "Supported",
       "quote_label": "Weak",
       "base_key_event": null,
-      "quote_key_event": "RBNZ Monetary Policy Statement tomorrow · High impact",
+      "quote_key_event": "RBNZ Monetary Policy Statement today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "GBP: Inflation is supporting the pound",
-        "NZD: NZD needs stronger global demand"
+        "GBP: Sticky inflation keeps GBP supported",
+        "NZD: Global demand is weighing on NZD"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than NZD",
       "narrative": {
@@ -861,8 +861,8 @@
       "title": "RBNZ Monetary Policy Statement",
       "event_type": "RBNZ",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
@@ -875,8 +875,8 @@
       "title": "RBNZ Rate Statement",
       "event_type": "RBNZ",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
@@ -889,8 +889,8 @@
       "title": "RBNZ Press Conference",
       "event_type": "RBNZ",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
@@ -903,8 +903,8 @@
       "title": "BOJ Gov Ueda Speaks",
       "event_type": "BOJ",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": "Ueda",
       "why_it_matters": "Ueda guides how investors understand Japan's policy path",
@@ -917,8 +917,8 @@
       "title": "CPI m/m",
       "event_type": "CPI",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "Inflation tells central banks how much pressure remains",
@@ -926,32 +926,32 @@
       "insight": "Slower inflation can reduce support for a currency"
     },
     {
-      "date": "2026-05-26",
-      "currency": "AUD",
-      "title": "CPI y/y",
-      "event_type": "CPI",
-      "importance": "high",
+      "date": "2026-05-27",
+      "currency": "EUR",
+      "title": "ECB Financial Stability Review",
+      "event_type": "ECB",
+      "importance": "medium",
       "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
+      "why_it_matters": "The ECB sets the rate backdrop for the euro area",
+      "market_focus": "Whether slow growth makes the ECB more careful",
+      "insight": "The euro needs stronger economic support to improve"
     },
     {
-      "date": "2026-05-26",
-      "currency": "AUD",
-      "title": "Trimmed Mean CPI m/m",
-      "event_type": "CPI",
-      "importance": "high",
+      "date": "2026-05-27",
+      "currency": "NZD",
+      "title": "RBNZ Gov Breman Speaks",
+      "event_type": "RBNZ",
+      "importance": "medium",
       "timing_label": "Tomorrow",
       "is_today": false,
-      "is_cb_speech": false,
+      "is_cb_speech": true,
       "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
+      "why_it_matters": "Central bank speeches help explain policy between meetings",
+      "market_focus": "Whether the speaker sounds worried about inflation or growth",
+      "insight": "The comments matter when they make the outlook clearer"
     }
   ]
 }
