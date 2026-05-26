@@ -931,8 +931,16 @@ class LucidPayloadExportTests(unittest.TestCase):
         }
         current_price_data = {
             "pairs": [
-                {"pair": "EUR/USD", "recent_change_pct": -0.40, "price_updated_at": "2026-05-19T00:00:00+00:00"},
-                {"pair": "USD/JPY", "recent_change_pct": 0.28, "price_updated_at": "2026-05-19T00:00:00+00:00"},
+                {
+                    "pair": "EUR/USD",
+                    "recent_change_pct": -0.40,
+                    "price_updated_at": (datetime.now(timezone.utc) - timedelta(hours=6)).isoformat(),
+                },
+                {
+                    "pair": "USD/JPY",
+                    "recent_change_pct": 0.28,
+                    "price_updated_at": (datetime.now(timezone.utc) - timedelta(hours=6)).isoformat(),
+                },
             ]
         }
 
@@ -1576,6 +1584,17 @@ class LucidEventEngineTests(unittest.TestCase):
         self.assertIn("formatNarrativeTheme", html)
         self.assertIn("Today’s focus:", html)
         self.assertIn("China & global demand", html)
+        self.assertIn("Central bank guidance", html)
+
+    def test_frontend_surfaces_macro_evolution_in_hero(self):
+        with open("lucid_web_app_v2_lucid.html", encoding="utf-8") as handle:
+            html = handle.read()
+
+        self.assertIn("macro_evolution", html)
+        self.assertIn("data.macro_evolution?.summary", html)
+        self.assertIn("What to watch now", html)
+        self.assertIn("story.summary", html)
+        self.assertNotIn("big change today", html.lower())
 
     def test_frontend_noise_reduction_mobile_polish_exists(self):
         with open("lucid_web_app_v2_lucid.html", encoding="utf-8") as handle:

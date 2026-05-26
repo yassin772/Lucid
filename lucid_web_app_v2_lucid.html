@@ -434,6 +434,7 @@ function normalizePayload(payload) {
     market_story: payload?.market_story || samplePayload.market_story,
     macro_shock: payload?.macro_shock || null,
     narrative_focus: payload?.narrative_focus || null,
+    macro_evolution: payload?.macro_evolution || null,
     price_alignment: payload?.price_alignment || null,
     summaries,
     events: payload?.lucid_events || samplePayload.lucid_events,
@@ -456,7 +457,10 @@ function formatNarrativeTheme(theme) {
     commodities: "Commodities",
     global_macro_backdrop: "Global macro backdrop",
   };
-  return labels[theme] || "";
+  if (labels[theme]) return labels[theme];
+  return String(theme || "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function narrativeFocusMatchesStory(focus, story) {
@@ -1539,7 +1543,8 @@ function MarketStory({ story, summaries, data, t, timelineOpen, onToggleTimeline
   const mood = marketMood(summaries);
   const shock = data.macro_shock;
   const narrativeFocus = data.narrative_focus;
-  const focusLabel = narrativeFocusMatchesStory(narrativeFocus, story) ? formatNarrativeTheme(narrativeFocus.theme) : "";
+  const focusLabel = narrativeFocus?.theme ? formatNarrativeTheme(narrativeFocus.theme) : "";
+  const evolutionSummary = data.macro_evolution?.summary || story.summary || "";
   return (
     <section className="macro-hero hero-enter" style={{
       background: `
@@ -1603,6 +1608,20 @@ function MarketStory({ story, summaries, data, t, timelineOpen, onToggleTimeline
         </div>
       )}
       <p className="reveal reveal-4" style={{ fontSize: 17, lineHeight: 1.65, color: "rgba(255,255,255,0.82)", maxWidth: 690 }}>{story.body}</p>
+      {evolutionSummary && (
+        <div className="reveal reveal-4" style={{
+          marginTop: 18,
+          alignSelf: "flex-start",
+          border: "1px solid rgba(255,255,255,0.14)",
+          background: "rgba(255,255,255,0.07)",
+          borderRadius: 18,
+          padding: "12px 14px",
+          maxWidth: 680,
+        }}>
+          <p style={{ color: "rgba(255,255,255,0.58)", fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 900, marginBottom: 6 }}>What to watch now</p>
+          <p style={{ color: "rgba(255,255,255,0.86)", fontSize: 14, fontWeight: 800, lineHeight: 1.45 }}>{evolutionSummary}</p>
+        </div>
+      )}
       <button className="nav-button reveal reveal-4" onClick={onToggleTimeline} style={{
         marginTop: 18,
         alignSelf: "flex-start",
