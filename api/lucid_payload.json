@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-27T08:39:34.250650+00:00",
+  "generated_at": "2026-05-28T08:43:39.072489+00:00",
   "source": "Macro context and ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Narrative-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
@@ -8,8 +8,8 @@
     "body": "USD and GBP remain supported, while EUR, JPY, and CHF stay under pressure.",
     "drivers": [
       "USD: US data is the next test for dollar support",
-      "EUR: Weak growth is weighing on the euro",
-      "GBP: BOE caution is helping the pound"
+      "EUR: Weak growth data is pressuring the euro",
+      "GBP: BOE guidance is in focus for GBP"
     ]
   },
   "macro_shock": null,
@@ -45,14 +45,14 @@
       ],
       "invalidation": "This view weakens if inflation slows or The Fed sounds more careful",
       "insight": "Higher rates keep money flowing into the dollar",
-      "key_event": "Core PCE Price Index m/m tomorrow · High impact"
+      "key_event": "Core PCE Price Index m/m today · High impact"
     },
     "EUR": {
       "currency": "EUR",
       "label": "Weak",
       "confidence": "High",
       "timeframe": "Short-term",
-      "headline": "Weak growth is weighing on the euro",
+      "headline": "Weak growth data is pressuring the euro",
       "reasons": [
         "Europe's economy lacks enough momentum",
         "The ECB is actively cutting rates",
@@ -60,14 +60,14 @@
       ],
       "invalidation": "This view changes if growth data improves clearly",
       "insight": "The euro needs stronger growth to regain support",
-      "key_event": "ECB Financial Stability Review today · Medium impact"
+      "key_event": "ECB President Lagarde Speaks today · Medium impact"
     },
     "GBP": {
       "currency": "GBP",
       "label": "Supported",
       "confidence": "High",
-      "timeframe": "Medium-term",
-      "headline": "BOE caution is helping the pound",
+      "timeframe": "Short-term",
+      "headline": "BOE guidance is in focus for GBP",
       "reasons": [
         "Inflation is keeping the BOE cautious about cutting rates",
         "The BOE is keeping rates high and has no plans to cut",
@@ -75,14 +75,14 @@
       ],
       "invalidation": "This view changes if inflation cools faster than expected",
       "insight": "The pound still has support while inflation stays sticky",
-      "key_event": null
+      "key_event": "BOE Gov Bailey Speaks tomorrow · High impact"
     },
     "JPY": {
       "currency": "JPY",
       "label": "Weak",
       "confidence": "High",
-      "timeframe": "Medium-term",
-      "headline": "The yen is driven by risk mood",
+      "timeframe": "Short-term",
+      "headline": "Calmer markets are changing risk mood",
       "reasons": [
         "JPY can react quickly when global risk sentiment changes",
         "The yen is highly sensitive to sudden mood changes",
@@ -90,14 +90,14 @@
       ],
       "invalidation": "This view changes if global market mood shifts clearly",
       "insight": "Market mood is the key driver for the yen right now",
-      "key_event": null
+      "key_event": "Tokyo Core CPI y/y today · Medium impact"
     },
     "CHF": {
       "currency": "CHF",
       "label": "Weak",
       "confidence": "High",
       "timeframe": "Short-term",
-      "headline": "SNB guidance is in focus for CHF",
+      "headline": "The franc is driven by risk mood",
       "reasons": [
         "Swiss stability matters most when markets become nervous",
         "Swiss stability is steady in the background",
@@ -105,28 +105,28 @@
       ],
       "invalidation": "This view changes if global market mood shifts clearly",
       "insight": "The franc needs a clearer shift in market mood",
-      "key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact"
+      "key_event": "SNB Chairman Schlegel Speaks today · Medium impact"
     },
     "CAD": {
       "currency": "CAD",
       "label": "Neutral",
       "confidence": "Low",
       "timeframe": "Mixed",
-      "headline": "CAD is waiting for a clearer oil story",
+      "headline": "Oil and US demand are driving CAD",
       "reasons": [
         "Canada is sensitive to oil prices and US demand",
         "Oil prices and US economic health are the key drivers"
       ],
       "invalidation": "This view changes if oil prices or US demand improve clearly",
       "insight": "CAD needs a clearer lift from oil or US demand",
-      "key_event": "BOC Press Conference tomorrow · Medium impact"
+      "key_event": "BOC Press Conference today · Medium impact"
     },
     "AUD": {
       "currency": "AUD",
       "label": "Weak",
       "confidence": "High",
       "timeframe": "Medium-term",
-      "headline": "Commodity weakness is weighing on AUD",
+      "headline": "China and commodity demand are weighing on AUD",
       "reasons": [
         "Australia is sensitive to China and global commodity demand",
         "Commodity prices and China remain the key factors",
@@ -140,8 +140,8 @@
       "currency": "NZD",
       "label": "Weak",
       "confidence": "High",
-      "timeframe": "Short-term",
-      "headline": "Softer global demand is pressuring NZD",
+      "timeframe": "Medium-term",
+      "headline": "NZD needs stronger global demand",
       "reasons": [
         "New Zealand is sensitive to global trade conditions",
         "Global trade conditions matter more than local data",
@@ -149,7 +149,7 @@
       ],
       "invalidation": "This view changes if China or global demand improves clearly",
       "insight": "NZD needs clearer support from global demand",
-      "key_event": "RBNZ Gov Breman Speaks today · Medium impact"
+      "key_event": null
     }
   },
   "lucid_pairs": [
@@ -161,12 +161,12 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Weak",
       "quote_label": "Supported",
-      "base_key_event": "ECB Financial Stability Review today · Medium impact",
-      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "Core PCE Price Index m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "EUR: Weak growth is weighing on the euro",
+        "EUR: Weak growth data is pressuring the euro",
         "USD: US data is the next test for dollar support"
       ],
       "takeaway": "The macro backdrop is firmer for USD than EUR",
@@ -196,12 +196,12 @@
       "directional_state": "Mixed",
       "base_label": "Supported",
       "quote_label": "Supported",
-      "base_key_event": null,
-      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
+      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "quote_key_event": "Core PCE Price Index m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "GBP: BOE caution is helping the pound",
+        "GBP: BOE guidance is in focus for GBP",
         "USD: US data is the next test for dollar support"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -231,13 +231,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Supported",
       "quote_label": "Weak",
-      "base_key_event": "Core PCE Price Index m/m tomorrow · High impact",
-      "quote_key_event": null,
+      "base_key_event": "Core PCE Price Index m/m today · High impact",
+      "quote_key_event": "Tokyo Core CPI y/y today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "USD: US data is the next test for dollar support",
-        "JPY: The yen is driven by risk mood"
+        "JPY: Calmer markets are changing risk mood"
       ],
       "takeaway": "The macro backdrop is firmer for USD than JPY",
       "narrative": {
@@ -266,32 +266,32 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Supported",
       "quote_label": "Weak",
-      "base_key_event": "Core PCE Price Index m/m tomorrow · High impact",
-      "quote_key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact",
+      "base_key_event": "Core PCE Price Index m/m today · High impact",
+      "quote_key_event": "SNB Chairman Schlegel Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "USD: US data is the next test for dollar support",
-        "CHF: SNB guidance is in focus for CHF"
+        "CHF: The franc is driven by risk mood"
       ],
       "takeaway": "The macro backdrop is firmer for USD than CHF",
       "narrative": {
         "pair": "USD/CHF",
-        "theme": "policy",
+        "theme": "risk_mood",
         "directional_state": "Clear backdrop contrast",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "rationale": "USD and CHF do not show one clean relational theme yet.",
-        "what_changes_this": "The imbalance would narrow if USD policy expectations soften.",
+        "interaction_type": "policy_vs_safe_haven",
+        "headline": "US rate support sits against the franc's sensitivity to defensive market mood.",
+        "rationale": "The pair links rate expectations with defensive market mood.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF.",
         "dominant_currency": "USD",
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "tension_summary": "US rate support sits against the franc's sensitivity to defensive market mood.",
         "left_reason": "USD still has firmer policy support",
-        "right_reason": "CHF is pressured by softer policy expectations",
-        "interaction_reason": "USD and CHF do not show one clean relational theme yet."
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "The pair links rate expectations with defensive market mood."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-      "interaction_reason": "USD and CHF do not show one clean relational theme yet.",
-      "what_changes_this": "The imbalance would narrow if USD policy expectations soften."
+      "tension_summary": "US rate support sits against the franc's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
     },
     {
       "pair": "AUD/USD",
@@ -302,11 +302,11 @@
       "base_label": "Weak",
       "quote_label": "Supported",
       "base_key_event": null,
-      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
+      "quote_key_event": "Core PCE Price Index m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "AUD: Commodity weakness is weighing on AUD",
+        "AUD: China and commodity demand are weighing on AUD",
         "USD: US data is the next test for dollar support"
       ],
       "takeaway": "The macro backdrop is firmer for USD than AUD",
@@ -336,13 +336,13 @@
       "directional_state": "Mixed",
       "base_label": "Supported",
       "quote_label": "Neutral",
-      "base_key_event": "Core PCE Price Index m/m tomorrow · High impact",
-      "quote_key_event": "BOC Press Conference tomorrow · Medium impact",
+      "base_key_event": "Core PCE Price Index m/m today · High impact",
+      "quote_key_event": "BOC Press Conference today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "USD: US data is the next test for dollar support",
-        "CAD: CAD is waiting for a clearer oil story"
+        "CAD: Oil and US demand are driving CAD"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -371,12 +371,12 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Weak",
       "quote_label": "Supported",
-      "base_key_event": "RBNZ Gov Breman Speaks today · Medium impact",
-      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
+      "base_key_event": null,
+      "quote_key_event": "Core PCE Price Index m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "NZD: Softer global demand is pressuring NZD",
+        "NZD: NZD needs stronger global demand",
         "USD: US data is the next test for dollar support"
       ],
       "takeaway": "The macro backdrop is firmer for USD than NZD",
@@ -406,13 +406,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Weak",
       "quote_label": "Supported",
-      "base_key_event": "ECB Financial Stability Review today · Medium impact",
-      "quote_key_event": null,
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth is weighing on the euro",
-        "GBP: BOE caution is helping the pound"
+        "EUR: Weak growth data is pressuring the euro",
+        "GBP: BOE guidance is in focus for GBP"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than EUR",
       "narrative": {
@@ -441,13 +441,13 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": "ECB Financial Stability Review today · Medium impact",
-      "quote_key_event": null,
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "Tokyo Core CPI y/y today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth is weighing on the euro",
-        "JPY: The yen is driven by risk mood"
+        "EUR: Weak growth data is pressuring the euro",
+        "JPY: Calmer markets are changing risk mood"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -476,13 +476,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Supported",
       "quote_label": "Weak",
-      "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "quote_key_event": "Tokyo Core CPI y/y today · Medium impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: BOE caution is helping the pound",
-        "JPY: The yen is driven by risk mood"
+        "GBP: BOE guidance is in focus for GBP",
+        "JPY: Calmer markets are changing risk mood"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than JPY",
       "narrative": {
@@ -511,13 +511,13 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": "ECB Financial Stability Review today · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth is weighing on the euro",
-        "AUD: Commodity weakness is weighing on AUD"
+        "EUR: Weak growth data is pressuring the euro",
+        "AUD: China and commodity demand are weighing on AUD"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -546,13 +546,13 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Neutral",
-      "base_key_event": "ECB Financial Stability Review today · Medium impact",
-      "quote_key_event": "BOC Press Conference tomorrow · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "BOC Press Conference today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth is weighing on the euro",
-        "CAD: CAD is waiting for a clearer oil story"
+        "EUR: Weak growth data is pressuring the euro",
+        "CAD: Oil and US demand are driving CAD"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -581,13 +581,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Supported",
       "quote_label": "Weak",
-      "base_key_event": null,
+      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: BOE caution is helping the pound",
-        "AUD: Commodity weakness is weighing on AUD"
+        "GBP: BOE guidance is in focus for GBP",
+        "AUD: China and commodity demand are weighing on AUD"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than AUD",
       "narrative": {
@@ -617,12 +617,12 @@
       "base_label": "Weak",
       "quote_label": "Weak",
       "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "quote_key_event": "Tokyo Core CPI y/y today · Medium impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "AUD: Commodity weakness is weighing on AUD",
-        "JPY: The yen is driven by risk mood"
+        "AUD: China and commodity demand are weighing on AUD",
+        "JPY: Calmer markets are changing risk mood"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -651,13 +651,13 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": "RBNZ Gov Breman Speaks today · Medium impact",
-      "quote_key_event": null,
+      "base_key_event": null,
+      "quote_key_event": "Tokyo Core CPI y/y today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "NZD: Softer global demand is pressuring NZD",
-        "JPY: The yen is driven by risk mood"
+        "NZD: NZD needs stronger global demand",
+        "JPY: Calmer markets are changing risk mood"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -686,32 +686,32 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Supported",
       "quote_label": "Weak",
-      "base_key_event": null,
-      "quote_key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact",
+      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "quote_key_event": "SNB Chairman Schlegel Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: BOE caution is helping the pound",
-        "CHF: SNB guidance is in focus for CHF"
+        "GBP: BOE guidance is in focus for GBP",
+        "CHF: The franc is driven by risk mood"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than CHF",
       "narrative": {
         "pair": "GBP/CHF",
-        "theme": "policy",
+        "theme": "risk_mood",
         "directional_state": "Clear backdrop contrast",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "rationale": "GBP and CHF do not show one clean relational theme yet.",
-        "what_changes_this": "The imbalance would narrow if GBP policy expectations soften.",
+        "interaction_type": "policy_vs_safe_haven",
+        "headline": "Firmer UK policy expectations sit against the franc's sensitivity to defensive market mood.",
+        "rationale": "The pair links rate expectations with defensive market mood.",
+        "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF.",
         "dominant_currency": "GBP",
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "tension_summary": "Firmer UK policy expectations sit against the franc's sensitivity to defensive market mood.",
         "left_reason": "GBP still has firmer policy support",
-        "right_reason": "CHF is pressured by softer policy expectations",
-        "interaction_reason": "GBP and CHF do not show one clean relational theme yet."
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "The pair links rate expectations with defensive market mood."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-      "interaction_reason": "GBP and CHF do not show one clean relational theme yet.",
-      "what_changes_this": "The imbalance would narrow if GBP policy expectations soften."
+      "tension_summary": "Firmer UK policy expectations sit against the franc's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "what_changes_this": "The imbalance would narrow if market mood shifts back toward CHF."
     },
     {
       "pair": "EUR/CHF",
@@ -721,31 +721,31 @@
       "directional_state": "Mixed",
       "base_label": "Weak",
       "quote_label": "Weak",
-      "base_key_event": "ECB Financial Stability Review today · Medium impact",
-      "quote_key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "SNB Chairman Schlegel Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: Weak growth is weighing on the euro",
-        "CHF: SNB guidance is in focus for CHF"
+        "EUR: Weak growth data is pressuring the euro",
+        "CHF: The franc is driven by risk mood"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/CHF",
-        "theme": "policy_growth",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_growth",
-        "headline": "Europe's softer growth picture is set against softer the franc policy expectations.",
-        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "EUR and CHF do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Europe's softer growth picture is set against softer the franc policy expectations.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "EUR is held back by weaker growth",
-        "right_reason": "CHF is pressured by softer policy expectations",
-        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
+        "right_reason": "CHF has less support from market mood",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Europe's softer growth picture is set against softer the franc policy expectations.",
-      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -757,12 +757,12 @@
       "base_label": "Weak",
       "quote_label": "Weak",
       "base_key_event": null,
-      "quote_key_event": "RBNZ Gov Breman Speaks today · Medium impact",
-      "has_key_event": true,
+      "quote_key_event": null,
+      "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "AUD: Commodity weakness is weighing on AUD",
-        "NZD: Softer global demand is pressuring NZD"
+        "AUD: China and commodity demand are weighing on AUD",
+        "NZD: NZD needs stronger global demand"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -791,13 +791,13 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Weak",
-      "base_key_event": "BOC Press Conference tomorrow · Medium impact",
-      "quote_key_event": null,
+      "base_key_event": "BOC Press Conference today · Medium impact",
+      "quote_key_event": "Tokyo Core CPI y/y today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "CAD: CAD is waiting for a clearer oil story",
-        "JPY: The yen is driven by risk mood"
+        "CAD: Oil and US demand are driving CAD",
+        "JPY: Calmer markets are changing risk mood"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -826,13 +826,13 @@
       "directional_state": "Clear backdrop contrast",
       "base_label": "Supported",
       "quote_label": "Weak",
-      "base_key_event": null,
-      "quote_key_event": "RBNZ Gov Breman Speaks today · Medium impact",
+      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: BOE caution is helping the pound",
-        "NZD: Softer global demand is pressuring NZD"
+        "GBP: BOE guidance is in focus for GBP",
+        "NZD: NZD needs stronger global demand"
       ],
       "takeaway": "The macro backdrop is firmer for GBP than NZD",
       "narrative": {
@@ -856,55 +856,13 @@
   ],
   "lucid_events": [
     {
-      "date": "2026-05-27",
-      "currency": "EUR",
-      "title": "ECB Financial Stability Review",
-      "event_type": "ECB",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "The ECB sets the rate backdrop for the euro area",
-      "market_focus": "Whether slow growth makes the ECB more careful",
-      "insight": "The euro needs stronger economic support to improve"
-    },
-    {
-      "date": "2026-05-27",
-      "currency": "NZD",
-      "title": "RBNZ Gov Breman Speaks",
-      "event_type": "RBNZ",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
-      "date": "2026-05-27",
-      "currency": "NZD",
-      "title": "Annual Budget Release",
-      "event_type": "OTHER",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "This event may help explain this week's market mood",
-      "market_focus": "Whether the result changes the current economic story",
-      "insight": "The key is whether it makes the picture clearer"
-    },
-    {
       "date": "2026-05-28",
       "currency": "EUR",
       "title": "ECB President Lagarde Speaks",
       "event_type": "ECB",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": "Lagarde",
       "why_it_matters": "Lagarde explains how the ECB sees growth and inflation",
@@ -917,8 +875,8 @@
       "title": "SNB Chairman Schlegel Speaks",
       "event_type": "SNB",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": "SNB Chief",
       "why_it_matters": "SNB comments matter because the franc is a defensive currency",
@@ -931,8 +889,8 @@
       "title": "BOC Press Conference",
       "event_type": "BOC",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
@@ -945,6 +903,48 @@
       "title": "Core PCE Price Index m/m",
       "event_type": "CPI",
       "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-05-28",
+      "currency": "JPY",
+      "title": "Tokyo Core CPI y/y",
+      "event_type": "CPI",
+      "importance": "medium",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-05-29",
+      "currency": "GBP",
+      "title": "BOE Gov Bailey Speaks",
+      "event_type": "BOE",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": true,
+      "speaker": "Bailey",
+      "why_it_matters": "Bailey explains how the BOE weighs inflation against growth",
+      "market_focus": "Whether the BOE sounds more cautious",
+      "insight": "His comments can clarify the pound's main driver"
+    },
+    {
+      "date": "2026-05-29",
+      "currency": "EUR",
+      "title": "German Prelim CPI m/m",
+      "event_type": "CPI",
+      "importance": "medium",
       "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
