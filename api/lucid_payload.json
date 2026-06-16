@@ -1,28 +1,30 @@
 {
-  "generated_at": "2026-06-15T10:55:30.879113+00:00",
+  "generated_at": "2026-06-16T10:09:33.382799+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "JPY central bank communication is in focus",
-    "body": "The current calendar puts JPY, EUR, AUD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
+    "title": "AUD central bank communication is in focus",
+    "body": "The current calendar puts AUD, JPY, USD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "JPY: BOJ Policy Rate",
-      "JPY: Monetary Policy Statement",
-      "EUR: ECB President Lagarde Speaks"
+      "AUD: RBA Rate Statement",
+      "AUD: RBA Press Conference",
+      "JPY: BOJ Press Conference"
     ]
   },
   "macro_shock": null,
   "narrative_focus": {
     "theme": "central_bank_guidance",
-    "focus_currency": "JPY",
+    "focus_currency": "AUD",
     "headline": "Central bank guidance is in focus",
-    "supporting_themes": [],
+    "supporting_themes": [
+      "us_policy"
+    ],
     "rationale": "Central bank communication is the clearest calendar-linked theme."
   },
   "macro_evolution": {
     "state": "event_test_ahead",
-    "summary": "BOJ Policy Rate is the next test for central bank guidance.",
+    "summary": "BOJ Press Conference is the next test for central bank guidance.",
     "primary_theme": "central_bank_guidance",
     "emerging_theme": null,
     "confidence": "medium"
@@ -30,6 +32,20 @@
   "lucid_summaries": {
     "USD": {
       "currency": "USD",
+      "label": "Neutral",
+      "confidence": "Medium",
+      "timeframe": "Short-term",
+      "headline": "The Fed is in focus",
+      "reasons": [
+        "Central bank language can change how investors read the economy",
+        "The market is watching whether policy sounds more careful or more patient"
+      ],
+      "invalidation": "This view changes if the event message is different from what the market expects",
+      "insight": "The key is how the central bank explains growth and inflation",
+      "key_event": "FOMC Economic Projections tomorrow · High impact"
+    },
+    "EUR": {
+      "currency": "EUR",
       "label": "Neutral",
       "confidence": "Low",
       "timeframe": "Mixed",
@@ -41,20 +57,6 @@
       "invalidation": "This view changes when a new major event appears",
       "insight": "There is no single fresh driver standing out right now",
       "key_event": null
-    },
-    "EUR": {
-      "currency": "EUR",
-      "label": "Neutral",
-      "confidence": "Medium",
-      "timeframe": "Short-term",
-      "headline": "The ECB is in focus",
-      "reasons": [
-        "Central bank language can change how investors read the economy",
-        "The market is watching whether policy sounds more careful or more patient"
-      ],
-      "invalidation": "This view changes if the event message is different from what the market expects",
-      "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "ECB President Lagarde Speaks today · Medium impact"
     },
     "GBP": {
       "currency": "GBP",
@@ -82,7 +84,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "BOJ Policy Rate today · High impact"
+      "key_event": "BOJ Press Conference today · High impact"
     },
     "CHF": {
       "currency": "CHF",
@@ -124,7 +126,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "RBA Rate Statement tomorrow · High impact"
+      "key_event": "RBA Rate Statement today · High impact"
     },
     "NZD": {
       "currency": "NZD",
@@ -150,31 +152,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
-      "quote_key_event": null,
+      "base_key_event": null,
+      "quote_key_event": "FOMC Economic Projections tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: The ECB is in focus",
-        "USD: No major event in focus"
+        "EUR: No major event in focus",
+        "USD: The Fed is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/USD",
-        "theme": "policy",
+        "theme": "policy_growth",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "EUR and USD are being shaped by a similar macro driver.",
-        "rationale": "EUR and USD do not show one clean relational theme yet.",
+        "interaction_type": "policy_vs_growth",
+        "headline": "Europe's growth picture is set against US policy expectations.",
+        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "EUR and USD are being shaped by a similar macro driver.",
-        "left_reason": "EUR is shaped by policy expectations",
+        "tension_summary": "Europe's growth picture is set against US policy expectations.",
+        "left_reason": "EUR is shaped by its growth backdrop",
         "right_reason": "USD is shaped by policy expectations",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
       },
-      "tension_summary": "EUR and USD are being shaped by a similar macro driver.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Europe's growth picture is set against US policy expectations.",
+      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -186,12 +188,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "quote_key_event": "FOMC Economic Projections tomorrow · High impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "GBP: No major event in focus",
-        "USD: No major event in focus"
+        "USD: The Fed is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -220,12 +222,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
-      "quote_key_event": "BOJ Policy Rate today · High impact",
+      "base_key_event": "FOMC Economic Projections tomorrow · High impact",
+      "quote_key_event": "BOJ Press Conference today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: The Fed is in focus",
         "JPY: The BOJ is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -255,12 +257,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "FOMC Economic Projections tomorrow · High impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: The Fed is in focus",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -290,13 +292,13 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "RBA Rate Statement tomorrow · High impact",
-      "quote_key_event": null,
+      "base_key_event": "RBA Rate Statement today · High impact",
+      "quote_key_event": "FOMC Economic Projections tomorrow · High impact",
       "has_key_event": true,
-      "narrative_focus_match": false,
+      "narrative_focus_match": true,
       "drivers": [
         "AUD: The RBA is in focus",
-        "USD: No major event in focus"
+        "USD: The Fed is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -325,12 +327,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "FOMC Economic Projections tomorrow · High impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: The Fed is in focus",
         "CAD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -361,12 +363,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "quote_key_event": "FOMC Economic Projections tomorrow · High impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "NZD: No major event in focus",
-        "USD: No major event in focus"
+        "USD: The Fed is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -395,31 +397,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "base_key_event": null,
       "quote_key_event": null,
-      "has_key_event": true,
+      "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: The ECB is in focus",
+        "EUR: No major event in focus",
         "GBP: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/GBP",
-        "theme": "macro_backdrop",
+        "theme": "inflation",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "rationale": "EUR and GBP do not show one clean relational theme yet.",
+        "interaction_type": "inflation_vs_growth",
+        "headline": "Europe's growth picture differs from the UK inflation pressure.",
+        "rationale": "The pair links inflation pressure with the growth backdrop.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "EUR is shaped by policy expectations",
+        "tension_summary": "Europe's growth picture differs from the UK inflation pressure.",
+        "left_reason": "EUR is shaped by its growth backdrop",
         "right_reason": "GBP is shaped by inflation data",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair links inflation pressure with the growth backdrop."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Europe's growth picture differs from the UK inflation pressure.",
+      "interaction_reason": "The pair links inflation pressure with the growth backdrop.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -430,31 +432,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
-      "quote_key_event": "BOJ Policy Rate today · High impact",
+      "base_key_event": null,
+      "quote_key_event": "BOJ Press Conference today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
-        "EUR: The ECB is in focus",
+        "EUR: No major event in focus",
         "JPY: The BOJ is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/JPY",
-        "theme": "policy",
+        "theme": "policy_growth",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "EUR and JPY are being shaped by a similar macro driver.",
-        "rationale": "EUR and JPY do not show one clean relational theme yet.",
+        "interaction_type": "policy_vs_growth",
+        "headline": "Europe's growth picture is set against the yen policy expectations.",
+        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "EUR and JPY are being shaped by a similar macro driver.",
-        "left_reason": "EUR is shaped by policy expectations",
+        "tension_summary": "Europe's growth picture is set against the yen policy expectations.",
+        "left_reason": "EUR is shaped by its growth backdrop",
         "right_reason": "JPY is shaped by policy expectations",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
       },
-      "tension_summary": "EUR and JPY are being shaped by a similar macro driver.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Europe's growth picture is set against the yen policy expectations.",
+      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -466,9 +468,9 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "BOJ Policy Rate today · High impact",
+      "quote_key_event": "BOJ Press Conference today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "GBP: No major event in focus",
         "JPY: The BOJ is in focus"
@@ -500,31 +502,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
-      "quote_key_event": "RBA Rate Statement tomorrow · High impact",
+      "base_key_event": null,
+      "quote_key_event": "RBA Rate Statement today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": false,
+      "narrative_focus_match": true,
       "drivers": [
-        "EUR: The ECB is in focus",
+        "EUR: No major event in focus",
         "AUD: The RBA is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/AUD",
-        "theme": "policy",
+        "theme": "policy_growth",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "EUR and AUD are being shaped by a similar macro driver.",
-        "rationale": "EUR and AUD do not show one clean relational theme yet.",
+        "interaction_type": "policy_vs_growth",
+        "headline": "Europe's growth picture is set against AUD policy expectations.",
+        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "EUR and AUD are being shaped by a similar macro driver.",
-        "left_reason": "EUR is shaped by policy expectations",
+        "tension_summary": "Europe's growth picture is set against AUD policy expectations.",
+        "left_reason": "EUR is shaped by its growth backdrop",
         "right_reason": "AUD is shaped by policy expectations",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
       },
-      "tension_summary": "EUR and AUD are being shaped by a similar macro driver.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Europe's growth picture is set against AUD policy expectations.",
+      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -535,12 +537,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "base_key_event": null,
       "quote_key_event": null,
-      "has_key_event": true,
+      "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: The ECB is in focus",
+        "EUR: No major event in focus",
         "CAD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -554,7 +556,7 @@
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
         "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "EUR is shaped by policy expectations",
+        "left_reason": "EUR is shaped by its growth backdrop",
         "right_reason": "CAD is shaped by oil and demand",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
@@ -571,9 +573,9 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "RBA Rate Statement tomorrow · High impact",
+      "quote_key_event": "RBA Rate Statement today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": false,
+      "narrative_focus_match": true,
       "drivers": [
         "GBP: No major event in focus",
         "AUD: The RBA is in focus"
@@ -605,8 +607,8 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "RBA Rate Statement tomorrow · High impact",
-      "quote_key_event": "BOJ Policy Rate today · High impact",
+      "base_key_event": "RBA Rate Statement today · High impact",
+      "quote_key_event": "BOJ Press Conference today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
@@ -641,9 +643,9 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "BOJ Policy Rate today · High impact",
+      "quote_key_event": "BOJ Press Conference today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "NZD: No major event in focus",
         "JPY: The BOJ is in focus"
@@ -710,31 +712,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "base_key_event": null,
       "quote_key_event": null,
-      "has_key_event": true,
+      "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: The ECB is in focus",
+        "EUR: No major event in focus",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/CHF",
-        "theme": "risk_mood",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "Europe policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "EUR and CHF do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Europe policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "left_reason": "EUR is shaped by policy expectations",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "EUR is shaped by its growth backdrop",
         "right_reason": "CHF is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Europe policy expectations sit against the franc's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -745,10 +747,10 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "RBA Rate Statement tomorrow · High impact",
+      "base_key_event": "RBA Rate Statement today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
-      "narrative_focus_match": false,
+      "narrative_focus_match": true,
       "drivers": [
         "AUD: The RBA is in focus",
         "NZD: No major event in focus"
@@ -781,9 +783,9 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "BOJ Policy Rate today · High impact",
+      "quote_key_event": "BOJ Press Conference today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "CAD: No major event in focus",
         "JPY: The BOJ is in focus"
@@ -845,55 +847,13 @@
   ],
   "lucid_events": [
     {
-      "date": "2026-06-15",
-      "currency": "JPY",
-      "title": "BOJ Policy Rate",
-      "event_type": "BOJ",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "The BOJ can quickly change how investors view the yen",
-      "market_focus": "Whether Japan is ready for higher rates",
-      "insight": "The yen is sensitive to even small policy changes"
-    },
-    {
-      "date": "2026-06-15",
-      "currency": "JPY",
-      "title": "Monetary Policy Statement",
-      "event_type": "INTEREST_RATE",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
-      "date": "2026-06-15",
-      "currency": "EUR",
-      "title": "ECB President Lagarde Speaks",
-      "event_type": "ECB",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": "Lagarde",
-      "why_it_matters": "Lagarde explains how the ECB sees growth and inflation",
-      "market_focus": "Whether the ECB sounds worried about weak growth",
-      "insight": "Her tone helps the market read the euro backdrop"
-    },
-    {
       "date": "2026-06-16",
       "currency": "AUD",
       "title": "RBA Rate Statement",
       "event_type": "RBA",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
@@ -906,8 +866,8 @@
       "title": "RBA Press Conference",
       "event_type": "RBA",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
@@ -920,8 +880,8 @@
       "title": "BOJ Press Conference",
       "event_type": "BOJ",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
@@ -934,13 +894,55 @@
       "title": "Cash Rate",
       "event_type": "OTHER",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "This event may help explain this week's market mood",
       "market_focus": "Whether the result changes the current economic story",
       "insight": "The key is whether it makes the picture clearer"
+    },
+    {
+      "date": "2026-06-17",
+      "currency": "USD",
+      "title": "FOMC Economic Projections",
+      "event_type": "FOMC",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "The Fed can change how attractive the dollar feels",
+      "market_focus": "Whether rates stay high and how the Fed describes the economy",
+      "insight": "The tone matters because it shapes what investors expect next"
+    },
+    {
+      "date": "2026-06-17",
+      "currency": "USD",
+      "title": "FOMC Statement",
+      "event_type": "FOMC",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": true,
+      "speaker": null,
+      "why_it_matters": "Central bank speeches help explain policy between meetings",
+      "market_focus": "Whether the speaker sounds worried about inflation or growth",
+      "insight": "The comments matter when they make the outlook clearer"
+    },
+    {
+      "date": "2026-06-17",
+      "currency": "USD",
+      "title": "FOMC Press Conference",
+      "event_type": "FOMC",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": true,
+      "speaker": null,
+      "why_it_matters": "Central bank speeches help explain policy between meetings",
+      "market_focus": "Whether the speaker sounds worried about inflation or growth",
+      "insight": "The comments matter when they make the outlook clearer"
     }
   ]
 }
