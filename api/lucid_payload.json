@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-07-14T07:10:49.085905+00:00",
+  "generated_at": "2026-07-15T07:14:32.309593+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "GBP central bank communication is in focus",
-    "body": "The current calendar puts GBP, USD, CAD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
+    "title": "CAD central bank communication is in focus",
+    "body": "The current calendar puts CAD, USD, GBP in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "GBP: BOE Gov Bailey Speaks",
-      "USD: Core CPI m/m",
-      "USD: Core CPI y/y"
+      "CAD: BOC Monetary Policy Report",
+      "CAD: BOC Rate Statement",
+      "CAD: BOC Press Conference"
     ]
   },
   "macro_shock": null,
   "narrative_focus": {
-    "theme": "us_inflation",
-    "focus_currency": "USD",
-    "headline": "US inflation is the main macro focus",
+    "theme": "central_bank_guidance",
+    "focus_currency": "CAD",
+    "headline": "Central bank guidance is in focus",
     "supporting_themes": [
-      "central_bank_guidance"
+      "us_inflation"
     ],
-    "rationale": "A high-impact US inflation event makes inflation the clearest transmission channel."
+    "rationale": "Central bank communication is the clearest calendar-linked theme."
   },
   "macro_evolution": {
     "state": "event_test_ahead",
-    "summary": "CPI m/m is the next test for US inflation.",
-    "primary_theme": "us_inflation",
+    "summary": "BOC Monetary Policy Report is the next test for central bank guidance.",
+    "primary_theme": "central_bank_guidance",
     "emerging_theme": null,
     "confidence": "medium"
   },
@@ -35,14 +35,14 @@
       "label": "Neutral",
       "confidence": "Medium",
       "timeframe": "Short-term",
-      "headline": "Inflation is the main thing to watch",
+      "headline": "Price pressure is the main thing to watch",
       "reasons": [
-        "Inflation tells central banks how much pressure remains",
-        "Whether prices are cooling or staying sticky"
+        "Producer prices can show early pressure before consumers feel it",
+        "Whether business costs are rising or cooling"
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
-      "insight": "Slower inflation can reduce support for a currency",
-      "key_event": "Core CPI m/m today · High impact"
+      "insight": "Lower price pressure gives central banks more room to wait",
+      "key_event": "Core PPI m/m today · High impact"
     },
     "EUR": {
       "currency": "EUR",
@@ -63,14 +63,14 @@
       "label": "Neutral",
       "confidence": "Medium",
       "timeframe": "Short-term",
-      "headline": "The BOE is in focus",
+      "headline": "Growth is the main thing to watch",
       "reasons": [
-        "Central bank language can change how investors read the economy",
-        "The market is watching whether policy sounds more careful or more patient"
+        "GDP shows whether the economy is growing or slowing",
+        "Whether growth is strong enough to support the currency"
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
-      "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "BOE Gov Bailey Speaks today · High impact"
+      "insight": "Weak growth can make a currency feel less attractive",
+      "key_event": "GDP m/m tomorrow · High impact"
     },
     "JPY": {
       "currency": "JPY",
@@ -112,7 +112,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "BOC Monetary Policy Report tomorrow · High impact"
+      "key_event": "BOC Monetary Policy Report today · High impact"
     },
     "AUD": {
       "currency": "AUD",
@@ -153,12 +153,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Core CPI m/m today · High impact",
+      "quote_key_event": "Core PPI m/m today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "EUR: No major event in focus",
-        "USD: Inflation is the main thing to watch"
+        "USD: Price pressure is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -187,31 +187,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
-      "quote_key_event": "Core CPI m/m today · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
+      "quote_key_event": "Core PPI m/m today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
-        "GBP: The BOE is in focus",
-        "USD: Inflation is the main thing to watch"
+        "GBP: Growth is the main thing to watch",
+        "USD: Price pressure is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "GBP/USD",
-        "theme": "macro_backdrop",
+        "theme": "inflation",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "rationale": "GBP and USD do not show one clean relational theme yet.",
+        "interaction_type": "inflation_vs_growth",
+        "headline": "The UK's growth picture differs from the US inflation pressure.",
+        "rationale": "The pair links inflation pressure with the growth backdrop.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "GBP is shaped by policy expectations",
+        "tension_summary": "The UK's growth picture differs from the US inflation pressure.",
+        "left_reason": "GBP is shaped by its growth backdrop",
         "right_reason": "USD is shaped by inflation data",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair links inflation pressure with the growth backdrop."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "The UK's growth picture differs from the US inflation pressure.",
+      "interaction_reason": "The pair links inflation pressure with the growth backdrop.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -222,12 +222,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Core CPI m/m today · High impact",
+      "base_key_event": "Core PPI m/m today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
-        "USD: Inflation is the main thing to watch",
+        "USD: Price pressure is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -257,12 +257,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Core CPI m/m today · High impact",
+      "base_key_event": "Core PPI m/m today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
-        "USD: Inflation is the main thing to watch",
+        "USD: Price pressure is the main thing to watch",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -293,12 +293,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Core CPI m/m today · High impact",
+      "quote_key_event": "Core PPI m/m today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "AUD: No major event in focus",
-        "USD: Inflation is the main thing to watch"
+        "USD: Price pressure is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -327,12 +327,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Core CPI m/m today · High impact",
-      "quote_key_event": "BOC Monetary Policy Report tomorrow · High impact",
+      "base_key_event": "Core PPI m/m today · High impact",
+      "quote_key_event": "BOC Monetary Policy Report today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "USD: Inflation is the main thing to watch",
+        "USD: Price pressure is the main thing to watch",
         "CAD: The BOC is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -363,12 +363,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Core CPI m/m today · High impact",
+      "quote_key_event": "Core PPI m/m today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "NZD: No major event in focus",
-        "USD: Inflation is the main thing to watch"
+        "USD: Price pressure is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -398,30 +398,30 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "BOE Gov Bailey Speaks today · High impact",
+      "quote_key_event": "GDP m/m tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "EUR: No major event in focus",
-        "GBP: The BOE is in focus"
+        "GBP: Growth is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/GBP",
-        "theme": "policy_growth",
+        "theme": "growth",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_growth",
-        "headline": "Europe's growth picture is set against UK policy expectations.",
-        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "EUR and GBP are being shaped by a similar macro driver.",
+        "rationale": "EUR and GBP do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Europe's growth picture is set against UK policy expectations.",
+        "tension_summary": "EUR and GBP are being shaped by a similar macro driver.",
         "left_reason": "EUR is shaped by its growth backdrop",
-        "right_reason": "GBP is shaped by policy expectations",
-        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
+        "right_reason": "GBP is shaped by its growth backdrop",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Europe's growth picture is set against UK policy expectations.",
-      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
+      "tension_summary": "EUR and GBP are being shaped by a similar macro driver.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -467,31 +467,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: The BOE is in focus",
+        "GBP: Growth is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "GBP/JPY",
-        "theme": "risk_mood",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "UK policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "GBP and JPY do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "UK policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "left_reason": "GBP is shaped by policy expectations",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "GBP is shaped by its growth backdrop",
         "right_reason": "JPY is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "UK policy expectations sit against the yen's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -538,9 +538,9 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "BOC Monetary Policy Report tomorrow · High impact",
+      "quote_key_event": "BOC Monetary Policy Report today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": false,
+      "narrative_focus_match": true,
       "drivers": [
         "EUR: No major event in focus",
         "CAD: The BOC is in focus"
@@ -572,12 +572,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: The BOE is in focus",
+        "GBP: Growth is the main thing to watch",
         "AUD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -585,18 +585,18 @@
         "pair": "GBP/AUD",
         "theme": "global_demand",
         "directional_state": "Mixed",
-        "interaction_type": "global_demand_vs_policy",
-        "headline": "UK policy expectations meet global demand sensitivity in AUD.",
-        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "interaction_type": "growth_vs_global_demand",
+        "headline": "The UK's growth picture differs from global demand sensitivity in AUD.",
+        "rationale": "The pair links local growth pressure with global demand sensitivity.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "UK policy expectations meet global demand sensitivity in AUD.",
-        "left_reason": "GBP is shaped by policy expectations",
+        "tension_summary": "The UK's growth picture differs from global demand sensitivity in AUD.",
+        "left_reason": "GBP is shaped by its growth backdrop",
         "right_reason": "AUD is shaped by global demand",
-        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+        "interaction_reason": "The pair links local growth pressure with global demand sensitivity."
       },
-      "tension_summary": "UK policy expectations meet global demand sensitivity in AUD.",
-      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "tension_summary": "The UK's growth picture differs from global demand sensitivity in AUD.",
+      "interaction_reason": "The pair links local growth pressure with global demand sensitivity.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -677,31 +677,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: The BOE is in focus",
+        "GBP: Growth is the main thing to watch",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "GBP/CHF",
-        "theme": "risk_mood",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "UK policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "GBP and CHF do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "UK policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "left_reason": "GBP is shaped by policy expectations",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "GBP is shaped by its growth backdrop",
         "right_reason": "CHF is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "UK policy expectations sit against the franc's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -782,10 +782,10 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOC Monetary Policy Report tomorrow · High impact",
+      "base_key_event": "BOC Monetary Policy Report today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
-      "narrative_focus_match": false,
+      "narrative_focus_match": true,
       "drivers": [
         "CAD: The BOC is in focus",
         "JPY: No major event in focus"
@@ -817,12 +817,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "GBP: The BOE is in focus",
+        "GBP: Growth is the main thing to watch",
         "NZD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -830,86 +830,30 @@
         "pair": "GBP/NZD",
         "theme": "global_demand",
         "directional_state": "Mixed",
-        "interaction_type": "global_demand_vs_policy",
-        "headline": "UK policy expectations meet global demand sensitivity in NZD.",
-        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "interaction_type": "growth_vs_global_demand",
+        "headline": "The UK's growth picture differs from global demand sensitivity in NZD.",
+        "rationale": "The pair links local growth pressure with global demand sensitivity.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "UK policy expectations meet global demand sensitivity in NZD.",
-        "left_reason": "GBP is shaped by policy expectations",
+        "tension_summary": "The UK's growth picture differs from global demand sensitivity in NZD.",
+        "left_reason": "GBP is shaped by its growth backdrop",
         "right_reason": "NZD is shaped by global demand",
-        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+        "interaction_reason": "The pair links local growth pressure with global demand sensitivity."
       },
-      "tension_summary": "UK policy expectations meet global demand sensitivity in NZD.",
-      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "tension_summary": "The UK's growth picture differs from global demand sensitivity in NZD.",
+      "interaction_reason": "The pair links local growth pressure with global demand sensitivity.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     }
   ],
   "lucid_events": [
-    {
-      "date": "2026-07-14",
-      "currency": "GBP",
-      "title": "BOE Gov Bailey Speaks",
-      "event_type": "BOE",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": "Bailey",
-      "why_it_matters": "Bailey explains how the BOE weighs inflation against growth",
-      "market_focus": "Whether the BOE sounds more cautious",
-      "insight": "His comments can clarify the pound's main driver"
-    },
-    {
-      "date": "2026-07-14",
-      "currency": "USD",
-      "title": "Core CPI m/m",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
-    {
-      "date": "2026-07-14",
-      "currency": "USD",
-      "title": "Core CPI y/y",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
-    {
-      "date": "2026-07-14",
-      "currency": "USD",
-      "title": "CPI m/m",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
     {
       "date": "2026-07-15",
       "currency": "CAD",
       "title": "BOC Monetary Policy Report",
       "event_type": "BOC",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "The BOC reads an economy tied closely to the US and oil",
@@ -922,13 +866,83 @@
       "title": "BOC Rate Statement",
       "event_type": "BOC",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": null,
       "why_it_matters": "Central bank speeches help explain policy between meetings",
       "market_focus": "Whether the speaker sounds worried about inflation or growth",
       "insight": "The comments matter when they make the outlook clearer"
+    },
+    {
+      "date": "2026-07-15",
+      "currency": "CAD",
+      "title": "BOC Press Conference",
+      "event_type": "BOC",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": true,
+      "speaker": null,
+      "why_it_matters": "Central bank speeches help explain policy between meetings",
+      "market_focus": "Whether the speaker sounds worried about inflation or growth",
+      "insight": "The comments matter when they make the outlook clearer"
+    },
+    {
+      "date": "2026-07-15",
+      "currency": "USD",
+      "title": "Core PPI m/m",
+      "event_type": "PPI",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Producer prices can show early pressure before consumers feel it",
+      "market_focus": "Whether business costs are rising or cooling",
+      "insight": "Lower price pressure gives central banks more room to wait"
+    },
+    {
+      "date": "2026-07-15",
+      "currency": "USD",
+      "title": "PPI m/m",
+      "event_type": "PPI",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Producer prices can show early pressure before consumers feel it",
+      "market_focus": "Whether business costs are rising or cooling",
+      "insight": "Lower price pressure gives central banks more room to wait"
+    },
+    {
+      "date": "2026-07-16",
+      "currency": "GBP",
+      "title": "GDP m/m",
+      "event_type": "GDP",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "GDP shows whether the economy is growing or slowing",
+      "market_focus": "Whether growth is strong enough to support the currency",
+      "insight": "Weak growth can make a currency feel less attractive"
+    },
+    {
+      "date": "2026-07-16",
+      "currency": "USD",
+      "title": "Unemployment Claims",
+      "event_type": "UNEMPLOYMENT",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Unemployment shows whether the economy is losing strength",
+      "market_focus": "Whether joblessness is rising or falling",
+      "insight": "A weaker labor market can weigh on the currency"
     }
   ]
 }
