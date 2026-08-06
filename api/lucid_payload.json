@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-05T07:39:33.142699+00:00",
+  "generated_at": "2026-08-06T07:40:40.344140+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "USD jobs data is the main thing to watch",
+    "title": "USD labor market data is the main thing to watch",
     "body": "The current calendar puts USD, CAD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "USD: ADP Non-Farm Employment Change",
-      "USD: ISM Services PMI",
-      "USD: President Trump Speaks"
+      "USD: Unemployment Claims",
+      "CAD: Employment Change",
+      "USD: Non-Farm Employment Change"
     ]
   },
   "macro_shock": null,
@@ -33,14 +33,14 @@
       "label": "Neutral",
       "confidence": "Medium",
       "timeframe": "Short-term",
-      "headline": "Jobs data is the main thing to watch",
+      "headline": "Labor market data is the main thing to watch",
       "reasons": [
-        "US jobs data shapes the dollar because it guides the Fed",
-        "Job growth, unemployment, and wage pressure"
+        "Unemployment shows whether the economy is losing strength",
+        "Whether joblessness is rising or falling"
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
-      "insight": "A strong labor market can keep the dollar supported",
-      "key_event": "ADP Non-Farm Employment Change today · Medium impact"
+      "insight": "A weaker labor market can weigh on the currency",
+      "key_event": "Unemployment Claims today · Medium impact"
     },
     "EUR": {
       "currency": "EUR",
@@ -110,7 +110,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "Weak jobs data can make a central bank more cautious",
-      "key_event": "Employment Change in 2 days · High impact"
+      "key_event": "Employment Change tomorrow · High impact"
     },
     "AUD": {
       "currency": "AUD",
@@ -151,12 +151,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "ADP Non-Farm Employment Change today · Medium impact",
+      "quote_key_event": "Unemployment Claims today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "EUR: No major event in focus",
-        "USD: Jobs data is the main thing to watch"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -186,12 +186,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "ADP Non-Farm Employment Change today · Medium impact",
+      "quote_key_event": "Unemployment Claims today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "GBP: No major event in focus",
-        "USD: Jobs data is the main thing to watch"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -220,12 +220,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ADP Non-Farm Employment Change today · Medium impact",
+      "base_key_event": "Unemployment Claims today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: Jobs data is the main thing to watch",
+        "USD: Labor market data is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -255,12 +255,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ADP Non-Farm Employment Change today · Medium impact",
+      "base_key_event": "Unemployment Claims today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: Jobs data is the main thing to watch",
+        "USD: Labor market data is the main thing to watch",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -291,12 +291,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "ADP Non-Farm Employment Change today · Medium impact",
+      "quote_key_event": "Unemployment Claims today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "AUD: No major event in focus",
-        "USD: Jobs data is the main thing to watch"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -325,12 +325,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ADP Non-Farm Employment Change today · Medium impact",
-      "quote_key_event": "Employment Change in 2 days · High impact",
+      "base_key_event": "Unemployment Claims today · Medium impact",
+      "quote_key_event": "Employment Change tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: Jobs data is the main thing to watch",
+        "USD: Labor market data is the main thing to watch",
         "CAD: Jobs data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -361,12 +361,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "ADP Non-Farm Employment Change today · Medium impact",
+      "quote_key_event": "Unemployment Claims today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "NZD: No major event in focus",
-        "USD: Jobs data is the main thing to watch"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -536,7 +536,7 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Employment Change in 2 days · High impact",
+      "quote_key_event": "Employment Change tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -780,7 +780,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Employment Change in 2 days · High impact",
+      "base_key_event": "Employment Change tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -845,55 +845,13 @@
   ],
   "lucid_events": [
     {
-      "date": "2026-08-05",
-      "currency": "USD",
-      "title": "ADP Non-Farm Employment Change",
-      "event_type": "NFP",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "US jobs data shapes the dollar because it guides the Fed",
-      "market_focus": "Job growth, unemployment, and wage pressure",
-      "insight": "A strong labor market can keep the dollar supported"
-    },
-    {
-      "date": "2026-08-05",
-      "currency": "USD",
-      "title": "ISM Services PMI",
-      "event_type": "ISM",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "ISM shows how US businesses are seeing the economy",
-      "market_focus": "New orders and business activity",
-      "insight": "It helps explain whether US growth still has support"
-    },
-    {
-      "date": "2026-08-05",
-      "currency": "USD",
-      "title": "President Trump Speaks",
-      "event_type": "OTHER",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
       "date": "2026-08-06",
       "currency": "USD",
       "title": "Unemployment Claims",
       "event_type": "UNEMPLOYMENT",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "Unemployment shows whether the economy is losing strength",
@@ -906,7 +864,7 @@
       "title": "Employment Change",
       "event_type": "NFP",
       "importance": "high",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
@@ -920,7 +878,7 @@
       "title": "Non-Farm Employment Change",
       "event_type": "NFP",
       "importance": "high",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
@@ -934,13 +892,55 @@
       "title": "Unemployment Rate",
       "event_type": "UNEMPLOYMENT",
       "importance": "high",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "Unemployment shows whether the economy is losing strength",
       "market_focus": "Whether joblessness is rising or falling",
       "insight": "A weaker labor market can weigh on the currency"
+    },
+    {
+      "date": "2026-08-07",
+      "currency": "USD",
+      "title": "Unemployment Rate",
+      "event_type": "UNEMPLOYMENT",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Unemployment shows whether the economy is losing strength",
+      "market_focus": "Whether joblessness is rising or falling",
+      "insight": "A weaker labor market can weigh on the currency"
+    },
+    {
+      "date": "2026-08-07",
+      "currency": "CAD",
+      "title": "Ivey PMI",
+      "event_type": "PMI_COMPOSITE",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "PMI surveys show how businesses feel before official data arrives",
+      "market_focus": "Whether activity is improving or slowing",
+      "insight": "Better business activity can support the currency"
+    },
+    {
+      "date": "2026-08-07",
+      "currency": "USD",
+      "title": "Average Hourly Earnings m/m",
+      "event_type": "OTHER",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "This event may help explain this week's market mood",
+      "market_focus": "Whether the result changes the current economic story",
+      "insight": "The key is whether it makes the picture clearer"
     }
   ]
 }
