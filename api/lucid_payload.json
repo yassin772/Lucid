@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-10T09:24:58.506035+00:00",
+  "generated_at": "2026-09-11T09:23:30.534871+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "EUR central bank communication is in focus",
-    "body": "The current calendar puts EUR, USD, CHF in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
+    "title": "CHF central bank communication is in focus",
+    "body": "The current calendar puts CHF, EUR, USD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "EUR: Monetary Policy Statement",
-      "EUR: ECB Press Conference",
-      "USD: Core PPI m/m"
+      "CHF: SNB Chairman Schlegel Speaks",
+      "EUR: ECB President Lagarde Speaks",
+      "USD: Core CPI m/m"
     ]
   },
   "macro_shock": null,
@@ -17,14 +17,12 @@
     "theme": "us_inflation",
     "focus_currency": "USD",
     "headline": "US inflation is the main macro focus",
-    "supporting_themes": [
-      "central_bank_guidance"
-    ],
+    "supporting_themes": [],
     "rationale": "A high-impact US inflation event makes inflation the clearest transmission channel."
   },
   "macro_evolution": {
     "state": "event_test_ahead",
-    "summary": "Core PPI m/m is the next test for US inflation.",
+    "summary": "CPI m/m is the next test for US inflation.",
     "primary_theme": "us_inflation",
     "emerging_theme": null,
     "confidence": "medium"
@@ -35,14 +33,14 @@
       "label": "Neutral",
       "confidence": "Medium",
       "timeframe": "Short-term",
-      "headline": "Price pressure is the main thing to watch",
+      "headline": "Inflation is the main thing to watch",
       "reasons": [
-        "Producer prices can show early pressure before consumers feel it",
-        "Whether business costs are rising or cooling"
+        "Inflation tells central banks how much pressure remains",
+        "Whether prices are cooling or staying sticky"
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
-      "insight": "Lower price pressure gives central banks more room to wait",
-      "key_event": "Core PPI m/m today · High impact"
+      "insight": "Slower inflation can reduce support for a currency",
+      "key_event": "Core CPI m/m today · High impact"
     },
     "EUR": {
       "currency": "EUR",
@@ -56,7 +54,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "Monetary Policy Statement today · High impact"
+      "key_event": "ECB President Lagarde Speaks today · Medium impact"
     },
     "GBP": {
       "currency": "GBP",
@@ -98,7 +96,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact"
+      "key_event": "SNB Chairman Schlegel Speaks today · Medium impact"
     },
     "CAD": {
       "currency": "CAD",
@@ -152,13 +150,13 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Monetary Policy Statement today · High impact",
-      "quote_key_event": "Core PPI m/m today · High impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "Core CPI m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "EUR: The ECB is in focus",
-        "USD: Price pressure is the main thing to watch"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -188,12 +186,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Core PPI m/m today · High impact",
+      "quote_key_event": "Core CPI m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "GBP: No major event in focus",
-        "USD: Price pressure is the main thing to watch"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -222,12 +220,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Core PPI m/m today · High impact",
+      "base_key_event": "Core CPI m/m today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "USD: Price pressure is the main thing to watch",
+        "USD: Inflation is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -257,12 +255,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Core PPI m/m today · High impact",
-      "quote_key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact",
+      "base_key_event": "Core CPI m/m today · High impact",
+      "quote_key_event": "SNB Chairman Schlegel Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "USD: Price pressure is the main thing to watch",
+        "USD: Inflation is the main thing to watch",
         "CHF: The SNB is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -293,12 +291,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Core PPI m/m today · High impact",
+      "quote_key_event": "Core CPI m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "AUD: No major event in focus",
-        "USD: Price pressure is the main thing to watch"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -327,12 +325,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Core PPI m/m today · High impact",
+      "base_key_event": "Core CPI m/m today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "USD: Price pressure is the main thing to watch",
+        "USD: Inflation is the main thing to watch",
         "CAD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -363,12 +361,12 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Core PPI m/m today · High impact",
+      "quote_key_event": "Core CPI m/m today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "NZD: No major event in focus",
-        "USD: Price pressure is the main thing to watch"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -397,7 +395,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Monetary Policy Statement today · High impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -432,7 +430,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Monetary Policy Statement today · High impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -502,7 +500,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Monetary Policy Statement today · High impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -537,7 +535,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Monetary Policy Statement today · High impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -678,7 +676,7 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact",
+      "quote_key_event": "SNB Chairman Schlegel Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -712,8 +710,8 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Monetary Policy Statement today · High impact",
-      "quote_key_event": "SNB Chairman Schlegel Speaks tomorrow · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "SNB Chairman Schlegel Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -847,83 +845,13 @@
   ],
   "lucid_events": [
     {
-      "date": "2026-09-10",
-      "currency": "EUR",
-      "title": "Monetary Policy Statement",
-      "event_type": "INTEREST_RATE",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
-      "date": "2026-09-10",
-      "currency": "EUR",
-      "title": "ECB Press Conference",
-      "event_type": "ECB",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
-      "date": "2026-09-10",
-      "currency": "USD",
-      "title": "Core PPI m/m",
-      "event_type": "PPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Producer prices can show early pressure before consumers feel it",
-      "market_focus": "Whether business costs are rising or cooling",
-      "insight": "Lower price pressure gives central banks more room to wait"
-    },
-    {
-      "date": "2026-09-10",
-      "currency": "USD",
-      "title": "PPI m/m",
-      "event_type": "PPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Producer prices can show early pressure before consumers feel it",
-      "market_focus": "Whether business costs are rising or cooling",
-      "insight": "Lower price pressure gives central banks more room to wait"
-    },
-    {
-      "date": "2026-09-10",
-      "currency": "USD",
-      "title": "Unemployment Claims",
-      "event_type": "UNEMPLOYMENT",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Unemployment shows whether the economy is losing strength",
-      "market_focus": "Whether joblessness is rising or falling",
-      "insight": "A weaker labor market can weigh on the currency"
-    },
-    {
       "date": "2026-09-11",
       "currency": "CHF",
       "title": "SNB Chairman Schlegel Speaks",
       "event_type": "SNB",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": "SNB Chief",
       "why_it_matters": "SNB comments matter because the franc is a defensive currency",
@@ -932,6 +860,62 @@
     },
     {
       "date": "2026-09-11",
+      "currency": "EUR",
+      "title": "ECB President Lagarde Speaks",
+      "event_type": "ECB",
+      "importance": "medium",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": true,
+      "speaker": "Lagarde",
+      "why_it_matters": "Lagarde explains how the ECB sees growth and inflation",
+      "market_focus": "Whether the ECB sounds worried about weak growth",
+      "insight": "Her tone helps the market read the euro backdrop"
+    },
+    {
+      "date": "2026-09-11",
+      "currency": "USD",
+      "title": "Core CPI m/m",
+      "event_type": "CPI",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-09-11",
+      "currency": "USD",
+      "title": "Core CPI y/y",
+      "event_type": "CPI",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-09-11",
+      "currency": "USD",
+      "title": "CPI m/m",
+      "event_type": "CPI",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-09-12",
       "currency": "EUR",
       "title": "ECB President Lagarde Speaks",
       "event_type": "ECB",
