@@ -1,29 +1,31 @@
 {
-  "generated_at": "2026-09-28T11:29:55.937964+00:00",
+  "generated_at": "2026-09-29T11:10:12.161396+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "EUR central bank communication is in focus",
-    "body": "The current calendar puts EUR, AUD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
+    "title": "AUD central bank communication is in focus",
+    "body": "The current calendar puts AUD, EUR, USD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "EUR: ECB President Lagarde Speaks",
       "AUD: RBA Rate Statement",
-      "AUD: RBA Press Conference"
+      "AUD: RBA Press Conference",
+      "EUR: ECB President Lagarde Speaks"
     ]
   },
   "macro_shock": null,
   "narrative_focus": {
-    "theme": "central_bank_guidance",
-    "focus_currency": "AUD",
-    "headline": "Central bank guidance is in focus",
-    "supporting_themes": [],
-    "rationale": "Central bank communication is the clearest calendar-linked theme."
+    "theme": "us_inflation",
+    "focus_currency": "USD",
+    "headline": "US inflation is the main macro focus",
+    "supporting_themes": [
+      "central_bank_guidance"
+    ],
+    "rationale": "A high-impact US inflation event makes inflation the clearest transmission channel."
   },
   "macro_evolution": {
     "state": "event_test_ahead",
-    "summary": "CPI m/m is the next test for central bank guidance.",
-    "primary_theme": "central_bank_guidance",
+    "summary": "Core PCE Price Index m/m is the next test for US inflation.",
+    "primary_theme": "us_inflation",
     "emerging_theme": null,
     "confidence": "medium"
   },
@@ -31,16 +33,16 @@
     "USD": {
       "currency": "USD",
       "label": "Neutral",
-      "confidence": "Low",
-      "timeframe": "Mixed",
-      "headline": "No major event in focus",
+      "confidence": "Medium",
+      "timeframe": "Short-term",
+      "headline": "Inflation is the main thing to watch",
       "reasons": [
-        "The calendar is quiet for this currency",
-        "The market is waiting for clearer economic data"
+        "Inflation tells central banks how much pressure remains",
+        "Whether prices are cooling or staying sticky"
       ],
-      "invalidation": "This view changes when a new major event appears",
-      "insight": "There is no single fresh driver standing out right now",
-      "key_event": null
+      "invalidation": "This view changes if the event message is different from what the market expects",
+      "insight": "Slower inflation can reduce support for a currency",
+      "key_event": "Core PCE Price Index m/m tomorrow · High impact"
     },
     "EUR": {
       "currency": "EUR",
@@ -124,7 +126,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "RBA Rate Statement tomorrow · High impact"
+      "key_event": "RBA Rate Statement today · High impact"
     },
     "NZD": {
       "currency": "NZD",
@@ -151,29 +153,29 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
-      "quote_key_event": null,
+      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
       "has_key_event": true,
-      "narrative_focus_match": false,
+      "narrative_focus_match": true,
       "drivers": [
         "EUR: The ECB is in focus",
-        "USD: No major event in focus"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/USD",
-        "theme": "policy",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
         "interaction_type": "mixed_macro_forces",
-        "headline": "EUR and USD are being shaped by a similar macro driver.",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "rationale": "EUR and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "EUR and USD are being shaped by a similar macro driver.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "EUR is shaped by policy expectations",
-        "right_reason": "USD is shaped by policy expectations",
+        "right_reason": "USD is shaped by inflation data",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "EUR and USD are being shaped by a similar macro driver.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
       "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
@@ -186,29 +188,29 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
-      "narrative_focus_match": false,
+      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
+      "has_key_event": true,
+      "narrative_focus_match": true,
       "drivers": [
         "GBP: No major event in focus",
-        "USD: No major event in focus"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "GBP/USD",
-        "theme": "macro_backdrop",
+        "theme": "inflation",
         "directional_state": "Mixed",
         "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "headline": "GBP and USD are being shaped by a similar macro driver.",
         "rationale": "GBP and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "tension_summary": "GBP and USD are being shaped by a similar macro driver.",
         "left_reason": "GBP is shaped by inflation data",
-        "right_reason": "USD is shaped by policy expectations",
+        "right_reason": "USD is shaped by inflation data",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "tension_summary": "GBP and USD are being shaped by a similar macro driver.",
       "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
@@ -220,31 +222,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "Core PCE Price Index m/m tomorrow · High impact",
       "quote_key_event": null,
-      "has_key_event": false,
-      "narrative_focus_match": false,
+      "has_key_event": true,
+      "narrative_focus_match": true,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: Inflation is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "USD/JPY",
-        "theme": "risk_mood",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "USD and JPY do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "left_reason": "USD is shaped by policy expectations",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "USD is shaped by inflation data",
         "right_reason": "JPY is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -255,31 +257,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "Core PCE Price Index m/m tomorrow · High impact",
       "quote_key_event": null,
-      "has_key_event": false,
-      "narrative_focus_match": false,
+      "has_key_event": true,
+      "narrative_focus_match": true,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: Inflation is the main thing to watch",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "USD/CHF",
-        "theme": "risk_mood",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "USD and CHF do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "left_reason": "USD is shaped by policy expectations",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "USD is shaped by inflation data",
         "right_reason": "CHF is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -290,30 +292,30 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "RBA Rate Statement tomorrow · High impact",
-      "quote_key_event": null,
+      "base_key_event": "RBA Rate Statement today · High impact",
+      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "AUD: The RBA is in focus",
-        "USD: No major event in focus"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "AUD/USD",
-        "theme": "policy",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
         "interaction_type": "mixed_macro_forces",
-        "headline": "AUD and USD are being shaped by a similar macro driver.",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "rationale": "AUD and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "AUD and USD are being shaped by a similar macro driver.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "AUD is shaped by policy expectations",
-        "right_reason": "USD is shaped by policy expectations",
+        "right_reason": "USD is shaped by inflation data",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "AUD and USD are being shaped by a similar macro driver.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
       "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
@@ -325,12 +327,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "Core PCE Price Index m/m tomorrow · High impact",
       "quote_key_event": null,
-      "has_key_event": false,
-      "narrative_focus_match": false,
+      "has_key_event": true,
+      "narrative_focus_match": true,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: Inflation is the main thing to watch",
         "CAD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -344,7 +346,7 @@
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
         "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "USD is shaped by policy expectations",
+        "left_reason": "USD is shaped by inflation data",
         "right_reason": "CAD is shaped by oil and demand",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
@@ -361,30 +363,30 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
-      "narrative_focus_match": false,
+      "quote_key_event": "Core PCE Price Index m/m tomorrow · High impact",
+      "has_key_event": true,
+      "narrative_focus_match": true,
       "drivers": [
         "NZD: No major event in focus",
-        "USD: No major event in focus"
+        "USD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "NZD/USD",
-        "theme": "global_demand",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "global_demand_vs_policy",
-        "headline": "Global demand sensitivity in NZD meets US policy expectations.",
-        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "NZD and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Global demand sensitivity in NZD meets US policy expectations.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "NZD is shaped by global demand",
-        "right_reason": "USD is shaped by policy expectations",
-        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+        "right_reason": "USD is shaped by inflation data",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Global demand sensitivity in NZD meets US policy expectations.",
-      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -501,9 +503,9 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
-      "quote_key_event": "RBA Rate Statement tomorrow · High impact",
+      "quote_key_event": "RBA Rate Statement today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "EUR: The ECB is in focus",
         "AUD: The RBA is in focus"
@@ -571,9 +573,9 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "RBA Rate Statement tomorrow · High impact",
+      "quote_key_event": "RBA Rate Statement today · High impact",
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "GBP: No major event in focus",
         "AUD: The RBA is in focus"
@@ -605,10 +607,10 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "RBA Rate Statement tomorrow · High impact",
+      "base_key_event": "RBA Rate Statement today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "AUD: The RBA is in focus",
         "JPY: No major event in focus"
@@ -745,10 +747,10 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "RBA Rate Statement tomorrow · High impact",
+      "base_key_event": "RBA Rate Statement today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
-      "narrative_focus_match": true,
+      "narrative_focus_match": false,
       "drivers": [
         "AUD: The RBA is in focus",
         "NZD: No major event in focus"
@@ -845,7 +847,35 @@
   ],
   "lucid_events": [
     {
-      "date": "2026-09-28",
+      "date": "2026-09-29",
+      "currency": "AUD",
+      "title": "RBA Rate Statement",
+      "event_type": "RBA",
+      "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": true,
+      "speaker": null,
+      "why_it_matters": "Central bank speeches help explain policy between meetings",
+      "market_focus": "Whether the speaker sounds worried about inflation or growth",
+      "insight": "The comments matter when they make the outlook clearer"
+    },
+    {
+      "date": "2026-09-29",
+      "currency": "AUD",
+      "title": "RBA Press Conference",
+      "event_type": "RBA",
+      "importance": "medium",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": true,
+      "speaker": null,
+      "why_it_matters": "Central bank speeches help explain policy between meetings",
+      "market_focus": "Whether the speaker sounds worried about inflation or growth",
+      "insight": "The comments matter when they make the outlook clearer"
+    },
+    {
+      "date": "2026-09-29",
       "currency": "EUR",
       "title": "ECB President Lagarde Speaks",
       "event_type": "ECB",
@@ -861,53 +891,11 @@
     {
       "date": "2026-09-29",
       "currency": "AUD",
-      "title": "RBA Rate Statement",
-      "event_type": "RBA",
-      "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
-      "date": "2026-09-29",
-      "currency": "AUD",
-      "title": "RBA Press Conference",
-      "event_type": "RBA",
-      "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
-      "date": "2026-09-29",
-      "currency": "EUR",
-      "title": "ECB President Lagarde Speaks",
-      "event_type": "ECB",
-      "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
-      "is_cb_speech": true,
-      "speaker": "Lagarde",
-      "why_it_matters": "Lagarde explains how the ECB sees growth and inflation",
-      "market_focus": "Whether the ECB sounds worried about weak growth",
-      "insight": "Her tone helps the market read the euro backdrop"
-    },
-    {
-      "date": "2026-09-29",
-      "currency": "AUD",
       "title": "CPI m/m",
       "event_type": "CPI",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "Inflation tells central banks how much pressure remains",
@@ -920,6 +908,20 @@
       "title": "CPI y/y",
       "event_type": "CPI",
       "importance": "high",
+      "timing_label": "Today",
+      "is_today": true,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-09-30",
+      "currency": "USD",
+      "title": "Core PCE Price Index m/m",
+      "event_type": "CPI",
+      "importance": "high",
       "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
@@ -929,11 +931,11 @@
       "insight": "Slower inflation can reduce support for a currency"
     },
     {
-      "date": "2026-09-29",
-      "currency": "AUD",
-      "title": "Trimmed Mean CPI m/m",
+      "date": "2026-09-30",
+      "currency": "EUR",
+      "title": "German Prelim CPI m/m",
       "event_type": "CPI",
-      "importance": "high",
+      "importance": "medium",
       "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
