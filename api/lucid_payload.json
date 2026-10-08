@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-10-07T11:34:56.162352+00:00",
+  "generated_at": "2026-10-08T11:49:31.011228+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "USD central bank communication is in focus",
-    "body": "The current calendar puts USD, GBP, CAD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
+    "title": "GBP central bank communication is in focus",
+    "body": "The current calendar puts GBP, USD, CAD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "USD: FOMC Meeting Minutes",
-      "USD: President Trump Speaks",
-      "GBP: BOE Gov Bailey Speaks"
+      "GBP: BOE Gov Bailey Speaks",
+      "USD: FOMC Member Waller Speaks",
+      "USD: Unemployment Claims"
     ]
   },
   "macro_shock": null,
@@ -17,14 +17,12 @@
     "theme": "central_bank_guidance",
     "focus_currency": "GBP",
     "headline": "Central bank guidance is in focus",
-    "supporting_themes": [
-      "us_policy"
-    ],
+    "supporting_themes": [],
     "rationale": "Central bank communication is the clearest calendar-linked theme."
   },
   "macro_evolution": {
     "state": "event_test_ahead",
-    "summary": "FOMC Meeting Minutes is the next test for central bank guidance.",
+    "summary": "BOE Gov Bailey Speaks is the next test for central bank guidance.",
     "primary_theme": "central_bank_guidance",
     "emerging_theme": null,
     "confidence": "medium"
@@ -42,7 +40,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "FOMC Meeting Minutes today · High impact"
+      "key_event": "FOMC Member Waller Speaks today · Medium impact"
     },
     "EUR": {
       "currency": "EUR",
@@ -70,7 +68,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "BOE Gov Bailey Speaks tomorrow · High impact"
+      "key_event": "BOE Gov Bailey Speaks today · High impact"
     },
     "JPY": {
       "currency": "JPY",
@@ -112,7 +110,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "Weak jobs data can make a central bank more cautious",
-      "key_event": "Employment Change in 2 days · High impact"
+      "key_event": "Employment Change tomorrow · High impact"
     },
     "AUD": {
       "currency": "AUD",
@@ -153,7 +151,7 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "FOMC Meeting Minutes today · High impact",
+      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -187,8 +185,8 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
-      "quote_key_event": "FOMC Meeting Minutes today · High impact",
+      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
+      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
@@ -222,7 +220,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "FOMC Meeting Minutes today · High impact",
+      "base_key_event": "FOMC Member Waller Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -257,7 +255,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "FOMC Meeting Minutes today · High impact",
+      "base_key_event": "FOMC Member Waller Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -293,7 +291,7 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "FOMC Meeting Minutes today · High impact",
+      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -327,8 +325,8 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "FOMC Meeting Minutes today · High impact",
-      "quote_key_event": "Employment Change in 2 days · High impact",
+      "base_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "quote_key_event": "Employment Change tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -363,7 +361,7 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "FOMC Meeting Minutes today · High impact",
+      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -398,7 +396,7 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "quote_key_event": "BOE Gov Bailey Speaks today · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
@@ -467,7 +465,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
@@ -538,7 +536,7 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "Employment Change in 2 days · High impact",
+      "quote_key_event": "Employment Change tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -572,7 +570,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
@@ -677,7 +675,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
@@ -782,7 +780,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Employment Change in 2 days · High impact",
+      "base_key_event": "Employment Change tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -817,7 +815,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "BOE Gov Bailey Speaks tomorrow · High impact",
+      "base_key_event": "BOE Gov Bailey Speaks today · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
@@ -847,41 +845,13 @@
   ],
   "lucid_events": [
     {
-      "date": "2026-10-07",
-      "currency": "USD",
-      "title": "FOMC Meeting Minutes",
-      "event_type": "FOMC",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "The Fed can change how attractive the dollar feels",
-      "market_focus": "Whether rates stay high and how the Fed describes the economy",
-      "insight": "The tone matters because it shapes what investors expect next"
-    },
-    {
-      "date": "2026-10-07",
-      "currency": "USD",
-      "title": "President Trump Speaks",
-      "event_type": "OTHER",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": true,
-      "speaker": null,
-      "why_it_matters": "Central bank speeches help explain policy between meetings",
-      "market_focus": "Whether the speaker sounds worried about inflation or growth",
-      "insight": "The comments matter when they make the outlook clearer"
-    },
-    {
       "date": "2026-10-08",
       "currency": "GBP",
       "title": "BOE Gov Bailey Speaks",
       "event_type": "BOE",
       "importance": "high",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": "Bailey",
       "why_it_matters": "Bailey explains how the BOE weighs inflation against growth",
@@ -894,8 +864,8 @@
       "title": "FOMC Member Waller Speaks",
       "event_type": "FOMC",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": true,
       "speaker": "Fed Official",
       "why_it_matters": "Fed officials shape how investors read the US rate backdrop",
@@ -908,8 +878,8 @@
       "title": "Unemployment Claims",
       "event_type": "UNEMPLOYMENT",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "Unemployment shows whether the economy is losing strength",
@@ -922,7 +892,7 @@
       "title": "Employment Change",
       "event_type": "NFP",
       "importance": "high",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
@@ -936,13 +906,41 @@
       "title": "Unemployment Rate",
       "event_type": "UNEMPLOYMENT",
       "importance": "high",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "Unemployment shows whether the economy is losing strength",
       "market_focus": "Whether joblessness is rising or falling",
       "insight": "A weaker labor market can weigh on the currency"
+    },
+    {
+      "date": "2026-10-09",
+      "currency": "USD",
+      "title": "Prelim UoM Consumer Sentiment",
+      "event_type": "CONSUMER_CONFIDENCE",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Confidence affects how willing people are to spend",
+      "market_focus": "Whether households feel better or worse about the economy",
+      "insight": "Falling confidence can point to weaker spending ahead"
+    },
+    {
+      "date": "2026-10-09",
+      "currency": "USD",
+      "title": "Prelim UoM Inflation Expectations",
+      "event_type": "OTHER",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "This event may help explain this week's market mood",
+      "market_focus": "Whether the result changes the current economic story",
+      "insight": "The key is whether it makes the picture clearer"
     }
   ]
 }
