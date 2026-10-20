@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-10-19T10:33:00.081401+00:00",
+  "generated_at": "2026-10-20T09:49:48.569171+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "CAD inflation is the main thing to watch",
-    "body": "The current calendar puts CAD, GBP in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
+    "title": "GBP is the first macro focus",
+    "body": "The current calendar puts GBP, NZD, USD, EUR in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "CAD: CPI m/m",
-      "CAD: Median CPI y/y",
-      "CAD: Trimmed CPI y/y"
+      "GBP: Average Earnings Index 3m/y",
+      "GBP: BOE Gov Bailey Speaks",
+      "GBP: CPI y/y"
     ]
   },
   "macro_shock": null,
@@ -31,30 +31,30 @@
     "USD": {
       "currency": "USD",
       "label": "Neutral",
-      "confidence": "Low",
-      "timeframe": "Mixed",
-      "headline": "No major event in focus",
+      "confidence": "Medium",
+      "timeframe": "Short-term",
+      "headline": "Labor market data is the main thing to watch",
       "reasons": [
-        "The calendar is quiet for this currency",
-        "The market is waiting for clearer economic data"
+        "Unemployment shows whether the economy is losing strength",
+        "Whether joblessness is rising or falling"
       ],
-      "invalidation": "This view changes when a new major event appears",
-      "insight": "There is no single fresh driver standing out right now",
-      "key_event": null
+      "invalidation": "This view changes if the event message is different from what the market expects",
+      "insight": "A weaker labor market can weigh on the currency",
+      "key_event": "Unemployment Claims in 2 days · Medium impact"
     },
     "EUR": {
       "currency": "EUR",
       "label": "Neutral",
-      "confidence": "Low",
-      "timeframe": "Mixed",
-      "headline": "No major event in focus",
+      "confidence": "Medium",
+      "timeframe": "Short-term",
+      "headline": "Factory activity is the main thing to watch",
       "reasons": [
-        "The calendar is quiet for this currency",
-        "The market is waiting for clearer economic data"
+        "Manufacturing PMI shows pressure in factories and global demand",
+        "New orders and whether production is slowing"
       ],
-      "invalidation": "This view changes when a new major event appears",
-      "insight": "There is no single fresh driver standing out right now",
-      "key_event": null
+      "invalidation": "This view changes if the event message is different from what the market expects",
+      "insight": "Weak factory activity can weigh on growth expectations",
+      "key_event": "French Flash Manufacturing PMI in 3 days · Medium impact"
     },
     "GBP": {
       "currency": "GBP",
@@ -68,7 +68,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is whether it makes the picture clearer",
-      "key_event": "Average Earnings Index 3m/y tomorrow · Medium impact"
+      "key_event": "Average Earnings Index 3m/y today · Medium impact"
     },
     "JPY": {
       "currency": "JPY",
@@ -101,16 +101,16 @@
     "CAD": {
       "currency": "CAD",
       "label": "Neutral",
-      "confidence": "Medium",
-      "timeframe": "Short-term",
-      "headline": "Inflation is the main thing to watch",
+      "confidence": "Low",
+      "timeframe": "Mixed",
+      "headline": "No major event in focus",
       "reasons": [
-        "Inflation tells central banks how much pressure remains",
-        "Whether prices are cooling or staying sticky"
+        "The calendar is quiet for this currency",
+        "The market is waiting for clearer economic data"
       ],
-      "invalidation": "This view changes if the event message is different from what the market expects",
-      "insight": "Slower inflation can reduce support for a currency",
-      "key_event": "CPI m/m today · High impact"
+      "invalidation": "This view changes when a new major event appears",
+      "insight": "There is no single fresh driver standing out right now",
+      "key_event": null
     },
     "AUD": {
       "currency": "AUD",
@@ -129,16 +129,16 @@
     "NZD": {
       "currency": "NZD",
       "label": "Neutral",
-      "confidence": "Low",
-      "timeframe": "Mixed",
-      "headline": "No major event in focus",
+      "confidence": "Medium",
+      "timeframe": "Short-term",
+      "headline": "Inflation is the main thing to watch",
       "reasons": [
-        "The calendar is quiet for this currency",
-        "The market is waiting for clearer economic data"
+        "Inflation tells central banks how much pressure remains",
+        "Whether prices are cooling or staying sticky"
       ],
-      "invalidation": "This view changes when a new major event appears",
-      "insight": "There is no single fresh driver standing out right now",
-      "key_event": null
+      "invalidation": "This view changes if the event message is different from what the market expects",
+      "insight": "Slower inflation can reduce support for a currency",
+      "key_event": "CPI q/q tomorrow · High impact"
     }
   },
   "lucid_pairs": [
@@ -150,31 +150,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "base_key_event": "French Flash Manufacturing PMI in 3 days · Medium impact",
+      "quote_key_event": "Unemployment Claims in 2 days · Medium impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: No major event in focus",
-        "USD: No major event in focus"
+        "EUR: Factory activity is the main thing to watch",
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/USD",
-        "theme": "policy_growth",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_growth",
-        "headline": "Europe's growth picture is set against US policy expectations.",
-        "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "EUR and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Europe's growth picture is set against US policy expectations.",
-        "left_reason": "EUR is shaped by its growth backdrop",
-        "right_reason": "USD is shaped by policy expectations",
-        "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "EUR is shaped by global demand",
+        "right_reason": "USD is shaped by labor data",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Europe's growth picture is set against US policy expectations.",
-      "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -185,13 +185,13 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Average Earnings Index 3m/y tomorrow · Medium impact",
-      "quote_key_event": null,
+      "base_key_event": "Average Earnings Index 3m/y today · Medium impact",
+      "quote_key_event": "Unemployment Claims in 2 days · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "GBP: Fresh data is in focus",
-        "USD: No major event in focus"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -199,16 +199,16 @@
         "theme": "policy_growth",
         "directional_state": "Mixed",
         "interaction_type": "policy_vs_growth",
-        "headline": "The UK's growth picture is set against US policy expectations.",
+        "headline": "The UK's growth picture is set against the US labor data.",
         "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "The UK's growth picture is set against US policy expectations.",
+        "tension_summary": "The UK's growth picture is set against the US labor data.",
         "left_reason": "GBP is shaped by its growth backdrop",
-        "right_reason": "USD is shaped by policy expectations",
+        "right_reason": "USD is shaped by labor data",
         "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
       },
-      "tension_summary": "The UK's growth picture is set against US policy expectations.",
+      "tension_summary": "The UK's growth picture is set against the US labor data.",
       "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
@@ -220,12 +220,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "Unemployment Claims in 2 days · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: Labor market data is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -233,18 +233,18 @@
         "pair": "USD/JPY",
         "theme": "risk_mood",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "risk_mood_vs_rates",
+        "headline": "The US labor data is set against the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links market mood sensitivity with rate expectations.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "left_reason": "USD is shaped by policy expectations",
+        "tension_summary": "The US labor data is set against the yen's sensitivity to defensive market mood.",
+        "left_reason": "USD is shaped by labor data",
         "right_reason": "JPY is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The pair links market mood sensitivity with rate expectations."
       },
-      "tension_summary": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "The US labor data is set against the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links market mood sensitivity with rate expectations.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -255,12 +255,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "Unemployment Claims in 2 days · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: No major event in focus",
+        "USD: Labor market data is the main thing to watch",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -268,18 +268,18 @@
         "pair": "USD/CHF",
         "theme": "risk_mood",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "risk_mood_vs_rates",
+        "headline": "The US labor data is set against the franc's sensitivity to defensive market mood.",
+        "rationale": "The pair links market mood sensitivity with rate expectations.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "left_reason": "USD is shaped by policy expectations",
+        "tension_summary": "The US labor data is set against the franc's sensitivity to defensive market mood.",
+        "left_reason": "USD is shaped by labor data",
         "right_reason": "CHF is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The pair links market mood sensitivity with rate expectations."
       },
-      "tension_summary": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "The US labor data is set against the franc's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links market mood sensitivity with rate expectations.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -291,30 +291,30 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "quote_key_event": "Unemployment Claims in 2 days · Medium impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "AUD: No major event in focus",
-        "USD: No major event in focus"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "AUD/USD",
-        "theme": "global_demand",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "global_demand_vs_policy",
-        "headline": "Global demand sensitivity in AUD meets US policy expectations.",
-        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "AUD and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Global demand sensitivity in AUD meets US policy expectations.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "AUD is shaped by global demand",
-        "right_reason": "USD is shaped by policy expectations",
-        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+        "right_reason": "USD is shaped by labor data",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Global demand sensitivity in AUD meets US policy expectations.",
-      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -325,13 +325,13 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
-      "quote_key_event": "CPI m/m today · High impact",
+      "base_key_event": "Unemployment Claims in 2 days · Medium impact",
+      "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "USD: No major event in focus",
-        "CAD: Inflation is the main thing to watch"
+        "USD: Labor market data is the main thing to watch",
+        "CAD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -344,8 +344,8 @@
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
         "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "USD is shaped by policy expectations",
-        "right_reason": "CAD is shaped by inflation data",
+        "left_reason": "USD is shaped by labor data",
+        "right_reason": "CAD is shaped by oil and demand",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
       "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
@@ -360,31 +360,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "base_key_event": "CPI q/q tomorrow · High impact",
+      "quote_key_event": "Unemployment Claims in 2 days · Medium impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "NZD: No major event in focus",
-        "USD: No major event in focus"
+        "NZD: Inflation is the main thing to watch",
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "NZD/USD",
-        "theme": "global_demand",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "global_demand_vs_policy",
-        "headline": "Global demand sensitivity in NZD meets US policy expectations.",
-        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "NZD and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Global demand sensitivity in NZD meets US policy expectations.",
-        "left_reason": "NZD is shaped by global demand",
-        "right_reason": "USD is shaped by policy expectations",
-        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "NZD is shaped by inflation data",
+        "right_reason": "USD is shaped by labor data",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Global demand sensitivity in NZD meets US policy expectations.",
-      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -395,31 +395,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
-      "quote_key_event": "Average Earnings Index 3m/y tomorrow · Medium impact",
+      "base_key_event": "French Flash Manufacturing PMI in 3 days · Medium impact",
+      "quote_key_event": "Average Earnings Index 3m/y today · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "EUR: No major event in focus",
+        "EUR: Factory activity is the main thing to watch",
         "GBP: Fresh data is in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/GBP",
-        "theme": "growth",
+        "theme": "global_demand",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "EUR and GBP are being shaped by a similar macro driver.",
-        "rationale": "EUR and GBP do not show one clean relational theme yet.",
+        "interaction_type": "growth_vs_global_demand",
+        "headline": "Global demand sensitivity in EUR differs from the UK's growth picture.",
+        "rationale": "The pair links local growth pressure with global demand sensitivity.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "EUR and GBP are being shaped by a similar macro driver.",
-        "left_reason": "EUR is shaped by its growth backdrop",
+        "tension_summary": "Global demand sensitivity in EUR differs from the UK's growth picture.",
+        "left_reason": "EUR is shaped by global demand",
         "right_reason": "GBP is shaped by its growth backdrop",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair links local growth pressure with global demand sensitivity."
       },
-      "tension_summary": "EUR and GBP are being shaped by a similar macro driver.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Global demand sensitivity in EUR differs from the UK's growth picture.",
+      "interaction_reason": "The pair links local growth pressure with global demand sensitivity.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -430,31 +430,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "French Flash Manufacturing PMI in 3 days · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: No major event in focus",
+        "EUR: Factory activity is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/JPY",
-        "theme": "macro_backdrop",
+        "theme": "global_demand",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "rationale": "EUR and JPY do not show one clean relational theme yet.",
+        "interaction_type": "cyclical_vs_defensive",
+        "headline": "Global demand sensitivity in EUR meets the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links cyclical demand sensitivity with defensive positioning.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "EUR is shaped by its growth backdrop",
+        "tension_summary": "Global demand sensitivity in EUR meets the yen's sensitivity to defensive market mood.",
+        "left_reason": "EUR is shaped by global demand",
         "right_reason": "JPY is shaped by market mood",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Global demand sensitivity in EUR meets the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -465,7 +465,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Average Earnings Index 3m/y tomorrow · Medium impact",
+      "base_key_event": "Average Earnings Index 3m/y today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
@@ -500,12 +500,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "French Flash Manufacturing PMI in 3 days · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: No major event in focus",
+        "EUR: Factory activity is the main thing to watch",
         "AUD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -513,18 +513,18 @@
         "pair": "EUR/AUD",
         "theme": "global_demand",
         "directional_state": "Mixed",
-        "interaction_type": "growth_vs_global_demand",
-        "headline": "Europe's growth picture differs from global demand sensitivity in AUD.",
-        "rationale": "The pair links local growth pressure with global demand sensitivity.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "EUR and AUD are being shaped by a similar macro driver.",
+        "rationale": "EUR and AUD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Europe's growth picture differs from global demand sensitivity in AUD.",
-        "left_reason": "EUR is shaped by its growth backdrop",
+        "tension_summary": "EUR and AUD are being shaped by a similar macro driver.",
+        "left_reason": "EUR is shaped by global demand",
         "right_reason": "AUD is shaped by global demand",
-        "interaction_reason": "The pair links local growth pressure with global demand sensitivity."
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Europe's growth picture differs from global demand sensitivity in AUD.",
-      "interaction_reason": "The pair links local growth pressure with global demand sensitivity.",
+      "tension_summary": "EUR and AUD are being shaped by a similar macro driver.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -535,31 +535,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
-      "quote_key_event": "CPI m/m today · High impact",
+      "base_key_event": "French Flash Manufacturing PMI in 3 days · Medium impact",
+      "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: No major event in focus",
-        "CAD: Inflation is the main thing to watch"
+        "EUR: Factory activity is the main thing to watch",
+        "CAD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/CAD",
-        "theme": "inflation",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "inflation_vs_growth",
-        "headline": "Europe's growth picture differs from CAD inflation pressure.",
-        "rationale": "The pair links inflation pressure with the growth backdrop.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "EUR and CAD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Europe's growth picture differs from CAD inflation pressure.",
-        "left_reason": "EUR is shaped by its growth backdrop",
-        "right_reason": "CAD is shaped by inflation data",
-        "interaction_reason": "The pair links inflation pressure with the growth backdrop."
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "EUR is shaped by global demand",
+        "right_reason": "CAD is shaped by oil and demand",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Europe's growth picture differs from CAD inflation pressure.",
-      "interaction_reason": "The pair links inflation pressure with the growth backdrop.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -570,7 +570,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Average Earnings Index 3m/y tomorrow · Medium impact",
+      "base_key_event": "Average Earnings Index 3m/y today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
@@ -640,31 +640,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "CPI q/q tomorrow · High impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "NZD: No major event in focus",
+        "NZD: Inflation is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "NZD/JPY",
-        "theme": "global_demand",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "cyclical_vs_defensive",
-        "headline": "Global demand sensitivity in NZD meets the yen's sensitivity to defensive market mood.",
-        "rationale": "The pair links cyclical demand sensitivity with defensive positioning.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "NZD and JPY do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Global demand sensitivity in NZD meets the yen's sensitivity to defensive market mood.",
-        "left_reason": "NZD is shaped by global demand",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "left_reason": "NZD is shaped by inflation data",
         "right_reason": "JPY is shaped by market mood",
-        "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning."
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Global demand sensitivity in NZD meets the yen's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -675,7 +675,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Average Earnings Index 3m/y tomorrow · Medium impact",
+      "base_key_event": "Average Earnings Index 3m/y today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
@@ -710,31 +710,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": null,
+      "base_key_event": "French Flash Manufacturing PMI in 3 days · Medium impact",
       "quote_key_event": null,
-      "has_key_event": false,
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
-        "EUR: No major event in focus",
+        "EUR: Factory activity is the main thing to watch",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/CHF",
-        "theme": "macro_backdrop",
+        "theme": "global_demand",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "rationale": "EUR and CHF do not show one clean relational theme yet.",
+        "interaction_type": "cyclical_vs_defensive",
+        "headline": "Global demand sensitivity in EUR meets the franc's sensitivity to defensive market mood.",
+        "rationale": "The pair links cyclical demand sensitivity with defensive positioning.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "EUR is shaped by its growth backdrop",
+        "tension_summary": "Global demand sensitivity in EUR meets the franc's sensitivity to defensive market mood.",
+        "left_reason": "EUR is shaped by global demand",
         "right_reason": "CHF is shaped by market mood",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Global demand sensitivity in EUR meets the franc's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links cyclical demand sensitivity with defensive positioning.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -746,29 +746,29 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": null,
-      "has_key_event": false,
+      "quote_key_event": "CPI q/q tomorrow · High impact",
+      "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
         "AUD: No major event in focus",
-        "NZD: No major event in focus"
+        "NZD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "AUD/NZD",
-        "theme": "global_demand",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
         "interaction_type": "mixed_macro_forces",
-        "headline": "AUD and NZD are being shaped by a similar macro driver.",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "rationale": "AUD and NZD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "AUD and NZD are being shaped by a similar macro driver.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "AUD is shaped by global demand",
-        "right_reason": "NZD is shaped by global demand",
+        "right_reason": "NZD is shaped by inflation data",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "AUD and NZD are being shaped by a similar macro driver.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
       "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
@@ -780,31 +780,31 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "CPI m/m today · High impact",
+      "base_key_event": null,
       "quote_key_event": null,
-      "has_key_event": true,
+      "has_key_event": false,
       "narrative_focus_match": false,
       "drivers": [
-        "CAD: Inflation is the main thing to watch",
+        "CAD: No major event in focus",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "CAD/JPY",
-        "theme": "macro_backdrop",
+        "theme": "commodities",
         "directional_state": "Mixed",
-        "interaction_type": "mixed_macro_forces",
-        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "rationale": "CAD and JPY do not show one clean relational theme yet.",
+        "interaction_type": "oil_vs_risk_mood",
+        "headline": "Oil sensitivity in CAD sits against the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links oil sensitivity with defensive currency behavior.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "CAD is shaped by inflation data",
+        "tension_summary": "Oil sensitivity in CAD sits against the yen's sensitivity to defensive market mood.",
+        "left_reason": "CAD is shaped by oil and demand",
         "right_reason": "JPY is shaped by market mood",
-        "interaction_reason": "The relationship is still mixed rather than one-sided."
+        "interaction_reason": "The pair links oil sensitivity with defensive currency behavior."
       },
-      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-      "interaction_reason": "The relationship is still mixed rather than one-sided.",
+      "tension_summary": "Oil sensitivity in CAD sits against the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links oil sensitivity with defensive currency behavior.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -815,99 +815,43 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "Average Earnings Index 3m/y tomorrow · Medium impact",
-      "quote_key_event": null,
+      "base_key_event": "Average Earnings Index 3m/y today · Medium impact",
+      "quote_key_event": "CPI q/q tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "GBP: Fresh data is in focus",
-        "NZD: No major event in focus"
+        "NZD: Inflation is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "GBP/NZD",
-        "theme": "global_demand",
+        "theme": "inflation",
         "directional_state": "Mixed",
-        "interaction_type": "growth_vs_global_demand",
-        "headline": "The UK's growth picture differs from global demand sensitivity in NZD.",
-        "rationale": "The pair links local growth pressure with global demand sensitivity.",
+        "interaction_type": "inflation_vs_growth",
+        "headline": "The UK's growth picture differs from NZD inflation pressure.",
+        "rationale": "The pair links inflation pressure with the growth backdrop.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "The UK's growth picture differs from global demand sensitivity in NZD.",
+        "tension_summary": "The UK's growth picture differs from NZD inflation pressure.",
         "left_reason": "GBP is shaped by its growth backdrop",
-        "right_reason": "NZD is shaped by global demand",
-        "interaction_reason": "The pair links local growth pressure with global demand sensitivity."
+        "right_reason": "NZD is shaped by inflation data",
+        "interaction_reason": "The pair links inflation pressure with the growth backdrop."
       },
-      "tension_summary": "The UK's growth picture differs from global demand sensitivity in NZD.",
-      "interaction_reason": "The pair links local growth pressure with global demand sensitivity.",
+      "tension_summary": "The UK's growth picture differs from NZD inflation pressure.",
+      "interaction_reason": "The pair links inflation pressure with the growth backdrop.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     }
   ],
   "lucid_events": [
-    {
-      "date": "2026-10-19",
-      "currency": "CAD",
-      "title": "CPI m/m",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
-    {
-      "date": "2026-10-19",
-      "currency": "CAD",
-      "title": "Median CPI y/y",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
-    {
-      "date": "2026-10-19",
-      "currency": "CAD",
-      "title": "Trimmed CPI y/y",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
-    {
-      "date": "2026-10-19",
-      "currency": "CAD",
-      "title": "Common CPI y/y",
-      "event_type": "CPI",
-      "importance": "medium",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
     {
       "date": "2026-10-20",
       "currency": "GBP",
       "title": "Average Earnings Index 3m/y",
       "event_type": "OTHER",
       "importance": "medium",
-      "timing_label": "Tomorrow",
-      "is_today": false,
+      "timing_label": "Today",
+      "is_today": true,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "This event may help explain this week's market mood",
@@ -920,7 +864,7 @@
       "title": "BOE Gov Bailey Speaks",
       "event_type": "BOE",
       "importance": "medium",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": true,
       "speaker": "Bailey",
@@ -934,13 +878,69 @@
       "title": "CPI y/y",
       "event_type": "CPI",
       "importance": "high",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "Inflation tells central banks how much pressure remains",
       "market_focus": "Whether prices are cooling or staying sticky",
       "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-10-21",
+      "currency": "NZD",
+      "title": "CPI q/q",
+      "event_type": "CPI",
+      "importance": "high",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Inflation tells central banks how much pressure remains",
+      "market_focus": "Whether prices are cooling or staying sticky",
+      "insight": "Slower inflation can reduce support for a currency"
+    },
+    {
+      "date": "2026-10-22",
+      "currency": "USD",
+      "title": "Unemployment Claims",
+      "event_type": "UNEMPLOYMENT",
+      "importance": "medium",
+      "timing_label": "In 2 days",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Unemployment shows whether the economy is losing strength",
+      "market_focus": "Whether joblessness is rising or falling",
+      "insight": "A weaker labor market can weigh on the currency"
+    },
+    {
+      "date": "2026-10-23",
+      "currency": "EUR",
+      "title": "French Flash Manufacturing PMI",
+      "event_type": "PMI_MFG",
+      "importance": "medium",
+      "timing_label": "In 3 days",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Manufacturing PMI shows pressure in factories and global demand",
+      "market_focus": "New orders and whether production is slowing",
+      "insight": "Weak factory activity can weigh on growth expectations"
+    },
+    {
+      "date": "2026-10-23",
+      "currency": "EUR",
+      "title": "French Flash Services PMI",
+      "event_type": "PMI_SERVICES",
+      "importance": "medium",
+      "timing_label": "In 3 days",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Services PMI tracks the biggest part of many economies",
+      "market_focus": "Whether service activity is holding up",
+      "insight": "Strong services data can keep inflation concerns alive"
     }
   ]
 }
