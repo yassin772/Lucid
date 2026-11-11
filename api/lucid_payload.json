@@ -1,15 +1,14 @@
 {
-  "generated_at": "2026-11-10T13:16:44.569201+00:00",
+  "generated_at": "2026-11-11T12:28:46.623596+00:00",
   "source": "ForexFactory live calendar via scheduled Lucid refresh",
   "summary_mode": "Calendar-derived",
   "disclaimer": "Lucid is for macro understanding and education. It does not provide financial advice, investment recommendations, or trading signals.",
   "market_story": {
-    "title": "USD central bank communication is in focus",
-    "body": "The current calendar puts USD, EUR, GBP in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
+    "title": "EUR central bank communication is in focus",
+    "body": "The current calendar puts EUR, GBP, USD in focus. Lucid keeps the view simple: what matters, why it matters, and what the market is watching.",
     "drivers": [
-      "USD: FOMC Member Waller Speaks",
-      "USD: Core CPI m/m",
-      "USD: CPI m/m"
+      "EUR: ECB President Lagarde Speaks",
+      "GBP: GDP m/m"
     ]
   },
   "macro_shock": null,
@@ -22,7 +21,7 @@
   },
   "macro_evolution": {
     "state": "event_test_ahead",
-    "summary": "CPI m/m is the next test for US inflation.",
+    "summary": "Core PPI m/m is the next test for US inflation.",
     "primary_theme": "us_inflation",
     "emerging_theme": null,
     "confidence": "medium"
@@ -33,14 +32,14 @@
       "label": "Neutral",
       "confidence": "Medium",
       "timeframe": "Short-term",
-      "headline": "The Fed is in focus",
+      "headline": "Labor market data is the main thing to watch",
       "reasons": [
-        "Central bank language can change how investors read the economy",
-        "The market is watching whether policy sounds more careful or more patient"
+        "Unemployment shows whether the economy is losing strength",
+        "Whether joblessness is rising or falling"
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
-      "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "FOMC Member Waller Speaks today · Medium impact"
+      "insight": "A weaker labor market can weigh on the currency",
+      "key_event": "Unemployment Claims tomorrow · Medium impact"
     },
     "EUR": {
       "currency": "EUR",
@@ -54,7 +53,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "The key is how the central bank explains growth and inflation",
-      "key_event": "ECB President Lagarde Speaks tomorrow · Medium impact"
+      "key_event": "ECB President Lagarde Speaks today · Medium impact"
     },
     "GBP": {
       "currency": "GBP",
@@ -68,7 +67,7 @@
       ],
       "invalidation": "This view changes if the event message is different from what the market expects",
       "insight": "Weak growth can make a currency feel less attractive",
-      "key_event": "GDP m/m in 2 days · High impact"
+      "key_event": "GDP m/m tomorrow · High impact"
     },
     "JPY": {
       "currency": "JPY",
@@ -150,30 +149,30 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks tomorrow · Medium impact",
-      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "Unemployment Claims tomorrow · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "EUR: The ECB is in focus",
-        "USD: The Fed is in focus"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "EUR/USD",
-        "theme": "policy",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
         "interaction_type": "mixed_macro_forces",
-        "headline": "EUR and USD are being shaped by a similar macro driver.",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "rationale": "EUR and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "EUR and USD are being shaped by a similar macro driver.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "EUR is shaped by policy expectations",
-        "right_reason": "USD is shaped by policy expectations",
+        "right_reason": "USD is shaped by labor data",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "EUR and USD are being shaped by a similar macro driver.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
       "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
@@ -185,13 +184,13 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "GDP m/m in 2 days · High impact",
-      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
+      "quote_key_event": "Unemployment Claims tomorrow · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "GBP: Growth is the main thing to watch",
-        "USD: The Fed is in focus"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
@@ -199,16 +198,16 @@
         "theme": "policy_growth",
         "directional_state": "Mixed",
         "interaction_type": "policy_vs_growth",
-        "headline": "The UK's growth picture is set against US policy expectations.",
+        "headline": "The UK's growth picture is set against the US labor data.",
         "rationale": "The pair is easier to read through the gap between policy support and growth pressure.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "The UK's growth picture is set against US policy expectations.",
+        "tension_summary": "The UK's growth picture is set against the US labor data.",
         "left_reason": "GBP is shaped by its growth backdrop",
-        "right_reason": "USD is shaped by policy expectations",
+        "right_reason": "USD is shaped by labor data",
         "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure."
       },
-      "tension_summary": "The UK's growth picture is set against US policy expectations.",
+      "tension_summary": "The UK's growth picture is set against the US labor data.",
       "interaction_reason": "The pair is easier to read through the gap between policy support and growth pressure.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
@@ -220,12 +219,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "base_key_event": "Unemployment Claims tomorrow · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "USD: The Fed is in focus",
+        "USD: Labor market data is the main thing to watch",
         "JPY: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -233,18 +232,18 @@
         "pair": "USD/JPY",
         "theme": "risk_mood",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "risk_mood_vs_rates",
+        "headline": "The US labor data is set against the yen's sensitivity to defensive market mood.",
+        "rationale": "The pair links market mood sensitivity with rate expectations.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-        "left_reason": "USD is shaped by policy expectations",
+        "tension_summary": "The US labor data is set against the yen's sensitivity to defensive market mood.",
+        "left_reason": "USD is shaped by labor data",
         "right_reason": "JPY is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The pair links market mood sensitivity with rate expectations."
       },
-      "tension_summary": "US policy expectations sit against the yen's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "The US labor data is set against the yen's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links market mood sensitivity with rate expectations.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -255,12 +254,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "base_key_event": "Unemployment Claims tomorrow · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "USD: The Fed is in focus",
+        "USD: Labor market data is the main thing to watch",
         "CHF: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -268,18 +267,18 @@
         "pair": "USD/CHF",
         "theme": "risk_mood",
         "directional_state": "Mixed",
-        "interaction_type": "policy_vs_safe_haven",
-        "headline": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "rationale": "The pair links rate expectations with defensive market mood.",
+        "interaction_type": "risk_mood_vs_rates",
+        "headline": "The US labor data is set against the franc's sensitivity to defensive market mood.",
+        "rationale": "The pair links market mood sensitivity with rate expectations.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-        "left_reason": "USD is shaped by policy expectations",
+        "tension_summary": "The US labor data is set against the franc's sensitivity to defensive market mood.",
+        "left_reason": "USD is shaped by labor data",
         "right_reason": "CHF is shaped by market mood",
-        "interaction_reason": "The pair links rate expectations with defensive market mood."
+        "interaction_reason": "The pair links market mood sensitivity with rate expectations."
       },
-      "tension_summary": "US policy expectations sit against the franc's sensitivity to defensive market mood.",
-      "interaction_reason": "The pair links rate expectations with defensive market mood.",
+      "tension_summary": "The US labor data is set against the franc's sensitivity to defensive market mood.",
+      "interaction_reason": "The pair links market mood sensitivity with rate expectations.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -291,30 +290,30 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "quote_key_event": "Unemployment Claims tomorrow · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "AUD: No major event in focus",
-        "USD: The Fed is in focus"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "AUD/USD",
-        "theme": "global_demand",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "global_demand_vs_policy",
-        "headline": "Global demand sensitivity in AUD meets US policy expectations.",
-        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "AUD and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Global demand sensitivity in AUD meets US policy expectations.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "AUD is shaped by global demand",
-        "right_reason": "USD is shaped by policy expectations",
-        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+        "right_reason": "USD is shaped by labor data",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Global demand sensitivity in AUD meets US policy expectations.",
-      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -325,12 +324,12 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "base_key_event": "Unemployment Claims tomorrow · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
-        "USD: The Fed is in focus",
+        "USD: Labor market data is the main thing to watch",
         "CAD: No major event in focus"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
@@ -344,7 +343,7 @@
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
         "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
-        "left_reason": "USD is shaped by policy expectations",
+        "left_reason": "USD is shaped by labor data",
         "right_reason": "CAD is shaped by oil and demand",
         "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
@@ -361,30 +360,30 @@
       "base_label": "Neutral",
       "quote_label": "Neutral",
       "base_key_event": null,
-      "quote_key_event": "FOMC Member Waller Speaks today · Medium impact",
+      "quote_key_event": "Unemployment Claims tomorrow · Medium impact",
       "has_key_event": true,
       "narrative_focus_match": true,
       "drivers": [
         "NZD: No major event in focus",
-        "USD: The Fed is in focus"
+        "USD: Labor market data is the main thing to watch"
       ],
       "takeaway": "The two currencies do not show a clean macro contrast right now",
       "narrative": {
         "pair": "NZD/USD",
-        "theme": "global_demand",
+        "theme": "macro_backdrop",
         "directional_state": "Mixed",
-        "interaction_type": "global_demand_vs_policy",
-        "headline": "Global demand sensitivity in NZD meets US policy expectations.",
-        "rationale": "The pair links global demand sensitivity with policy expectations.",
+        "interaction_type": "mixed_macro_forces",
+        "headline": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+        "rationale": "NZD and USD do not show one clean relational theme yet.",
         "what_changes_this": "A clearer shift in one side would make the pair easier to read.",
         "dominant_currency": null,
-        "tension_summary": "Global demand sensitivity in NZD meets US policy expectations.",
+        "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
         "left_reason": "NZD is shaped by global demand",
-        "right_reason": "USD is shaped by policy expectations",
-        "interaction_reason": "The pair links global demand sensitivity with policy expectations."
+        "right_reason": "USD is shaped by labor data",
+        "interaction_reason": "The relationship is still mixed rather than one-sided."
       },
-      "tension_summary": "Global demand sensitivity in NZD meets US policy expectations.",
-      "interaction_reason": "The pair links global demand sensitivity with policy expectations.",
+      "tension_summary": "These two currencies are being shaped by different macro forces, but the contrast is not clean enough yet.",
+      "interaction_reason": "The relationship is still mixed rather than one-sided.",
       "what_changes_this": "A clearer shift in one side would make the pair easier to read."
     },
     {
@@ -395,8 +394,8 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks tomorrow · Medium impact",
-      "quote_key_event": "GDP m/m in 2 days · High impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
+      "quote_key_event": "GDP m/m tomorrow · High impact",
       "has_key_event": true,
       "narrative_focus_match": false,
       "drivers": [
@@ -430,7 +429,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks tomorrow · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -465,7 +464,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "GDP m/m in 2 days · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -500,7 +499,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks tomorrow · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -535,7 +534,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks tomorrow · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -570,7 +569,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "GDP m/m in 2 days · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -675,7 +674,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "GDP m/m in 2 days · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -710,7 +709,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "ECB President Lagarde Speaks tomorrow · Medium impact",
+      "base_key_event": "ECB President Lagarde Speaks today · Medium impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -815,7 +814,7 @@
       "directional_state": "Mixed",
       "base_label": "Neutral",
       "quote_label": "Neutral",
-      "base_key_event": "GDP m/m in 2 days · High impact",
+      "base_key_event": "GDP m/m tomorrow · High impact",
       "quote_key_event": null,
       "has_key_event": true,
       "narrative_focus_match": false,
@@ -845,49 +844,21 @@
   ],
   "lucid_events": [
     {
-      "date": "2026-11-10",
-      "currency": "USD",
-      "title": "FOMC Member Waller Speaks",
-      "event_type": "FOMC",
+      "date": "2026-11-11",
+      "currency": "EUR",
+      "title": "ECB President Lagarde Speaks",
+      "event_type": "ECB",
       "importance": "medium",
       "timing_label": "Today",
       "is_today": true,
       "is_cb_speech": true,
-      "speaker": "Fed Official",
-      "why_it_matters": "Fed officials shape how investors read the US rate backdrop",
-      "market_focus": "Inflation, jobs, and whether rates may stay high",
-      "insight": "Their comments can change the dollar story"
+      "speaker": "Lagarde",
+      "why_it_matters": "Lagarde explains how the ECB sees growth and inflation",
+      "market_focus": "Whether the ECB sounds worried about weak growth",
+      "insight": "Her tone helps the market read the euro backdrop"
     },
     {
-      "date": "2026-11-10",
-      "currency": "USD",
-      "title": "Core CPI m/m",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
-    {
-      "date": "2026-11-10",
-      "currency": "USD",
-      "title": "CPI m/m",
-      "event_type": "CPI",
-      "importance": "high",
-      "timing_label": "Today",
-      "is_today": true,
-      "is_cb_speech": false,
-      "speaker": null,
-      "why_it_matters": "Inflation tells central banks how much pressure remains",
-      "market_focus": "Whether prices are cooling or staying sticky",
-      "insight": "Slower inflation can reduce support for a currency"
-    },
-    {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "currency": "EUR",
       "title": "ECB President Lagarde Speaks",
       "event_type": "ECB",
@@ -902,25 +873,11 @@
     },
     {
       "date": "2026-11-12",
-      "currency": "EUR",
-      "title": "ECB President Lagarde Speaks",
-      "event_type": "ECB",
-      "importance": "medium",
-      "timing_label": "In 2 days",
-      "is_today": false,
-      "is_cb_speech": true,
-      "speaker": "Lagarde",
-      "why_it_matters": "Lagarde explains how the ECB sees growth and inflation",
-      "market_focus": "Whether the ECB sounds worried about weak growth",
-      "insight": "Her tone helps the market read the euro backdrop"
-    },
-    {
-      "date": "2026-11-12",
       "currency": "GBP",
       "title": "GDP m/m",
       "event_type": "GDP",
       "importance": "high",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
@@ -934,13 +891,55 @@
       "title": "Prelim GDP q/q",
       "event_type": "GDP",
       "importance": "medium",
-      "timing_label": "In 2 days",
+      "timing_label": "Tomorrow",
       "is_today": false,
       "is_cb_speech": false,
       "speaker": null,
       "why_it_matters": "GDP shows whether the economy is growing or slowing",
       "market_focus": "Whether growth is strong enough to support the currency",
       "insight": "Weak growth can make a currency feel less attractive"
+    },
+    {
+      "date": "2026-11-12",
+      "currency": "USD",
+      "title": "Unemployment Claims",
+      "event_type": "UNEMPLOYMENT",
+      "importance": "medium",
+      "timing_label": "Tomorrow",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Unemployment shows whether the economy is losing strength",
+      "market_focus": "Whether joblessness is rising or falling",
+      "insight": "A weaker labor market can weigh on the currency"
+    },
+    {
+      "date": "2026-11-13",
+      "currency": "USD",
+      "title": "Core PPI m/m",
+      "event_type": "PPI",
+      "importance": "high",
+      "timing_label": "In 2 days",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Producer prices can show early pressure before consumers feel it",
+      "market_focus": "Whether business costs are rising or cooling",
+      "insight": "Lower price pressure gives central banks more room to wait"
+    },
+    {
+      "date": "2026-11-13",
+      "currency": "USD",
+      "title": "PPI m/m",
+      "event_type": "PPI",
+      "importance": "high",
+      "timing_label": "In 2 days",
+      "is_today": false,
+      "is_cb_speech": false,
+      "speaker": null,
+      "why_it_matters": "Producer prices can show early pressure before consumers feel it",
+      "market_focus": "Whether business costs are rising or cooling",
+      "insight": "Lower price pressure gives central banks more room to wait"
     }
   ]
 }
